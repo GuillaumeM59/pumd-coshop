@@ -22,7 +22,7 @@ h6 {
 }
 
 .topnav {
-  margin-top: 0;
+  padding: 0.2%;
     font-size: 14px;
 }
 
@@ -50,7 +50,7 @@ h6 {
   opacity: 0;
 }
 .logo_hot{
-  width: 10%
+  width: 12%
 }
 .cate2{
   height: 100%;
@@ -63,10 +63,6 @@ h6 {
   opacity: 0;
 }
 
-.logo_hot{
-  width: 10%
-}
-
 .cate3{
   position: absolute;
   z-index: 100;
@@ -75,9 +71,7 @@ h6 {
 .cate3:hover {
   opacity: 0;
 }
-.logo_hot{
-  width: 10%
-}
+
 
 
 #section4{
@@ -92,9 +86,6 @@ h6 {
 .cate4:hover {
   opacity: 0;
 }
-.logo_hot{
-  width: 10%
-}
 
 .cate5{
   position: absolute;
@@ -104,9 +95,7 @@ h6 {
 .cate5:hover {
   opacity: 0;
 }
-.logo_hot{
-  width: 10%
-}
+
 
 .cate6{
   position: absolute;
@@ -116,11 +105,6 @@ h6 {
 .cate6:hover {
   opacity: 0;
 }
-.logo_hot{
-  width: 10%
-}
-
-
 
 .lead {
     font-size: 18px;
@@ -267,4 +251,18 @@ footer {
 
 p.copyright {
     margin: 15px 0 0;
+}
+
+#header {
+    width: 100%;
+    z-index: 100;
+}
+
+.fixed {
+    position: fixed;
+    top: 0;
+}
+
+#header-wrap {
+    position: relative;
 }
