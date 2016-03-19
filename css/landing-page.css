@@ -22,8 +22,105 @@ h6 {
 }
 
 .topnav {
-    font-size: 14px; 
+  margin-top: 0;
+    font-size: 14px;
 }
+
+.navbar-brand{
+  padding: 0;
+}
+#title_partenaire{
+  text-align: center;
+}
+#section1{
+  margin-left: 4%;
+}
+
+#section1,#section2,#section3,#section4,#section5,#section6 {
+
+  overflow: hidden;
+
+}
+.cate1{
+  position: absolute;
+  z-index: 100;
+}
+
+.cate1:hover {
+  opacity: 0;
+}
+.logo_hot{
+  width: 10%
+}
+.cate2{
+  height: 100%;
+  width: auto;
+  position: absolute;
+  z-index: 100;
+}
+
+.cate2:hover {
+  opacity: 0;
+}
+
+.logo_hot{
+  width: 10%
+}
+
+.cate3{
+  position: absolute;
+  z-index: 100;
+}
+
+.cate3:hover {
+  opacity: 0;
+}
+.logo_hot{
+  width: 10%
+}
+
+
+#section4{
+  margin-left: 4%;
+}
+
+.cate4{
+  position: absolute;
+  z-index: 100;
+}
+
+.cate4:hover {
+  opacity: 0;
+}
+.logo_hot{
+  width: 10%
+}
+
+.cate5{
+  position: absolute;
+  z-index: 100;
+}
+
+.cate5:hover {
+  opacity: 0;
+}
+.logo_hot{
+  width: 10%
+}
+
+.cate6{
+  position: absolute;
+  z-index: 100;
+}
+
+.cate6:hover {
+  opacity: 0;
+}
+.logo_hot{
+  width: 10%
+}
+
+
 
 .lead {
     font-size: 18px;
@@ -157,6 +254,9 @@ h6 {
 
     ul.banner-social-buttons > li:last-child {
         margin-bottom: 0;
+    }
+    #section1, #section4{
+    margin-left: 0;
     }
 }
 
