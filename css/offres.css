@@ -1,0 +1,14 @@
+ul li {
+  display: inline;
+}
+.imgresponsive {
+  float: left;
+}
+.imguser {
+  width: 20%;
+  height: 20%;
+}
+.imgdriver {
+  width: 20%;
+  height: 20%;
+}
