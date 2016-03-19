@@ -22,7 +22,19 @@ h6 {
 }
 
 .topnav {
-    font-size: 14px; 
+  margin-top: 0;
+    font-size: 14px;
+}
+
+.navbar-brand{
+  padding: 0;
+}
+#title_partenaire{
+  text-align: center;
+}
+
+.logo_hot{
+  width: 10%
 }
 
 .lead {
