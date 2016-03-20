@@ -305,6 +305,23 @@ opacity: 0
     }
 }
 
+/*-------------TEMOIGNAGE BLOCK---------------*/
+
+.guillemets {
+  font-size: 3em;
+  color: rgb(140, 140, 140)
+}
+
+.temoignage {
+  font-style: italic;
+  font-size: 2em;
+  font-weight: 600
+}
+
+
+
+
+
 /*-------------FOOTER BLOCK---------------*/
 footer {
 	background-image: url("../img/photos HQ/footer.jpg");
