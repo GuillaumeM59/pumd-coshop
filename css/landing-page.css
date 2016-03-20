@@ -33,79 +33,135 @@ h6 {
   text-align: center;
 }
 #section1{
-  margin-left: 4%;
+  padding-left: 0;
+  padding-right: 0;
+  /*margin-left: 4%;*/
+  margin-bottom: 15px;
+  background-image: url("../img/Photos Catégories Magasins/12528544_10208623811969470_624329013_o.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-#section1,#section2,#section3,#section4,#section5,#section6 {
+#section2{
+  padding-left: 0;
+  padding-right: 0;
+  /*margin-left: 4%;*/
+  margin-bottom: 15px;
+  background-image: url("../img/Photos Catégories Magasins/12528544_10208623811969470_624329013_o.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#section3{
+  padding-left: 0;
+  padding-right: 0;
+  /*margin-left: 4%;*/
+  margin-bottom: 15px;
+  background-image: url("../img/Photos Catégories Magasins/12528544_10208623811969470_624329013_o.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#section4{
+  padding-left: 0;
+  padding-right: 0;
+  /*margin-left: 4%;*/
+  margin-bottom: 15px;
+  background-image: url("../img/Photos Catégories Magasins/12528544_10208623811969470_624329013_o.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#section5{
+  padding-left: 0;
+  padding-right: 0;
+  /*margin-left: 4%;*/
+  margin-bottom: 15px;
+  background-image: url("../img/Photos Catégories Magasins/12528544_10208623811969470_624329013_o.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#section6{
+  padding-left: 0;
+  padding-right: 0;
+  /*margin-left: 4%;*/
+  margin-bottom: 15px;
+  background-image: url("../img/Photos Catégories Magasins/12528544_10208623811969470_624329013_o.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*#section1,#section2,#section3,#section4,#section5,#section6 {
 
   overflow: hidden;
 
+}*/
+.logo-categ {
+  height: 50px;
+  width: auto;
+  margin: 10px 0
 }
-.cate1{
-  position: absolute;
-  z-index: 100;
+.catelist{
+opacity: 0
+}
+#section1:hover {
+  background-image: none
+}
+#section1:hover > .catelist {
+  opacity: 1
 }
 
-.cate1:hover {
-  opacity: 0;
+#section2:hover {
+  background-image: none
 }
+#section2:hover > .catelist {
+  opacity: 1
+}
+
+#section3:hover {
+  background-image: none
+}
+#section3:hover > .catelist {
+  opacity: 1
+}
+
+#section4:hover {
+  background-image: none
+}
+#section4:hover > .catelist {
+  opacity: 1
+}
+
+#section5:hover {
+  background-image: none
+}
+#section5:hover > .catelist {
+  opacity: 1
+}
+
+#section6:hover {
+  background-image: none
+}
+#section6:hover > .catelist {
+  opacity: 1
+}
+
 .logo_hot{
   width: auto;
   height: 50px;
 }
-.cate2{
+.catepays{
   height: 100%;
   width: auto;
-  position: absolute;
-  z-index: 100;
-}
-
-.cate2:hover {
-  opacity: 0;
-}
-
-.cate3{
-  position: absolute;
-  z-index: 100;
-}
-
-.cate3:hover {
-  opacity: 0;
 }
 
 
 
-#section4{
-  margin-left: 4%;
+#section1,#section2, #section3, #section4, #section5, #section6  {
+  margin-left: 4.1%;
+  margin-right: 4.1%;
 }
 
-.cate4{
-  position: absolute;
-  z-index: 100;
-}
-
-.cate4:hover {
-  opacity: 0;
-}
-
-.cate5{
-  position: absolute;
-  z-index: 100;
-}
-
-.cate5:hover {
-  opacity: 0;
-}
-
-
-.cate6{
-  position: absolute;
-  z-index: 100;
-}
-
-.cate6:hover {
-  opacity: 0;
-}
 
 .lead {
     font-size: 18px;
