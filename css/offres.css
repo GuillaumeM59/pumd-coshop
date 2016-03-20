@@ -1,5 +1,8 @@
 /* Extra small devices (phones, less than 768px) */
 /* No media query since this is the default in Bootstrap */
+body {
+	padding-top: 60px!important;
+}
 
 /* Small devices (tablets, 768px and up) */
 @media(max-width:767px){
