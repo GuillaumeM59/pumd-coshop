@@ -20,6 +20,9 @@
 	.imgresponsive {
 	  /*float: left*/
 	}
+	.divinfosroad {
+		margin-bottom: 1%;
+	}
 	.infostrajet {
 	  margin-top: 10%;
 	}
@@ -226,5 +229,12 @@
 	  margin-right:0px;
 	  margin-left:0px;
 	}
+}
 
+a:link {
+	text-decoration: none;
+	color : black;
+}
+a:visited { text-decoration: none;
+	color : black;
 }
