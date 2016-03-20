@@ -61,7 +61,7 @@ h6 {
   background-image: url("../img/Photos Catégories Magasins/12528544_10208623811969470_624329013_o.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-
+}
 
 #section4{
   padding-left: 0;
@@ -149,7 +149,7 @@ opacity: 0
 
 .logo_hot{
   width: auto;
-  height: 10px;
+  height: 50px;
 }
 .catepays{
   height: 100%;
