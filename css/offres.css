@@ -2,179 +2,229 @@
 /* No media query since this is the default in Bootstrap */
 
 /* Small devices (tablets, 768px and up) */
-@media (min-width:34em) {
-.offres{
-	padding-top: 50px;
-	padding-bottom: 50px;
-	text-align: center;
-	color: #f8f8f8;
-  background: url(../img/Photos\ Catégories\ Magasins/12528544_10208623811969470_624329013_o.jpg) no-repeat center center!important;
-  background-size: cover;
+@media(max-width:767px){
+
+	.offres{
+		padding-bottom: 50px;
+		text-align: center;
+		color: #f8f8f8;
+	  background: url(../img/Photos\ Catégories\ Magasins/12528544_10208623811969470_624329013_o.jpg) no-repeat center center!important;
+	  background-size: cover;
+	}
+	.bloc-progress {
+
+	}
+	ul li .align {
+	  display: inline;
+	}
+	.imgresponsive {
+	  /*float: left*/
+	}
+	.infostrajet {
+	  margin-top: 10%;
+	}
+	.infosvehicules {
+	  /*margin-top: 10%;*/
+	  /*text-align: center;*/
+	}
+	.imgenseigne {
+	  padding-top: 10%;
+	  width: 100%;
+	  height: auto;
+	  display: inline;
+	  text-align: center;
+	}
+	.imguser {
+	  padding-top: 4%;
+	  width: 60%;
+	  height: 60%;
+	  display: inline;
+	  text-align: right;
+	}
+	.imgdriver {
+	  width: 30%;
+	  height: auto;
+	  display: inline;
+	  text-align: center;
+	  /*position: center;*/
+	}
+	.container-fluid {
+	  padding-top: 2%;
+	  padding-bottom: 2%;
+	  margin-top: 2%;
+	  background-color: #B0F2B6;
+	}
+
+	.row{
+	  margin-right:0px;
+	  margin-left:0px;
+	}
 }
-.bloc-progress {
+@media(min-width:768px){
+
+	.offres{
+		padding-bottom: 50px;
+		text-align: center;
+		color: #f8f8f8;
+	  background: url(../img/Photos\ Catégories\ Magasins/12528544_10208623811969470_624329013_o.jpg) no-repeat center center!important;
+	  background-size: cover;
+	}
+
+	ul li .align {
+	  display: inline;
+	}
+	.imgresponsive {
+	  /*float: left*/
+	}
+	.infostrajet {
+	  margin-top: 15%;
+	}
+	.infosvehicules {
+	  margin-top: 15%;
+	}
+	.imgenseigne {
+	  padding-top: 10%;
+	  width: 100%;
+	  height: auto;
+	  display: inline;
+	  text-align: center;
+	}
+	.imguser {
+	  padding-top: 4%;
+	  width: 60%;
+	  height: 60%;
+	  display: inline;
+	  text-align: right;
+	}
+	.imgdriver {
+	  width: 50%;
+	  height: auto;
+	  display: inline;
+	  text-align: center;
+	  /*position: center;*/
+	}
+	.container-fluid {
+	  padding-top: 2%;
+	  padding-bottom: 2%;
+	  margin-top: 2%;
+	  background-color: #B0F2B6;
+	}
+
+	.row{
+	  margin-right:0px;
+	  margin-left:0px;
+	}
 
 }
-ul li .align {
-  display: inline;
-}
-.imgresponsive {
-  /*float: left*/
-}
-.infostrajet {
-  margin-top: 10%;
-}
-.infosvehicules {
-  /*margin-top: 10%;*/
-  text-align: left;
-}
-.imgenseigne {
-  padding-top: 10%;
-  width: 100%;
-  height: auto;
-  display: inline;
-  text-align: center;
-}
-.imguser {
-  padding-top: 4%;
-  width: 60%;
-  height: 60%;
-  display: inline;
-  text-align: right;
-}
-.imgdriver {
-  width: 30%;
-  height: auto;
-  display: inline;
-  text-align: center;
-  /*position: center;*/
-}
-.container-fluid {
-  padding-top: 2%;
-  padding-bottom: 2%;
-  margin-top: 2%;
-  background-color: #B0F2B6;
-}
+@media(min-width:992px){
 
-.row{
-  margin-right:0px;
-  margin-left:0px;
-}
- }
+	.offres{
+		padding-bottom: 50px;
+		text-align: center;
+		color: #f8f8f8;
+	  background: url(../img/Photos\ Catégories\ Magasins/12528544_10208623811969470_624329013_o.jpg) no-repeat center center!important;
+	  background-size: cover;
+	}
 
-/* Medium devices (desktops, 992px and up) */
-@media (min-width:48em) {
-.offres{
-	padding-top: 50px;
-	padding-bottom: 50px;
-	text-align: center;
-	color: #f8f8f8;
-  background: url(../img/Photos\ Catégories\ Magasins/12528544_10208623811969470_624329013_o.jpg) no-repeat center center!important;
-  background-size: cover;
-}
+	ul li .align {
+	  display: inline;
+	}
+	.imgresponsive {
+	  /*float: left*/
+	}
+	.infostrajet {
+	  margin-top: 15%;
+	}
+	.infosvehicules {
+	  margin-top: 15%;
+	}
+	.imgenseigne {
+	  padding-top: 10%;
+	  width: 100%;
+	  height: auto;
+	  display: inline;
+	  text-align: center;
+	}
+	.imguser {
+	  padding-top: 4%;
+	  width: 60%;
+	  height: 60%;
+	  display: inline;
+	  text-align: right;
+	}
+	.imgdriver {
+	  width: 80%;
+	  height: auto;
+	  display: inline;
+	  text-align: center;
+	  /*position: center;*/
+	}
+	.container-fluid {
+	  padding-top: 2%;
+	  padding-bottom: 2%;
+	  margin-top: 2%;
+	  background-color: #B0F2B6;
+	}
 
-ul li .align {
-  display: inline;
-}
-.imgresponsive {
-  /*float: left*/
-}
-.infostrajet {
-  margin-top: 15%;
-}
-.infosvehicules {
-  margin-top: 15%;
-}
-.imgenseigne {
-  padding-top: 10%;
-  width: 100%;
-  height: auto;
-  display: inline;
-  text-align: center;
-}
-.imguser {
-  padding-top: 4%;
-  width: 60%;
-  height: 60%;
-  display: inline;
-  text-align: right;
-}
-.imgdriver {
-  width: 80%;
-  height: auto;
-  display: inline;
-  text-align: center;
-  /*position: center;*/
-}
-.container-fluid {
-  padding-top: 2%;
-  padding-bottom: 2%;
-  margin-top: 2%;
-  background-color: #B0F2B6;
-}
+	.row{
+	  margin-right:0px;
+	  margin-left:0px;
+	}
+	 }
 
-.row{
-  margin-right:0px;
-  margin-left:0px;
-}
- }
+@media(min-width:1200px){
 
-/* Large devices (large desktops, 1200px and up) */
-@media (min-width:1200em) {
-.offres{
-	padding-top: 50px;
-	padding-bottom: 50px;
-	text-align: center;
-	color: #f8f8f8;
-  background: url(../img/Photos\ Catégories\ Magasins/12528544_10208623811969470_624329013_o.jpg) no-repeat center center!important;
-  background-size: cover;
-}
+	.offres{
+		padding-bottom: 50px;
+		text-align: center;
+		color: #f8f8f8;
+	  background: url(../img/Photos\ Catégories\ Magasins/12528544_10208623811969470_624329013_o.jpg) no-repeat center center!important;
+	  background-size: cover;
+	}
 
-ul li .align {
-  display: inline;
-}
-.imgresponsive {
-  /*float: left*/
-}
-.infostrajet {
-  margin-top: 15%;
-}
-.infosvehicules {
-  margin-top: 15%;
-}
-.imgenseigne {
-  padding-top: 10%;
-  width: 100%;
-  height: auto;
-  display: inline;
-  text-align: center;
-}
-.imguser {
-  padding-top: 4%;
-  width: 60%;
-  height: 60%;
-  display: inline;
-  text-align: right;
-}
-.imgdriver {
-  width: 80%;
-  height: auto;
-  display: inline;
-  text-align: center;
-  /*position: center;*/
-}
-.container-fluid {
-  padding-top: 2%;
-  padding-bottom: 2%;
-  margin-top: 2%;
-  background-color: #B0F2B6;
-}
+	ul li .align {
+	  display: inline;
+	}
+	.imgresponsive {
+	  /*float: left*/
+	}
+	.infostrajet {
+	  margin-top: 15%;
+	}
+	.infosvehicules {
+	  margin-top: 15%;
+	}
+	.imgenseigne {
+	  padding-top: 10%;
+	  width: 100%;
+	  height: auto;
+	  display: inline;
+	  text-align: center;
+	}
+	.imguser {
+	  padding-top: 4%;
+	  width: 60%;
+	  height: 60%;
+	  display: inline;
+	  text-align: right;
+	}
+	.imgdriver {
+	  width: 80%;
+	  height: auto;
+	  display: inline;
+	  text-align: center;
+	  /*position: center;*/
+	}
+	.container-fluid {
+	  padding-top: 2%;
+	  padding-bottom: 2%;
+	  margin-top: 2%;
+	  background-color: #B0F2B6;
+	}
 
-.row{
-  margin-right:0px;
-  margin-left:0px;
-}
- }
+	.row{
+	  margin-right:0px;
+	  margin-left:0px;
+	}
 
- .bec {
-	 float: left;
- }
+}

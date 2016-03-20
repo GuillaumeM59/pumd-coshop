@@ -6,18 +6,18 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description" content="Offres de covoiturage">
+  <meta name="author" content="dupontbertrand">
 
-  <title>Landing Page - Start Bootstrap Theme</title>
+  <title>Car2Shop - Offres Bricolage - Jardinage </title>
 
   <!-- Bootstrap Core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom CSS -->
   <link href="css/offres.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/connexion.css">
   <link rel="stylesheet" href="css/landing-page.css">
+  <link rel="stylesheet" href="css/connexion.css">
   <!-- Custom Fonts -->
   <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
@@ -35,144 +35,147 @@
 <!-- content -->
 
 <body>
+
+    <div id="header-wrap">
+        <div id="header" class="clear">
+    <nav id="container" class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+           <div class="container topnav">
+               <!-- Brand and toggle get grouped for better mobile display -->
+               <div class="navbar-header">
+                 <a class="navbar-brand topnav" href="#"><img class="logo_hot"src="img/Logos/Logo_detouree.png" /></a>
+                   <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                       <span class="sr-only">Toggle navigation</span>
+                       <span class="icon-bar"></span>
+                       <span class="icon-bar"></span>
+                       <span class="icon-bar"></span>
+                   </button>
+               </div>
+
+               <!-- Collect the nav links, forms, and other content for toggling -->
+               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                   <ul class="nav navbar-nav navbar-right">
+                       <li>
+                         <button type="button" class="btn btn-success  btn-lg" data-toggle="modal" data-target="#myModal">
+                           connexion</button>
+                           <!-- Modal -->
+
+                       </li>
+                   </ul>
+               </div>
+               <!-- /.navbar-collapse -->
+           </div>
+           <!-- /.container -->
+       </nav>
+  </div>
+  </div>
+
+
   <!-- modal -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
 
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-md-offset-1">
-            <div class="panel panel-login">
-              <div class="panel-heading">
-                <div class="row">
-                  <div class="col-xs-6">
-                    <a href="#" class="active" id="login-form-link">Login</a>
+          <div class="container">
+    	<div class="row">
+			<div class="col-md-6 col-md-offset-1">
+				<div class="panel panel-login">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-xs-6">
+								<a href="#" class="active" id="login-form-link">Login</a>
+							</div>
+							<div class="col-xs-6">
+								<a href="#register-form" id="register-form-link">Register</a>
+							</div>
+						</div>
+						<hr>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-lg-12">
+								<form id="login-form" action="http://phpoll.com/login/process" method="post" role="form" style="display: block;">
+									<div class="form-group">
+										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+									</div>
+
+									<div class="form-group">
+										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+									</div>
+									<div class="form-group text-center">
+										<input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+										<label for="remember"> Remember Me</label>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6 col-sm-offset-3">
+												<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-lg-12">
+												<div class="text-center">
+													<a href="http://phpoll.com/recover" tabindex="5" class="forgot-password">Forgot Password?</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+
+
+								<form id="register-form" action="http://phpoll.com/register/process" method="post" role="form" style="display: none;">
+
+                  <div class="form-group">
+										<input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Name" value="">
+									</div>
+
+                  <div class="form-group">
+										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+									</div>
+
+                  <div class="form-group">
+                    <input type="text" name="ville" id="ville" tabindex="1" class="form-control" placeholder="Ville" value="">
                   </div>
-                  <div class="col-xs-6">
-                    <a href="#register-form" id="register-form-link">Register</a>
+
+									<div class="form-group">
+										<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+									</div>
+
+									<div class="form-group">
+										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+									</div>
+									<div class="form-group">
+										<input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
+									</div>
+
+
+
+                  <div class="form-group text-center">
+                    <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+                    <label for="remember"><h3>femme</h3></label>
+
+                    <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+                    <label for="remember"> <h3>homme</h3></label>
                   </div>
-                </div>
-                <hr>
-              </div>
-              <div class="panel-body">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <form id="login-form" action="http://phpoll.com/login/process" method="post" role="form" style="display: block;">
-                      <div class="form-group">
-                        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
-                      </div>
 
-                      <div class="form-group">
-                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
-                      </div>
-                      <div class="form-group text-center">
-                        <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-                        <label for="remember"> Remember Me</label>
-                      </div>
-                      <div class="form-group">
-                        <div class="row">
-                          <div class="col-sm-6 col-sm-offset-3">
-                            <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <div class="row">
-                          <div class="col-lg-12">
-                            <div class="text-center">
-                              <a href="http://phpoll.com/recover" tabindex="5" class="forgot-password">Forgot Password?</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-
-
-                    <form id="register-form" action="http://phpoll.com/register/process" method="post" role="form" style="display: none;">
-
-                      <div class="form-group">
-                        <input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Name" value="">
-                      </div>
-
-                      <div class="form-group">
-                        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
-                      </div>
-
-                      <div class="form-group">
-                        <input type="text" name="ville" id="ville" tabindex="1" class="form-control" placeholder="Ville" value="">
-                      </div>
-
-                      <div class="form-group">
-                        <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
-                      </div>
-
-                      <div class="form-group">
-                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
-                      </div>
-                      <div class="form-group">
-                        <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
-                      </div>
-
-
-
-                      <div class="form-group text-center">
-                        <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-                        <label for="remember">
-                          <h3>femme</h3></label>
-
-                        <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-                        <label for="remember">
-                          <h3>homme</h3></label>
-                      </div>
-
-                      <div class="form-group">
-                        <div class="row">
-                          <div class="col-sm-6 col-sm-offset-3">
-                            <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6 col-sm-offset-3">
+												<input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
     </div>
   </div>
 
-
-  <!-- Navigation -->
-  <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
-    <div class="container topnav">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-
-        <!-- <a class="navbar-brand topnav" href="#"><img src="img/Logos/Logo_detouree.png" alt="" /></a> -->
-      </div>
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <button type="button" class="btn btn-primary  btn-lg" data-toggle="modal" data-target="#myModal">
-              connexion</button>
-            <!-- Modal -->
-
-          </li>
-        </ul>
-      </div>
-      <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-  </nav>
 
   <!-- Header -->
   <a name="about"></a>
@@ -195,10 +198,10 @@
   <!-- offre -->
   <div class="row">
     <div class="container-fluid">
-      <div class="col-xs-3 col-md-2 text-right">
+      <div class="col-xs-3 col-sm-3 col-md-2 text-right">
         <img class="img-responsive img-circle imguser" src="img/avataruser/1.jpg" alt="Avatar profil">
       </div>
-      <div class="col-xs-3 col-md-2">
+      <div class="col-xs-3 col-sm-3 col-md-2">
         <ul class="list-unstyled">
           <li>
             <h3>Pseudo </h3>
@@ -210,32 +213,34 @@
           </li>
           <li>Prénom Nom</li>
           <li>12 covoiturages</li>
-          <li>Débutant</li>
+          <li>Habitué</li>
         </ul>
 
       </div>
 
-      <div class="col-xs-3 col-md-2">
+      <div class="col-xs-3 col-sm-3 col-md-2">
         <img class="img-responsive imgenseigne" src="img/Logos-Enseignes/Bricolage-Jardinage/Castorama.png" alt="Image enseigne">
         <p>Lille-Hellemmes (59)</p>
       </div>
-      <div class="col-xs-3 col-md-2">
+      <div class="col-xs-3 col-sm-3 col-md-2">
         <ul class="list-unstyled infostrajet">
           <li>Date : 20 Mars 2016</li>
           <li>Lieu de Départ : Villeneuve-D'Ascq</li>
           <li>Heure de départ : 09h00</li>
+          <li>Heure de retour : 12h30</li>
         </ul>
 
       </div>
 
-      <div class="col-xs-4 col-md-1 bec">
+      <div class="col-xs-6 col-sm-7 col-md-1 bec">
         <div class="progress">
           <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
           </div>
         </div>
         <p class="text-center"><img class="img-responsive imgdriver" src="img/caricon.png" alt="Img driver"></p>
       </div>
-      <div class="col-xs-4 col-md-2">
+      <div class="col-xs-3"></div>
+      <div class="col-xs-3 col-sm-5 col-md-2">
         <ul class="list-unstyled infosvehicules">
           <li>Modèle : Peugeot 5008</li>
           <li>Places restantes : 4</li>
@@ -260,10 +265,10 @@
 
     <div class="row">
       <div class="container-fluid">
-        <div class="col-sm-12 col-md-2 text-right">
+        <div class="col-xs-3 col-sm-3 col-md-2 text-right">
           <img class="img-responsive img-circle imguser" src="img/avataruser/2.jpg" alt="Avatar profil">
         </div>
-        <div class="col-sm-12 col-md-2">
+        <div class="col-xs-3 col-sm-3 col-md-2">
           <ul class="list-unstyled">
             <li>
               <h3>Pseudo </h3>
@@ -275,32 +280,34 @@
             </li>
             <li>Prénom Nom</li>
             <li>20 covoiturages</li>
-            <li>Intermédiaire</li>
+            <li>Confirmé</li>
           </ul>
 
         </div>
 
-        <div class="col-sm-12 col-md-2">
+        <div class="col-xs-3 col-sm-3 col-md-2">
           <img class="img-responsive imgenseigne" src="img/Logos-Enseignes/Bricolage-Jardinage/Conforama.png" alt="Image enseigne">
           <p>Villeneuve-D'Ascq (59)</p>
         </div>
-        <div class="col-sm-12 col-md-2">
+        <div class="col-xs-3 col-sm-3 col-md-2">
           <ul class="list-unstyled infostrajet">
             <li>Date : 22 Mars 2016</li>
             <li>Lieu de Départ : Lille</li>
             <li>Heure de départ : 11h00</li>
+            <li>Heure de retour : 13h00</li>
           </ul>
 
         </div>
 
-        <div class="col-sm-12 col-md-1">
+        <div class="col-xs-6 col-sm-7 col-md-1 bec">
           <div class="progress">
             <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
             </div>
           </div>
           <p class="text-center"><img class="img-responsive imgdriver" src="img/caricon.png" alt="Img driver"></p>
         </div>
-        <div class="col-sm-12 col-md-2">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-3 col-sm-5 col-md-2">
           <ul class="list-unstyled infosvehicules">
             <li>Modèle : Renault Espace</li>
             <li>Places restantes : 2</li>
@@ -312,7 +319,7 @@
           </ul>
 
         </div>
-        <div class="col-sm-12 col-md-1">
+        <div class="col-md-1">
         </div>
       </div>
       </div>
@@ -322,10 +329,10 @@
 
       <div class="row">
         <div class="container-fluid">
-          <div class="col-sm-12 col-md-2 text-right">
+          <div class="col-xs-3 col-sm-3 col-md-2 text-right">
             <img class="img-responsive img-circle imguser" src="img/avataruser/3.jpg" alt="Avatar profil">
           </div>
-          <div class="col-sm-12 col-md-2">
+          <div class="col-xs-3 col-sm-3 col-md-2">
             <ul class="list-unstyled">
               <li>
                 <h3>Pseudo </h3>
@@ -342,27 +349,29 @@
 
           </div>
 
-          <div class="col-sm-12 col-md-2">
+          <div class="col-xs-3 col-sm-3 col-md-2">
             <img class="img-responsive imgenseigne" src="img/Logos-Enseignes/Bricolage-Jardinage/Habitat.png" alt="Image enseigne">
             <p>Douai (59)</p>
           </div>
-          <div class="col-sm-12 col-md-2">
+          <div class="col-xs-3 col-sm-3 col-md-2">
             <ul class="list-unstyled infostrajet">
               <li>Date : 20 Mars 2016</li>
               <li>Lieu de Départ : Lesquin</li>
               <li>Heure de départ : 15h00</li>
+              <li>Heure de retour : 17h45</li>
             </ul>
 
           </div>
 
-          <div class="col-sm-12 col-md-1">
+          <div class="col-xs-6 col-sm-7 col-md-1 bec">
             <div class="progress">
               <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
               </div>
             </div>
             <p class="text-center"><img class="img-responsive imgdriver" src="img/caricon.png" alt="Img driver"></p>
           </div>
-          <div class="col-sm-12 col-md-2">
+          <div class="col-xs-3"></div>
+          <div class="col-xs-3 col-sm-5 col-md-2">
             <ul class="list-unstyled infosvehicules">
               <li>Modèle : Citroen C4</li>
               <li>Places restantes : 3</li>
@@ -374,7 +383,7 @@
             </ul>
 
           </div>
-          <div class="col-sm-12 col-md-1">
+          <div class="col-md-1">
           </div>
         </div>
         </div>
@@ -384,10 +393,10 @@
 
         <div class="row">
           <div class="container-fluid">
-            <div class="col-sm-12 col-md-2 text-right">
+            <div class="col-xs-3 col-sm-3 col-md-2 text-right">
               <img class="img-responsive img-circle imguser" src="img/avataruser/1.jpg" alt="Avatar profil">
             </div>
-            <div class="col-sm-12 col-md-2">
+            <div class="col-xs-3 col-sm-3 col-md-2">
               <ul class="list-unstyled">
                 <li>
                   <h3>Pseudo </h3>
@@ -399,32 +408,34 @@
                 </li>
                 <li>Prénom Nom</li>
                 <li>30 covoiturages</li>
-                <li>Expert</li>
+                <li>Confirmé</li>
               </ul>
 
             </div>
 
-            <div class="col-sm-12 col-md-2">
+            <div class="col-xs-3 col-sm-3 col-md-2">
               <img class="img-responsive imgenseigne" src="img/Logos-Enseignes/Bricolage-Jardinage/brico.png" alt="Image enseigne">
               <p>Englos (59)</p>
             </div>
-            <div class="col-sm-12 col-md-2">
+            <div class="col-xs-3 col-sm-3 col-md-2">
               <ul class="list-unstyled infostrajet">
                 <li>Date : 20 Mars 2016</li>
                 <li>Lieu de Départ : Roubaix</li>
                 <li>Heure de départ : 18h00</li>
+                <li>Heure de départ : 19h00</li>
               </ul>
 
             </div>
 
-            <div class="col-sm-12 col-md-1">
+            <div class="col-xs-6 col-sm-7 col-md-1 bec">
               <div class="progress">
                 <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 10%;">
                 </div>
               </div>
               <p class="text-center"><img class="img-responsive imgdriver" src="img/caricon.png" alt="Img driver"></p>
             </div>
-            <div class="col-sm-12 col-md-2">
+            <div class="col-xs-3"></div>
+            <div class="col-xs-3 col-sm-5 col-md-2">
               <ul class="list-unstyled infosvehicules">
                 <li>Modèle : Kia Sportage</li>
                 <li>Places restantes : 4</li>
@@ -436,7 +447,7 @@
               </ul>
 
             </div>
-            <div class="col-sm-12 col-md-1">
+            <div class="col-md-1">
             </div>
           </div>
           </div>
@@ -444,42 +455,63 @@
 
           <!-- /offre -->
 
+                <footer>
+                  <div class="row">
+                    <div id="copyright" class=" col-xs-4 col-sm-5 col-sm-offset-1 col-md-2 col-md-offset-2 text-center">
+                      <h6>Rejoignez-nous sur</h6>
+                      <ul class="list-unstyled text-center">
+                        <li><a href="#"><i class="fa fa-youtube fa-3x"></i></a></li>
+                        <li><a href="#"><i class="fa fa-facebook fa-3x"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter fa-3x"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram fa-3x"></i></a></li>
+                      </ul>
 
-          <!-- Footer -->
-          <footer>
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-12">
-                  <ul class="list-inline">
-                    <li>
-                      <a href="#">Home</a>
-                    </li>
-                    <li class="footer-menu-divider">&sdot;</li>
-                    <li>
-                      <a href="#about">About</a>
-                    </li>
-                    <li class="footer-menu-divider">&sdot;</li>
-                    <li>
-                      <a href="#services">Services</a>
-                    </li>
-                    <li class="footer-menu-divider">&sdot;</li>
-                    <li>
-                      <a href="#contact">Contact</a>
-                    </li>
-                  </ul>
-                  <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
-                </div>
-              </div>
-            </div>
-          </footer>
+                    </div>
+                    <div id="societe" class="col-xs-7 col-md-3 ">
+                      <h6>Infos pratiques</h6>
+                      <ul>
+                        <li><a href="#">Le concept C2S</a></li>
+                        <li><a href="#">Ecosystème - Social</a></li>
+                        <li><a href="#">Assurance de covoiturage</a></li>
+                        <li><a href="#">Niveaux d'expérience</a></li>
+                        <li><a href="#">Conseils prévention</a></li>
+                        <li><a href="#">conducteur - utilisateur</a></li>
+                      </ul>
+                    </div>
+                    <div id="decouvrir" class="col-xs-7 col-md-3">
+                      <h6>A propos</h6>
+                      <ul>
+                        <li><a href="#">Qui sommes-nous?</a></li>
+                        <li><a href="#">Témoignages</a></li>
+                        <li><a href="#">Partenaires</a></li>
+                        <li><a href="#">Presse</a></li>
+                        <li><a href="#">Charte de bonne conduite</a></li>
+                        <li><a href="#">Conditions générales et confidentialité</a></li>
+                      </ul>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <a href=""><h6>Contactez-nous</h6></a>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-8 col-md-offset-2 columns">
+                      <hr>
+                    </div>
+                  </div>
+                  <div class="row text-center">
+                        <h6>© Car2Shop, Inc.</h6>
+                  </div>
+                </footer>
 
-          <!-- jQuery -->
-          <script src="js/jquery.js"></script>
+              <!-- jQuery -->
+              <script src="js/jquery.js"></script>
 
-          <!-- Bootstrap Core JavaScript -->
-          <script src="js/bootstrap.min.js"></script>
-
-
+              <!-- Bootstrap Core JavaScript -->
+              <script src="js/bootstrap.min.js"></script>
+              <script src="js/jquery.knob.js"></script>
+              <script src="js/connexion.js"> </script>
+              <script src="js/index.js"></script>
+              <script>
 
 
 </body>
