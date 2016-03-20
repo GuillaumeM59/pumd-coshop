@@ -50,7 +50,8 @@ h6 {
   opacity: 0;
 }
 .logo_hot{
-  width: 12%
+  width: auto;
+  height: 50px;
 }
 .cate2{
   height: 100%;
@@ -224,6 +225,9 @@ h6 {
 }
 
 @media(max-width:767px) {
+    .logo_hot{
+      margin-left: 20%
+    }
     .banner h2 {
         margin: 0;
         text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
