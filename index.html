@@ -55,7 +55,7 @@
             <div class="panel-body">
               <div class="row">
                 <div class="col-lg-12">
-                  <form id="login-form" action="http://phpoll.com/login/process" method="post" role="form" style="display: block;">
+                  <form id="login-form" action="profil.html" method="post" role="form" style="display: block;">
                     <div class="form-group">
                       <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
                     </div>
@@ -70,7 +70,7 @@
                     <div class="form-group">
                       <div class="row">
                         <div class="col-sm-6 col-sm-offset-3">
-                          <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
+                          <a role="button" class="form-control btn btn-login" href="profil.html">Connexion</a>
                         </div>
                       </div>
                     </div>
@@ -78,7 +78,7 @@
                       <div class="row">
                         <div class="col-lg-12">
                           <div class="text-center">
-                            <a href="http://phpoll.com/recover" tabindex="5" class="forgot-password">Forgot Password?</a>
+                            <a href="http://phpoll.com/recover" tabindex="5" class="forgot-password">Mot de passe oublié?</a>
                           </div>
                         </div>
                       </div>
@@ -86,7 +86,7 @@
                   </form>
 
 
-                  <form id="register-form" action="http://phpoll.com/register/process" method="post" role="form" style="display: none;">
+                  <form id="register-form" action="profil.html" method="post" role="form" style="display: none;">
 
                     <div class="form-group">
                       <input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Name" value="">
@@ -126,7 +126,7 @@
                     <div class="form-group">
                       <div class="row">
                         <div class="col-sm-6 col-sm-offset-3">
-                          <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                          <a role="button" class="form-control btn btn-login" href="profil.html">S'inscrire</a>
                         </div>
                       </div>
                     </div>
@@ -148,6 +148,7 @@
         <div class="container topnav">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
+            <a class="navbar-brand topnav" href="#"><img class="logo_hot img-responsive" src="img/Logos/Logo_detouree.png" /></a>
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
@@ -155,7 +156,6 @@
               <span class="icon-bar"></span>
             </button>
           </div>
-          <a class="navbar-brand topnav" href="#"><img class="logo_hot img-responsive" src="img/Logos/Logo_detouree.png" /></a>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -194,7 +194,7 @@
 
                 <input id="ctatypeauto" type="text" class="form-control" placeholder="Choix du magasin">
 
-                <button id="ctasearch" type="submit" class="btn btn-success">Rechercher</button>
+                <a id="ctasearch" role="button" class="btn btn-success" href="offres.html">Rechercher</a>
               </div>
             </form>
 
@@ -214,17 +214,18 @@
   <div class="content-section-b">
     <div class="container">
       <div class="row">
-        <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
-          <hr class="section-heading-spacer">
-          <div class="clearfix"></div>
-          <h2 class="section-heading">Car2Shop<br>by les bg du 62</h2>
-          <p class="lead">CAR2SHOP est un concept innovant proposant aux citoyens de se rendre gratuitement au sein des magasins et des lieux de consommations via l'utilisation du covoiturage</p>
-        </div>
 
-        <div class="col-lg-4 col-sm-pull-6  col-sm-6">
+        <div class="col-lg-3 col-lg-offset-1 col- col-sm-6  col-sm-6">
           <img class="img-responsive " src="img/Logos/Logo_detouree.png" alt="">
         </div>
+        <div class="col-lg-5 col-lg-offset-1 col-sm-6  col-sm-6">
+          <hr class="section-heading-spacer">
+          <div class="clearfix"></div>
+          <h2 class="section-heading">Le concept</h2>
+          <p class="lead">CAR2SHOP est un concept innovant proposant aux citoyens de se rendre gratuitement au sein des magasins et des lieux de consommations via l'utilisation du covoiturage</p>
+        </div>
       </div>
+    </div>
     </div>
 
 
@@ -354,7 +355,7 @@
 
 
 <div  class="col-md-4 text-center " >
-      <h2>cinema</h2>
+      <h2>Cinema</h2>
               <div id="section6">
             <ul class="text-center list-unstyled catelist">
               <li>
@@ -378,10 +379,91 @@
         <!-- /.container -->
     </div>
     </div>
-    <!-- /.content-section-b -->
-
-
     <!-- /.content-section-a -->
+
+
+    <div class="content-section-c">
+
+        <div class="container">
+
+            <div class="row">
+              <div class="col-xs-12 col-md-10 col-md-offset-1">
+
+              <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                      <div class="col-xs-2 col-xs-offset-1">
+                        <img class="img-responsive img-circle" src="img/avataruser/1.jpg" alt="Avatar profil">
+                      </div>
+                      <div class="col-xs-1">
+                          <p class="guillemets text-right">"</p>
+                      </div>
+                      <div class="col-xs-6">
+                        <p class="temoignage">Nouveau concept de covoiturage super utile ! Il m'a permis à différentes reprises de me rendre gratuitement dans mes magasins afin d'effectuer mes achats ! </p>
+                      </div>
+                      <div class="col-xs-">
+                          <p class="guillemets text-left">"</p>
+                      </div>
+                    </div>
+
+                  <div class="item">
+                    <div class="col-xs-2 col-xs-offset-1">
+                      <img class="img-responsive img-circle imguser" src="img/avataruser/2.jpg" alt="Avatar profil">
+                    </div>
+                    <div class="col-xs-1">
+                        <p class="guillemets text-right">"</p>
+                    </div>
+                    <div class="col-xs-6">
+                      <p class="temoignage">Passagers ponctuels et très sympathiques. Belle rencontre. Course rapide et entraide sont les points importants à retenir</p>
+                    </div>
+                    <div class="col-xs-">
+                        <p class="guillemets text-left">"</p>
+                    </div>
+                  </div>
+
+                  <div class="item">
+                    <div class="col-xs-2 col-xs-offset-1">
+                      <img class="img-responsive img-circle imguser" src="img/avataruser/3.jpg" alt="Avatar profil">
+                    </div>
+                    <div class="col-xs-1">
+                        <p class="guillemets text-right">"</p>
+                    </div>
+                    <div class="col-xs-6">
+                        <p class="temoignage">Top ! Sans voiture j'ai enfin trouvé une solution d'effectuer mes courses en découvrant mon voisinage !</p>
+                    </div>
+                    <div class="col-xs-">
+                        <p class="guillemets text-left">"</p>
+                    </div>
+                  </div>
+
+
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+            </div>
+            </div>
+          </div>
+          <!-- /.container -->
+      </div>
+          <!-- /.content-section-b -->
+
 
 
     <!-- /.banner -->
