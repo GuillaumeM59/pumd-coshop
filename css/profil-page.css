@@ -1,0 +1,47 @@
+/* stylesheet for driver profil*/
+.logo {
+  width: 8%;
+}
+.intro-header{
+margin-top: 50px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	text-align: center;
+	color: #f8f8f8;
+  background: url(../img/photos\ HQ/driver.jpg) no-repeat center center;
+  background-size: cover;
+}
+.intro-message {
+    position: relative;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+.block-level h2{
+    margin: 2% 0
+}
+.old {
+  color: transparent;
+}
+.old span{
+  color:rgba(112, 112, 112, 0.4)
+}
+.level {
+    color: green;
+}
+.sourond {
+  margin: 2%;
+  font-size: 1.2em
+}
+.logo-enseignes {
+  max-width: 100%;
+  height: 50px;
+}
+#magpref {
+  margin-bottom: 5%
+}
+.pref{
+  padding: 8% 0
+}
+.pref img {
+  margin: 2% 0
+}

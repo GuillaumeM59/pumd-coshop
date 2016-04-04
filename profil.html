@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Page de Profil Conducteur">
+    <meta name="author" content="GuillaumeM59">
+
+    <title>Car2Shop - Profil Conducteur</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/landing-page.css" rel="stylesheet">
+    <link href="css/profil-page.css" rel="stylesheet">
+    <link href="css/connexion.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+
+
+  <div id="header-wrap">
+      <div id="header" class="clear">
+  <nav id="container" class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+         <div class="container topnav">
+             <!-- Brand and toggle get grouped for better mobile display -->
+             <div class="navbar-header">
+               <a class="navbar-brand topnav" href="index.html"><img class="logo_hot"src="img/Logos/Logo_detouree.png" /></a>
+                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                     <span class="sr-only">Toggle navigation</span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                 </button>
+             </div>
+
+             <!-- Collect the nav links, forms, and other content for toggling -->
+             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                 <ul class="nav navbar-nav navbar-right">
+                     <li>
+                       <button type="button" class="btn btn-success  btn-lg" data-toggle="modal" data-target="#myModal">
+                         connexion</button>
+                         <!-- Modal -->
+                     </li>
+                 </ul>
+             </div>
+             <!-- /.navbar-collapse -->
+         </div>
+         <!-- /.container -->
+     </nav>
+</div>
+</div>
+
+
+     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+
+
+            <div class="row">
+                 <div class="col-md-8 col-md-offset-1">
+                     <div class="panel panel-login">
+                         <div class="panel-heading">
+                             <div class="row">
+                                 <div class="col-xs-6">
+                                     <a href="#" class="active" id="login-form-link">Login</a>
+                                 </div>
+                                 <div class="col-xs-6">
+                                     <a href="#register-form" id="register-form-link">Register</a>
+                                 </div>
+                             </div>
+                             <hr>
+                         </div>
+                         <div class="panel-body">
+                             <div class="row">
+                                 <div class="col-lg-12">
+                                     <form id="login-form" action="profil.html" role="form" style="display: block;">
+                                         <div class="form-group">
+                                             <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+                                         </div>
+
+                                         <div class="form-group">
+                                             <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+                                         </div>
+                                         <div class="form-group text-center">
+                                             <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+                                             <label for="remember"> Remember Me</label>
+                                         </div>
+                                         <div class="form-group">
+                                             <div class="row">
+                                                 <div class="col-sm-6 col-sm-offset-3">
+                                                   <a role="button" class="form-control btn btn-login" href="profil.html">Connexion</a>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         <div class="form-group">
+                                             <div class="row">
+                                                 <div class="col-lg-12">
+                                                     <div class="text-center">
+                                                         <a href="" tabindex="5" class="forgot-password">Forgot Password?</a>
+                                                     </div>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </form>
+
+
+                                     <form id="register-form" action="profil.html"  role="form" style="display: none;">
+
+                      <div class="form-group">
+                                             <input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Name" value="">
+                                         </div>
+
+                      <div class="form-group">
+                                             <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+                                         </div>
+
+                      <div class="form-group">
+                        <input type="text" name="ville" id="ville" tabindex="1" class="form-control" placeholder="Ville" value="">
+                      </div>
+
+                                         <div class="form-group">
+                                             <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+                                         </div>
+
+                                         <div class="form-group">
+                                             <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+                                         </div>
+                                         <div class="form-group">
+                                             <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
+                                         </div>
+
+                      <div class="form-group text-center">
+                        <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+                        <label for="remember"><h3>femme</h3></label>
+
+                        <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
+                        <label for="remember"> <h3>homme</h3></label>
+                      </div>
+
+                                         <div class="form-group">
+                                             <div class="row">
+                                                 <div class="col-sm-6 col-sm-offset-3">
+                                                   <a role="button" class="form-control btn btn-login" href="profil.html">S'inscrire</a>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </form>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+        </div>
+      </div>
+
+
+
+
+
+    <!-- Header -->
+        <a name="about"></a>
+    <div class="intro-header">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="intro-message">
+                        <h1>Profil Conducteur</h1>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.intro-header -->
+
+    <!-- Page Content -->
+
+	<a  name="services"></a>
+    <div class="content-section-a">
+
+        <div class="container">
+            <div class="row">
+              <div class=" col-xs-4 col-xs-offset-2 col-sm-4 col-sm-offset-2 col-md-2 col-md-offset-1 ">
+                <img class="img-responsive img-circle" src="img/avataruser/1.jpg" alt="Avatar profil">
+              </div>
+              <div class=" col-xs-6 col-sm-6 col-md-3 ">
+                <ul class="list-unstyled">
+                  <li><h3>CESAR DELAOUSTRE</h3></li>
+                  <li><a href="#" role="button" class="btn">Editer Profil</a></li>
+                  <li><a href="#" role="button" class="btn">Voir Profil</a></li>
+                  <li><a href="#" role="button" class="btn">Mes Annonces</a></li>
+                </ul>
+              </div>
+                <div class="col-xs-12 col-sm-6 col-sm-offset-0 col-md-4 col-lg-6  block-level">
+                    <div></div>
+                    <h2 class="text-center old">Niveau: <span class="level">Expert</span></h2>
+                    <h2 class="text-center">Niveau: <span class="level">Confirmé</span></h2>
+                    <h2 class="text-center old">Niveau: <span class="level">Habitué</span></h2>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-a -->
+
+    <div class="content-section-b">
+
+        <div class="container">
+
+            <div class="row text-center">
+
+                <div class="col-md-4 col-sm-4">
+                    <input type="text" value="" class="nbrcovoit">
+                    <p class="sourond">covoiturages</p>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <input type="text" value="" class="pourcentage">
+                    <p class="sourond">euros économisés</p>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <input type="text" value="" class="notemoyenne">
+                    <p class="sourond">note sur 5</p>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /.content-section-b -->
+
+    <div class="content-section-a">
+
+        <div class="container">
+
+            <div class="row text-center pref">
+              <h2 id="magpref">Mes magasins favoris</h2>
+                <div class="col-sm-6 col-md-3">
+                  <img src="img/Logos-Enseignes/Alimentaire/Carrefour.png" class="logo-enseignes" alt="logo">
+                </div>
+                <div class="col-sm-6 col-md-3">
+                  <img src="img/Logos-Enseignes/Ameublement/IKEA.png" class="logo-enseignes" alt="logo">
+                </div>
+                <div class="col-sm-6 col-md-3">
+                  <img src="img/Logos-Enseignes/Sport/Décathlon.png" class="logo-enseignes" alt="logo">
+                </div>
+                <div class="col-sm-6 col-md-3">
+                  <img src="img/Logos-Enseignes/Bricolage-Jardinage/Castorama.png" class="logo-enseignes" alt="logo">
+                </div>
+            </div>
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /.content-section-a -->
+
+
+      <footer>
+        <div class="row">
+          <div id="copyright" class=" col-xs-4 col-sm-5 col-sm-offset-1 col-md-2 col-md-offset-2 text-center">
+            <h6>Rejoignez-nous sur</h6>
+            <ul class="list-unstyled text-center">
+              <li><a href="#"><i class="fa fa-youtube fa-3x"></i></a></li>
+              <li><a href="#"><i class="fa fa-facebook fa-3x"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter fa-3x"></i></a></li>
+              <li><a href="#"><i class="fa fa-instagram fa-3x"></i></a></li>
+            </ul>
+
+          </div>
+          <div id="societe" class="col-xs-7 col-md-3 ">
+            <h6>Infos pratiques</h6>
+            <ul>
+              <li><a href="#">Le concept C2S</a></li>
+              <li><a href="#">Ecosystème - Social</a></li>
+              <li><a href="#">Assurance de covoiturage</a></li>
+              <li><a href="#">Niveaux d'expérience</a></li>
+              <li><a href="#">Conseils prévention</a></li>
+              <li><a href="#">conducteur - utilisateur</a></li>
+            </ul>
+          </div>
+          <div id="decouvrir" class="col-xs-7 col-md-3">
+            <h6>A propos</h6>
+            <ul>
+              <li><a href="#">Qui sommes-nous?</a></li>
+              <li><a href="#">Témoignages</a></li>
+              <li><a href="#">Partenaires</a></li>
+              <li><a href="#">Presse</a></li>
+              <li><a href="#">Charte de bonne conduite</a></li>
+              <li><a href="#">Conditions générales et confidentialité</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6 text-center">
+              <a href=""><h6>Contactez-nous</h6></a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2 columns">
+            <hr>
+          </div>
+        </div>
+        <div class="row text-center">
+              <h6>© Car2Shop, Inc.</h6>
+        </div>
+      </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.knob.js"></script>
+    <script src="js/connexion.js"> </script>
+    <script src="js/index.js"></script>
+    <script>
+        $(function() {
+              $(".nbrcovoit").val(16);
+              $(".nbrcovoit").knob({
+                'max':20,
+                'readOnly':true,
+                'fgColor': "green",
+                'inputColor': "green",
+                'thickness': 0.4
+              });
+        });
+        $(function() {
+              $(".pourcentage").val(48);
+              $(".pourcentage").knob({
+                'max':48,
+                'readOnly':true,
+                'fgColor': "green",
+                'inputColor': "green",
+                'thickness': 0.4
+              });
+        });
+        $(function() {
+              $(".notemoyenne").val(4);
+              $(".notemoyenne").knob({
+                'max':5,
+                'readOnly':true,
+                'fgColor': "green",
+                'inputColor': "green",
+                'thickness': 0.4
+              });
+        });
+
+    </script>
+</body>
+
+</html>
