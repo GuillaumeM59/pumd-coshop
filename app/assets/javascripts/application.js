@@ -12,5 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-sprockets
+//= require connexion
+//= require resultat
+//= require index
 //= require turbolinks
 //= require_tree .
