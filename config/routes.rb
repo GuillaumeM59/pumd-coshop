@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :feedbacks
+  resources :bids
+  resources :cars
+  resources :shops
+  resources :brands
   get 'static_pages/home'
 
   get 'static_pages/help'

@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Shop:</strong>
+  <%= @bid.shop_id %>
+</p>
+
+<p>
+  <strong>Driver:</strong>
+  <%= @bid.driver_id %>
+</p>
+
+<p>
+  <strong>Go at:</strong>
+  <%= @bid.go_at %>
+</p>
+
+<p>
+  <strong>Come back:</strong>
+  <%= @bid.come_back %>
+</p>
+
+<p>
+  <strong>Pass1:</strong>
+  <%= @bid.pass1_id %>
+</p>
+
+<p>
+  <strong>Pass2:</strong>
+  <%= @bid.pass2_id %>
+</p>
+
+<p>
+  <strong>Pass3:</strong>
+  <%= @bid.pass3_id %>
+</p>
+
+<p>
+  <strong>Pass4:</strong>
+  <%= @bid.pass4_id %>
+</p>
+
+<p>
+  <strong>Cangodrive:</strong>
+  <%= @bid.cangodrive %>
+</p>
+
+<%= link_to 'Edit', edit_bid_path(@bid) %> |
+<%= link_to 'Back', bids_path %>
