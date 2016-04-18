@@ -1,6 +1,7 @@
 body {
     padding-top: 50px;
 }
+
 .panel-login {
 	border-color: #ccc;
 	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
@@ -64,11 +65,16 @@ body {
 	text-transform: uppercase;
   border-color: #DE5B49;
 }
-.btn-login:hover,
+.btn-login:hover{
+  color: #fff;
+  background-color: #FA965C !important;
+  border-color: #DE6454!important;
+}
+
 .btn-login:focus {
 	color: #fff;
-  background-color: #FA965C;
-  border-color: #DE6454;
+  background-color: #FA965C!important;
+  border-color: #DE6454!important;
 }
 .forgot-password {
 	text-decoration: underline;
@@ -108,6 +114,7 @@ body {
 	background-color: #1CA347;
 	border-color: #1CA347;
 }
+
 
 /*.connexionheadermodal {
   color: #324D5C;
