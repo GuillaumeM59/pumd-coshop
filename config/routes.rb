@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :cars
   resources :shops
   resources :brands
   get 'static_pages/home'
