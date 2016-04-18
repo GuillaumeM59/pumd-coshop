@@ -4138,3 +4138,17 @@ Started GET "/" for 127.0.0.1 at 2016-04-18 11:23:21 +0200
 Processing by StaticPagesController#home as HTML
   Rendered static_pages/home.html.erb within layouts/application (1.9ms)
 Completed 200 OK in 2542ms (Views: 2523.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-18 11:59:12 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 555ms (Views: 512.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-18 12:01:22 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#home as HTML
+  Rendered static_pages/home.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 474ms (Views: 447.2ms | ActiveRecord: 0.0ms)
