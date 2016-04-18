@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160418094558) do
+ActiveRecord::Schema.define(version: 20160418100816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bids", force: :cascade do |t|
+    t.integer  "shop_id"
+    t.integer  "driver_id"
+    t.datetime "go_at"
+    t.datetime "come_back"
+    t.integer  "pass1_id"
+    t.integer  "pass2_id"
+    t.integer  "pass3_id"
+    t.integer  "pass4_id"
+    t.boolean  "cangodrive"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "brands", force: :cascade do |t|
     t.string   "name"
