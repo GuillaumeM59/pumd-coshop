@@ -14,5 +14,5 @@ $(function() {
 		$(this).addClass('active');
 		e.preventDefault();
 	});
-
+console.log('End load connexion.js')
 });
