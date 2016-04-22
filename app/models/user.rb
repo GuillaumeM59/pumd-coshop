@@ -6,4 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :bids
   has_one :car
+
+  geocoded_by :city
+after_validation :geocode
 end
