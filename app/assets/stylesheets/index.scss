@@ -4,7 +4,7 @@
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
-    background: url(../img/photos\ HQ/covoit.jpg) no-repeat center center;
+    background: url(../img/photos\ HQ/coshop-large.jpg) no-repeat center center;
     background-size: cover;
 }
 
@@ -15,12 +15,20 @@
 }
 
 .intro-message > h1 {
-    margin: 0;
+    margin: 10px;
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-    font-size: 5em;
+    // font-size: 5em;
 }
 .btn-search {
   border: solid 1px #ffffff;
+  background-color: #1cf453;
+  color : #F0EDDF;
+}
+
+.btn-search:hover {
+  border: solid 1px #ffffff;
+  background-color: #19D649;
+  color : #F0EDDF;
 }
 
 .intro-divider {
@@ -46,19 +54,53 @@
   margin-top: 20px;
   padding-top: 20px;
   padding-left: 5px;
+  height: 400px;
 
 }
 
 .enseignesdarty {
-  height: 80px;
-  width: 80px;
+  height: 60px;
+  width: 60px;
 }
 
 .enseignesauchan {
-  height: 80px;
-  width: 260px;
+  height: 40px;
+  width: 150px;
 }
 
 .enseignes {
   margin:0 auto;
+}
+
+// -----------------------------------------NAVBAR
+
+.navbar-brand {
+    font-size: 24px;
+}
+
+.navbar-container {
+    padding: 20px 0 20px 0;
+}
+
+.navbar.navbar-fixed-top.fixed-theme {
+    background-color: #324D5C;
+    border-color: #080808;
+    box-shadow: 0 0 5px rgba(0,0,0,.8);
+}
+
+.navbar-brand.fixed-theme {
+    font-size: 18px;
+}
+
+.navbar-container.fixed-theme {
+    padding: 0;
+}
+
+.navbar-brand.fixed-theme,
+.navbar-container.fixed-theme,
+.navbar.navbar-fixed-top.fixed-theme,
+.navbar-brand,
+.navbar-container{
+    transition: 0.8s;
+    -webkit-transition:  0.8s;
 }

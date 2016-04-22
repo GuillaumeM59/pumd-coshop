@@ -51,11 +51,19 @@ h6 {
 /*-------------FOOTER BLOCK---------------*/
 footer {
 	background-color: #324D5C;
-	color: #46B29D;
+	color: #F0EDDF;
 	margin-top: 50px;
 	font-weight: bold;
 }
 
 footer a:hover {
-	color: #46B29D;
+	color: #F0EDDF;
+}
+
+.linksfooter a {
+  color: #F0EDDF;
+}
+.linksfooter a:hover {
+  color: #1cf453;
+  text-decoration: none;
 }
