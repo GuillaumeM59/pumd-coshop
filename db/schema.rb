@@ -11,10 +11,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160416180856) do
+ActiveRecord::Schema.define(version: 20160418101629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bids", force: :cascade do |t|
+    t.integer  "shop_id"
+    t.integer  "driver_id"
+    t.datetime "go_at"
+    t.datetime "come_back"
+    t.integer  "pass1_id"
+    t.integer  "pass2_id"
+    t.integer  "pass3_id"
+    t.integer  "pass4_id"
+    t.boolean  "cangodrive"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "brands", force: :cascade do |t|
+    t.string   "name"
+    t.string   "category"
+    t.string   "brandpic"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cars", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "carold"
+    t.string   "carpic"
+    t.string   "carbrand"
+    t.string   "carmodel"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "feedbacks", force: :cascade do |t|
+    t.integer  "bid_id"
+    t.integer  "driver_id"
+    t.integer  "pass_id"
+    t.integer  "score"
+    t.text     "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "shops", force: :cascade do |t|
+    t.integer  "brand_id_id"
+    t.string   "adress"
+    t.string   "zipcode"
+    t.string   "city"
+    t.boolean  "isdrive"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
