@@ -17,30 +17,53 @@ border-bottom-left-radius: 80px;
 }
 
 
+.result-trajet p{
+  margin-right: 30%;
+  text-align: right;
+  clear: both;
+}
+
+p span{
+  float: left;
+
+}
+
+.coco{
+width: 30px;
+height: 30px;
+}
+
+.payme-btn{
+  margin-top: 5%;
+  height: 10%;
+  width: 10%;
+}
+
 .resum-search{
 margin-top: 8%;
-background-color: #DE5B49;
+margin-bottom: 5%;
+/*background-color: #DE5B49;*/
 
 }
 
 #result-name{
+  margin-bottom: 5%;
   padding-top: 3%;
 }
-#result-trajet{
+.result-trajet{
   width: 30%;
 }
 
 .result-option{
-  background-color: #FA8846;
+  /*background-color: #FA8846;*/
 }
  .result-payme{
-   background-color: #46B29D;
+   /*background-color: #46B29D;*/
  }
 
 #logo-trajet{
   width: 20%;
 }
-
 
 
  html, body, h1, form, fieldset, legend, ol, li {
