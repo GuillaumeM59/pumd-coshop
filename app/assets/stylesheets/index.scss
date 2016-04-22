@@ -20,7 +20,7 @@
     font-size: 5em;
 }
 .btn-search {
-  border: solid 1px #ffffff; 
+  border: solid 1px #ffffff;
 }
 
 .intro-divider {
@@ -37,10 +37,16 @@
   font-size: 130%;
 }
 
+
 .exemples {
-  background-color: #324D5C;
+  border: solid 3px #324D5C;
+  border-radius: 10px 10px 10px 10px;
 	color: #46B29D;
   font-size: 80%;
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-left: 5px;
+
 }
 
 .enseignesdarty {
@@ -51,4 +57,8 @@
 .enseignesauchan {
   height: 80px;
   width: 260px;
+}
+
+.enseignes {
+  margin:0 auto;
 }
