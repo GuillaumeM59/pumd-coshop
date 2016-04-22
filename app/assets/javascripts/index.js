@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+console.log('start index.js')
 /**
  * This object controls the nav bar. Implement the add and remove
  * action over the elements of the nav bar that we want to change.
