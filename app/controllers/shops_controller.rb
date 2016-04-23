@@ -5,11 +5,19 @@ class ShopsController < ApplicationController
   # GET /shops.json
   def index
     @shops = Shop.all
+    @hash = Gmaps4rails.build_markers(@shops) do |shop, marker|
+  marker.lat shop.latitude
+  marker.lng shop.longitude
+    end
   end
 
   # GET /shops/1
   # GET /shops/1.json
   def show
+    @hash = Gmaps4rails.build_markers(@shop) do |shop, marker|
+      marker.lat shop.latitude
+      marker.lng shop.longitude
+    end
   end
 
   # GET /shops/new
@@ -69,6 +77,6 @@ class ShopsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shop_params
-      params.require(:shop).permit(:brand_id, :adress, :zipcode, :city, :drive)
+      params.require(:shop).permit(:brand_id, :name, :address, :zipcode, :city, :isdrive)
     end
 end
