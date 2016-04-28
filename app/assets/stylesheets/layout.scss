@@ -31,6 +31,8 @@ h6 {
 
 .navbar-brand{
   padding: 0;
+  width : auto;
+  height: 70px;
 }
 
 /*#section1,#section2,#section3,#section4,#section5,#section6 {
@@ -50,20 +52,20 @@ h6 {
 
 /*-------------FOOTER BLOCK---------------*/
 footer {
-	background-color: #324D5C;
+	background-color: #455F6F;
 	color: #F0EDDF;
 	margin-top: 50px;
 	font-weight: bold;
 }
 
 footer a:hover {
-	color: #F0EDDF;
+	// color: #F0EDDF;
 }
 
 .linksfooter a {
   color: #F0EDDF;
 }
 .linksfooter a:hover {
-  color: #1cf453;
+  // color: #1cf453;
   text-decoration: none;
 }
