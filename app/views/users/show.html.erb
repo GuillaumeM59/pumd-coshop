@@ -1,0 +1,57 @@
+<script src="//maps.google.com/maps/api/js?v=3.22&key=AIzaSyBngIsRw-Abk5UB04-Nl_Qg4vACEfo2jEo&libraries=geometry&language=fr&hl=&region="></script>
+<script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"></script>
+
+<p id="notice"><%= notice %></p>
+
+<div class="container-fluid">
+  <header class="row">
+    <div class="headercontant col-md-12 text-center">
+      Mon Profil:  <%= @user.username %>
+    </div>
+  </header>
+
+  <div class="row">
+    <div class="profil stats col-md-6">
+
+      <p>
+        <strong>Prenom:</strong>
+        <%= @user.prenom %>
+      </p>
+
+      <p>
+        <strong>Comment:</strong>
+        <%= @user.comment %>
+      </p>
+
+      <p>
+        <strong>Newsletter:</strong>
+        <%if @user.subscribe %> oui
+        <%else%> non <%end%>
+      </p>
+      <p>
+        <strong>Ville:</strong>
+        <%= @user.city %>
+
+      </p>
+
+      <%= link_to 'Edit', edit_user_path(@user) %> |
+      <%= link_to 'Back', users_path %>
+
+    </div>
+    <div class="profil mapperso col-md-6" >
+      <div id="map" style='width: 100%; height: 400px'></div>
+    </div>
+
+  </div>
+
+
+</div>
+
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+markers = handler.addMarkers(<%=raw @hash.to_json %>);
+handler.bounds.extendWith(markers);
+handler.fitMapToBounds();
+});
+</script>

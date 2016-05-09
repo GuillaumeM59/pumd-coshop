@@ -1,0 +1,10 @@
+.pp-cover {
+  width: 100%;
+  height: 300px;
+  background: url(../img/examplecover.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+.infopublicprofile {
+  
+}
