@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423182910) do
+ActiveRecord::Schema.define(version: 20160421094351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,16 +68,15 @@ ActiveRecord::Schema.define(version: 20160423182910) do
   end
 
   create_table "shops", force: :cascade do |t|
-    t.integer  "brand_id"
-    t.string   "address"
+    t.integer  "brand_id_id"
+    t.string   "adress"
     t.string   "zipcode"
     t.string   "city"
     t.boolean  "isdrive"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "name"
   end
 
   create_table "users", force: :cascade do |t|
