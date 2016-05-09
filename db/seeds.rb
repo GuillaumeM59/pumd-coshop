@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-villes = ["Armentière", "Roubaix", "Calais", "Douais", "Montpellier","Marseille", "Lyon", "Poitier", "Strasbourg", "Creil", "Bordeaux", "Lille", "Amiens", "Rennes", "Nantes", "Tours", "Narbonnes", "Montroeil", "Sedan",
+villes = ["Armentière", "Roubaix", "Calais", "Douai", "Montpellier","Marseille", "Lyon", "Poitier", "Strasbourg", "Creil", "Bordeaux", "Lille", "Amiens", "Rennes", "Nantes", "Tours", "Narbonnes", "Montroeil", "Sedan",
    "Arras", "Villeneuve d'ascq"]
 categories = ["hypermarché", "supermarché", "proximité", "Drive", "bricolage", "ameublement", "jardinage"]
 User.delete_all
@@ -86,7 +86,7 @@ lecler_id= Brand.where(name:"Eleclerc").first.id
 u_id= Brand.where(name:"U").first.id
 carrefourmarket_id= Brand.where(name:"Carrefour Market").first.id
 carrefourcity_id= Brand.where(name:"Carrefour City").first.id
-carrefourcontact_id= Brand.where(name:"Carrefour Conatct").first.id
+carrefourcontact_id= Brand.where(name:"Carrefour Contact").first.id
 carrefourmontagne_id= Brand.where(name:"Carrefour Montagne").first.id
 carrefourexpress_id= Brand.where(name:"Carrefour Express").first.id
 carrefourdrive_id= Brand.where(name:"Carrefour Drive").first.id
@@ -107,47 +107,6 @@ File.open("#{Rails.root}/lib/seeds/Carrefour.csv") do |shops|
     sleep 1
   end
 end
-
-
-
-# Create Carrefour shops
-File.open("#{Rails.root}/lib/seeds/Contact.csv") do |shops|
-  shops.read.each_line do |shop|
-    name, city, zipcode, latitude, longitude = shop.chomp.split(";")
-    #  to remove the quotes from the csv text:
-    #code.gsub!(/\A"|"\Z/, '')
-    # to create each record in the database
-    Shop.create!(:zipcode => zipcode.to_s, :longitude => longitude, :latitude =>latitude, :brand_id => carrefour_id, :name => "Carrefour " + name)
-    sleep 1
-  end
-end
-
-
-# Create Carrefour shops
-File.open("#{Rails.root}/lib/seeds/City.csv") do |shops|
-  shops.read.each_line do |shop|
-    name, city, zipcode, latitude, longitude = shop.chomp.split(";")
-    #  to remove the quotes from the csv text:
-    #code.gsub!(/\A"|"\Z/, '')
-    # to create each record in the database
-    Shop.create!(:zipcode => zipcode.to_s, :longitude => longitude, :latitude =>latitude, :brand_id => carrefour_id, :name => "Carrefour " + name)
-    sleep 1
-  end
-end
-
-
-# Create Carrefour shops
-File.open("#{Rails.root}/lib/seeds/Contact.csv") do |shops|
-  shops.read.each_line do |shop|
-    name, city, zipcode, latitude, longitude = shop.chomp.split(";")
-    #  to remove the quotes from the csv text:
-    #code.gsub!(/\A"|"\Z/, '')
-    # to create each record in the database
-    Shop.create!(:zipcode => zipcode.to_s, :longitude => longitude, :latitude =>latitude, :brand_id => carrefour_id, :name => "Carrefour " + name)
-    sleep 1
-  end
-end
-
 
 # Create Carrefour shops
 File.open("#{Rails.root}/lib/seeds/Contact.csv") do |shops|
