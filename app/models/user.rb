@@ -4,9 +4,14 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+#bdd links
   has_many :bids
   has_one :car
 
+#uploader carrierwave
+  mount_uploader :avatar, AvatarUploader
+
+#locate by geocoder
   geocoded_by :city
 after_validation :geocode
 end
