@@ -13,26 +13,46 @@
   <div class="row">
     <div class="profil stats col-md-6">
 
-      <p>
-        <strong>Prenom:</strong>
-        <%= @user.prenom %>
-      </p>
+      <div class="row">
+        <div class="col-md-4 useravatarbloc">
 
-      <p>
-        <strong>Comment:</strong>
-        <%= @user.comment %>
-      </p>
+          <p class="text-center">
+            <%= @user.prenom %>
+          </p>
+
+
+
+        </div>
+        <div class="col-md-8 userlevelbloc">
+          <p>
+            <strong>Ville:</strong>
+            <%= @user.city %>
+
+          </p>
+          
+        </div>
+
+
+        <div class="col-md-12">
+
+
+        <p>
+          <strong>Comment:</strong>
+          <%= @user.comment %>
+        </p>
+
+      </div>
+
+      </div>
+      <!-- NESTED ROW -->
+
 
       <p>
         <strong>Newsletter:</strong>
         <%if @user.subscribe %> oui
         <%else%> non <%end%>
       </p>
-      <p>
-        <strong>Ville:</strong>
-        <%= @user.city %>
 
-      </p>
 
       <%= link_to 'Edit', edit_user_path(@user) %> |
       <%= link_to 'Back', users_path %>
