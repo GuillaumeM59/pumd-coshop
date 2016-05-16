@@ -11,6 +11,10 @@ Rails.application.routes.draw do
 
   get 'static_pages/about'
 
+  get 'static_pages/publicprofile'
+
+  get 'static_pages/recherche'
+
   devise_for :users
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.
