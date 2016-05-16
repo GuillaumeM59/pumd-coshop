@@ -1,1 +1,4 @@
-Geocoder::Configuration.timeout = 15
+Geocoder.configure(
+ timeout: 10,
+ ip_lookup: :telize
+)
