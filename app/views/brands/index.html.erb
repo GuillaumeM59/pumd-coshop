@@ -1,30 +1,25 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Brands</h1>
+<div class="container">
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Category</th>
-      <th>Brandpic</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <div class="row">
     <% @brands.each do |brand| %>
-      <tr>
-        <td><%= brand.name %></td>
-        <td><%= brand.category %></td>
-        <td><%= brand.brandpic %></td>
-        <td><%= link_to 'Show', brand %></td>
-        <td><%= link_to 'Edit', edit_brand_path(brand) %></td>
-        <td><%= link_to 'Destroy', brand, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <div class="col-md-3 brandbloc">
+        <h3 class="text-center"><%= brand.name %></h3>
+        <h6 class="text-center"><%= brand.category %></h6>
+        <p class="text-center"><%= image_tag(brand.brandpic, size: "380x80", alt: "Edit Entry") %></p>
+        <ul class=" list-unstyled list-inline text-center">
+
+          <li ><%= link_to 'Show', brand %></li>
+          <li><%= link_to 'Edit', edit_brand_path(brand) %></li>
+          <li><%= link_to 'Destroy', brand, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+        </ul>
+    </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
+
 
 <br>
 
