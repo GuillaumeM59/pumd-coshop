@@ -30,33 +30,33 @@
           </div>
           <div id="login-form">
 
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-lg-12">
-                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                  <div class="field">
-                    <label for="username">Nom d'utilisateur</label>
-                    <%= f.text_field :username, autofocus: true, :class => 'form-control', :id => "username"  %>
-                  </div>
+<div class="panel-body">
+  <div class="row">
+    <div class="col-lg-12">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <label for="username">Nom d'utilisateur</label>
+        <%= f.text_field :username, autofocus: true, :class => 'form-control', :id => "username"  %>
+      </div>
 
-                  <div class="field">
-                    <label for="password">Password</label>
-                    <%= f.password_field :password, autocomplete: "off", :class => 'form-control', :id => "password"  %>
-                  </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <%= f.password_field :password, autocomplete: "off", :class => 'form-control', :id => "password"  %>
+      </div>
 
-                  <% if devise_mapping.rememberable? -%>
-                    <div class="field text-center">
-                      <%= f.check_box :remember_me, :id => "checkboxrememberme" %>
-                      <label for="checkboxrememberme">Se souvenir de moi</label>
-                      <!-- <%= f.label :remember_me %> -->
-                    </div>
-                  <% end -%>
+      <% if devise_mapping.rememberable? -%>
+      <div class="field text-center">
+        <%= f.check_box :remember_me, :id => "checkboxrememberme" %>
+        <label for="checkboxrememberme">Se souvenir de moi</label>
+        <!-- <%= f.label :remember_me %> -->
+      </div>
+      <% end -%>
 
-                    <%= f.submit "Connexion", :class => "btn btn-login form-control" %>
-                  </div>
-                <% end %>
-          </div>
-          </div>
+      <%= f.submit "Connexion", :class => "btn btn-login form-control" %>
+    </div>
+    <% end %>
+  </div>
+</div>
           </div>
 
                 <!-- <form id="login-form" action="profil.html" method="post" role="form" style="display: block;">
@@ -90,41 +90,53 @@
                   </div>
                 </form> -->
 
-                <form id="register-form" action="profil.html" method="post" role="form" style="display: none;">
+
+
+
+<!-- <div id="register-form">
+                <form action="profil.html" method="post" role="form" style="display: none;">
                     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-                  <div class="form-group">
-                    <%= f.text_field :username, autofocus: true, :class => 'form-control', :id => "prenom"  %>
+                  <div class="field">
+                    <label for="prenom" class="text-center">Prenom</label>
+
+                    <%= f.text_field :prenom, autofocus: true, :class => 'form-control', :id => "prenom"  %>
                     <input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Prénom" value="">
                   </div>
 
-                  <div class="form-group">
-                    <%= f.text_field :username, autofocus: true, :class => 'form-control', :id => "nom"  %>
+                  <div class="field">
+                    <label for="nom">Nom</label>
+
+                    <%= f.text_field :nom, autofocus: true, :class => 'form-control', :id => "nom"  %>
                     <input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Prénom" value="">
                   </div>
 
-                  <div class="form-group">
+                  <div class="field">
+                    <label for="username">Nom d'utilisateur</label>
+
                     <%= f.text_field :username, autofocus: true, :class => 'form-control', :id => "username"  %>
                     <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Nom d'utilisateur" value="">
                   </div>
 
-                  <div class="form-group">
-                    <%= f.text_field :username, autofocus: true, :class => 'form-control', :id => "username"  %>
+                  <div class="field">
+                    <label for="city">Ville</label>
+
+                    <%= f.text_field :city, autofocus: true, :class => 'form-control', :id => "city"  %>
                     <input type="text" name="ville" id="ville" tabindex="1" class="form-control" placeholder="Ville" value="">
                   </div>
 
-                  <div class="form-group">
-                    <%= f.email_field :username, autofocus: true, :class => 'form-control', :id => "email"  %>
+                  <div class="field">
+                    <label for="email">Email</label>
+
+                    <%= f.email_field :email, autofocus: true, :class => 'form-control', :id => "email"  %>
                     <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email" value="">
                   </div>
 
-                  <div class="form-group">
-                    <%= f.text_field :username, autofocus: true, :class => 'form-control', :id => "username"  %>
+                  <div class="field">
+                    <label for="password">Mot de passe</label>
+
+                    <%= f.text_field :password, autofocus: true, :class => 'form-control', :id => "password"  %>
                     <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Mot de passe">
-                  </div>
-                  <div class="form-group">
-                    <%= f.text_field :username, autofocus: true, :class => 'form-control', :id => "username"  %>
-                    <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirmation mot de passe">
                   </div>
 
                   <div class="form-group text-center">
@@ -142,15 +154,73 @@
                       </div>
                     </div>
                   </div>
+                  <% end %>
                 </form>
+              </div> -->
+
+
+
+
+              <div id="register-form">
+
+            <div class="panel-body">
+            <div class="row">
+            <div class="col-lg-12">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <div class="field">
+            <label for="prenom">Prénom</label>
+            <%= f.text_field :prenom, autofocus: true, :class => 'form-control', :id => "prenom"  %>
+            </div>
+
+            <div class="field">
+            <label for="nom">Nom</label>
+            <%= f.text_field :nom, autofocus: true, :class => 'form-control', :id => "nom"  %>
+            </div>
+
+            <div class="field">
+            <label for="city">Ville</label>
+            <%= f.text_field :city, autofocus: true, :class => 'form-control', :id => "city"  %>
+            </div>
+
+            <div class="field">
+            <label for="username">Nom d'utilisateur</label>
+            <%= f.text_field :username, autofocus: true, :class => 'form-control', :id => "username"  %>
+            </div>
+
+
+            <div class="field">
+            <label for="email">E-mail</label>
+            <%= f.email_field :email, autocomplete: "off", :class => 'form-control', :id => "email"  %>
+            </div>
+
+            <div class="field">
+            <label for="password">Mot de passe (8 caractères minimum)</label>
+            <%= f.password_field :password, autocomplete: "off", :class => 'form-control', :id => "password"  %>
+            </div>
+
+            <div class="field">
+            <label for="passwordconfirmation">Confirmation mot de passe</label>
+            <%= f.password_field :password_confirmation, autocomplete: "off", :id => "passwordconfirmation", :class => "form-control" %>
+</div>
+
+            <%= f.submit "Inscription", :class => "btn btn-login form-control" %>
+
+            </div>
+            <% end %>
+            </div>
+            </div>
+              </div>
+
+
+
+
+
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
+
 
 <!-- Fixed navbar -->
 <nav id="header" class="navbar navbar-fixed-top">
@@ -175,12 +245,18 @@
         <li>
           <a href="" class="link_navbar">Contact</a>
         </li>
+        <% if user_signed_in? %>
+        <li>
+          <li><%= link_to "Déconnexion", destroy_user_session_path, :class => "btn btn-lg", :method => :delete %></li>
+        </li>
+        <% else %>
         <li>
           <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal">
             Connexion</button>
           <!-- Modal -->
 
         </li>
+        <% end %>
       </ul>
     </div>
     <!-- /.nav-collapse -->
