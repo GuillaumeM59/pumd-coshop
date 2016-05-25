@@ -17,11 +17,9 @@ border-bottom-left-radius: 80px;
 }
 
 
-<<<<<<< HEAD
 .resum-search{
 margin-top: 8%;
-background-color: #DE5B49;
-=======
+}
 .result-trajet p{
   margin-right: 30%;
   text-align: right;
@@ -48,36 +46,29 @@ height: 30px;
 margin-top: 8%;
 margin-bottom: 5%;
 /*background-color: #DE5B49;*/
->>>>>>> 1d3571d31970f371be52d37316414eacb9d60124
 
 }
 
 #result-name{
-<<<<<<< HEAD
   padding-top: 3%;
 }
 #result-trajet{
-=======
   margin-bottom: 5%;
   padding-top: 3%;
 }
 .result-trajet{
->>>>>>> 1d3571d31970f371be52d37316414eacb9d60124
   width: 30%;
 }
 
 .result-option{
-<<<<<<< HEAD
-  background-color: #FA8846;
-}
- .result-payme{
-   background-color: #46B29D;
-=======
   /*background-color: #FA8846;*/
 }
  .result-payme{
    /*background-color: #46B29D;*/
->>>>>>> 1d3571d31970f371be52d37316414eacb9d60124
+  /*background-color: #FA8846;*/
+}
+ .result-payme{
+   /*background-color: #46B29D;*/
  }
 
 #logo-trajet{
@@ -85,10 +76,6 @@ margin-bottom: 5%;
 }
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 1d3571d31970f371be52d37316414eacb9d60124
  html, body, h1, form, fieldset, legend, ol, li {
    margin: 0;
    padding: 0;
