@@ -18,7 +18,10 @@
  */
  @import'bootstrap-sprockets';
 @import 'bootstrap';
+ @import 'rails_bootstrap_forms';
 @import 'index';
 @import 'brands';
 @import 'connexion';
-@import 'layout'
+@import "materialize";
+@import 'layout';
+@import 'contact';
