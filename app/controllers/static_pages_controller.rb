@@ -8,9 +8,25 @@ class StaticPagesController < ApplicationController
   def about
   end
 
-  def proposition
+  def contact
+    @message = Message.new
   end
 
-  def contact
+  def sendquestion
+   @message = Message.new(message_params)
+   ContactMailer.contact_email(@message).deliver_now
+  respond_to do |format|
+     format.html { render :contact, notice: 'Message Envoyé' }
+     format.json { render json: static_pages_contact_path, status: :created, location: static_pages_contact_path }
   end
+  end
+
+
+private
+
+  def message_params
+    params.require(:message).permit(:prenom, :objet, :email, :contenu) # permit keys
+  end
+
+
 end

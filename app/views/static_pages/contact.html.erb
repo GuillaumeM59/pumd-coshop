@@ -1,16 +1,13 @@
-<body data-spy="scroll" data-target="mainmenu">
-  <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+
+  <!--[if lt IE 8]> <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p> <![endif]-->
 
   <!-- ///////////////////////    NAVBAR     ///////////////////// -->
 
   <!-- //////////////////////   NAVBAR END  ///////////////////////// -->
 
-
   <!-- /////////////////////    CONTENT    ////////////////////// -->
 
-  <img src="img/banner_contact.png" alt=" " id="banner_contact" />
+  <img src="img/banner_contact.png" alt=" " id="banner_contact"/>
 
   <div class="container">
     <div id="info_perso" class="row">
@@ -18,7 +15,7 @@
         <div id="info_hachemi" class=" col-lg-8 col-md-6 col-sm-6">
 
           <div class="row">
-            <img id="img_hach" class="img-circle col-lg-6" src="img/user1.png" alt="momo" />
+            <img id="img_hach" class="img-circle col-lg-6" src="img/user1.png" alt="momo"/>
 
             <div class="info_perso2 col-lg-6">
               <p>
@@ -35,12 +32,12 @@
 
         <div id="info_hach" class=" col-lg-8 col-md-6 col-sm-6">
           <div class="row">
-            <img id="img_hach" class="img-circle col-lg-6" src="img/user1.png" alt="mimi" />
+            <img id="img_hach" class="img-circle col-lg-6" src="img/user1.png" alt="mimi"/>
 
             <div class="info_perso2 col-lg-6">
 
               <p>
-              nobody2
+                nobody2
               </p>
               <p>
                 nobody2@test.com
@@ -49,7 +46,6 @@
             </div>
           </div>
         </div>
-
 
         <div id="formul">
 
@@ -61,7 +57,7 @@
               <style>
                 #gmap_canvas img {
                   max-width: none!important;
-                  background: none!important
+                  background: none!important;
                 }
               </style>
               <a class="google-map-code" href="http://www.themecircle.net/personal-blog/" id="get-map-data">wordpress personal blog themes</a>
@@ -78,10 +74,8 @@
                   map: map,
                   position: new google.maps.LatLng(50.6742402, 3.1912485999999944)
                 });
-                infowindow = new google.maps.InfoWindow({
-                  content: "<b>shopshop </b><br/>7 rue  nous appartiens<br/>59100 roubaix"
-                });
-                google.maps.event.addListener(marker, "click", function() {
+                infowindow = new google.maps.InfoWindow({content: "<b>shopshop </b><br/>7 rue  nous appartiens<br/>59100 roubaix"});
+                google.maps.event.addListener(marker, "click", function () {
                   infowindow.open(map, marker);
                 });
                 infowindow.open(map, marker);
@@ -90,66 +84,67 @@
             </script>
           </div>
         </div>
-  </div>
+      </div>
 
+      <div class="col-lg-6 col-md-5 col-sm-8 " id="my_map">
 
+        <%= form_for @message, :url => {:action => "sendquestion" } do |f| %>
 
-
-
-
-
-
-
-       <div class="col-lg-6 col-md-5 col-sm-8 " id="my_map">
-
-        <form>
-          <!-- <h3> Nous contacter :</h3> -->
-          <div class="form-group col-lg-10 col-md-12 col-sm-12 ">
-            <div class="input-field">
-              <i class="material-icons prefix">account_circle</i>
-              <input id="icon_prefix" type="text" class="validate">
-              <label for="icon_prefix">Prenom</label>
-
-          
-            </div>
-          </div>
-
-          <div class="form-group col-lg-10 col-md-12 col-sm-12">
-            <div class="input-field">
-              <i class="material-icons prefix">email</i>
-              <input id="email" type="email" class="validate">
-              <label for="email" data-error="wrong" data-success="right">Email</label>
-            </div>
-          </div>
-          <div class="form-group col-lg-10 col-md-12 col-sm-12">
-            <div class="input-field">
-              <i class="material-icons prefix">mode_edit</i>
-              <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-              <label for="icon_prefix2">Message</label>
-            </div>
-          </div>
-        </form>
-        <button type="submit" class="btn-lg col-lg-offset-5  col-xs-offset-3 col-xs-6  col-md-offset-2 col-md-2 btn-primary">envoyer</button>
-
-      <div id="info_simplon" class="col-lg-8 col-lg-offset-2">
-            <p>
-              societe
-            </p>
-
-            <p>
-            7 rue  nous appartiens
-            </p>
-            <p>
-            59100 rbx
-            </p>
-            <p>
-                tel: 118 218
-            </p>
-            <p>
-              dispo du lundi au vendredi de 9h-12H 13h15-17h00
-            </p>
+        <div class="form-group col-lg-10 col-md-12 col-sm-12 ">
+          <div class="input-field">
+            <i class="material-icons prefix">account_circle</i>
+            <%= f.label :Prénom %>
+            <%= f.text_field :prenom, :class => "validate"%>
           </div>
         </div>
 
+        <div class="form-group col-lg-10 col-md-12 col-sm-12">
+          <div class="input-field">
+            <i class="material-icons prefix">email</i>
+            <%= f.label :Email %>
+            <%= f.email_field :email, :class => "validate" %>
+          </div>
+        </div>
+
+        <div class="form-group col-lg-10 col-md-12 col-sm-12">
+          <div class="input-field">
+            <i class="material-icons prefix">mode_edit</i>
+            <%= f.label :Objet %>
+            <%= f.text_field :objet, :class => "validate" %>
+          </div>
+        </div>
+
+        <div class="form-group col-lg-10 col-md-12 col-sm-12">
+          <div class="input-field">
+            <i class="material-icons prefix">mode_edit</i>
+            <%= f.label :Message %>
+            <%= f.text_area :contenu, :size => "60x12", :class => "materialize-textarea"%>
+          </div>
+        </div>
+
+        <%= submit_tag "Envoyer", :class => "btn-lg col-lg-offset-5  col-xs-offset-3 col-xs-6  col-md-offset-2 col-md-2 btn-primary" %>
+
+        <% end %>
+
+        <div id="info_simplon" class="col-lg-8 col-lg-offset-2">
+          <p>
+            societe
+          </p>
+
+          <p>
+            7 rue nous appartiens
+          </p>
+          <p>
+            59100 rbx
+          </p>
+          <p>
+            tel: 118 218
+          </p>
+          <p>
+            dispo du lundi au vendredi de 9h-12H 13h15-17h00
+          </p>
+        </div>
+      </div>
+
     </div>
-   </div>
+  </div>

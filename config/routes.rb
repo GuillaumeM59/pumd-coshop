@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :messages
   resources :cities
   resources :feedbacks
   resources :bids
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
   resources :shops
   resources :brands
   get 'static_pages/home'
+  post 'static_pages/sendquestion'
 
   get 'static_pages/help'
 
