@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id_id: 
+  carold: 1
+  carpic: MyString
+  carbrand: MyString
+  carmodel: MyString
+
+two:
+  user_id_id: 
+  carold: 1
+  carpic: MyString
+  carbrand: MyString
+  carmodel: MyString

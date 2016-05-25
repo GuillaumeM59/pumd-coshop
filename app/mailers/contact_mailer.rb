@@ -1,14 +1,12 @@
 class ContactMailer < ApplicationMailer
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.contact_mailer.new_contact.subject
-  #
-  def new_contact(contact)
-    @contact = contact
-    @item = @contact.item
-    mail to: @item.user.email,
-    subject: "New contact for #{@item.name}"
+
+  default from: 'contact@co-shop.fr'
+
+  def contact_email(message)
+    @message = message
+    @url  = 'coshop.fr'
+    mail(from: @message.email, to:'projetcoshop@gmail.com', subject: "Une question vous a été posé sur le site par #{@message.prenom} ")
   end
+
 end
