@@ -38,15 +38,13 @@ font-size:1.3em;
   margin-bottom: 10%;
 }
 
-#icon_prefix2{
-  ma
-}
 
 button{
   margin-bottom:5%;
 }
 
-@media screen and (width: 768px) {
+
+@media screen and (max-width: 768px) {
   #my_map{
     display: none;
   }
@@ -54,11 +52,13 @@ button{
   #banner_contact{
   display: none;
   }
+
 #info_perso{
   text-align: center;
- margin-top: 15%;
-padding-left:20%;
+   margin-top: 15%;
+  padding-left:20%;
 }
+
 
 #info_hachemi{
 text-align: center;
@@ -72,10 +72,11 @@ text-align: center;
   margin-top: 20%;
 }
 #my_map{
-  display: none;
-}
-#formul{
   margin-top: 10%;
+}
+
+#formul{
+  display: none;
 }
 #banner_contact{
 display: none;
@@ -97,7 +98,8 @@ display: none;
     }
     footer ul{
         display: none;
-    }
+      }
+
     footer h2{
         width: 80px;
     }
