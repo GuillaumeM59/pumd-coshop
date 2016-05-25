@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shop_id: 1
+  driver_id: 1
+  go_at: 2016-04-18 12:08:16
+  come_back: 2016-04-18 12:08:16
+  pass1_id: 1
+  pass2_id: 1
+  pass3_id: 1
+  pass4_id: 1
+  cangodrive: false
+
+two:
+  shop_id: 1
+  driver_id: 1
+  go_at: 2016-04-18 12:08:16
+  come_back: 2016-04-18 12:08:16
+  pass1_id: 1
+  pass2_id: 1
+  pass3_id: 1
+  pass4_id: 1
+  cangodrive: false
