@@ -1,123 +1,69 @@
-
-<%= form_for(@bid) do |f| %>
-<% if @bid.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(@bid.errors.count, "error") %>
-    prohibited this bid from being saved:</h2>
-
-  <ul>
-    <% @bid.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
-
-<div class="container">
+<div class="container propocontainer">
   <div class="row">
-    <div class="col-md-12 registrationblock">
-      <div class="well well-sm">
-        <form class="form-horizontal" method="post">
-          <fieldset>
-            <legend class="text-center header">Participez vous aussi au covoiturage shopping:</legend>
-
-            <div class="form-group">
-              <span class="col-md-1 col-md-offset-2 text-center">
-                <i class="fa fa-user bigicon"></i>
-              </span>
-              <div class="col-md-8">
-                <!-- <input id="fname" name="name" type="text" placeholder="First Name" class="form-control"> -->
-                <%= f.label :'Lieu de départ' %><br>
-
-                <%= f.text_field :, :class => 'form-control', :id => "fname" %>
-              </div>
-            </div>
-            <div class="form-group">
-              <span class="col-md-1 col-md-offset-2 text-center">
-                <i class="fa fa-user bigicon"></i>
-              </span>
-              <div class="col-md-8">
-                <!-- <input id="lname" name="name" type="text" placeholder="Last Name" class="form-control"> -->
-                <%= f.label :nom %><br>
-
-                <%= f.text_field :nom, :class => 'form-control', :id => "lname" %>
-
-              </div>
-            </div>
-
-            <div class="form-group">
-              <span class="col-md-1 col-md-offset-2 text-center">
-                <i class="fa fa-user bigicon"></i>
-              </span>
-              <div class="col-md-8">
-                <%= f.label :age %><br>
-
-                <%= f.number_field :age, min:18, value:18 %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <span class="col-md-1 col-md-offset-2 text-center">
-                <i class="fa fa-envelope-o bigicon"></i>
-              </span>
-              <div class="col-md-8">
-                <!-- <input id="email" name="email" type="text" placeholder="Email Address" class="form-control"> -->
-                <%= f.label :email %><br>
-
-                <%= f.text_field :email, :class => 'form-control', :id => "email" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <span class="col-md-1 col-md-offset-2 text-center">
-                <i class="fa fa-home bigicon"></i>
-              </span>
-              <div class="col-md-8">
-                <!-- <input id="phone" name="phone" type="text" placeholder="Phone" class="form-control"> -->
-                <%= f.label :ville %><br>
-
-                <%= f.text_field :ville, :class => 'form-control', :id => "ville" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <span class="col-md-1 col-md-offset-2 text-center">
-                <i class="fa fa-shopping-cart bigicon"></i>
-              </span>
-              <div class="col-md-8">
-                <!-- <textarea class="form-control" id="message" name="message" placeholder="Enter your massage for us here. We will get back to you within 2 business days." rows="7"></textarea> -->
-                <%= f.label :'enseigne préférée et sa ville' %><br>
-
-                <!-- <%= f.text_field :enseigne, :class => 'form-control', :id => "enseigne"  %> -->
-                <%= select_tag(:enseigne, options_for_select([['Carrefour Wasquehal',' Carrefour Wasquehal '], ['Carrefour Lomme', 'Carrefour Lomme'],['Auchan Englos', 'Auchan Englos'],['Auchan V2', 'Auchan V2'],['E.Leclerc Wattrelos', 'E.Leclerc Wattrelos'],['Autre', 'Autre']]), :id => "enseigne") %>
-              </div>
-            </div>
-
-            <div class="form-group enseigneautre">
-              <span class="col-md-1 col-md-offset-2 text-center">
-                <i class="fa fa-shopping-cart bigicon"></i>
-              </span>
-              <div class="col-md-8">
-                <!-- <input id="phone" name="phone" type="text" placeholder="Phone" class="form-control"> -->
-                <%= f.label :Autre %><br>
-
-                <%= f.text_field :enseigne, :class => 'form-control' %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="col-md-12 text-center">
-                <!-- <button type="submit" class="btn btn-primary btn-lg">Submit</button> -->
-                <div class="actions">
-                  <%= f.submit :class => 'class="btn btn-primary btn-lg', :value => 'Je participe'%>
-                </div>
-              </div>
-            </div>
-          </fieldset>
-        </form>
-      </div>
+    <div class="col-md-4">
+      <form>
+        <div class="form-group">
+          <label for="Inputlieudepart">Lieu de départ</label>
+          <input type="text" class="form-control" id="Inputlieudepart" placeholder="Lieu de départ">
+        </div>
+      </form>
     </div>
   </div>
-</div>
 
-<% end %>
+  <div class="row">
+    <div class="col-md-4">
+      <form>
+        <div class="form-group">
+          <label for="Inputlieuarrivee">Lieu d'arrivée</label>
+          <input type="text" class="form-control" id="Inputlieuarrivee" placeholder="Lieu d'arrivée">
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <form>
+        <div class="form-group">
+          <label for="heuredepart">Heure de départ</label>
+          date_field("bid", "go_at")
+         <!-- <input id="user_born_on" name="user[born_on]" type="date" /> -->
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-4">
+      <form>
+        <div class="form-group">
+          <label for="heureretour">Heure de retour (De là bas)</label>
+          date_field("bid", "come_back")
+          <!-- <input type="datetime-local" class="form-control" id="heureretour" placeholder="Heure de retour"> -->
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <form>
+        <div class="form-group">
+          <label for="placesdispo">Nombre de places disponibles</label>
+          <input type="number" class="form-control" id="placesdispo" placeholder="Nombre de places disponibles">
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <form>
+          <div class="checkbox">
+               form.check_box :cangodrive
+      </form>
+    </div>
+  </div>
+
+</div>
+</div>
