@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :cars
   resources :shops
   resources :brands
+  resources :charges
   get 'static_pages/home'
   post 'static_pages/sendquestion'
 
