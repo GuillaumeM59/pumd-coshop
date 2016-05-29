@@ -1,7 +1,7 @@
 class Bid < ActiveRecord::Base
   has_many :users
   belongs_to :shop
-  belongs_to :brand, though: :shops
+  has_one :brand, through: :shop
   has_many :feedbacks
 
 
