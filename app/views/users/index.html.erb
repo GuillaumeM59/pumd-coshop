@@ -1,4 +1,4 @@
-<script src="//maps.google.com/maps/api/js?v=3.22&key=AIzaSyBngIsRw-Abk5UB04-Nl_Qg4vACEfo2jEo&libraries=geometry&language=fr&hl=&region="></script>
+<script src="//maps.google.com/maps/api/js?v=3.exp&key=AIzaSyBngIsRw-Abk5UB04-Nl_Qg4vACEfo2jEo"></script>
 <script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"></script>
 
 <p id="notice"><%= notice %></p>
@@ -8,6 +8,8 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
+      <th>Avatar</th>
       <th>Username</th>
       <th>Admin</th>
       <th>Nom</th>
@@ -24,6 +26,8 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
+        <td><%= user.id %></td>
+        <td><%= image_tag (user.avatar) %></td>
         <td><%= user.username %></td>
         <td><%= user.admin %></td>
         <td><%= user.nom %></td>

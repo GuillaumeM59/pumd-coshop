@@ -1,5 +1,8 @@
 class StaticPagesController < ApplicationController
   def home
+    if current_user
+      @aroundshop = Shop.near([current_user.latitude, current_user.longitude], 30, :units => :km)
+    end
   end
 
   def help

@@ -9,6 +9,9 @@ class ShopsController < ApplicationController
   marker.lat shop.latitude
   marker.lng shop.longitude
     end
+    if current_user
+      @aroundshop = Shop.near([current_user.latitude, current_user.longitude], 20, :units => :km)
+    end
   end
 
   # GET /shops/1
