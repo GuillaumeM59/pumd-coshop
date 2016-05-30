@@ -15,7 +15,7 @@
   <div class="modal-dialog" role="document">
 
     <div class="row">
-      <div class="col-md-8 col-md-offset-1">
+      <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-login">
           <div class="panel-heading">
             <div class="row">
@@ -63,7 +63,6 @@
                   <div class="form-group">
                     <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Nom d'utilisateur" value="">
                   </div>
-
                   <div class="form-group">
                     <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Mot de passe">
                   </div>
@@ -96,57 +95,42 @@
 <!-- <div id="register-form">
                 <form action="profil.html" method="post" role="form" style="display: none;">
                     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
                   <div class="field">
                     <label for="prenom" class="text-center">Prenom</label>
-
                     <%= f.text_field :prenom, autofocus: true, :class => 'form-control', :id => "prenom"  %>
                     <input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Prénom" value="">
                   </div>
-
                   <div class="field">
                     <label for="nom">Nom</label>
-
                     <%= f.text_field :nom, autofocus: true, :class => 'form-control', :id => "nom"  %>
                     <input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Prénom" value="">
                   </div>
-
                   <div class="field">
                     <label for="username">Nom d'utilisateur</label>
-
                     <%= f.text_field :username, autofocus: true, :class => 'form-control', :id => "username"  %>
                     <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Nom d'utilisateur" value="">
                   </div>
-
                   <div class="field">
                     <label for="city">Ville</label>
-
                     <%= f.text_field :city, autofocus: true, :class => 'form-control', :id => "city"  %>
                     <input type="text" name="ville" id="ville" tabindex="1" class="form-control" placeholder="Ville" value="">
                   </div>
-
                   <div class="field">
                     <label for="email">Email</label>
-
                     <%= f.email_field :email, autofocus: true, :class => 'form-control', :id => "email"  %>
                     <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email" value="">
                   </div>
-
                   <div class="field">
                     <label for="password">Mot de passe</label>
-
                     <%= f.text_field :password, autofocus: true, :class => 'form-control', :id => "password"  %>
                     <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Mot de passe">
                   </div>
-
                   <div class="form-group text-center">
                     <select name="sexe" class="form-control">
                       <option value="femme">Féminin</option>
                       <option value="homme">Masculin</option>
                     </select>
-
                   </div>
-
                   <div class="form-group">
                     <div class="row">
                       <div class="col-sm-6 col-sm-offset-3">
