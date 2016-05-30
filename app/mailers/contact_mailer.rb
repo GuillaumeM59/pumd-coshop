@@ -1,5 +1,6 @@
 class ContactMailer < ApplicationMailer
 
+
   default from: 'contact@co-shop.fr'
 
   def contact_email(message)

@@ -10,8 +10,13 @@ margin-top: 5%;
  text-align: center;
 }
 
+#info3, #info2{
+  margin-top: 10%;
+}
+
+
 button{
-  margin-bottom: 4%;
+  // margin-bottom: 4%;
 }
 
 .info_perso2{
@@ -27,6 +32,13 @@ button{
   background-color: #46B29D;
 }
 
+.fa {
+  float: left;
+  display: inline-block;
+}
+
+
+
 #hour{
 margin-top:15%;
 margin-left: 10%;
@@ -34,7 +46,7 @@ font-size:1.3em;
 }
 
 #formul{
-  margin-top: 80%;
+  margin-top: 120%;
   margin-bottom: 10%;
 }
 

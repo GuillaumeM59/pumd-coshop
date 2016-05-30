@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Templateappdevised</title>
+    <title>Covoiturage shopping co-shop.fr</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
   </head>
   <body>
+    <div class="message">
+      <%= flash_messages %></div>
 
-    <!-- modal log -->
+    <!-- modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
 
         <div class="row">
-          <div class="col-md-8 col-md-offset-1">
+          <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-login">
               <div class="panel-heading">
                 <div class="row">
@@ -58,194 +60,191 @@
                 </div>
               </div>
 
-              <div id="register-form">
+        <div id="register-form">
 
-                <div class="panel-body">
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                      <div class="field">
-                        <label for="prenom">Prénom</label>
-                        <%= f.text_field :prenom, autofocus: true, :class => 'form-control', :id => "prenom"  %>
-                      </div>
-
-                      <div class="field">
-                        <label for="nom">Nom</label>
-                        <%= f.text_field :nom, autofocus: true, :class => 'form-control', :id => "nom"  %>
-                      </div>
-
-                      <div class="field">
-                        <label for="city">Ville</label>
-                        <%= f.text_field :city, autofocus: true, :class => 'form-control', :id => "city"  %>
-                      </div>
-
-                      <div class="field">
-                        <label for="username">Nom d'utilisateur</label>
-                        <%= f.text_field :username, autofocus: true, :class => 'form-control', :id => "username"  %>
-                      </div>
-
-                      <div class="field">
-                        <label for="email">E-mail</label>
-                        <%= f.email_field :email, autocomplete: "off", :class => 'form-control', :id => "email"  %>
-                      </div>
-
-                      <div class="field">
-                        <label for="password">Mot de passe (8 caractères minimum)</label>
-                        <%= f.password_field :password, autocomplete: "off", :class => 'form-control', :id => "password"  %>
-                      </div>
-
-                      <div class="field">
-                        <label for="passwordconfirmation">Confirmation mot de passe</label>
-                        <%= f.password_field :password_confirmation, autocomplete: "off", :id => "passwordconfirmation", :class => "form-control" %>
-                      </div>
-
-                      <%= f.submit "Inscription", :class => "btn btn-login form-control" %>
-
-                    </div>
-                    <% end %>
-                  </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-lg-12">
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <div class="field">
+                  <label for="prenom">Prénom</label>
+                  <%= f.text_field :prenom, autofocus: true, :class => 'form-control', :id => "prenom"  %>
                 </div>
-              </div>
 
+                <div class="field">
+                  <label for="nom">Nom</label>
+                  <%= f.text_field :nom, autofocus: true, :class => 'form-control', :id => "nom"  %>
+                </div>
+
+                <div class="field">
+                  <label for="city">Ville</label>
+                  <%= f.text_field :city, autofocus: true, :class => 'form-control', :id => "city"  %>
+                </div>
+
+                <div class="field">
+                  <label for="username">Nom d'utilisateur</label>
+                  <%= f.text_field :username, autofocus: true, :class => 'form-control', :id => "username"  %>
+                </div>
+
+                <div class="field">
+                  <label for="email">E-mail</label>
+                  <%= f.email_field :email, autocomplete: "off", :class => 'form-control', :id => "email"  %>
+                </div>
+
+                <div class="field">
+                  <label for="password">Mot de passe (8 caractères minimum)</label>
+                  <%= f.password_field :password, autocomplete: "off", :class => 'form-control', :id => "password"  %>
+                </div>
+
+                <div class="field">
+                  <label for="passwordconfirmation">Confirmation mot de passe</label>
+                  <%= f.password_field :password_confirmation, autocomplete: "off", :id => "passwordconfirmation", :class => "form-control" %>
+                </div>
+
+                <%= f.submit "Inscription", :class => "btn btn-login form-control" %>
+
+              </div>
+              <% end %>
             </div>
           </div>
         </div>
+
       </div>
     </div>
+  </div>
+</div>
+</div>
+
+<!-- Fixed navbar -->
+<nav id="header" class="navbar navbar-fixed-top">
+<div id="header-container" class="container navbar-container">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a id="brand" class="navbar-brand" href="#"><%= image_tag("logocoshop.png", class:"logo_hot img-responsive", alt:"Logo coshop") %></a>
+  </div>
+  <div id="navbar" class="collapse navbar-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="" class="link_navbar">Accueil</a>
+      </li>
+      <li>
+        <a href="" class="link_navbar">Equipe</a>
+      </li>
+      <li>
+        <a href="/static_pages/contact" class="link_navbar">Contact</a>
+      </li>
+      <% if user_signed_in? %>
+      <li>
+      <li><%= link_to "Déconnexion", destroy_user_session_path, :class => "btn btn-lg", :method => :delete %></li>
+    </li>
+  <% else %>
+    <li>
+      <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal">
+        Connexion</button>
+      <!-- Modal -->
+
+    </li>
+    <% end %>
+  </ul>
+</div>
+<!-- /.nav-collapse -->
+</div>
+<!-- /.container -->
+</nav>
+<!-- /.navbar -->
 
 
+<div class="message">
+<%= flash_messages %></div>
 
-  
+<%= yield %>
 
-    <!-- Fixed navbar -->
-    <nav id="header" class="navbar navbar-fixed-top">
-      <div id="header-container" class="container navbar-container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a id="brand" class="navbar-brand" href="#"><%= image_tag("logocoshop.png", class:"logo_hot img-responsive", alt:"Logo coshop") %></a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="" class="link_navbar">Accueil</a>
-            </li>
-            <li>
-              <a href="" class="link_navbar">Equipe</a>
-            </li>
-            <li>
-              <a href="" class="link_navbar">Contact</a>
-            </li>
-            <% if user_signed_in? %>
-            <li>
-            <li><%= link_to "Déconnexion", destroy_user_session_path, :class => "btn btn-lg", :method => :delete %></li>
-          </li>
-        <% else %>
-          <li>
-            <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal">
-              Connexion</button>
-            <!-- Modal -->
+<!-- Footer -->
+<footer>
 
-          </li>
-          <% end %>
-        </ul>
-      </div>
-      <!-- /.nav-collapse -->
-    </div>
-    <!-- /.container -->
-  </nav>
-  <!-- /.navbar -->
+<div class="container-fluid">
 
-  <div class="message">
-    <%= flash_messages %></div>
+<div class="row">
+<div class="col-md-2">
+<ul>
+<li>
+<a href="">
+<i class="fa fa-facebook-official fa-4x"></i>
+</a>
+</li>
+<li>
+<a href="">
+<i class="fa fa-twitter-square fa-4x"></i>
+</a>
+</li>
+<li>
+<a href="">
+<i class="fa fa-github-square fa-4x"></i>
+</a>
+</li>
+</ul>
 
-  <%= yield %>
+</div>
+<div class="col-md-3 linksfooter">
+<ul>
+<li>
+<h3>Infos pratiques</h3>
+</li>
+<li>
+<a href="commentcamarche.html">Comment ca marche ?</a>
+</li>
+<li>
+<a href="avis.html">Les avis</a>
+</li>
+<li>
+<a href="niveaux.html">Les niveaux</a>
+</li>
+<li>
+<a href="prix.html">Les prix</a>
+</li>
+</ul>
+</div>
+<div class="col-md-2 linksfooter">
+<ul>
+<li>
+<h3>A propos</h3>
+</li>
+<li>
+<a href="quisommesnous.html">Qui sommes-nous ?</a>
+</li>
+<li>
+<a href="contact.html">Contact</a>
+</li>
+<li>
+<a href="ilsparlentdenous.html">Ils parlent de nous !</a>
+</li>
+</ul>
+</div>
+<div class="col-md-3"></div>
 
-  <!-- Footer -->
-  <footer>
+<div class="col-md-2">
+<ul>
+<li><%= image_tag("logocoshop.png", alt:"Logo co-shop") %></li>
+</ul>
+</div>
+</div>
 
-    <div class="container-fluid">
+<p class="navbar-text pull-left">© 2016 - CoShop by Emooveers
+<a href="" target="_blank">HTML 5 Validation</a>
+</p>
 
-      <div class="row">
-        <div class="col-md-2">
-          <ul>
-            <li>
-              <a href="">
-                <i class="fa fa-facebook-official fa-4x"></i>
-              </a>
-            </li>
-            <li>
-              <a href="">
-                <i class="fa fa-twitter-square fa-4x"></i>
-              </a>
-            </li>
-            <li>
-              <a href="">
-                <i class="fa fa-github-square fa-4x"></i>
-              </a>
-            </li>
-          </ul>
+<a href="" class="navbar-btn btn-danger btn pull-right">
+<span class="glyphicon glyphicon-star"></span>
+Subscribe on YouTube
+</a>
+</div>
 
-        </div>
-        <div class="col-md-3 linksfooter">
-          <ul>
-            <li>
-              <h3>Infos pratiques</h3>
-            </li>
-            <li>
-              <a href="commentcamarche.html">Comment ca marche ?</a>
-            </li>
-            <li>
-              <a href="avis.html">Les avis</a>
-            </li>
-            <li>
-              <a href="niveaux.html">Les niveaux</a>
-            </li>
-            <li>
-              <a href="prix.html">Les prix</a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-2 linksfooter">
-          <ul>
-            <li>
-              <h3>A propos</h3>
-            </li>
-            <li>
-              <a href="quisommesnous.html">Qui sommes-nous ?</a>
-            </li>
-            <li>
-              <a href="contact.html">Contact</a>
-            </li>
-            <li>
-              <a href="ilsparlentdenous.html">Ils parlent de nous !</a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-3"></div>
-
-        <div class="col-md-2">
-          <ul>
-            <li><%= image_tag("logocoshop.png", alt:"Logo co-shop") %></li>
-          </ul>
-        </div>
-      </div>
-
-      <p class="navbar-text pull-left">© 2016 - CoShop by Emooveers
-        <a href="" target="_blank">HTML 5 Validation</a>
-      </p>
-
-      <a href="" class="navbar-btn btn-danger btn pull-right">
-        <span class="glyphicon glyphicon-star"></span>
-        Subscribe on YouTube
-      </a>
-    </div>
-
-  </footer>
+</footer>
 
 </body>
 </html>
