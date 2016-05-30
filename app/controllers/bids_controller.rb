@@ -7,6 +7,19 @@ class BidsController < ApplicationController
     @bids = Bid.all
   end
 
+  def search
+    @search= params[:search].capitalize
+    @searchlist = Shop.where("name LIKE ?","%#{@search}%")
+    @shopidlist = @searchlist.map{ |x| x.id }
+    @bids=[]
+    @shopidlist.count.times do |item|
+       Bid.where(shop_id:"#{@shopidlist[item]}").each do |i|
+         @bids << i
+    end
+    end
+
+
+  end
   # GET /bids/1
   # GET /bids/1.json
   def show
@@ -25,6 +38,7 @@ class BidsController < ApplicationController
   # POST /bids.json
   def create
     @bid = Bid.new(bid_params)
+    @bid.driver_id = current_user.id
 
     respond_to do |format|
       if @bid.save
