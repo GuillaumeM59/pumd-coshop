@@ -1,4 +1,61 @@
+<%if current_user  %>
+<!-- modal newbid -->
+<div class="modal fade" id="newbid" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
 
+    <div class="row">
+      <div class="col-lg-12">
+
+        <%= form_for @bid, url: {controller:"bids",action: "create"}, html: {class: "nifty_form"} do |f| %>
+        <% if @bid.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@bid.errors.count, "error") %>
+            prohibited this bid from being saved:</h2>
+
+          <ul>
+            <% @bid.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+
+        <div class="field col-md-5">
+
+          <%= image_tag(current_user.avatar, size:"60")%>
+          <%= current_user.prenom%>
+        </div>
+        <div class="col-md-2">
+                  <i class="fa fa-arrow-right fa-3x text-center" aria-hidden="true"></i>
+        </div>
+        <div class="field col-md-5">
+          <%= f.label :shop_id %><br>
+          <%= f.number_field :shop_id %>
+        </div>
+
+        <div class="field">
+          <%= f.label :go_at %><br>
+          <%= f.datetime_select :go_at %>
+        </div>
+        <div class="">
+          <%= f.label :come_back %><br>
+          <%= f.datetime_select :come_back %>
+        </div>
+
+        <div class="field">
+          <%= f.label :cangodrive %><br>
+          <%= f.check_box :cangodrive %>
+        </div>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
 
 <!-- PAGE CONTENT  -->
 
@@ -11,27 +68,27 @@
           <!-- <h1>Car2shop</h1> -->
           <h1>Rejoignez vos magasins gratuitement !</h1>
           <% if current_user  %>
-              <%= link_to "Proposer un trajet", "", :class => "btn btn-default btn-lg", "data-toggle" => "modal","data-target" => "#myModal" %>
-          <% else %>
-            <%= link_to "Inscrivez-vous!", "", :class => "btn btn-default btn-lg", "data-toggle" => "modal","data-target" => "#myModal" %>
+          <%= link_to "Proposer un trajet", "", :class => "btn btn-default btn-lg", "data-toggle" => "modal","data-target" => "#newbid" %>
+        <% else %>
+          <%= link_to "Inscrivez-vous!", "", :class => "btn btn-default btn-lg", "data-toggle" => "modal","data-target" => "#myModal" %>
           <!-- <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">Inscrivez-vous !</button> -->
           <%end%>
           <hr class="intro-divider">
 
           <h3 class="text-center">Recherche</h3>
-          <form id="navaccueil" class="navbar-form navbar-center" action="offres.html">
 
-            <div class="form-group">
+          <%= form_tag bids_search_path, method: :post, class: "form-group" do %>
+          <div class="form-group">
+            <%= text_field_tag(
+                    :search,
+                    params[:search],
+                    placeholder: "Enseigne",
+                    class: "form-control"
+                ) %>
+            <%= submit_tag "Rechercher" %>
 
-              <input id="ctadepart" type="text" class="form-control" placeholder="Lieu de départ ?">
-
-              <input id="ctadate" type="text" class="form-control" placeholder="Date ?">
-
-              <input id="ctatypeauto" type="text" class="form-control" placeholder="Choix du magasin">
-
-              <a id="ctasearch" role="button" class="btn btn-search" href="recherche.html">Rechercher</a>
-            </div>
-          </form>
+          </div>
+          <% end %>
 
         </div>
 
@@ -44,16 +101,7 @@
 <!-- /.intro-header -->
 
 <hr>
-<!-- <div class="container">
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-5">
-    <h3 class="text-center">
-       <p>Dernières annonces publiées</p>
-     </h3>
-  </div>
-</div>
-</div> -->
 <div class="container">
   <div class="row">
     <div class="col-md-1"></div>
@@ -76,60 +124,56 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
-    <div class="row">
-      <% a=1%>
-      <% Bid.all.order(:created_at).each do |bid| %>
-      <% if a<=4 %>
-      <%driver=User.where(id:bid.driver_id).first%>
-    <div class="col-md-4 exemples">
       <div class="row">
-        <div class="col-md-5">
+        <% a=1%>
+        <% Bid.all.order(:created_at).each do |bid| %>
+        <% if a<=4 %>
+        <%driver=User.where(id:bid.driver_id).first%>
+        <div class="col-md-4 exemples">
           <div class="row">
-            <div class="col-md-6">
-              <p class="text-center"><%= image_tag(driver.avatar, size: "50") %></p>
+            <div class="col-md-5">
+              <div class="row">
+                <div class="col-md-6">
+                  <p class="text-center"><%= image_tag(driver.avatar, size: "50") %></p>
+                </div>
+                <div class="col-md-6">
+                  <p class="text-left">
+                    <%= driver.username %></p>
+                  <p class="text-left"><%= driver.city %></p>
+                </div>
+              </div>
+
             </div>
-            <div class="col-md-6">
-              <p class="text-left">
-                <%= driver.username %></p>
-              <p class="text-left"><%= driver.city %></p>
+            <div class="col-md-2">
+              <i class="fa fa-arrow-right fa-3x text-center" aria-hidden="true"></i>
+
             </div>
+            <div class="col-md-5">
+              <img src="img/Logos-Enseignes/Alimentaire/Auchan.png" alt="Logo" class="enseignesauchan img-responsive enseignes"/>
+              <p class="text-center">Villeneuve-D'Ascq</p>
+            </div>
+
           </div>
 
+          <p class="horaire text-center"><%= bid.go_at %></p>
+          <p>Places restantes : 4</p>
+          <p>
+            <div class="progress">
+              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                <span class="sr-only">20% Complete</span>
+              </div>
+            </div>
+            <a href="" class="text-center reservation">Réserver !</a>
+          </p>
         </div>
-        <div class="col-md-2">
-          <i class="fa fa-arrow-right fa-3x text-center" aria-hidden="true"></i>
-
-        </div>
-        <div class="col-md-5">
-          <img src="img/Logos-Enseignes/Alimentaire/Auchan.png" alt="Logo" class="enseignesauchan img-responsive enseignes"/>
-          <p class="text-center">Villeneuve-D'Ascq</p>
-        </div>
+        <% a+=1 %>
+        <%end%>
+        <%end%>
 
       </div>
-
-
-      <p class="horaire text-center"><%= bid.go_at %></p>
-      <p>Places restantes : 4</p>
-      <p>
-        <div class="progress">
-          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-            <span class="sr-only">20% Complete</span>
-          </div>
-        </div>
-        <a href="" class="text-center reservation">Réserver !</a>
-      </p>
     </div>
-    <% a+=1 %>
-    <%end%>
-    <%end%>
-
-
 
   </div>
-  </div>
-
-
-</div>
 </div>
 
 <% if current_user %>
@@ -145,19 +189,18 @@
     <div class="col-md-10">
       <div class="row">
         <% @aroundshop.each do |shop| %>
-          <div class="col-md-3">
+        <div class="col-md-3">
 
-              <p class="text-center"><%= image_tag(Brand.where(id:shop.brand_id).first.brandpic, class:"img-responsive") %></p>
-              <p class="text-center"><%= shop.name %></p>
-            </div>
-          <% end %>
-
-        </div>
-        </div>
-        </div>
+          <p class="text-center"><%= image_tag(Brand.where(id:shop.brand_id).first.brandpic, class:"img-responsive") %></p>
+          <p class="text-center"><%= shop.name %></p>
         </div>
         <% end %>
 
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
 
 <hr>
 
@@ -176,7 +219,7 @@
         Nom conducteur</p>
       <p><img src="img/user1.png" class="img-circle img-conducteur" alt="conducteur" width="50" height="50">
         Nom passager</p>
-        <!-- feedbacks/comment -->
+      <!-- feedbacks/comment -->
       <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
         irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         <i class="fa fa-star"></i>

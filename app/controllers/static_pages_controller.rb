@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
     if current_user
       @aroundshop = Shop.near([current_user.latitude, current_user.longitude], 30, :units => :km)
     end
+    @bid = Bid.new
   end
 
   def help
@@ -18,11 +19,13 @@ class StaticPagesController < ApplicationController
   def sendquestion
    @message = Message.new(message_params)
    ContactMailer.contact_email(@message).deliver_now
-  respond_to do |format|
-     format.html { render :contact, notice: 'Message Envoyé' }
-     format.json { render json: static_pages_contact_path, status: :created, location: static_pages_contact_path }
+    respond_to do |format|
+       format.html { render :contact, notice: 'Message Envoyé' }
+       format.json { render json: static_pages_contact_path, status: :created, location: static_pages_contact_path }
+    end
   end
-  end
+
+
 
 
 private

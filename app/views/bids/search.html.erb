@@ -1,0 +1,61 @@
+<h2>Votre recherche pour "<%= @search %>"</h2>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+    <div class="row">
+      <% @bids.each do |bid| %>
+      <%driver=User.where(id:bid.driver_id).first%>
+      <%shop=Shop.where(id:bid.shop_id).first%>
+    <div class="col-md-3 exemples">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="row">
+            <div class="col-md-6">
+              <p class="text-center"><%= image_tag(driver.avatar, size: "50") %></p>
+            </div>
+            <div class="col-md-6">
+              <p class="text-left">
+                <%= driver.username %></p>
+              <p class="text-left"><%= driver.city %>
+              (<%= disttodriver= Geocoder::Calculations.distance_between([current_user.latitude,current_user.longitude], [driver.latitude,driver.longitude], :units => :km).round(2) %> km)
+                  </p>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-2">
+          <i class="fa fa-arrow-right fa-3x text-center" aria-hidden="true"></i>
+          <p class="text-center">(<%= disttodriver= Geocoder::Calculations.distance_between([shop.latitude,shop.longitude], [driver.latitude,driver.longitude], :units => :km).round(2) %> km)
+              </p>
+
+        </div>
+        <div class="col-md-5">
+        <%= image_tag((Brand.where(id: shop.brand_id).first.brandpic), alt:"Logo", class:"enseignesauchan img-responsive enseignes", width:"100")%>
+          <p class="text-center"><%= shop.name.capitalize %></p>
+        </div>
+
+      </div>
+
+
+      <p class="horaire text-center"><%= bid.go_at %></p>
+      <p>Places restantes : 4</p>
+      <p>
+        <div class="progress">
+          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+            <span class="sr-only">20% Complete</span>
+          </div>
+        </div>
+      <%= link_to 'Réserver', edit_bid_path(bid) %>
+      </p>
+    </div>
+    <%end%>
+
+
+
+  </div>
+  </div>
+
+
+</div>
+</div>

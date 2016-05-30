@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   get 'static_pages/publicprofile'
 
-  get 'static_pages/recherche'
+  post 'bids/search'
 
   get 'static_pages/proposition'
 

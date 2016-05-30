@@ -1,374 +1,250 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Templateappdevised</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-</head>
-<body>
-<div class="message"> <%= flash_messages %></div>
+  <head>
+    <title>Covoiturage shopping co-shop.fr</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="message">
+      <%= flash_messages %></div>
 
-<!-- modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
+    <!-- modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
 
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <div class="panel panel-login">
-          <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-login">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <a href="#" class="active" id="login-form-link">Se connecter</a>
+                  </div>
+                  <div class="col-xs-6">
+                    <a href="#register-form" id="register-form-link">S'inscrire</a>
+                  </div>
+                </div>
+                <hr>
+              </div>
+              <div id="login-form">
+
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                      <div class="field">
+                        <label for="username">Nom d'utilisateur</label>
+                        <%= f.text_field :username, autofocus: true, :class => 'form-control', :id => "username"  %>
+                      </div>
+
+                      <div class="field">
+                        <label for="password">Password</label>
+                        <%= f.password_field :password, autocomplete: "off", :class => 'form-control', :id => "password"  %>
+                      </div>
+
+                      <% if devise_mapping.rememberable? -%>
+                      <div class="field text-center">
+                        <%= f.check_box :remember_me, :id => "checkboxrememberme" %>
+                        <label for="checkboxrememberme">Se souvenir de moi</label>
+                        <!-- <%= f.label :remember_me %> -->
+                      </div>
+                      <% end -%>
+
+                      <%= f.submit "Connexion", :class => "btn btn-login form-control" %>
+                    </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+
+        <div id="register-form">
+
+          <div class="panel-body">
             <div class="row">
-              <div class="col-xs-6">
-                <a href="#" class="active" id="login-form-link">Se connecter</a>
-              </div>
-              <div class="col-xs-6">
-                <a href="#register-form" id="register-form-link">S'inscrire</a>
-              </div>
-            </div>
-            <hr>
-          </div>
-          <div id="login-form">
+              <div class="col-lg-12">
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                <div class="field">
+                  <label for="prenom">Prénom</label>
+                  <%= f.text_field :prenom, autofocus: true, :class => 'form-control', :id => "prenom"  %>
+                </div>
 
-<div class="panel-body">
-  <div class="row">
-    <div class="col-lg-12">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="field">
-        <label for="username">Nom d'utilisateur</label>
-        <%= f.text_field :username, autofocus: true, :class => 'form-control', :id => "username"  %>
-      </div>
+                <div class="field">
+                  <label for="nom">Nom</label>
+                  <%= f.text_field :nom, autofocus: true, :class => 'form-control', :id => "nom"  %>
+                </div>
 
-      <div class="field">
-        <label for="password">Password</label>
-        <%= f.password_field :password, autocomplete: "off", :class => 'form-control', :id => "password"  %>
-      </div>
+                <div class="field">
+                  <label for="city">Ville</label>
+                  <%= f.text_field :city, autofocus: true, :class => 'form-control', :id => "city"  %>
+                </div>
 
-      <% if devise_mapping.rememberable? -%>
-      <div class="field text-center">
-        <%= f.check_box :remember_me, :id => "checkboxrememberme" %>
-        <label for="checkboxrememberme">Se souvenir de moi</label>
-        <!-- <%= f.label :remember_me %> -->
-      </div>
-      <% end -%>
+                <div class="field">
+                  <label for="username">Nom d'utilisateur</label>
+                  <%= f.text_field :username, autofocus: true, :class => 'form-control', :id => "username"  %>
+                </div>
 
-      <%= f.submit "Connexion", :class => "btn btn-login form-control" %>
-    </div>
-    <% end %>
-  </div>
-</div>
-          </div>
+                <div class="field">
+                  <label for="email">E-mail</label>
+                  <%= f.email_field :email, autocomplete: "off", :class => 'form-control', :id => "email"  %>
+                </div>
 
-                <!-- <form id="login-form" action="profil.html" method="post" role="form" style="display: block;">
-                  <div class="form-group">
-                    <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Nom d'utilisateur" value="">
-                  </div>
-                  <div class="form-group">
-                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Mot de passe">
-                  </div>
-                  <div class="form-group text-center">
-                    <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
-                    <label for="remember">
-                      Se souvenir de moi</label>
-                  </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-sm-6 col-sm-offset-3">f
-                        <a role="button" class="form-control btn btn-login" href="indexonlog.html">Connexion</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-lg-12">
-                        <div class="text-center">
-                          <a href="http://phpoll.com/recover" tabindex="5" class="forgot-password">Mot de passe oublié?</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </form> -->
+                <div class="field">
+                  <label for="password">Mot de passe (8 caractères minimum)</label>
+                  <%= f.password_field :password, autocomplete: "off", :class => 'form-control', :id => "password"  %>
+                </div>
 
+                <div class="field">
+                  <label for="passwordconfirmation">Confirmation mot de passe</label>
+                  <%= f.password_field :password_confirmation, autocomplete: "off", :id => "passwordconfirmation", :class => "form-control" %>
+                </div>
 
-
-
-<!-- <div id="register-form">
-                <form action="profil.html" method="post" role="form" style="display: none;">
-                    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                  <div class="field">
-                    <label for="prenom" class="text-center">Prenom</label>
-                    <%= f.text_field :prenom, autofocus: true, :class => 'form-control', :id => "prenom"  %>
-                    <input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Prénom" value="">
-                  </div>
-                  <div class="field">
-                    <label for="nom">Nom</label>
-                    <%= f.text_field :nom, autofocus: true, :class => 'form-control', :id => "nom"  %>
-                    <input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Prénom" value="">
-                  </div>
-                  <div class="field">
-                    <label for="username">Nom d'utilisateur</label>
-                    <%= f.text_field :username, autofocus: true, :class => 'form-control', :id => "username"  %>
-                    <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Nom d'utilisateur" value="">
-                  </div>
-                  <div class="field">
-                    <label for="city">Ville</label>
-                    <%= f.text_field :city, autofocus: true, :class => 'form-control', :id => "city"  %>
-                    <input type="text" name="ville" id="ville" tabindex="1" class="form-control" placeholder="Ville" value="">
-                  </div>
-                  <div class="field">
-                    <label for="email">Email</label>
-                    <%= f.email_field :email, autofocus: true, :class => 'form-control', :id => "email"  %>
-                    <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email" value="">
-                  </div>
-                  <div class="field">
-                    <label for="password">Mot de passe</label>
-                    <%= f.text_field :password, autofocus: true, :class => 'form-control', :id => "password"  %>
-                    <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Mot de passe">
-                  </div>
-                  <div class="form-group text-center">
-                    <select name="sexe" class="form-control">
-                      <option value="femme">Féminin</option>
-                      <option value="homme">Masculin</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-sm-6 col-sm-offset-3">
-                        <a role="button" class="form-control btn btn-login" href="profil.html">S'inscrire</a>
-                      </div>
-                    </div>
-                  </div>
-                  <% end %>
-                </form>
-              </div> -->
-
-
-
-
-              <div id="register-form">
-
-            <div class="panel-body">
-            <div class="row">
-            <div class="col-lg-12">
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-            <div class="field">
-            <label for="prenom">Prénom</label>
-            <%= f.text_field :prenom, autofocus: true, :class => 'form-control', :id => "prenom"  %>
-            </div>
-
-            <div class="field">
-            <label for="nom">Nom</label>
-            <%= f.text_field :nom, autofocus: true, :class => 'form-control', :id => "nom"  %>
-            </div>
-
-            <div class="field">
-            <label for="city">Ville</label>
-            <%= f.text_field :city, autofocus: true, :class => 'form-control', :id => "city"  %>
-            </div>
-
-            <div class="field">
-            <label for="username">Nom d'utilisateur</label>
-            <%= f.text_field :username, autofocus: true, :class => 'form-control', :id => "username"  %>
-            </div>
-
-
-            <div class="field">
-            <label for="email">E-mail</label>
-            <%= f.email_field :email, autocomplete: "off", :class => 'form-control', :id => "email"  %>
-            </div>
-
-            <div class="field">
-            <label for="password">Mot de passe (8 caractères minimum)</label>
-            <%= f.password_field :password, autocomplete: "off", :class => 'form-control', :id => "password"  %>
-            </div>
-
-            <div class="field">
-            <label for="passwordconfirmation">Confirmation mot de passe</label>
-            <%= f.password_field :password_confirmation, autocomplete: "off", :id => "passwordconfirmation", :class => "form-control" %>
-</div>
-
-            <%= f.submit "Inscription", :class => "btn btn-login form-control" %>
-
-            </div>
-            <% end %>
-            </div>
-            </div>
-              </div>
-
-
-
-
+                <%= f.submit "Inscription", :class => "btn btn-login form-control" %>
 
               </div>
+              <% end %>
             </div>
           </div>
         </div>
-      </div>
 
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 
 <!-- Fixed navbar -->
 <nav id="header" class="navbar navbar-fixed-top">
-  <div id="header-container" class="container navbar-container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a id="brand" class="navbar-brand" href="#"><%= image_tag("logocoshop.png", class:"logo_hot img-responsive", alt:"Logo coshop") %></a>
-    </div>
-    <div id="navbar" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a href="" class="link_navbar">Accueil</a>
-        </li>
-        <li>
-          <a href="" class="link_navbar">Equipe</a>
-        </li>
-        <li>
-          <a href="/static_pages/contact" class="link_navbar">Contact</a>
-        </li>
-        <% if user_signed_in? %>
-        <li>
-          <li><%= link_to "Déconnexion", destroy_user_session_path, :class => "btn btn-lg", :method => :delete %></li>
-        </li>
-        <% else %>
-        <li>
-          <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal">
-            Connexion</button>
-          <!-- Modal -->
-
-        </li>
-        <% end %>
-      </ul>
-    </div>
-    <!-- /.nav-collapse -->
+<div id="header-container" class="container navbar-container">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a id="brand" class="navbar-brand" href="#"><%= image_tag("logocoshop.png", class:"logo_hot img-responsive", alt:"Logo coshop") %></a>
   </div>
-  <!-- /.container -->
+  <div id="navbar" class="collapse navbar-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <a href="" class="link_navbar">Accueil</a>
+      </li>
+      <li>
+        <a href="" class="link_navbar">Equipe</a>
+      </li>
+      <li>
+        <a href="/static_pages/contact" class="link_navbar">Contact</a>
+      </li>
+      <% if user_signed_in? %>
+      <li>
+      <li><%= link_to "Déconnexion", destroy_user_session_path, :class => "btn btn-lg", :method => :delete %></li>
+    </li>
+  <% else %>
+    <li>
+      <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal">
+        Connexion</button>
+      <!-- Modal -->
+
+    </li>
+    <% end %>
+  </ul>
+</div>
+<!-- /.nav-collapse -->
+</div>
+<!-- /.container -->
 </nav>
 <!-- /.navbar -->
 
-<!-- Navigation -->
-<!-- <div id="header-wrap">
-  <div id="header" class="clear">
-    <nav id="container" class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
-      <div class="container topnav"> -->
-<!-- Brand and toggle get grouped for better mobile display -->
-<!-- <div class="navbar-header">
-          <a class="navbar-brand topnav" href="#"><img class="logo_hot img-responsive" src="" alt="Brand img"/></a>
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div> -->
 
-<!-- Collect the nav links, forms, and other content for toggling -->
-<!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal">
-                Connexion</button> -->
-<!-- Modal -->
-<!--
-            </li>
-          </ul>
-        </div> -->
-<!-- /.navbar-collapse -->
-<!-- </div> -->
-<!-- /.container -->
-<!-- </nav> -->
-
-<!-- </div> -->
-<!-- </div> -->
+<div class="message">
+<%= flash_messages %></div>
 
 <%= yield %>
-
 
 <!-- Footer -->
 <footer>
 
-  <div class="container-fluid">
+<div class="container-fluid">
 
-    <div class="row">
-      <div class="col-md-2">
-        <ul>
-          <li>
-            <a href="">
-              <i class="fa fa-facebook-official fa-4x"></i>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <i class="fa fa-twitter-square fa-4x"></i>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <i class="fa fa-github-square fa-4x"></i>
-            </a>
-          </li>
-        </ul>
+<div class="row">
+<div class="col-md-2">
+<ul>
+<li>
+<a href="">
+<i class="fa fa-facebook-official fa-4x"></i>
+</a>
+</li>
+<li>
+<a href="">
+<i class="fa fa-twitter-square fa-4x"></i>
+</a>
+</li>
+<li>
+<a href="">
+<i class="fa fa-github-square fa-4x"></i>
+</a>
+</li>
+</ul>
 
-      </div>
-      <div class="col-md-3 linksfooter">
-        <ul>
-          <li>
-            <h3>Infos pratiques</h3>
-          </li>
-          <li>
-            <a href="commentcamarche.html">Comment ca marche ?</a>
-          </li>
-          <li>
-            <a href="avis.html">Les avis</a>
-          </li>
-          <li>
-            <a href="niveaux.html">Les niveaux</a>
-          </li>
-          <li>
-            <a href="prix.html">Les prix</a>
-          </li>
-        </ul>
-      </div>
-      <div class="col-md-2 linksfooter">
-        <ul>
-          <li>
-            <h3>A propos</h3>
-          </li>
-          <li>
-            <a href="quisommesnous.html">Qui sommes-nous ?</a>
-          </li>
-          <li>
-            <a href="contact.html">Contact</a>
-          </li>
-          <li>
-            <a href="ilsparlentdenous.html">Ils parlent de nous !</a>
-          </li>
-        </ul>
-      </div>
-      <div class="col-md-3"></div>
+</div>
+<div class="col-md-3 linksfooter">
+<ul>
+<li>
+<h3>Infos pratiques</h3>
+</li>
+<li>
+<a href="commentcamarche.html">Comment ca marche ?</a>
+</li>
+<li>
+<a href="avis.html">Les avis</a>
+</li>
+<li>
+<a href="niveaux.html">Les niveaux</a>
+</li>
+<li>
+<a href="prix.html">Les prix</a>
+</li>
+</ul>
+</div>
+<div class="col-md-2 linksfooter">
+<ul>
+<li>
+<h3>A propos</h3>
+</li>
+<li>
+<a href="quisommesnous.html">Qui sommes-nous ?</a>
+</li>
+<li>
+<a href="contact.html">Contact</a>
+</li>
+<li>
+<a href="ilsparlentdenous.html">Ils parlent de nous !</a>
+</li>
+</ul>
+</div>
+<div class="col-md-3"></div>
 
-      <div class="col-md-2">
-        <ul>
-          <li><%= image_tag("logocoshop.png", alt:"Logo co-shop") %></li>
-        </ul>
-      </div>
-    </div>
+<div class="col-md-2">
+<ul>
+<li><%= image_tag("logocoshop.png", alt:"Logo co-shop") %></li>
+</ul>
+</div>
+</div>
 
-    <p class="navbar-text pull-left">© 2016 - CoShop by Emooveers
-      <a href="" target="_blank">HTML 5 Validation</a>
-    </p>
+<p class="navbar-text pull-left">© 2016 - CoShop by Emooveers
+<a href="" target="_blank">HTML 5 Validation</a>
+</p>
 
-    <a href="" class="navbar-btn btn-danger btn pull-right">
-      <span class="glyphicon glyphicon-star"></span>
-      Subscribe on YouTube
-    </a>
-  </div>
+<a href="" class="navbar-btn btn-danger btn pull-right">
+<span class="glyphicon glyphicon-star"></span>
+Subscribe on YouTube
+</a>
+</div>
 
 </footer>
-
 
 </body>
 </html>
