@@ -10,9 +10,12 @@
         <div class="intro-message">
           <!-- <h1>Car2shop</h1> -->
           <h1>Rejoignez vos magasins gratuitement !</h1>
-
-          <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">Inscrivez-vous !</button>
-
+          <% if current_user  %>
+              <%= link_to "Proposer un trajet", "", :class => "btn btn-default btn-lg", "data-toggle" => "modal","data-target" => "#myModal" %>
+          <% else %>
+            <%= link_to "Inscrivez-vous!", "", :class => "btn btn-default btn-lg", "data-toggle" => "modal","data-target" => "#myModal" %>
+          <!-- <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">Inscrivez-vous !</button> -->
+          <%end%>
           <hr class="intro-divider">
 
           <h3 class="text-center">Recherche</h3>
@@ -72,16 +75,40 @@
 
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-3 exemples">
-      <img src="img/Logos-Enseignes/Alimentaire/Auchan.png" alt="Logo" class="enseignesauchan img-responsive enseignes"/>
-      <p class="text-center">Villeneuve-D'Ascq</p>
-      <p><img src="img/n3xt.png" class="img-circle img-conducteur" alt="conducteur" width="50" height="50">
-        Nom conducteur</p>
-      <p>Départ : Roubaix</p>
-      <p>23 Avril 2016</p>
-      <p>Départ: 10h00</p>
-      <p>Retour: 11h40</p>
+    <div class="col-md-10 col-md-offset-1">
+    <div class="row">
+      <% a=1%>
+      <% Bid.all.order(:created_at).each do |bid| %>
+      <% if a<=4 %>
+      <%driver=User.where(id:bid.driver_id).first%>
+    <div class="col-md-4 exemples">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="row">
+            <div class="col-md-6">
+              <p class="text-center"><%= image_tag(driver.avatar, size: "50") %></p>
+            </div>
+            <div class="col-md-6">
+              <p class="text-left">
+                <%= driver.username %></p>
+              <p class="text-left"><%= driver.city %></p>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-2">
+          <i class="fa fa-arrow-right fa-3x text-center" aria-hidden="true"></i>
+
+        </div>
+        <div class="col-md-5">
+          <img src="img/Logos-Enseignes/Alimentaire/Auchan.png" alt="Logo" class="enseignesauchan img-responsive enseignes"/>
+          <p class="text-center">Villeneuve-D'Ascq</p>
+        </div>
+
+      </div>
+
+
+      <p class="horaire text-center"><%= bid.go_at %></p>
       <p>Places restantes : 4</p>
       <p>
         <div class="progress">
@@ -92,86 +119,45 @@
         <a href="" class="text-center reservation">Réserver !</a>
       </p>
     </div>
-    <div class="col-md-2"></div>
-    <div class="col-md-3 exemples">
-      <!-- brands/brandpic -->
-      <img src="img/Logos-Enseignes/Bricolage-Jardinage/Conforama.png" alt="Logo" class="enseignesauchan img-responsive enseignes"/>
-      <!-- shops/city -->
-      <p class="text-center">Faches-Thumesnil</p>
-      <!-- users/avatar -->
-      <p><img src="img/user1.png" class="img-circle img-conducteur" alt="conducteur" width="50" height="50">
-        <!-- users/username -->
-        Nom conducteur</p>
-        <!-- users/city -->
-      <p>Départ : Roubaix</p>
-      <!-- bids/go_at -->
-      <p>23 Avril 2016</p>
-      <!-- bids/go_at -->
-      <p>Départ: 10h00</p>
-      <!-- bids/come_back -->
-      <p>Retour: 11h40</p>
+    <% a+=1 %>
+    <%end%>
+    <%end%>
 
-      <p>Places restantes : 3</p>
-      <p>
-        <div class="progress">
-          <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-            <span class="sr-only">20% Complete</span>
-          </div>
-        </div>
-        <a href="" class="text-center reservation">Réserver !</a>
-      </p>
-    </div>
-    <div class="col-md-2"></div>
+
 
   </div>
-
-  <div class="row">
-    <div class="col-md-2"></div>
-
-    <div class="col-md-3 exemples">
-      <img src="img/Logos-Enseignes/Sport/Décathlon.png" alt="Logo" class="enseignesauchan img-responsive enseignes"/>
-      <p class="text-center">Englos</p>
-      <p><img src="img/user2.png" class="img-circle img-conducteur" alt="conducteur" width="50" height="50">
-        Nom conducteur</p>
-      <p>Départ : Roubaix</p>
-      <p>23 Avril 2016</p>
-      <p>Départ: 10h00</p>
-      <p>Retour: 11h40</p>
-      <p>Places restantes : 2</p>
-      <p>
-        <div class="progress">
-          <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-            <span class="sr-only">20% Complete</span>
-          </div>
-        </div>
-        <a href="" class="text-center reservation">Réserver !</a>
-      </p>
-    </div>
-    <div class="col-md-2"></div>
-    <div class="col-md-3 exemples">
-      <img src="img/Logos-Enseignes/Electro-Ménager/Darty.png" alt="Logo" class="enseignesdarty img-responsive enseignes"/>
-      <p class="text-center">Lomme</p>
-      <p><img src="img/n3xt.png" class="img-circle img-conducteur" alt="conducteur" width="50" height="50">
-        Nom conducteur</p>
-      <p>Départ : Lille</p>
-      <p>23 Avril 2016</p>
-      <p>Départ: 10h15</p>
-      <p>Retour: 11h30</p>
-      <p>Places restantes : 1</p>
-      <p>
-        <div class="progress">
-          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 85%">
-            <span class="sr-only">20% Complete</span>
-          </div>
-        </div>
-        <a href="" class="text-center reservation">Réserver !</a>
-      </p>
-    </div>
-
   </div>
-  <div class="col-md-2"></div>
+
 
 </div>
+</div>
+
+<% if current_user %>
+<hr>
+<div class="container">
+  <div class="row">
+    <h3 class="text-center">
+      Magasins proches:
+    </h3>
+  </div>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="row">
+        <% @aroundshop.each do |shop| %>
+          <div class="col-md-3">
+
+              <p class="text-center"><%= image_tag(Brand.where(id:shop.brand_id).first.brandpic, class:"img-responsive") %></p>
+              <p class="text-center"><%= shop.name %></p>
+            </div>
+          <% end %>
+
+        </div>
+        </div>
+        </div>
+        </div>
+        <% end %>
+
 
 <hr>
 
