@@ -22,4 +22,6 @@
 //= require gmaps/google
 //= require markerclusterer
 //= require turbolinks
+//= require jquery-ui
+//= require autocomplete
 //= require_tree .

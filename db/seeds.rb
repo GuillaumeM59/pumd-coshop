@@ -5,6 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+File.open("#{Rails.root}/lib/seeds/villes.csv") do |lignes|
+  lignes.read.each_line do |ville|
+    departement, name, zipcode = ville.chomp.split(",")
+    #  to remove the quotes from the csv text:
+    #code.gsub!(/\A"|"\Z/, '')
+    # to create each record in the database
+    City.create!(:name => name.to_s, :departement => departement, :zip =>zipcode)
+  end
+end
+
+
 villes = ["Armentière", "Quesnoy sur deule", "Roubaix", "Lincelles", "Tourcoing","Lomme", "Lambersart", "Pérenchies", "Saint André lez Lille", "Leers", "Wattrelos", "Lille", "Croix", "Mouvaux", "Halluin", "Roncq", "Wasquehal", "Lys les Lannoy", "Marcq-en-Baroeul",
    "Bondues", "Villeneuve d'ascq"]
 categories = ["hypermarché", "supermarché", "proximité", "Drive", "bricolage", "ameublement", "jardinage"]
