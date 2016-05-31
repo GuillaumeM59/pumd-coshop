@@ -1,4 +1,4 @@
-<h2>Votre recherche pour "<%= @search %>"</h2>
+<h2 class="text-center searchtitle">Votre recherche pour "<%= @search %>"</h2>
 
 <div class="container-fluid">
   <div class="row">
@@ -7,7 +7,7 @@
       <% @bids.each do |bid| %>
       <%driver=User.where(id:bid.driver_id).first%>
       <%shop=Shop.where(id:bid.shop_id).first%>
-    <div class="col-md-3 exemples">
+    <div class="col-md-3 bidblock">
       <div class="row">
         <div class="col-md-5">
           <div class="row">
@@ -38,7 +38,7 @@
       </div>
 
 
-      <p class="horaire text-center"><%= bid.go_at %></p>
+      <p class="horaire text-center"><%= bid.go_at.to_datetime..strftime("%d-%m-%Y")%></p>
       <p>Places restantes : 4</p>
       <p>
         <div class="progress">
