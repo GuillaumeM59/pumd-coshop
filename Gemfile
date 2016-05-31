@@ -40,7 +40,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'geocoder'
 # Get map with posistions
 gem 'gmaps4rails'
-gem 'markerclustererplus-rails' 
+gem 'markerclustererplus-rails'
+
+gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-4-x' # For 4.x
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
