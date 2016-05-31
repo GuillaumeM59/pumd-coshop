@@ -1,8 +1,12 @@
 class StaticPagesController < ApplicationController
   def home
+    @client = request.location
     if current_user
       @aroundshop = Shop.near([current_user.latitude, current_user.longitude], 30, :units => :km)
+    else
+      @aroundshop = Shop.near([@client.latitude, @client.longitude], 30, :units => :km)
     end
+
     @bid = Bid.new
   end
 
@@ -33,6 +37,11 @@ private
   def message_params
     params.require(:message).permit(:prenom, :objet, :email, :contenu) # permit keys
   end
-
+ def set_ip
+   if current_user
+     @aroundshop = Shop.near([current_user.latitude, current_user.longitude], 30, :units => :km)
+   end
+   @client = request.location
+ end
 
 end

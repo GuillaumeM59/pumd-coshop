@@ -42,7 +42,6 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem 'markerclustererplus-rails'
 
-gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-4-x' # For 4.x
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -52,6 +51,7 @@ gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-4-x' # For 4.x
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
