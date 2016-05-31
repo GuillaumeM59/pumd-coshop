@@ -8,6 +8,8 @@ Rails.application.configure do
 
   # Do not eager load code on boot.
   config.eager_load = false
+I18n.config.available_locales = :fr
+config.i18n.default_locale = :fr
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true

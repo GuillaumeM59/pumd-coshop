@@ -23,6 +23,8 @@ gem 'bootstrap-sass'
 # Run deamon by call him in termilal like so : maicatcher
 # Then go  http://127.0.0.1:1080
 
+gem 'stripe'
+
  gem 'materialize-sass'
 
 # Use jquery as the JavaScript library
@@ -34,11 +36,14 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+
 # Get localisation or address with geocoder
 gem 'geocoder'
 # Get map with posistions
 gem 'gmaps4rails'
 gem 'markerclustererplus-rails'
+
+gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'rails-4-x' # For 4.x
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

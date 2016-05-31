@@ -15,7 +15,6 @@
 //= require bootstrap-sprockets
 //= require connexion
 //= require resultat
-//= require materialize
 //= require modernizr.custom
 //= require index
 //= require underscore
