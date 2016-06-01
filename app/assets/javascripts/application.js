@@ -20,7 +20,8 @@
 //= require underscore
 //= require gmaps/google
 //= require markerclusterer
-//= require turbolinks
 //= require jquery-ui
 //= require autocomplete
+//= require flipclock.min
+//= require turbolinks
 //= require_tree .
