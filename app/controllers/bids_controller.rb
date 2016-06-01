@@ -8,6 +8,7 @@ class BidsController < ApplicationController
   end
 
   def search
+    @client = request.location
     @search= params[:search].capitalize
     @searchlist = Shop.where("name LIKE ?","%#{@search}%")
     @shopidlist = @searchlist.map{ |x| x.id }

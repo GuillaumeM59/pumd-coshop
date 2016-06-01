@@ -18,7 +18,11 @@
               <p class="text-left">
                 <%= driver.username %></p>
               <p class="text-left"><%= driver.city %>
+                <% if current_user %>
               (<%= disttodriver= Geocoder::Calculations.distance_between([current_user.latitude,current_user.longitude], [driver.latitude,driver.longitude], :units => :km).round(2) %> km)
+                <% else %>
+              (<%= disttodriver= Geocoder::Calculations.distance_between([@client.latitude,@client.longitude], [driver.latitude,driver.longitude], :units => :km).round(2) %> km)
+                <% end %>
                   </p>
             </div>
           </div>
@@ -38,7 +42,6 @@
       </div>
 
 
-      <p class="horaire text-center"><%= bid.go_at.to_datetime..strftime("%d-%m-%Y")%></p>
       <p>Places restantes : 4</p>
       <p>
         <div class="progress">
