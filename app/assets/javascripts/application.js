@@ -17,11 +17,11 @@
 //= require resultat
 //= require modernizr.custom
 //= require index
+//= require static_pages
 //= require underscore
 //= require gmaps/google
 //= require markerclusterer
 //= require jquery-ui
 //= require autocomplete
-//= require flipclock.min
 //= require turbolinks
 //= require_tree .
