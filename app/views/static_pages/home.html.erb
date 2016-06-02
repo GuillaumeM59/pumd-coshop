@@ -30,6 +30,19 @@
         <div class="col-md-2">
                   <i class="fa fa-arrow-right fa-3x text-center" aria-hidden="true"></i>
         </div>
+        <div class="field col-md-5">
+          <h6>Magasin</h6>
+          <div class="field">
+            <%= f.label "Enseigne" %><br>
+            <%= f.collection_select :brand_id, Brand.order(:name), :id, :name, include_blank: true %>
+          </div>
+
+          <div class="field">
+            <%= f.label "Magasin" %><br>
+            <%= f.grouped_collection_select :shop_id, Brand.order(:name), :shops, :name, :id, :name, include_blank: false %>
+          </div>
+
+        </div>
 
         <div class="field">
           <%= f.label :go_at %><br>
@@ -102,18 +115,6 @@
 
 <hr>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
-      <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="http://www.youtube.com/embed/pYf5deeiPf4" width="800" height="800"></iframe>
-      </div>
-    </div>
-    <div class="col-md-1"></div>
-  </div>
-</div>
-
 
 <!--  SOON BIDS -->
 
@@ -129,7 +130,7 @@
     <div class="col-md-10 col-md-offset-1">
       <div class="row">
         <% a=1%>
-        <% @aroundlastbids.each do |bid| %>
+        <% @aroundlastbids.reverse.each do |bid| %>
         <% if a<=6 %>
         <%driver=User.where(id:bid.driver_id).first%>
         <%shop=Shop.where(id:bid.shop_id).first%>
@@ -138,7 +139,7 @@
             <div class="col-md-5">
               <div class="row">
                 <div class="col-md-6">
-                  <p class="text-center"><%= image_tag(driver.avatar, size: "50") %></p>
+                  <p class="text-center"><%= link_to(image_tag(driver.avatar, size: "50"),user_path(driver.id)) %></p>
                 </div>
                 <div class="col-md-6">
                   <p class="text-left">
@@ -166,7 +167,8 @@
             </div>
 
           </div>
-
+<p class="text-center"><%= bid.go_at.strftime("%d/%m/%y") %></p>
+<p class="text-center hour"><%= bid.go_at.strftime("%H:%M") %></p>
 
           <p>Places restantes : 4</p>
           <p>
@@ -177,10 +179,7 @@
             </div>
           <%= link_to 'Réserver', edit_bid_path(bid) %>
           </p>
-          <%= content_tag(:div, "", class: "clock#{bid.id}", style: "margin:1em; width:100%") %>
-          <script type="text/javascript">
-            var clock<%= bid.id %>;
-            </script>
+
         </div>
 
         <% a+=1 %>
@@ -222,7 +221,7 @@
             <div class="col-md-5">
               <div class="row">
                 <div class="col-md-6">
-                  <p class="text-center"><%= image_tag(driver.avatar, size: "50") %></p>
+                  <p class="text-center"><%= link_to(image_tag(driver.avatar, size: "50"),user_path(driver.id)) %></p>
                 </div>
                 <div class="col-md-6">
                   <p class="text-left">
@@ -250,7 +249,8 @@
             </div>
 
           </div>
-
+          <p class="text-center"><%= bid.go_at.strftime("%d/%m/%y") %></p>
+          <p class="text-center hour"><%= bid.go_at.strftime("%H:%M") %></p>
 
           <p>Places restantes : 4</p>
           <p>
@@ -261,10 +261,7 @@
             </div>
           <%= link_to 'Réserver', edit_bid_path(bid) %>
           </p>
-           <%= content_tag(:div, "", class: "clock#{bid.id}", style: "margin:2em") %>
-           <script type="text/javascript">
-             var clock<%= bid.id %>;
-             </script>
+
         </div>
 
         <% a+=1 %>
@@ -372,26 +369,3 @@
 </div>
 
 <!-- /PAGE CONTENT -->
-
-<script type="text/javascript">
-
-  $(document).ready(function() {
-
-    // Grab the current date
-    var currentDate = new Date();
-
-    // Set some date in the past. In this case, it's always been since Jan 1
-
-
-    // Calculate the difference in seconds between the future and current date
-    <% Bid.all.each do |bid| %>
-    var diff<%= bid.id %> =  <%= bid.go_at.to_time.to_i %> - currentDate.getTime() / 1000;
-
-    // Instantiate a coutdown FlipClock
-    clock<%= bid.id %> = $('.clock<%= bid.id %>').FlipClock(diff<%= bid.id %>, {
-      clockFace: 'DailyCounter',
-      showSeconds: true
-    });
-    <% end %>
-  });
-</script>
