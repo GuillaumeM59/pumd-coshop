@@ -282,6 +282,7 @@
 
 
 
+      </div>
         <% a+=1 %>
         <%end%>
         <%end%>
@@ -386,4 +387,20 @@
 
 </div>
 
+<script type="text/javascript">
+$(document).ready(function () {
+  shops = $('#bid_shop_id').html();
+  console.log(shops);
+  $('#bid_brand_id').change(function(){
+    brand = $('bid_brand_id').val();
+    console.log(brand);
+    alert(brand);
+    options = $(shops).filter("optgroup[value=brand]").text();
+    if (options)
+      $('#bid_shop_id').val(options);
+    else
+      $('#bid_shop_id').empty();
+    });
+});
+</script>
 <!-- /PAGE CONTENT -->

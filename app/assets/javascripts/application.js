@@ -10,18 +10,18 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require turbolinks
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
+//= require modernizr.custom
 //= require bootstrap-sprockets
 //= require connexion
 //= require resultat
-//= require modernizr.custom
 //= require index
 //= require static_pages
 //= require underscore
 //= require gmaps/google
 //= require markerclusterer
-//= require jquery-ui
 //= require autocomplete
-//= require turbolinks
 //= require_tree .
