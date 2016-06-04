@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160601141149) do
+ActiveRecord::Schema.define(version: 20160604091623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,10 +26,13 @@ ActiveRecord::Schema.define(version: 20160601141149) do
     t.integer  "pass3_id"
     t.integer  "pass4_id"
     t.boolean  "cangodrive"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "home"
     t.string   "brand_id"
+    t.boolean  "withreturn", default: true
+    t.integer  "nbrplace",   default: 1
+    t.boolean  "isreturn",   default: false
   end
 
   create_table "brands", force: :cascade do |t|

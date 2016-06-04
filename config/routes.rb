@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :shops
   resources :brands
   resources :charges
-  
+
   get 'static_pages/home'
   post 'static_pages/sendquestion'
 
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get 'static_pages/publicprofile'
 
   post 'bids/search'
-
+  post 'bids/createreturn'
   get 'static_pages/proposition'
 
   devise_for :users
