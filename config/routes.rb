@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :carmodels
+  resources :carbrands
   resources :messages
   resources :cities
   resources :feedbacks
