@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160604131803) do
+ActiveRecord::Schema.define(version: 20160604224744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20160604131803) do
     t.datetime "updated_at",                 null: false
     t.string   "home"
     t.string   "brand_id"
-    t.boolean  "withreturn", default: true
+    t.boolean  "withreturn", default: false
     t.integer  "nbrplace",   default: 1
     t.boolean  "isreturn",   default: false
   end
@@ -50,10 +50,10 @@ ActiveRecord::Schema.define(version: 20160604131803) do
   end
 
   create_table "carmodels", force: :cascade do |t|
-    t.integer  "brand_id"
+    t.integer  "carbrand_id"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "year"
   end
 
@@ -137,6 +137,11 @@ ActiveRecord::Schema.define(version: 20160604131803) do
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gender"
+    t.boolean  "driver",                 default: false
+    t.integer  "cbrand_id"
+    t.integer  "cmodel_id"
+    t.string   "carsize",                default: "M"
+    t.string   "phone2"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

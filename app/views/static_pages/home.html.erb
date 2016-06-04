@@ -8,7 +8,7 @@
     shops = $('#bid_shop_id').html();
     $('#bid_brand_id').change(function () {
       brandselected = $('#bid_brand_id :selected').text();
-      optgroup = "optgroup[label='" + brandselected + "']"
+      optgroup = "optgroup[label='" + brandselected + "']";
       options = $(shops).filter(optgroup).html();
       console.log(shops);
       console.log(optgroup);
@@ -72,7 +72,7 @@
             </div>
             <div class="field">
               <%= f.label "Je covoite aussi au retour"  %><br>
-              <%= f.check_box :withreturn, placeholder:false%>
+              <%= f.check_box :withreturn, input_html: { checked: false }%>
             </div>
 
             <div class="backbid">
@@ -283,7 +283,7 @@
   <div class="col-md-10 col-md-offset-1">
     <div class="row">
       <% a=1%>
-      <% Bid.all.order(:created_at).each do |bid| %>
+      <% Bid.all.order(:created_at).reverse.each do |bid| %>
       <% if a<=6 %>
       <%driver=User.where(id:bid.driver_id).first%>
       <%shop=Shop.where(id:bid.shop_id).first%>
@@ -438,12 +438,16 @@
   <div class="col-md-1"></div>
   <div class="col-md-10">
     <div class="row">
+      <% x=1 %>
       <% @aroundshop.each do |shop| %>
+      <% if x<=8 %>
       <div class="col-md-3">
 
-        <p class="text-center"><%= image_tag(Brand.where(id:shop.brand_id).first.brandpic, class:"img-responsive") %></p>
+        <p class="text-center"><%= image_tag(Brand.where(id:shop.brand_id).first.brandpic, height: "50px",width:"150px" ) %></p>
         <p class="text-center"><%= shop.name %></p>
       </div>
+      <% x+=1 %>
+      <% end %>
       <% end %>
 
     </div>
