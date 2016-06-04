@@ -1,5 +1,6 @@
 class BidsController < ApplicationController
   before_action :set_bid, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, only: [:index, :show, :new, :create, :destroy]
 
   # GET /bids
   # GET /bids.json
@@ -40,17 +41,65 @@ class BidsController < ApplicationController
   def create
     @bid = Bid.new(bid_params)
     @bid.driver_id = current_user.id
+    if @bid.nbrplace == 1
+      @bid.pass1_id = 0
+    elsif @bid.nbrplace == 2
+      @bid.pass1_id = 0
+      @bid.pass2_id = 0
+    elsif @bid.nbrplace == 3
+      @bid.pass1_id = 0
+      @bid.pass2_id = 0
+      @bid.pass3_id = 0
+    else
+      @bid.pass1_id = 0
+      @bid.pass2_id = 0
+      @bid.pass3_id = 0
+      @bid.pass4_id = 0
+    end
 
-    respond_to do |format|
-      if @bid.save
-        format.html { redirect_to @bid, notice: 'Bid was successfully created.' }
-        format.json { render :show, status: :created, location: @bid }
-      else
-        format.html { render :new }
-        format.json { render json: @bid.errors, status: :unprocessable_entity }
-      end
+    if @bid.withreturn ==false
+        respond_to do |format|
+          if @bid.save
+            format.html { redirect_to @bid, notice: 'Annonce enregistrée.' }
+            format.json { render :show, status: :created, location: @bid }
+          else
+            format.html { render :new }
+            format.json { render json: @bid.errors, status: :unprocessable_entity }
+          end
+        end
+    else
+        @return = Bid.new(bid_params)
+        @return.driver_id=current_user.id
+        if @return.nbrplace == 1
+          @return.pass1_id = 0
+        elsif @return.nbrplace == 2
+          @return.pass1_id = 0
+          @return.pass2_id = 0
+        elsif @return.nbrplace == 3
+          @return.pass1_id = 0
+          @return.pass2_id = 0
+          @return.pass3_id = 0
+        else
+          @return.pass1_id = 0
+          @return.pass2_id = 0
+          @return.pass3_id = 0
+          @return.pass4_id = 0
+        end
+        @return.isreturn=true
+        @return.save
+        @bid.save
+        respond_to do |format|
+          if @bid.save
+            format.html { redirect_to @bid, notice: 'Aller-retour créé.' }
+            format.json { render :show, status: :created, location: @bid }
+          else
+            format.html { render :new }
+            format.json { render json: @bid.errors, status: :unprocessable_entity }
+          end
+        end
     end
   end
+
 
   # PATCH/PUT /bids/1
   # PATCH/PUT /bids/1.json
@@ -84,6 +133,6 @@ class BidsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bid_params
-      params.require(:bid).permit(:shop_id, :driver_id, :go_at, :come_back, :pass1_id, :pass2_id, :pass3_id, :pass4_id, :cangodrive)
+      params.require(:bid).permit(:shop_id, :driver_id, :go_at, :come_back, :pass1_id, :pass2_id, :pass3_id, :pass4_id, :cangodrive, :nbrplace, :withreturn)
     end
 end

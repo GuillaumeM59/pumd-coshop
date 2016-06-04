@@ -16,6 +16,8 @@ class StaticPagesController < ApplicationController
          @aroundlastbids << i
        end
        end
+       @filterShop = true
+   @filteredshop = Shop.where(brand_id: params[:brand_id]).order(:name)
     end
 
 

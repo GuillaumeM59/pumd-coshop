@@ -1,4 +1,27 @@
 <%if current_user  %>
+<script type="text/javascript">
+  $(function () {
+    filterShopsList();
+  });
+
+  function filterShopsList() {
+    shops = $('#bid_shop_id').html();
+    $('#bid_brand_id').change(function () {
+      brandselected = $('#bid_brand_id :selected').text();
+      optgroup = "optgroup[label='" + brandselected + "']"
+      options = $(shops).filter(optgroup).html();
+      console.log(shops);
+      console.log(optgroup);
+      console.log(options);
+
+      if (brandselected != "") {
+        $('#bid_shop_id').html(options);
+      }
+    });
+  };
+
+
+</script>
 <!-- modal newbid -->
 <div class="modal fade" id="newbid" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -31,32 +54,39 @@
                   <i class="fa fa-arrow-right fa-3x text-center" aria-hidden="true"></i>
         </div>
         <div class="field col-md-5">
-          <h6>Magasin</h6>
           <div class="field">
             <%= f.label "Enseigne" %><br>
-            <%= f.collection_select :brand_id, Brand.order(:name), :id, :name, include_blank: true %>
+            <%= f.collection_select :brand_id, Brand.order(:name), :id, :name, include_blank: true, placeholder: "" %>
           </div>
 
           <div class="field">
             <%= f.label "Magasin" %><br>
-            <%= f.grouped_collection_select :shop_id, Brand.order(:name), :shops, :name, :id, :name, include_blank: false %>
+            <%= f.grouped_collection_select :shop_id, Brand.order(:name), :shops, :name, :id, :name, include_blank: true, placeholder: "" %>
           </div>
 
         </div>
 
         <div class="field">
-          <%= f.label :go_at %><br>
-          <%= f.datetime_select :go_at %>
+          <%= f.label "Date et Heure de départ:" %><br>
+          <%= f.datetime_select :go_at, min: Time.now, max: 3.month.from_now%>
         </div>
-        <div class="">
-          <%= f.label :come_back %><br>
-          <%= f.datetime_select :come_back %>
+        <div class="field">
+          <%= f.label "Nombre de passager"  %><br>
+          <%= f.number_field :nbrplace, min:1, max:4 %>
+        </div>
+        <div class="field">
+          <%= f.label "Je covoite aussi au retour"  %><br>
+          <%= f.check_box :withreturn, placeholder:false%>
         </div>
 
+        <div class="backbid">
+
         <div class="field">
-          <%= f.label :cangodrive %><br>
-          <%= f.check_box :cangodrive %>
+          <%= f.label "Date et Heure de retour" %><br>
+          <%= f.datetime_select :come_back %>
         </div>
+      </div>
+
         <div class="actions">
           <%= f.submit %>
         </div>
@@ -136,6 +166,43 @@
         <%shop=Shop.where(id:bid.shop_id).first%>
         <div class="col-md-3 bidblock">
           <div class="row">
+            <%if bid.isreturn %>
+            <h4 class="text-center">Retour</h4>
+            <div class="col-md-5">
+              <%= image_tag((Brand.where(id: shop.brand_id).first.brandpic), alt:"Logo", class:"enseignesauchan img-responsive enseignes", width:"100")%>
+              <p class="text-center"><%= shop.name.capitalize %></p>
+            </div>
+            <div class="col-md-2">
+              <i class="fa fa-arrow-right fa-3x text-center" aria-hidden="true"></i>
+              <p class="text-center">(<%= disttodriver= Geocoder::Calculations.distance_between([shop.latitude,shop.longitude], [driver.latitude,driver.longitude], :units => :km).round(2) %> km)
+              </p>
+
+            </div>
+            <div class="col-md-5">
+              <div class="row">
+                <div class="col-md-6">
+                  <p class="text-center"><%= link_to(image_tag(driver.avatar, size: "50"),user_path(driver.id)) %></p>
+                </div>
+                <div class="col-md-6">
+                  <p class="text-left">
+                    <%= driver.username %></p>
+                  <p class="text-left"><%= driver.city %>
+                    <% if current_user %>
+                  (<%= disttodriver= Geocoder::Calculations.distance_between([current_user.latitude,current_user.longitude], [driver.latitude,driver.longitude], :units => :km).round(2) %> km)
+                    <% else %>
+                  (<%= disttodriver= Geocoder::Calculations.distance_between([@client.latitude,@client.longitude], [driver.latitude,driver.longitude], :units => :km).round(2) %> km)
+                    <% end %>
+                      </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+            <p class="text-center"><%= bid.come_back.strftime("%d/%m/%y") %></p>
+            <p class="text-center hour"><%= bid.come_back.strftime("%H:%M") %></p>
+
+            <%else %>
+            <h4 class="text-center">Aller</h4>
             <div class="col-md-5">
               <div class="row">
                 <div class="col-md-6">
@@ -170,6 +237,7 @@
 <p class="text-center"><%= bid.go_at.strftime("%d/%m/%y") %></p>
 <p class="text-center hour"><%= bid.go_at.strftime("%H:%M") %></p>
 
+<% end %>
           <p>Places restantes : 4</p>
           <p>
             <div class="progress">
@@ -219,6 +287,42 @@
         <%shop=Shop.where(id:bid.shop_id).first%>
         <div class="col-md-3 bidblock">
           <div class="row">
+            <%if bid.isreturn %>
+            <h4 class="text-center">Retour</h4>
+            <h4 class="text-center">Retour</h4>
+            <div class="col-md-5">
+              <%= image_tag((Brand.where(id: shop.brand_id).first.brandpic), alt:"Logo", class:"enseignesauchan img-responsive enseignes", width:"100")%>
+              <p class="text-center"><%= shop.name.capitalize %></p>
+            </div>
+            <div class="col-md-2">
+              <i class="fa fa-arrow-right fa-3x text-center" aria-hidden="true"></i>
+              <p class="text-center">(<%= disttodriver= Geocoder::Calculations.distance_between([shop.latitude,shop.longitude], [driver.latitude,driver.longitude], :units => :km).round(2) %> km)
+              </p>
+
+            </div>
+            <div class="col-md-5">
+              <div class="row">
+                <div class="col-md-6">
+                  <p class="text-center"><%= link_to(image_tag(driver.avatar, size: "50"),user_path(driver.id)) %></p>
+                </div>
+                <div class="col-md-6">
+                  <p class="text-left">
+                    <%= driver.username %></p>
+                  <p class="text-left"><%= driver.city %>
+                    <% if current_user %>
+                  (<%= disttodriver= Geocoder::Calculations.distance_between([current_user.latitude,current_user.longitude], [driver.latitude,driver.longitude], :units => :km).round(2) %> km)
+                    <% else %>
+                  (<%= disttodriver= Geocoder::Calculations.distance_between([@client.latitude,@client.longitude], [driver.latitude,driver.longitude], :units => :km).round(2) %> km)
+                    <% end %>
+                      </p>
+                </div>
+              </div>
+
+            </div>
+            <p class="text-center"><%= bid.come_back.strftime("%d/%m/%y") %></p>
+            <p class="text-center hour"><%= bid.come_back.strftime("%H:%M") %></p>
+<%else %>
+<h4 class="text-center">Aller</h4>
             <div class="col-md-5">
               <div class="row">
                 <div class="col-md-6">
@@ -249,10 +353,10 @@
               <p class="text-center"><%= shop.name.capitalize %></p>
             </div>
 
-          </div>
           <p class="text-center"><%= bid.go_at.strftime("%d/%m/%y") %></p>
           <p class="text-center hour"><%= bid.go_at.strftime("%H:%M") %></p>
-
+<% end %>
+</div>
           <p>Places restantes : 4</p>
           <p>
             <div class="progress">
@@ -386,21 +490,9 @@
   </div>
 
 </div>
-
 <script type="text/javascript">
-$(document).ready(function () {
-  shops = $('#bid_shop_id').html();
-  console.log(shops);
-  $('#bid_brand_id').change(function(){
-    brand = $('bid_brand_id').val();
-    console.log(brand);
-    alert(brand);
-    options = $(shops).filter("optgroup[value=brand]").text();
-    if (options)
-      $('#bid_shop_id').val(options);
-    else
-      $('#bid_shop_id').empty();
-    });
+$('#bid_withreturn').click(function(){
+this.checked?$('.backbid').show(1000):$('.backbid').hide(1000); //time for show
 });
 </script>
 <!-- /PAGE CONTENT -->
