@@ -1,3 +1,4 @@
+require 'csv'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -14,6 +15,31 @@ File.open("#{Rails.root}/lib/seeds/villes.csv") do |lignes|
     City.create!(:name => name.to_s, :departement => departement, :zip =>zipcode)
   end
 end
+
+
+carbrandlist =[]
+File.open("#{Rails.root}/lib/seeds/cars.csv") do |lignes|
+  lignes.read.each_line do |car|
+    year, brand, model = car.chomp.split(",")
+    #  to remove the quotes from the csv text:
+    #code.gsub!(/\A"|"\Z/, '')
+    # to create each record in the database
+    carbrandlist.each do |branditem|
+      if branditem == brand
+        carbrandid= Carbrand.where(name:branditem).first.id
+        Carmodel.create!(:brand_id => carbrandid, :name => model, :year => year)
+      else
+        Carbrand.create!(:name => brand)
+        carbrandlist << brand
+        carbrandid= Carbrand.where(name:branditem).first.id
+        Carmodel.create!(:brand_id => carbrandid, :name => model, :year => year)
+      end
+  end
+  end
+end
+
+
+
 
 
 villes = ["Armentière", "Quesnoy sur deule", "Roubaix", "Lincelles", "Tourcoing","Lomme", "Lambersart", "Pérenchies", "Saint André lez Lille", "Leers", "Wattrelos", "Lille", "Croix", "Mouvaux", "Halluin", "Roncq", "Wasquehal", "Lys les Lannoy", "Marcq-en-Baroeul",
@@ -58,63 +84,39 @@ User.delete_all
     end
 end
 Brand.delete_all
+usimage_src= File.join("public/img/Logos-Enseignes/Alimentaire/Carrefour.png")
+ussrc_file= File.new(usimage_src)
 Brand.create!(
       name:"Carrefour",
-      category:categories[0]
+      category:categories[0],
+      brandpic:ussrc_file
 )
+usimage_src= File.join("public/img/Logos-Enseignes/Alimentaire/Auchan.png")
+ussrc_file= File.new(usimage_src)
 Brand.create!(
       name:"Auchan",
-      category:categories[0]
+      category:categories[0],
+            brandpic:ussrc_file
 )
+usimage_src= File.join("public/img/Logos-Enseignes/Alimentaire/Leclercq.png")
+ussrc_file= File.new(usimage_src)
 Brand.create!(
       name:"Eleclerc",
-      category:categories[0]
+      category:categories[0],
+            brandpic:ussrc_file
 )
-Brand.create!(
-      name:"U",
-      category:categories[0]
-)
-Brand.create!(
-      name:"Carrefour Market",
-      category:categories[1]
-)
-Brand.create!(
-      name:"Carrefour City",
-      category:categories[2]
-)
-Brand.create!(
-      name:"Carrefour Contact",
-      category:categories[2]
-)
-Brand.create!(
-      name:"Carrefour Express",
-      category:categories[2]
-)
-Brand.create!(
-      name:"Carrefour Montagne",
-      category:categories[2]
-)
-Brand.create!(
-      name:"Carrefour Drive",
-      category:categories[3]
-)
+
+
 
 
 # Get Brand ID
 carrefour_id= Brand.where(name:"Carrefour").first.id
 auchan_id= Brand.where(name:"Auchan").first.id
 lecler_id= Brand.where(name:"Eleclerc").first.id
-u_id= Brand.where(name:"U").first.id
-carrefourmarket_id= Brand.where(name:"Carrefour Market").first.id
-carrefourcity_id= Brand.where(name:"Carrefour City").first.id
-carrefourcontact_id= Brand.where(name:"Carrefour Contact").first.id
-carrefourmontagne_id= Brand.where(name:"Carrefour Montagne").first.id
-carrefourexpress_id= Brand.where(name:"Carrefour Express").first.id
-carrefourdrive_id= Brand.where(name:"Carrefour Drive").first.id
+
 
 
 Shop.delete_all
-require 'csv'
 
 
 # Create Carrefour shops
@@ -154,6 +156,8 @@ end
 Bid.create!(
   shop_id: shopalea ,
   driver_id: b,
+  go_at: DateTime.now,
+  come_back: DateTime.now + 2.hour,
 
 
   pass1_id: a,
