@@ -139,8 +139,9 @@
 </div>
 <!-- /.intro-header -->
 
-<hr>
 
+<%if current_user %>
+<% else %>
 <div class="container">
   <div class="row">
     <div class="col-md-1"></div>
@@ -152,116 +153,21 @@
     <div class="col-md-1"></div>
   </div>
 </div>
+<% end %>
 
 <!--  SOON BIDS -->
 
-<div class="container">
 
-  <div class="row text-center">
-    <h3>Dernières minutes :</h3>
-  </div>
-</div>
 
-<div class="container-fluid">
+<div class="container-fluid grayblock">
   <div class="row">
+    <h3 class="text-center">Dernières minutes :</h3>
     <div class="col-md-10 col-md-offset-1">
       <div class="row">
         <% a=1%>
         <% @aroundlastbids.each do |bid| %>
         <% if a<=6 %>
-        <%driver=User.where(id:bid.driver_id).first%>
-        <%shop=Shop.where(id:bid.shop_id).first%>
-        <div class="col-md-3 bidblock">
-          <div class="row">
-            <%if bid.isreturn %>
-            <h4 class="text-center">Retour</h4>
-            <div class="col-md-5">
-              <%= image_tag((Brand.where(id: shop.brand_id).first.brandpic), alt:"Logo", class:"enseignesauchan img-responsive enseignes", width:"100")%>
-              <p class="text-center"><%= shop.name.capitalize %></p>
-            </div>
-            <div class="col-md-2">
-              <i class="fa fa-arrow-right fa-3x text-center" aria-hidden="true"></i>
-              <p class="text-center">(<%= disttodriver= Geocoder::Calculations.distance_between([shop.latitude,shop.longitude], [driver.latitude,driver.longitude], :units => :km).round(2) %>
-                km)
-              </p>
-
-            </div>
-            <div class="col-md-5">
-              <div class="row">
-                <div class="col-md-6">
-                  <p class="text-center"><%= link_to(image_tag(driver.avatar, size: "50"),user_path(driver.id)) %></p>
-                </div>
-                <div class="col-md-6">
-                  <p class="text-left">
-                    <%= driver.username %></p>
-                  <p class="text-left"><%= driver.city %>
-                    <% if current_user %>
-                    (<%= disttodriver= Geocoder::Calculations.distance_between([current_user.latitude,current_user.longitude], [driver.latitude,driver.longitude], :units => :km).round(2) %>
-                    km)
-                  <% else %>
-                    (<%= disttodriver= Geocoder::Calculations.distance_between([@client.latitude,@client.longitude], [driver.latitude,driver.longitude], :units => :km).round(2) %>
-                    km)
-                    <% end %>
-                  </p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-          <p class="text-center"><%= bid.come_back.strftime("%d/%m/%y") %></p>
-          <p class="text-center hour"><%= bid.come_back.strftime("%H:%M") %></p>
-
-          <%else %>
-          <h4 class="text-center">Aller</h4>
-          <div class="col-md-5">
-            <div class="row">
-              <div class="col-md-6">
-                <p class="text-center"><%= image_tag(driver.avatar, size: "50") %></p>
-              </div>
-              <div class="col-md-6">
-                <p class="text-left">
-                  <%= driver.username %></p>
-                <p class="text-left"><%= driver.city %>
-                  <% if current_user %>
-                  (<%= disttodriver= Geocoder::Calculations.distance_between([current_user.latitude,current_user.longitude], [driver.latitude,driver.longitude], :units => :km).round(2) %>
-                  km)
-                <% else %>
-                  (<%= disttodriver= Geocoder::Calculations.distance_between([@client.latitude,@client.longitude], [driver.latitude,driver.longitude], :units => :km).round(2) %>
-                  km)
-                  <% end %>
-                </p>
-              </div>
-            </div>
-
-          </div>
-          <div class="col-md-2">
-            <i class="fa fa-arrow-right fa-3x text-center" aria-hidden="true"></i>
-            <p class="text-center">(<%= disttodriver= Geocoder::Calculations.distance_between([shop.latitude,shop.longitude], [driver.latitude,driver.longitude], :units => :km).round(2) %>
-              km)
-            </p>
-
-          </div>
-          <div class="col-md-5">
-            <%= image_tag((Brand.where(id: shop.brand_id).first.brandpic), alt:"Logo", class:"enseignesauchan img-responsive enseignes", width:"100")%>
-            <p class="text-center"><%= shop.name.capitalize %></p>
-          </div>
-        </div>
-        <p class="text-center"><%= bid.go_at.strftime("%d/%m/%y") %></p>
-        <p class="text-center hour"><%= bid.go_at.strftime("%H:%M") %></p>
-
-        <% end %>
-        <p>Places restantes : 4</p>
-        <p>
-          <div class="progress">
-            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-              <span class="sr-only">20% Complete</span>
-            </div>
-          </div>
-          <%= link_to 'Réserver', "data-toggle" => "reservationmodal", 'data-target' => '#reservationmodal' %>
-        </p>
-        <%= content_tag(:div, "", class: "clock#{bid.id}", style: "margin:1em; width:100%") %>
-      </div>
-
+          <%= render :partial =>"bid",locals: {:bid => bid} %>
       <% a+=1 %>
       <%end%>
       <%end%>
@@ -271,11 +177,36 @@
 
 </div>
 </div>
-<hr>
+<div class="container">
+  <div class="row">
+    <h3 class="text-center">
+      Magasins proches:
+    </h3>
+  </div>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="row">
+        <% x=1 %>
+        <% @aroundshop.each do |shop| %>
+        <% if x<=8 %>
+        <div class="col-md-3 shopblock">
+
+          <p class="text-center"><%= image_tag(Brand.where(id:shop.brand_id).first.brandpic, height: "50px",width:"150px" ) %></p>
+          <p class="text-center"><%= shop.name %></p>
+        </div>
+        <% x+=1 %>
+        <% end %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 <!--  LAST BIDS -->
 
-<div class="container-fluid">
+<div class="container-fluid grayblock">
 <div class="row text-center">
   <h3>Dernières propositions :</h3>
 </div>
@@ -285,138 +216,8 @@
       <% a=1%>
       <% Bid.all.order(:created_at).reverse.each do |bid| %>
       <% if a<=6 %>
-      <%driver=User.where(id:bid.driver_id).first%>
-      <%shop=Shop.where(id:bid.shop_id).first%>
-      <div class="col-md-3 bidblock">
-        <div class="row">
-          <%if bid.isreturn %>
-          <h4 class="text-center">Retour</h4>
-          <div class="col-md-5">
-            <%= image_tag((Brand.where(id: shop.brand_id).first.brandpic), alt:"Logo", class:"enseignesauchan img-responsive enseignes", width:"100")%>
-            <p class="text-center"><%= shop.name.capitalize %></p>
-          </div>
-          <div class="col-md-2">
-            <i class="fa fa-arrow-right fa-3x text-center" aria-hidden="true"></i>
-            <p class="text-center">(<%= disttodriver= Geocoder::Calculations.distance_between([shop.latitude,shop.longitude], [driver.latitude,driver.longitude], :units => :km).round(2) %>
-              km)
-            </p>
+        <%= render :partial =>"bid",locals: {:bid => bid} %>
 
-          </div>
-          <div class="col-md-5">
-            <div class="row">
-              <div class="col-md-6">
-                <p class="text-center"><%= link_to(image_tag(driver.avatar, size: "50"),user_path(driver.id)) %></p>
-              </div>
-              <div class="col-md-6">
-                <p class="text-left">
-                  <%= driver.username %></p>
-                <p class="text-left"><%= driver.city %>
-                  <% if current_user %>
-                  (<%= disttodriver= Geocoder::Calculations.distance_between([current_user.latitude,current_user.longitude], [driver.latitude,driver.longitude], :units => :km).round(2) %>
-                  km)
-                <% else %>
-                  (<%= disttodriver= Geocoder::Calculations.distance_between([@client.latitude,@client.longitude], [driver.latitude,driver.longitude], :units => :km).round(2) %>
-                  km)
-                  <% end %>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-12">
-          <p class="text-center"><%= bid.come_back.strftime("%d/%m/%y") %></p>
-          <p class="text-center hour"><%= bid.come_back.strftime("%H:%M") %></p>
-          </div>
-
-          <%else %>
-          <h4 class="text-center">Aller</h4>
-          <div class="col-md-5">
-            <div class="row">
-              <div class="col-md-6">
-                <p class="text-center"><%= image_tag(driver.avatar, size: "50") %></p>
-              </div>
-              <div class="col-md-6">
-                <p class="text-left">
-                  <%= driver.username %></p>
-                <p class="text-left"><%= driver.city %>
-                  <% if current_user %>
-                  (<%= disttodriver= Geocoder::Calculations.distance_between([current_user.latitude,current_user.longitude], [driver.latitude,driver.longitude], :units => :km).round(2) %>
-                  km)
-                <% else %>
-                  (<%= disttodriver= Geocoder::Calculations.distance_between([@client.latitude,@client.longitude], [driver.latitude,driver.longitude], :units => :km).round(2) %>
-                  km)
-                  <% end %>
-                </p>
-              </div>
-            </div>
-
-          </div>
-          <div class="col-md-2">
-            <i class="fa fa-arrow-right fa-3x text-center" aria-hidden="true"></i>
-            <p class="text-center">(<%= disttodriver= Geocoder::Calculations.distance_between([shop.latitude,shop.longitude], [driver.latitude,driver.longitude], :units => :km).round(2) %>
-              km)
-            </p>
-
-          </div>
-          <div class="col-md-5">
-            <%= image_tag((Brand.where(id: shop.brand_id).first.brandpic), alt:"Logo", class:"enseignesauchan img-responsive enseignes", width:"100")%>
-            <p class="text-center"><%= shop.name.capitalize %></p>
-          </div>
-          <div class="col-md-12">
-          <p class="text-center"><%= bid.go_at.strftime("%d/%m/%y") %></p>
-          <p class="text-center hour"><%= bid.go_at.strftime("%H:%M") %></p>
-          </div>
-          <% end %>
-
-          <div class="col-md-12">
-          <p>Places restantes : 4</p>
-          <p>
-            <div class="progress">
-              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                <span class="sr-only">20% Complete</span>
-              </div>
-            </div>
-            <%= link_to "Réserver", "", :class => "btn btn-default btn", "data-toggle" => "modal","data-target" => "#reservationmodal#{bid.id}" %>
-          </p>
-        </div>
-
-          <!-- Modal -->
-          <div class="modal fade" id="reservationmodal<%=bid.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="row">
-                <div class="col-sm-6 col-sm-offset-3 text-center">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
-                  <br><br>
-                  <div class="alert alert-info">
-                    <h3>Etes-vous sûr de vouloir réserver ce trajet ?</h3>
-                    <p>Réserver une place maintenant vous fera partir de
-                      <%= driver.city %>
-                      pour vous rendre à
-                      <%= shop.name.capitalize %>. Prenez contact avec le driver pour vous retrouver à
-                      <%= driver.city %>.</p>
-                    <hr>
-
-                    <div class="row">
-
-                      <button type="button" class="btn btn-default btn-lg text-left">
-                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                        OK
-                      </button>
-
-                      <button type="button" class="btn btn-default btn-lg text-right" data-dismiss="modal" aria-label="Close">
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                        Non
-                      </button>
-
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- /Modal -->
-        </div>
-
-      </div>
       <% a+=1 %>
       <%end%>
 
@@ -427,35 +228,9 @@
 </div>
 </div>
 
-<hr>
-<div class="container">
-<div class="row">
-  <h3 class="text-center">
-    Magasins proches:
-  </h3>
-</div>
-<div class="row">
-  <div class="col-md-1"></div>
-  <div class="col-md-10">
-    <div class="row">
-      <% x=1 %>
-      <% @aroundshop.each do |shop| %>
-      <% if x<=8 %>
-      <div class="col-md-3">
 
-        <p class="text-center"><%= image_tag(Brand.where(id:shop.brand_id).first.brandpic, height: "50px",width:"150px" ) %></p>
-        <p class="text-center"><%= shop.name %></p>
-      </div>
-      <% x+=1 %>
-      <% end %>
-      <% end %>
 
-    </div>
-  </div>
-</div>
-</div>
 
-<hr>
 
 <div class="container">
 <div class="row">
@@ -507,19 +282,9 @@
     </p>
 
   </div>
-  <div class="col-md-1"></div>
+
 </div>
-<div class="row">
-  <div class="jumbotron">
-    <h3 class="text-center">Nos partenaires
-    </h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    <img src="http://lorempixel.com/100/100" alt="Placeholder">
-    <img src="http://lorempixel.com/100/100" alt="Placeholder">
-    <img src="http://lorempixel.com/100/100" alt="Placeholder">
-  </div>
-</div>
+
 
 </div>
 <script type="text/javascript">
@@ -528,5 +293,29 @@ $('#bid_withreturn').click(function () {
     ? $('.backbid').show(1000)
     : $('.backbid').hide(1000); //time for show
 });
+
+
+
+var bidheights = $("div.bidblock").map(function ()
+    {
+        return $(this).height();
+    }).get();
+    maxBidHeight = Math.max.apply(null, bidheights);
+  var x = maxBidHeight;
+  var realheight = x*1.1;
+
+    $('div.bidblock').css({"min-height":realheight+"px"});
+
+
+var shopheights = $("div.shopblock").map(function ()
+    {
+        return $(this).height();
+    }).get();
+    maxShopHeight = Math.max.apply(null, shopheights);
+  var x = maxShopHeight;
+  var realshopheight = x*1.1;
+
+    $('div.shopblock').css({"min-height":realshopheight+"px"});
+
 </script>
 <!-- /PAGE CONTENT -->
