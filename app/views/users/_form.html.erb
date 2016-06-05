@@ -16,10 +16,6 @@
     <%= f.text_field :username %>
   </div>
   <div class="field">
-    <%= f.label :admin %><br>
-    <%= f.check_box :admin %>
-  </div>
-  <div class="field">
     <%= f.label :nom %><br>
     <%= f.text_field :nom %>
   </div>
@@ -39,6 +35,44 @@
     <%= f.label :subscribe %><br>
     <%= f.check_box :subscribe %>
   </div>
+  <div class="field">
+    <%= f.label "Je suis conducteur" %>
+    <%= f.check_box :driver,  input_html: { checked: false } %>
+  </div>
+
+  <div class="field ">
+    <div class="field">
+      <%= f.label "Marque de la voiture" %><br>
+      <%= f.collection_select :cbrand_id, Carbrand.order(:name), :id, :name, include_blank: true, placeholder: "" %>
+    </div>
+
+    <div class="field">
+      <%= f.label "Modèle" %><br>
+      <%= f.grouped_collection_select :cmodel_id, Carbrand.order(:name), :carmodels, :name, :id, :name, include_blank: true, placeholder: "" %>
+    </div>
+    <div class="field col-md-12">
+      <div class="row">
+
+      <p class="text-center">Taille de la voiture</p>
+      <div class="col-md-4 text-center">
+      <%= f.label "M" %>
+      <%= radio_button("user", "carsize", "M") %>
+    </div>
+    <div class="col-md-4 text-center">
+      <%= f.label "L" %>
+      <%= radio_button("user", "carsize", "L") %>
+    </div>
+    <div class="col-md-4 text-center">
+      <%= f.label "XL" %>
+      <%= radio_button("user", "carsize", "XL") %>
+    </div>
+  </div>
+
+    </div>
+
+
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -226,15 +226,23 @@
   <div id="navbar" class="collapse navbar-collapse">
     <ul class="nav navbar-nav navbar-right">
       <li>
-        <a href="" class="link_navbar">Accueil</a>
+        <%= link_to "Accueil", root_path %>
       </li>
+
       <li>
-        <a href="" class="link_navbar">Equipe</a>
-      </li>
-      <li>
-        <a href="/static_pages/contact" class="link_navbar">Contact</a>
+        <%= link_to "Contact", static_pages_contact_path %>
       </li>
       <% if user_signed_in? %>
+      <% nbrcoin = 0 %>
+      <li>
+        <%= link_to image_tag(current_user.avatar, size:"25"), user_path(current_user) %>
+      </li>
+      <li>
+        <a href=""> <%= nbrcoin %><span class="fa-stack coin">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-car fa-stack-1x fa-inverse"></i>
+        </span></a>
+      </li>
       <li>
       <li><%= link_to "Déconnexion", destroy_user_session_path, :class => "btn btn-lg", :method => :delete %></li>
     </li>
@@ -292,16 +300,16 @@
 <h3>Infos pratiques</h3>
 </li>
 <li>
-<a href="commentcamarche.html">Comment ca marche ?</a>
+<a href="">Comment ca marche ?</a>
 </li>
 <li>
-<a href="avis.html">Les avis</a>
+<a href="">Les avis</a>
 </li>
 <li>
-<a href="niveaux.html">Les niveaux</a>
+<a href="">Les niveaux</a>
 </li>
 <li>
-<a href="prix.html">Les prix</a>
+<a href="">Les prix</a>
 </li>
 </ul>
 </div>
@@ -311,13 +319,13 @@
 <h3>A propos</h3>
 </li>
 <li>
-<a href="quisommesnous.html">Qui sommes-nous ?</a>
+<a href="">Qui sommes-nous ?</a>
 </li>
 <li>
-<a href="contact.html">Contact</a>
+  <%= link_to "Contact", static_pages_contact_path %>
 </li>
 <li>
-<a href="ilsparlentdenous.html">Ils parlent de nous !</a>
+<a href="">Ils parlent de nous !</a>
 </li>
 </ul>
 </div>
@@ -331,7 +339,6 @@
 </div>
 
 <p class="navbar-text pull-left">© 2016 - CoShop by Emooveers
-<a href="" target="_blank">HTML 5 Validation</a>
 </p>
 
 <a href="" class="navbar-btn btn-danger btn pull-right">
