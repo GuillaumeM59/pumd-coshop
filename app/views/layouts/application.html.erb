@@ -106,14 +106,12 @@
                 <div class="field col-md-12">
                   <div class="row">
 
-                  <p class="text-center">Sexe:</p>
                   <div class="col-md-6 text-center">
-                  <%= f.label "Homme" %>
-                  <%= radio_button("user", "gender", false) %>
-                </div>
-                <div class="col-md-6 text-center">
-                  <%= f.label "Femme" %>
-                  <%= radio_button("user", "gender", true) %>
+                    <p>Sexe:</p>
+                    <%= radio_button_tag(:gender, false) %>
+                    <%= label_tag(:gender, "Homme") %>
+                    <%= radio_button_tag(:gender, true) %>
+                    <%= label_tag(:gender, "Femme") %>
                 </div>
               </div>
             </div>
