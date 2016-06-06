@@ -12,6 +12,19 @@
 <% placedispo +=1%>
 <% end%>
 <% nbrplace= bid.nbrplace %>
+<% if current_user %>
+  <% numplace = 0 %>
+  <% if bid.pass1_id == current_user.id %>
+  <% numplace = 1%>
+  <% elsif bid.pass2_id == current_user.id %>
+  <% numplace = 2%>
+  <% elsif bid.pass3_id == current_user.id %>
+  <% numplace = 3%>
+  <% elsif bid.pass4_id == current_user.id %>
+  <% numplace = 4%>
+  <% end%>
+<% end%>
+
 
 
 <%driver=User.where(id:bid.driver_id).first%>
@@ -136,11 +149,14 @@
         </div>
         <%end %>
       </div>
-      <% if placedispo != 0 %>
-      <%= link_to "Réserver", "", :class => "btn btn-default btn", "data-toggle" => "modal","data-target" => "#reservationmodal#{bid.id}" %>
-<%else %>
-      <p class="complet text-center">COMPLET</p>
-<% end %>
+          <% if placedispo != 0 && current_user%>
+            <%= link_to "Réserver", "", :class => "btn btn-default btn", "data-toggle" => "modal","data-target" => "#reservationmodal#{bid.id}" %>
+          <%elsif placedispo ==0 %>
+            <p class="complet text-center">COMPLET</p>
+          <% end %>
+          <%if numplace != 0 && current_user %>
+          <%= link_to "Annuler", annulerresa_path(bid), :class => "btn btn-default btn" %>
+          <% end %>
     </p>
   </div>
 
@@ -164,10 +180,10 @@
 
                   <div class="row">
 
-                    <button type="button" class="btn btn-default btn-lg text-left">
-                      <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    <%= link_to "Valider", reserver_path(bid), class: "btn btn-default btn-lg text-left"%>
+
                       OK
-                    </button>
+                    </a>
 
                     <button type="button" class="btn btn-default btn-lg text-right" data-dismiss="modal" aria-label="Close">
                       <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
