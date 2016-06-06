@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
 
+
   # GET /users
   # GET /users.json
   def index
@@ -34,10 +35,13 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
+    @coin1 = Coin.create(user_id:@user.id, comment1:"Welcome cocoin 1")
+    @coin1.save
+    @coin2 = Coin.create(user_id:@user.id, comment1:"Welcome cocoin 2")
+    @coin2.save
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to @user, notice: 'Vous avez été inscrit, vous avez gagné 2 cocoins pour essayer le covoiturage shopping! ' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -51,7 +55,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to @user, notice: 'Votre profil a été modifié.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -78,6 +82,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:id, :username, :admin, :nom, :prenom, :comment, :subscribe, :city, :latitude, :longitude, :adress, :zipcode, :gender, :driver, :cbrand_id, :cmodel_id, :carsize, :email, :phone, :xp)
+      params.require(:user).permit(:id, :username, :admin, :nom, :prenom, :comment, :subscribe, :city, :latitude, :longitude, :adress, :zipcode, :gender, :driver, :cbrand_id, :cmodel_id, :carsize, :email, :phone, :xp, :fulladress)
     end
+
 end

@@ -59,9 +59,11 @@
         <p class="text-center "><%= bid.come_back.strftime("%H:%M") %></p>
       </div>
       <div class="col-md-5 car">
+        <% if current_user %>
         <%if current_user.driver %>
         <p class="text-center "><%= Carbrand.find(driver.cbrand_id).name %> <%= Carmodel.find(driver.cmodel_id).name %> (<%= driver.carsize %>)</p>
 
+        <%end %>
         <%end %>
       </div>
     </div>

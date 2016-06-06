@@ -6,12 +6,19 @@ class User < ActiveRecord::Base
 
 #bdd links
   has_many :bids
-  has_one :car
+  has_many :coins
+
 
 #uploader carrierwave
   mount_uploader :avatar, AvatarUploader
 
 #locate by geocoder
+
+
   geocoded_by :city
 after_validation :geocode
+
+
+
+
 end
