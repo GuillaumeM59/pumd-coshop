@@ -1,5 +1,7 @@
 class CarmodelsController < ApplicationController
   before_action :set_carmodel, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, only: [:index, :show, :new, :create, :destroy]
+  before_filter :is_admin, only: [:index, :show, :create, :new, :destroy]
 
   # GET /carmodels
   # GET /carmodels.json
@@ -65,6 +67,17 @@ class CarmodelsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_carmodel
       @carmodel = Carmodel.find(params[:id])
+    end
+
+    def is_admin
+      if current_user.admin
+        true
+      else
+        respond_to do |format|
+            format.html { redirect_to root_path, notice: "Votre n'avez pas les droits d'acces"  }
+            format.json { render json: @carmodel.errors, status: :unprocessable_entity }
+        end
+    end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

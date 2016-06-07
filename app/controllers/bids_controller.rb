@@ -1,19 +1,12 @@
 class BidsController < ApplicationController
   before_action :set_bid, only: [:show, :edit, :update, :destroy, :reserver, :annulerresa]
   before_filter :authenticate_user!, only: [:index, :show, :new, :create, :destroy]
+  before_filter :is_admin, only: [:index, :show, :new, :destroy]
 
   # GET /bids
   # GET /bids.json
   def index
-    if current_user.admin
     @bids = Bid.all
-    else
-      respond_to do |format|
-          format.html { redirect_to root_path, notice: "Votre n'avez pas les droits d'acces"  }
-          format.json { render json: @bid.errors, status: :unprocessable_entity }
-      end
-    end
-
   end
 
   def search
@@ -213,7 +206,14 @@ class BidsController < ApplicationController
       @bid = Bid.find(params[:id])
     end
     def is_admin
-      current_user.admin
+      if current_user.admin
+        true
+      else
+        respond_to do |format|
+            format.html { redirect_to root_path, notice: "Votre n'avez pas les droits d'acces"  }
+            format.json { render json: @bid.errors, status: :unprocessable_entity }
+        end
+    end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

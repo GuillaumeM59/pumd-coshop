@@ -1,5 +1,7 @@
 class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, only: [:index, :show, :new, :create, :destroy]
+  before_filter :is_admin, only: [:index, :show, :destroy]
 
   # GET /shops
   # GET /shops.json
@@ -77,6 +79,18 @@ class ShopsController < ApplicationController
     def set_shop
       @shop = Shop.find(params[:id])
     end
+
+    def is_admin
+      if current_user.admin
+        true
+      else
+        respond_to do |format|
+            format.html { redirect_to root_path, notice: "Votre n'avez pas les droits d'acces"  }
+            format.json { render json: @shop.errors, status: :unprocessable_entity }
+        end
+    end
+    end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shop_params
