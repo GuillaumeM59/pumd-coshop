@@ -5,5 +5,6 @@ class Bid < ActiveRecord::Base
   has_one :brand, through: :shop
   has_many :feedbacks
 
+validates_presence_of :shop_id, :driver_id, :go_at
 
 end
