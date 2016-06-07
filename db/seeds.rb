@@ -33,7 +33,7 @@ File.open("#{Rails.root}/lib/seeds/car.csv") do |lignes|
     #  to remove the quotes from the csv text:
     # to create each record in the database
         carbrandid= Carbrand.where(name:brand.to_s).first.id
-        Carmodel.create!(brand_id: carbrandid, name: model.to_s, year: year)
+        Carmodel.create!(carbrand_id: carbrandid, name: model.to_s, year: year)
 
   end
   end

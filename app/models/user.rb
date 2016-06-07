@@ -34,5 +34,4 @@ after_validation :geocode
 
 
 
-
 end

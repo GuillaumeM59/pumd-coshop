@@ -12,13 +12,13 @@ class ContactMailer < ApplicationMailer
     @bid = bid
     @current_user = current_user
     @url  = 'coshop.fr'
-    mail(from:'reservation@co-shop.fr', to: current_user.email, subject: "co-shop.fr: Nouvelle Réservation de #{current_user.prenom} ")
+    mail(from:'reservation@co-shop.fr', to: current_user.email, subject: "co-shop.fr: co-shop Votre nouvelle réservation")
   end
   def annulresaP_email(current_user,bid)
     @current_user = current_user
     @bid = bid
     @url  = 'coshop.fr'
-    mail(from:'reservation@co-shop.fr', to:current_user.email, subject: "co-shop.fr: Annulation de la réservation de #{current_user.prenom} ")
+    mail(from:'reservation@co-shop.fr', to:current_user.email, subject: "co-shop.fr: co-shop: Vous avez annulé votre réservation")
   end
   def reservation_email(current_user,bid)
     @current_user = current_user
