@@ -24,10 +24,9 @@ class BidsController < ApplicationController
   end
 
   def reserver
-    
+
     @coinsdispo = Coin.where("(user_id = #{current_user.id} AND bid_id = 0)")
     if @coinsdispo.size > 0
-      @coinsdispo.first.update_attributes(:bid_id => @bid.id, :comment2 => "reservation pour le trajet #{@bid.id} le #{DateTime.now.to_s}")
       if @bid.pass1_id == 0
           @bid.pass1_id = current_user.id
         elsif @bid.pass2_id == 0
@@ -37,6 +36,9 @@ class BidsController < ApplicationController
         else
           @bid.pass4_id = current_user.id
       end
+       ContactMailer.reservation_email(current_user, @bid).deliver_now
+       ContactMailer.reservationP_email(current_user,@bid).deliver_now
+       @coinsdispo.first.update_attributes(:bid_id => @bid.id, :comment2 => "reservation pour le trajet #{@bid.id} le #{DateTime.now.to_s}")
       respond_to do |format|
         if @bid.save
           format.html { redirect_to root_path, notice: 'Votre reservation a été enregistrée' }
@@ -63,7 +65,6 @@ class BidsController < ApplicationController
   def annulerresa
     @coinused = Coin.where("(user_id = #{current_user.id} AND bid_id = #{@bid.id})")
     if @coinused.size > 0
-      @coinused.first.update_attributes(:bid_id => 0, :comment2 => "annulation pour le trajet #{@bid.id} le #{DateTime.now.to_s}")
       if @bid.pass1_id == current_user.id
         @bid.pass1_id = 0
       elsif @bid.pass2_id == current_user.id
@@ -73,6 +74,9 @@ class BidsController < ApplicationController
       else
         @bid.pass4_id = 0
       end
+      ContactMailer.annulresa_email(current_user,@bid).deliver_now
+      ContactMailer.annulresaP_email(current_user,@bid).deliver_now
+      @coinused.first.update_attributes(:bid_id => 0, :comment2 => "annulation pour le trajet #{@bid.id} le #{DateTime.now.to_s}")
       respond_to do |format|
         if @bid.save
           format.html { redirect_to root_path, notice: 'Votre reservation a été annulée' }
