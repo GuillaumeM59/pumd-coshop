@@ -5,7 +5,15 @@ class BidsController < ApplicationController
   # GET /bids
   # GET /bids.json
   def index
+    if current_user.admin
     @bids = Bid.all
+    else
+      respond_to do |format|
+          format.html { redirect_to root_path, notice: "Votre n'avez pas les droits d'acces"  }
+          format.json { render json: @bid.errors, status: :unprocessable_entity }
+      end
+    end
+
   end
 
   def search
@@ -203,6 +211,9 @@ class BidsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_bid
       @bid = Bid.find(params[:id])
+    end
+    def is_admin
+      current_user.admin
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -4,7 +4,14 @@ class BrandsController < ApplicationController
   # GET /brands
   # GET /brands.json
   def index
+    if current_user.admin
     @brands = Brand.all
+    else
+      respond_to do |format|
+          format.html { redirect_to root_path, notice: "Votre n'avez pas les droits d'acces"  }
+          format.json { render json: @brand.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # GET /brands/1

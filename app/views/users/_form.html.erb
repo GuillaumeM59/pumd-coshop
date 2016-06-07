@@ -23,6 +23,15 @@
     <%= f.label :prenom %><br>
     <%= f.text_field :prenom %>
   </div>
+  <p>Sexe:</p>
+  <%= radio_button_tag(:gender, false) %>
+  <%= label_tag(:gender, "Homme") %>
+  <%= radio_button_tag(:gender, true) %>
+  <%= label_tag(:gender, "Femme") %>
+  <div class="field">
+    <%= f.label :dob %><br>
+    <%= f.date_select :dob , :start_year => 1900, :end_year => Time.now.year%>
+  </div>
   <div class="field">
     <%= f.label :ville %><br>
     <%= f.text_field :city %>
@@ -37,7 +46,7 @@
   </div>
   <div class="field">
     <%= f.label "Je suis conducteur" %>
-    <%= f.check_box :driver,  input_html: { checked: false } %>
+    <%= f.check_box :driver%>
   </div>
 
   <div class="field ">

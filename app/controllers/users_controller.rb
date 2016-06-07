@@ -6,16 +6,26 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
-    @hash = Gmaps4rails.build_markers(@users) do |user, marker|
-  marker.lat user.latitude
-  marker.lng user.longitude
+    if current_user.admin
+      @users = User.all
+      @hash = Gmaps4rails.build_markers(@users) do |user, marker|
+        marker.lat user.latitude
+        marker.lng user.longitude
+      end
+    else
+      respond_to do |format|
+          format.html { redirect_to root_path, notice: "Votre n'avez pas les droits d'acces"  }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+      dob = @user.dob
+      now = Time.now.utc.to_date
+      @age =now.year - @user.dob.year - (@user.dob.change(:year => now.year) > now ? 1 : 0)
     @hash = Gmaps4rails.build_markers(@user) do |user, marker|
       marker.lat user.latitude
       marker.lng user.longitude
@@ -86,7 +96,10 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:id, :username, :admin, :nom, :prenom, :comment, :subscribe, :city, :latitude, :longitude, :adress, :zipcode, :gender, :driver, :cbrand_id, :cmodel_id, :carsize, :email, :phone, :xp, :fulladress, :avatar, :avatar_cache)
+      params.require(:user).permit(:id, :username, :admin, :nom, :prenom,:dob, :comment, :subscribe, :city, :latitude, :longitude, :adress, :zipcode, :gender, :driver, :cbrand_id, :cmodel_id, :carsize, :email, :phone, :xp, :fulladress, :avatar, :avatar_cache)
     end
+
+
+
 
 end
