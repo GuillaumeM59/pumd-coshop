@@ -1,5 +1,5 @@
 class BidsController < ApplicationController
-  before_action :set_bid, only: [:show, :edit, :update, :destroy]
+  before_action :set_bid, only: [:show, :edit, :update, :destroy, :reserver, :annulerresa]
   before_filter :authenticate_user!, only: [:index, :show, :new, :create, :destroy]
 
   # GET /bids
@@ -22,8 +22,78 @@ class BidsController < ApplicationController
 
 
   end
+
+  def reserver
+    
+    @coinsdispo = Coin.where("(user_id = #{current_user.id} AND bid_id = 0)")
+    if @coinsdispo.size > 0
+      @coinsdispo.first.update_attributes(:bid_id => @bid.id, :comment2 => "reservation pour le trajet #{@bid.id} le #{DateTime.now.to_s}")
+      if @bid.pass1_id == 0
+          @bid.pass1_id = current_user.id
+        elsif @bid.pass2_id == 0
+          @bid.pass2_id = current_user.id
+        elsif @bid.pass3_id == 0
+          @bid.pass3_id = current_user.id
+        else
+          @bid.pass4_id = current_user.id
+      end
+      respond_to do |format|
+        if @bid.save
+          format.html { redirect_to root_path, notice: 'Votre reservation a été enregistrée' }
+          format.json { render :show, status: :created, location: @bid }
+        else
+          format.html { render :new }
+          format.json { render json: @bid.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        if @bid.save
+          format.html { redirect_to root_path, notice: "Vous n'avez pas assez de cocoins " }
+          format.json { render :show, status: :created, location: @bid }
+        else
+          format.html { render :new }
+          format.json { render json: @bid.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+  end
   # GET /bids/1
   # GET /bids/1.json
+  def annulerresa
+    @coinused = Coin.where("(user_id = #{current_user.id} AND bid_id = #{@bid.id})")
+    if @coinused.size > 0
+      @coinused.first.update_attributes(:bid_id => 0, :comment2 => "annulation pour le trajet #{@bid.id} le #{DateTime.now.to_s}")
+      if @bid.pass1_id == current_user.id
+        @bid.pass1_id = 0
+      elsif @bid.pass2_id == current_user.id
+        @bid.pass2_id = 0
+      elsif @bid.pass3_id == current_user.id
+        @bid.pass3_id = 0
+      else
+        @bid.pass4_id = 0
+      end
+      respond_to do |format|
+        if @bid.save
+          format.html { redirect_to root_path, notice: 'Votre reservation a été annulée' }
+          format.json { render :show, status: :created, location: @bid }
+        else
+          format.html { render :new }
+          format.json { render json: @bid.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        if @bid.save
+          format.html { redirect_to root_path, notice: "Vous n'avez pas de reservation pour ce trajet " }
+          format.json { render :show, status: :created, location: @bid }
+        else
+          format.html { render :new }
+          format.json { render json: @bid.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+  end
   def show
   end
 

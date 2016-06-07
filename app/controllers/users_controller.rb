@@ -35,9 +35,13 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    @coin1 = Coin.create(user_id:@user.id, comment1:"Welcome cocoin 1")
+    @coin1 = Coin.new
+    @coin1.user_id = @user.id
+    @coin1.comment1 = "Welcome cocoin 1"
     @coin1.save
-    @coin2 = Coin.create(user_id:@user.id, comment1:"Welcome cocoin 2")
+    @coin2 = Coin.new
+    @coin2.user_id = @user.id
+    @coin2.comment1 = "Welcome cocoin 1"
     @coin2.save
     respond_to do |format|
       if @user.save
