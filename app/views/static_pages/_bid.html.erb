@@ -25,7 +25,7 @@
   <% end%>
 <% end%>
 
-
+<% if bid != nil %>
 
 <%driver=User.where(id:bid.driver_id).first%>
 <%shop=Shop.where(id:bid.shop_id).first%>
@@ -201,3 +201,5 @@
       </div>
 
     </div>
+
+    <%end %>

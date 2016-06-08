@@ -167,7 +167,9 @@
         <% a=1%>
         <% @aroundlastbids.each do |bid| %>
         <% if a<=6 %>
+                <% if bid.avatar != nil %>
           <%= render :partial =>"bid",locals: {:bid => bid} %>
+                <%end %>
       <% a+=1 %>
       <%end%>
       <%end%>
@@ -216,7 +218,9 @@
       <% a=1%>
       <% Bid.all.order(:created_at).reverse.each do |bid| %>
       <% if a<=6 %>
+        <% if bid.avatar != nil %>
         <%= render :partial =>"bid",locals: {:bid => bid} %>
+        <%end%>
 
       <% a+=1 %>
       <%end%>
