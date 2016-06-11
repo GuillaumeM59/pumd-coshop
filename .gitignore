@@ -1,4 +1,0 @@
-.gitignore
-/log/development.log
-/tmp/*
-/config/database.yml
