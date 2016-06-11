@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   validates_presence_of :city, :username, :nom, :prenom, :email, :adress, :zipcode, :dob
   validates_uniqueness_of :username, :email, :phone
+  validates_presence_of :cbrand_id,:if => :driver?
+  validates_presence_of :cmodel_id,:if => :driver?
+  validates_presence_of :carsize, :if => :driver?
     after_create :build_profile
 
     def build_profile
