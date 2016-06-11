@@ -23,10 +23,8 @@ class StaticPagesController < ApplicationController
        @filterShop = true
    @filteredshop = Shop.where(brand_id: params[:brand_id]).order(:name)
     end
-    end
-
-
-
+    @bid = Bid.new
+  end
   def help
   end
 
@@ -60,6 +58,5 @@ private
    end
    @client = request.location
  end
-
 
 end

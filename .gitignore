@@ -1,0 +1,6 @@
+.gitignore
+*.log
+public/assets/*
+/tmp/*
+*.yml
+test/*
