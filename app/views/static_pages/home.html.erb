@@ -29,7 +29,7 @@
         <div class="panel panel-login">
           <div class="panel-heading">
 
-            <%= form_for @bid, url: {controller:"bids",action: "create"}, html: {class: "nifty_form"} do |f| %>
+            <%= form_for Bid.new, url: {controller:"bids",action: "create"}, html: {class: "nifty_form"} do |f| %>
             <% if @bid.errors.any? %>
             <div id="error_explanation">
               <h2><%= pluralize(@bid.errors.count, "erreur qui a empêché ") %>

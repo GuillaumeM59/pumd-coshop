@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   get 'static_pages/proposition'
 
+
 match "/bids/reserver/:id" => "bids#reserver" , via: [:get], :as => :reserver
 match "/bids/annulerresa/:id" => "bids#annulerresa" , via: [:get], :as => :annulerresa
 
