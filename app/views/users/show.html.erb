@@ -1,0 +1,159 @@
+<script src="//maps.google.com/maps/api/js?v=3.22&key=AIzaSyBngIsRw-Abk5UB04-Nl_Qg4vACEfo2jEo&libraries=geometry&language=fr&hl=&region="></script>
+<script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"></script>
+<script type="text/javascript">
+  $('#header').css({'background-color': '#455F6F'})
+</script>
+<p id="notice"><%= notice %></p>
+
+<div class="container-fluid toppage">
+  <header class="row">
+
+    <h1 class="headercontant col-md-12 text-center">
+      Mon Profil:
+      <%= @user.username %>
+      <% if current_user.id == @user.id %>
+      <strong class="text-right">
+        <%= link_to 'Edit', edit_user_path(@user) %></strong>
+      <%end%>
+    </h1>
+  </header>
+
+  <div class="row">
+    <div class="profil stats col-md-6">
+
+      <div class="row">
+        <div class="col-md-5 useravatarbloc">
+          <p class="text-center">
+            <%= image_tag(@user.avatar, class:"img-responsive profilavatar") %>
+          </p>
+        </div>
+        <div class="col-md-7 useridbloc">
+
+          <h3>
+            <%= @user.prenom %>
+            <% if current_user.id == @user.id %>
+            ,
+            <%= @user.nom %>
+            <%end%>
+          </h3>
+          <p>
+            <strong>Ville:
+            </strong>
+            <%= @user.city %>
+
+          </p>
+          <p>
+            <%= @age %>
+            ans
+          </p>
+          <p>
+            <%if @user.gender%>
+            Femme
+            <%else %>
+            Homme
+            <%end%>
+          </p>
+          <p>
+            <strong>Quelques mots:</strong>
+            <%= @user.comment %>
+          </p>
+          <p>
+            <%= @user.xp %>
+          </p>
+          <% if @user.driver %>
+          <p>
+Véhicule:
+              <%= Carbrand.find(@user.cbrand_id).name %>
+              <%= Carmodel.find(@user.cmodel_id).name %>
+              <p>Taille:
+              <%= @user.carsize %>
+            </p>
+            </p>
+            <% end %>
+
+          </div>
+        </div>
+        <% if current_user.id == @user.id %>
+        <div class="col-md-6 usercontactbloc">
+
+          <p>
+            <%= @user.adress %>
+          </p>
+          <p>
+            <%= @user.zipcode %>
+            <%= @user.city %>
+          </p>
+          <p>
+            Tel:<%= @user.phone %>
+          </p>
+          <p>
+            @:<%= @user.email %>
+          </p>
+          <p>
+            <strong>Newsletter:</strong>
+            <%if @user.subscribe %>
+            oui
+            <%else%>
+            non
+            <%end%>
+          </p>
+        </div>
+        <%end%>
+        <% if current_user.id == @user.id %>
+        <% if @user.driver %>
+        <div class="col-md-6 usercarbloc">
+
+          <%= Carbrand.find(@user.cbrand_id).name %>
+          <%= Carmodel.find(@user.cmodel_id).name %>
+          <%= @user.carsize %>
+
+        </div>
+        <% end %>
+        <% end %>
+
+      </div>
+      <div class="profil mapperso col-md-6">
+        <div id="map" style='width: 100%; height: 400px'></div>
+      </div>
+      <div class="col-md-12 nextbidsblock">
+        <h2 class="text-center">Prochains trajets</h2>
+        <% a=1%>
+        <% Bid.where(driver_id:@user.id).order(:go_at).reverse.each do |bid| %>
+        <% if a<=6 %>
+        <%= render :partial =>"/static_pages/bid",locals: {:bid => bid} %>
+
+        <% a+=1 %>
+        <%end%>
+
+        <%end%>
+      </div>
+      <div class="col-md-12 lastbidsblock">
+        <h2 class="text-center">Nouveaux trajets</h2>
+        <% a=1%>
+        <% Bid.where(driver_id:@user.id).order(:created_at).reverse.each do |bid| %>
+        <% if a<=6 %>
+        <%= render :partial =>"/static_pages/bid",locals: {:bid => bid} %>
+
+        <% a+=1 %>
+        <%end%>
+
+        <%end%>
+
+      </div>
+
+    </div>
+    <!-- NESTED ROW -->
+
+  </div>
+
+
+
+
+<script type="text/javascript">
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+markers = handler.addMarkers(<%=raw @hash.to_json %>);
+handler.bounds.extendWith(markers);
+handler.fitMapToBounds();
+});
+</script>

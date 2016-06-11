@@ -1,0 +1,281 @@
+<%if current_user  %>
+<script type="text/javascript">
+  $(function () {
+    filterShopsList();
+  });
+
+  function filterShopsList() {
+    shops = $('#bid_shop_id').html();
+    $('#bid_brand_id').change(function () {
+      brandselected = $('#bid_brand_id :selected').text();
+      optgroup = "optgroup[label='" + brandselected + "']";
+      options = $(shops).filter(optgroup).html();
+      console.log(shops);
+      console.log(optgroup);
+      console.log(options);
+
+      if (brandselected != "") {
+        $('#bid_shop_id').html(options);
+      }
+    });
+  };
+</script>
+<!-- modal newbid -->
+<div class="modal fade" id="newbid" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="panel panel-login">
+          <div class="panel-heading">
+
+            <%= form_for @bid, url: {controller:"bids",action: "create"}, html: {class: "nifty_form"} do |f| %>
+            <% if @bid.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@bid.errors.count, "erreur qui a empêché ") %>
+              la suite:</h2>
+
+              <ul>
+                <% @bid.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+            <% end %>
+
+            <div class="field col-md-5">
+              <%= image_tag(current_user.avatar, size:"60")%>
+              <%= current_user.prenom%>
+            </div>
+            <div class="col-md-2">
+              <i class="fa fa-arrow-right fa-3x text-center" aria-hidden="true"></i>
+            </div>
+            <div class="field col-md-5">
+              <div class="field">
+                <%= f.label "Enseigne" %><br>
+                <%= f.collection_select :brand_id, Brand.order(:name), :id, :name, include_blank: true, placeholder: "" %>
+              </div>
+
+              <div class="field">
+                <%= f.label "Magasin" %><br>
+                <%= f.grouped_collection_select :shop_id, Brand.order(:name), :shops, :name, :id, :name, include_blank: true, placeholder: "" %>
+              </div>
+            </div>
+
+            <div class="field">
+              <%= f.label "Date et Heure de départ:" %><br>
+              <%= f.datetime_select :go_at, min: Time.now, max: 3.month.from_now%>
+            </div>
+            <div class="field">
+              <%= f.label "Nombre de passager"  %><br>
+              <%= f.number_field :nbrplace, min:1, max:4 %>
+            </div>
+            <div class="field">
+              <%= f.label "Je covoite aussi au retour"  %><br>
+              <%= f.check_box :withreturn, input_html: { checked: false }%>
+            </div>
+
+            <div class="backbid">
+
+              <div class="field">
+                <%= f.label "Date et Heure de retour" %><br>
+                <%= f.datetime_select :come_back %>
+              </div>
+            </div>
+
+            <div class="actions">
+              <%= f.submit %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+<% end %>
+
+<!-- PAGE CONTENT  -->
+
+<div class="intro-header">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="intro-message">
+          <!-- <h1>Car2shop</h1> -->
+          <h1>Partagez bien plus qu'un trajet shopping...</h1>
+          <% if current_user  %>
+          <%= link_to "Proposer un trajet", "", :class => "btn btn-default btn-lg", "data-toggle" => "modal","data-target" => "#newbid" %>
+        <% else %>
+          <%= link_to "Inscrivez-vous!", "", :class => "btn btn-default btn-lg", "data-toggle" => "modal","data-target" => "#myModal" %>
+          <!-- <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">Inscrivez-vous !</button> -->
+          <%end%>
+          <hr class="intro-divider">
+
+          <h3 class="text-center">Recherche</h3>
+
+          <%= form_tag bids_search_path, method: :post, class: "form-inline" do %>
+          <div class="form-group">
+
+            <%= text_field_tag(
+                    :search,
+                    params[:search],
+                    placeholder: "Enseigne",
+                    class: "form-control"
+                ) %>
+            <%= submit_tag "Rechercher" %>
+          </div>
+          <% end %>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <!-- /.container -->
+</div>
+<!-- /.intro-header -->
+
+
+<%if current_user %>
+<% else %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <p class="text-center">
+        <%= image_tag("placeholdervideo.png", class:"img-responsive",height:"600px", width:"800px")%>
+      </p>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+</div>
+<% end %>
+
+<!--  SOON BIDS -->
+
+
+
+<div class="container-fluid grayblock">
+  <div class="row">
+    <h3 class="text-center">Dernières minutes :</h3>
+    <div class="col-md-10 col-md-offset-1">
+      <div class="row">
+        <% a=1%>
+        <% @aroundlastbids.each do |bid| %>
+   	<% if @aroundlastbids.size != 0 %>
+	     <% if a<=6 %>
+                <% if bid != nil %>
+          <%= render :partial =>"bid",locals: {:bid => bid} %>
+                <%end %>
+	<%end%>
+      <% a+=1 %>
+      <%end%>
+      <%end%>
+
+    </div>
+  </div>
+
+</div>
+</div>
+<div class="container">
+  <div class="row">
+    <h3 class="text-center">
+      Magasins proches:
+    </h3>
+  </div>
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="row">
+        <% x=1 %>
+        <% @aroundshop.each do |shop| %>
+        <% if x<=8 %>
+        <div class="col-md-3 shopblock">
+
+          <p class="text-center"><%= image_tag(Brand.find(shop.brand_id).brandpic, height: "50px",width:"150px" ) %></p>
+          <p class="text-center"><%= shop.name %></p>
+        </div>
+        <% x+=1 %>
+        <% end %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--  LAST BIDS -->
+
+<div class="container-fluid grayblock">
+<div class="row text-center">
+  <h3>Dernières propositions :</h3>
+</div>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="row">
+      <% a=1%>
+      <% Bid.all.order(:created_at).reverse.each do |bid| %>
+      <% if a<=6 %>
+        <% if bid != nil %>
+        <%= render :partial =>"bid",locals: {:bid => bid} %>
+        <%end%>
+
+      <% a+=1 %>
+      <%end%>
+<%end%>
+
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+<div class="container">
+<div class="row">
+  <h3 class="text-center">
+  Bientot ici :  Derniers avis laissés :
+  </h3>
+
+
+
+        </div>
+</div>
+<script type="text/javascript">
+$('#bid_withreturn').click(function () {
+  this.checked
+    ? $('.backbid').show(1000)
+    : $('.backbid').hide(1000); //time for show
+});
+
+
+
+var bidheights = $("div.bidblock").map(function ()
+    {
+        return $(this).height();
+    }).get();
+    maxBidHeight = Math.max.apply(null, bidheights);
+  var x = maxBidHeight;
+  var realheight = x*1.1;
+
+    $('div.bidblock').css({"min-height":realheight+"px"});
+
+
+var shopheights = $("div.shopblock").map(function ()
+    {
+        return $(this).height();
+    }).get();
+    maxShopHeight = Math.max.apply(null, shopheights);
+  var x = maxShopHeight;
+  var realshopheight = x*1.1;
+
+    $('div.shopblock').css({"min-height":realshopheight+"px"});
+
+</script>
+<!-- /PAGE CONTENT -->

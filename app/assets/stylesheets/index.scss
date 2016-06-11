@@ -1,0 +1,154 @@
+.propocontainer {
+  padding-top: 80px;
+}
+.toppage{
+  margin-top: 90px;
+}
+.intro-header {
+  padding-top: 50px;
+  /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
+  padding-bottom: 50px;
+  text-align: center;
+  color: #ffffff;
+  background: url("/img/coshop-1080.jpg") no-repeat center center;
+  background-size: cover;
+}
+.intro-message {
+  position: relative;
+  padding-top: 20%;
+  padding-bottom: 20%;
+}
+.intro-message > h1 {
+  margin: 10px;
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+  // font-size: 5em;
+}
+.btn-search {
+  // font-size: 1.2em;
+  font-weight: bold;
+  border: solid 1px #ffffff;
+  background-color: #1cf453;
+  color: #F0EDDF;
+}
+.btn-search:hover {
+  border: solid 1px #ffffff;
+  background-color: #19D649;
+  color: #F0EDDF;
+}
+.intro-divider {
+  width: 400px;
+  border-top: 1px solid #f8f8f8;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+.intro-message > h3 {
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+}
+.reservation {
+  font-size: 130%;
+}
+.bidblock {
+  border-left: solid 1px #0f242f;
+  border-top: solid 1px #0f242f;
+  border-right: solid 3px #0f242f;
+  border-bottom: solid 3px #0f242f;
+  border-radius: 10px 10px 10px 10px;
+  background-color: rgb(255, 255, 255);
+  color: #000000;
+  font-size: 0.8em;
+  margin: 2% 4%;
+  padding-top: 1%;
+}
+.enseignesdarty {
+  height: 60px;
+  width: 60px;
+}
+.enseignesauchan {
+  height: 40px;
+  width: 150px;
+}
+.enseignes {
+  margin: 0 auto;
+}
+// -----------------------------------------NAVBAR
+.navbar-brand {
+  font-size: 24px;
+}
+.navbar-container {
+  padding: 20px 0;
+}
+.navbar.navbar-fixed-top.fixed-theme {
+  background-color: #FFF;
+  border-color: #080808;
+  box-shadow: 0 0 5px rgba(0,0,0,.8);
+}
+.navbar-brand.fixed-theme {
+  font-size: 18px;
+}
+.navbar-container.fixed-theme {
+  padding: 0;
+}
+.navbar-brand,
+.navbar-brand.fixed-theme,
+.navbar-container,
+.navbar-container.fixed-theme,
+.navbar.navbar-fixed-top.fixed-theme {
+  transition: 0.8s;
+  -webkit-transition: 0.8s;
+}
+.logo_hot {
+  height: 60px;
+  width: auto;
+}
+.link_navbar {
+  padding-top: 20px;
+}
+.pp-cover {
+  width: 100%;
+  height: 300px;
+  background: url("../img/examplecover.jpg") no-repeat center center;
+  background-size: cover;
+}
+.searchtitle {
+  padding-top: 70px;
+}
+// -------------- reservationmodal
+body.modal-open #wrap {
+  -webkit-filter: blur(7px);
+  -moz-filter: blur(15px);
+  -o-filter: blur(15px);
+  -ms-filter: blur(15px);
+  filter: blur(15px);
+  border: solid 1px;
+}
+.modal-backdrop {
+  background: #f7f7f7;
+}
+.close {
+  font-size: 50px;
+  display: block;
+}
+.container,
+.container-fluid {
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+.grayblock {
+  background-color: rgb(210, 210, 210);
+}
+.complet {
+  position: absolute;
+  color:rgb(140, 8, 0);
+  font-size: 5em;
+  font-weight: 700;
+  top: -50px;
+  left: 50px;
+  text-align: center;
+
+}
+
+// -----------------------------------------------------edit user
+
+.edit {
+  padding-top: 50px;
+
+}

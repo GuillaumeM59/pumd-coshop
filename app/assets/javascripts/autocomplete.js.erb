@@ -1,0 +1,11 @@
+
+$(function() {
+
+
+  var availableTags = [];
+  availableTags = <%= City.all.map{|x| raw x.name} %>;
+  $( "#ctadepart" ).autocomplete({
+    source: availableTags
+  });
+});
+console.log('end load for autocomplete');
