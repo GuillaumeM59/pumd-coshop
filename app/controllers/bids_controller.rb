@@ -16,7 +16,7 @@ class BidsController < ApplicationController
     @shopidlist = @searchlist.map{ |x| x.id }
     @bids=[]
     @shopidlist.count.times do |item|
-       Bid.where(shop_id:"#{@shopidlist[item]}").each do |i|
+       Bid.where(shop_id:"#{@shopidlist[item]}").order(:created_at).reverse.each do |i|
          @bids << i
     end
     end

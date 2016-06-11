@@ -27,8 +27,8 @@
 
 <% if bid != nil %>
 
-<%driver=User.where(id:bid.driver_id).first%>
-<%shop=Shop.where(id:bid.shop_id).first%>
+<%driver=User.find(bid.driver_id)%>
+<%shop=Shop.find(bid.shop_id)%>
 <div class="col-md-3 bidblock">
   <div class="row">
     <%if bid.isreturn %>
@@ -150,9 +150,11 @@
         <%end %>
       </div>
           <% if placedispo != 0 && current_user%>
-            <%= link_to "Réserver", "", :class => "btn btn-default btn", "data-toggle" => "modal","data-target" => "#reservationmodal#{bid.id}" %>
+            <%= link_to "Réserver", "", :class => "btn btn-default", "data-toggle" => "modal","data-target" => "#reservationmodal#{bid.id}" %>
           <%elsif placedispo ==0 %>
             <p class="complet text-center">COMPLET</p>
+	<%else%>
+		<%= link_to "Réserver", "", :class => "btn btn-default", "data-toggle" => "modal","data-target" => "#myModal" %>
           <% end %>
           <%if numplace != 0 && current_user %>
           <%= link_to "Annuler", annulerresa_path(bid), :class => "btn btn-default btn" %>

@@ -1,4 +1,5 @@
 Geocoder.configure(
  timeout: 10,
- ip_lookup: :telize
+ ip_lookup: :freegeoip,
+ :api_key => nil,
 )
