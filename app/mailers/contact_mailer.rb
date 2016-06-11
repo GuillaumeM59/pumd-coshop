@@ -32,5 +32,9 @@ class ContactMailer < ApplicationMailer
     @url  = 'coshop.fr'
     mail(from:'reservation@co-shop.fr', to:User.find(bid.driver_id).email, subject: "co-shop.fr: Annulation de la réservation de #{current_user.prenom} ")
   end
+  def crash_email
+    @url  = 'coshop.fr'
+    mail( to:"manier-guillaume@orange.fr", subject: "co-shop.fr: Crash application ")
+  end
 
 end

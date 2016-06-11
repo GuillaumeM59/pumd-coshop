@@ -1,6 +1,6 @@
 .gitignore
 *.log
-tmp/*
+public/assets/*
+/tmp/*
 *.yml
 test/*
-public/assets/*
