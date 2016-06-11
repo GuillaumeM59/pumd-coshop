@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
 
 
   def home
+    @bid = Bid.new
     @client = request.location
 
     if current_user

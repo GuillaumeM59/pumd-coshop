@@ -162,6 +162,7 @@
                   <%= f.label "Newsletter" %>
                   <%= f.check_box :subscribe,  input_html: { checked: false } %>
                 </div>
+                 <%= f.hidden_field :avatar, value: :default_url %>
                 <div class="field">
                   <%= f.label "Je suis conducteur" %>
                   <%= f.check_box :driver,  input_html: { checked: false } %>
@@ -226,8 +227,8 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a id="brand" class="navbar-brand" href="#"><%= image_tag("logocoshopv2.png", class:"logo_hot img-responsive", alt:"Logo coshop") %></a>
-    <a id="beta" class="navbar-brand" href="#"><%= image_tag("beta.png", class:"logo_hot img-responsive", alt:"Logo beta") %></a>
+    <%= link_to(image_tag("logocoshopv2.png", class:"logo_hot img-responsive", alt:"Logo coshop"), root_path, class:"navbar-brand" ) %>
+    <a id="beta" class="navbar-brand" href="/"><%= image_tag("beta.png", class:"logo_hot img-responsive", alt:"Logo beta") %></a>
   </div>
   <div id="navbar" class="collapse navbar-collapse">
     <ul class="nav navbar-nav navbar-right">
