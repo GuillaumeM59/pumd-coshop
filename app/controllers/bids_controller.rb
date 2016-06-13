@@ -9,6 +9,12 @@ class BidsController < ApplicationController
     @bids = Bid.all
   end
 
+  # GET /bids/new
+  def new
+    @bid = Bid.new
+  end
+
+
   def search
     @client = request.location
     @search= params[:search].capitalize
@@ -16,7 +22,7 @@ class BidsController < ApplicationController
     @shopidlist = @searchlist.map{ |x| x.id }
     @bids=[]
     @shopidlist.count.times do |item|
-       Bid.where(shop_id:"#{@shopidlist[item]}").each do |i|
+       Bid.where(shop_id:"#{@shopidlist[item]}").order(:created_at).reverse.each do |i|
          @bids << i
     end
     end
@@ -102,10 +108,6 @@ class BidsController < ApplicationController
   def show
   end
 
-  # GET /bids/new
-  def new
-    @bid = Bid.new
-  end
 
   # GET /bids/1/edit
   def edit

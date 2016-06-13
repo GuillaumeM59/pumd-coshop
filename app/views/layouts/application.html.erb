@@ -6,7 +6,19 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag "favicon.png",  type: 'image/png' %>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-78958385-1', 'auto');
+  ga('send', 'pageview');
+
+</script>  
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
   </head>
   <body>
     <div class="message" id="flashsmessages">
@@ -106,7 +118,7 @@
                 </div>
                 <div class="field">
                   <label for="dob">Date de Naissance</label>
-                  <%= f.date_field :dob, autofocus: true, :class => 'form-control', :year_range => [(Time.now.year-100), Time.now.year]  %>
+                  <%= f.date_select :dob, autofocus: true, :class => 'form-control', :start_year => 1900, :end_year => Time.now.year   %>
                 </div>
                 <div class="field col-md-12">
                   <div class="row">
@@ -160,6 +172,7 @@
                   <%= f.label "Newsletter" %>
                   <%= f.check_box :subscribe,  input_html: { checked: false } %>
                 </div>
+                 <%= f.hidden_field :avatar, value: :default_url %>
                 <div class="field">
                   <%= f.label "Je suis conducteur" %>
                   <%= f.check_box :driver,  input_html: { checked: false } %>
@@ -224,8 +237,8 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a id="brand" class="navbar-brand" href="#"><%= image_tag("logocoshopv2.png", class:"logo_hot img-responsive", alt:"Logo coshop") %></a>
-    <a id="beta" class="navbar-brand" href="#"><%= image_tag("beta.png", class:"logo_hot img-responsive", alt:"Logo beta") %></a>
+    <%= link_to(image_tag("logocoshopv2.png", class:"logo_hot img-responsive", alt:"Logo coshop"), root_path, class:"navbar-brand" ) %>
+    <a id="beta" class="navbar-brand" href="/"><%= image_tag("beta.png", class:"logo_hot img-responsive", alt:"Logo beta") %></a>
   </div>
   <div id="navbar" class="collapse navbar-collapse">
     <ul class="nav navbar-nav navbar-right">
