@@ -30,7 +30,10 @@ Rails.application.routes.draw do
 match "/bids/reserver/:id" => "bids#reserver" , via: [:get], :as => :reserver
 match "/bids/annulerresa/:id" => "bids#annulerresa" , via: [:get], :as => :annulerresa
 
+  root 'static_pages#home'
 
-  devise_for :users
+
+   devise_for :users
+
   resources :users
 end
