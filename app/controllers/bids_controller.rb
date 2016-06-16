@@ -137,8 +137,8 @@ class BidsController < ApplicationController
     if @bid.withreturn ==false
         respond_to do |format|
           if @bid.save
-            format.html { redirect_to @bid, notice: 'Annonce enregistrée.' }
-            format.json { render :show, status: :created, location: @bid }
+            format.html { redirect_to root_path, notice: 'Annonce enregistrée.' }
+            format.json { render :root, status: :created, location: @bid }
           else
             format.html { render :new }
             format.json { render json: @bid.errors, status: :unprocessable_entity }
@@ -167,8 +167,8 @@ class BidsController < ApplicationController
         @bid.save
         respond_to do |format|
           if @bid.save
-            format.html { redirect_to @bid, notice: 'Aller-retour créé.' }
-            format.json { render :show, status: :created, location: @bid }
+            format.html { redirect_to root_path, notice: 'Aller-retour créé.' }
+            format.json { render :root, status: :created, location: @bid }
           else
             format.html { render :new }
             format.json { render json: @bid.errors, status: :unprocessable_entity }

@@ -163,7 +163,7 @@
     <div class="col-md-10 col-md-offset-1">
       <div class="row">
         <% a=1%>
-        <% @aroundlastbids.each do |bid| %>
+        <% @aroundlastbids.reverse.each do |bid| %>
    	<% if @aroundlastbids.size != 0 %>
 	     <% if a<=6 %>
                 <% if bid != nil %>
@@ -274,5 +274,8 @@ var shopheights = $("div.shopblock").map(function ()
 
     $('div.shopblock').css({"min-height":realshopheight+"px"});
 
+
+
+  
 </script>
 <!-- /PAGE CONTENT -->
