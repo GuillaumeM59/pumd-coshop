@@ -149,25 +149,25 @@
         </div>
         <%end %>
       </div>
-      <ul class="inline text-center list-unstyled">
+      <ul class="list-inline text-center list-unstyled">
         <%if bid.pass1_id != 0 && bid.pass1_id != nil %>
         <li>
-          <%= image_tag(User.find(bid.pass1_id).avatar, alt:"passager1", size:"50px") %>
+          <%= image_tag(User.find(bid.pass1_id).avatar, alt:"passager1", size:"50") %>
         </li>
         <% end %>
         <%if bid.pass2_id != 0 && bid.pass2_id != nil %>
         <li>
-          <%= image_tag(User.find(bid.pass2_id).avatar, alt:"passager2", size:"50px") %>
+          <%= image_tag(User.find(bid.pass2_id).avatar, alt:"passager2", size:"50") %>
         </li>
         <% end %>
         <%if bid.pass3_id != 0 && bid.pass3_id != nil %>
         <li>
-          <%= image_tag(User.find(bid.pass3_id).avatar, alt:"passager3", size:"50px") %>
+          <%= image_tag(User.find(bid.pass3_id).avatar, alt:"passager3", size:"50") %>
         </li>
         <% end %>
         <%if bid.pass4_id != 0 && bid.pass4_id != nil %>
         <li>
-          <%= image_tag(User.find(bid.pass4_id).avatar, alt:"passager4", size:"50px") %>
+          <%= image_tag(User.find(bid.pass4_id).avatar, alt:"passager4", size:"50") %>
         </li>
         <% end %>
 
@@ -181,8 +181,14 @@
 	<%else%>
 		<%= link_to "Réserver", "", :class => "btn btn-default", "data-toggle" => "modal","data-target" => "#myModal" %>
           <% end %>
-          <%if numplace != 0 && current_user %>
+          <%if @bid.isreturn %>
+          <%if numplace != 0 && current_user && @bid.come_back.to_date < Date.today%>
           <%= link_to "Annuler", annulerresa_path(bid), :class => "btn btn-default btn" %>
+          <% end %>
+          <%elsif  %>
+          <%if numplace != 0 && current_user && @bid.go_at.to_date < Date.today%>
+          <%= link_to "Annuler", annulerresa_path(bid), :class => "btn btn-default btn" %>
+          <% end %>
           <% end %>
     </p>
   </div>

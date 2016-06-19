@@ -7,7 +7,6 @@
 .intro-header {
   padding-top: 50px;
   /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
-  padding-bottom: 50px;
   text-align: center;
   color: #ffffff;
   background: url("/img/coshop-1080.jpg") no-repeat center center;
@@ -15,14 +14,42 @@
 }
 .intro-message {
   position: relative;
-  padding-top: 20%;
-  padding-bottom: 20%;
+  padding-top: 15%;
+  padding-bottom: 8%;
 }
 .intro-message > h1 {
   margin: 10px;
   text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
   // font-size: 5em;
 }
+.actors {
+  margin-bottom: 2%;
+  padding-left: 14.5%;
+}
+.actorblock {
+  margin: 0 2%;
+  border: 2px solid rgb(163, 163, 163);
+  background-color: rgba(#2f4c5e, 0.94);
+  border-radius: 5px
+}
+
+.actorblock p {
+  padding-top: 5%;
+  font-size: 1.2em
+}
+.passengerblock p {
+  padding-top: 0;
+  font-size: 1.2em
+}
+
+.economies {
+  font-size: 2em;
+  font-weight: 600;
+  line-height: 2em;
+  padding: 0 5%;
+
+}
+
 .btn-search {
   // font-size: 1.2em;
   font-weight: bold;
