@@ -128,30 +128,59 @@
           <% end %>
 
         </div>
-
       </div>
     </div>
-
   </div>
+
+      <%if current_user %>
+      <% else %>
+      <div class="container-fluid">
+        <div class="row">
+        <div class="col-md-12 actors">
+            <div class="row">
+              <div class="col-md-3 actorblock driverblock">
+                <h3 class="text-center">Rentabilisez vos trajets shopping</h3>
+                <p class="text-center"> Economisez en moyenne <br>
+                  <strong class="economies"> 110 €</strong> par an<br>
+                  en partageant la place libre dans votre voiture.
+
+                </p>
+              </div>
+              <div class="col-md-3 videoblock actorblock">
+                <h3 class="text-center">Qui sommes-nous?</h3>
+                <div class="row">
+                  <div class="col-md-10 col-md-offset-1">
+
+                    <%= image_tag("placeholdervideo.png", class:"img-responsive phvideo")%>
+                  </div>
+
+                </div>
+
+
+
+              </div>
+              <div class="col-md-3 passengerblock actorblock">
+                <h3 class="text-center">Allez enfin faire vos courses en voiture</h3>
+                <p class="text-center"> N'y allez plus à pied ou en transport en commun, <br>
+                   dès <strong class="economies"> 1,60 €</strong> par trajet,<br>
+                  libérez-vous! Choisissez votre magasin et achetez ce que vous voulez.
+
+                </p>
+
+              </div>
+
+            </div>
+        </div>
+        </div>
+        </div>
+        <% end %>
+
+
   <!-- /.container -->
 </div>
 <!-- /.intro-header -->
 
 
-<%if current_user %>
-<% else %>
-<div class="container">
-  <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
-      <p class="text-center">
-        <%= image_tag("placeholdervideo.png", class:"img-responsive",height:"600px", width:"800px")%>
-      </p>
-    </div>
-    <div class="col-md-1"></div>
-  </div>
-</div>
-<% end %>
 
 <!--  SOON BIDS -->
 
@@ -159,6 +188,7 @@
 
 <div class="container-fluid grayblock">
   <div class="row">
+
     <h3 class="text-center">Dernières minutes :</h3>
     <div class="col-md-10 col-md-offset-1">
       <div class="row">
@@ -253,6 +283,16 @@ $('#bid_withreturn').click(function () {
 
 
 
+var actorheights = $(".actorblock").map(function ()
+    {
+        return $(this).height();
+    }).get();
+    maxactorHeight = Math.max.apply(null, actorheights);
+  var x = maxactorHeight;
+  var realheight = x*1.03;
+
+    $('.actorblock').css({"min-height":realheight+"px"});
+
 var bidheights = $("div.bidblock").map(function ()
     {
         return $(this).height();
@@ -276,6 +316,5 @@ var shopheights = $("div.shopblock").map(function ()
 
 
 
-  
 </script>
 <!-- /PAGE CONTENT -->

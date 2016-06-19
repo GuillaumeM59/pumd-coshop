@@ -7,23 +7,26 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    if current_user.admin
+
       @users = User.all
       @hash = Gmaps4rails.build_markers(@users) do |user, marker|
         marker.lat user.latitude
         marker.lng user.longitude
       end
-    else
-      respond_to do |format|
-          format.html { redirect_to root_path, notice: "Votre n'avez pas les droits d'acces"  }
-          format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
+
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+
+    if current_user.id == @user.id
+      if current_user
+      if current_user.driver
+      @waitval = Validation.where("(driver_id = #{current_user.id} AND validated = false)").where("bid_date < ?", "#{Date.today}")
+      end
+      end
+    end
       dob = @user.dob
       now = Time.now.utc.to_date
       @age =now.year - @user.dob.year - (@user.dob.change(:year => now.year) > now ? 1 : 0)
