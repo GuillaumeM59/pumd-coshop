@@ -12,7 +12,27 @@ config.i18n.default_locale = :fr
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
-  # Full error reports are disabled and caching is turned on.
+ 
+#ACTION MAILER
+config.action_mailer.default_url_options = { :host => 'co-shop.fr' }
+# ActionMailer Config
+# Setup for production - deliveries, no errors raised
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.perform_deliveries = true
+config.action_mailer.raise_delivery_errors = false 
+config.action_mailer.default :charset => "utf-8"
+config.action_mailer.smtp_settings = {
+  :address   => "smtp.co-shop.fr",
+  :port      => 587,
+  :user_name => "contact@co-shop.fr",
+  :password => "ilrestedujambon"
+}
+
+
+
+
+
+ # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
@@ -31,7 +51,7 @@ config.i18n.default_locale = :fr
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  config.assets.compile = true
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.

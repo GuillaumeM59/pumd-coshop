@@ -1,4 +1,8 @@
 .gitignore
-/log/development.log
+*.log
+public/assets/*
 /tmp/*
-/config/database.yml
+*.yml
+test/*
+/db/schema.rb
+/config/*

@@ -1,7 +1,15 @@
 class StaticPagesController < ApplicationController
-  def home
-    @client = request.location
 
+
+
+  def home
+    @bid = Bid.new
+    @client = request.location
+    if current_user
+    if current_user.driver
+    @waitval = Validation.where("(driver_id = #{current_user.id} AND validated = false)").where("bid_date > ?", "#{Date.today}")
+    end
+    end
     if current_user
       @aroundshop = Shop.near([current_user.latitude, current_user.longitude], 30, :units => :km)
     else
@@ -19,13 +27,8 @@ class StaticPagesController < ApplicationController
        @filterShop = true
    @filteredshop = Shop.where(brand_id: params[:brand_id]).order(:name)
     end
-
-
-
-
     @bid = Bid.new
   end
-
   def help
   end
 

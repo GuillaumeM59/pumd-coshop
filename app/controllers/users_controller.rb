@@ -1,21 +1,35 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, only: [:index, :show, :new, :create, :destroy]
+  before_filter :is_admin, only: [:index]
 
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
-    @hash = Gmaps4rails.build_markers(@users) do |user, marker|
-  marker.lat user.latitude
-  marker.lng user.longitude
-    end
+
+      @users = User.all
+      @hash = Gmaps4rails.build_markers(@users) do |user, marker|
+        marker.lat user.latitude
+        marker.lng user.longitude
+      end
+
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+
+    if current_user.id == @user.id
+      if current_user
+      if current_user.driver
+      @waitval = Validation.where("(driver_id = #{current_user.id} AND validated = false)").where("bid_date < ?", "#{Date.today}")
+      end
+      end
+    end
+      dob = @user.dob
+      now = Time.now.utc.to_date
+      @age =now.year - @user.dob.year - (@user.dob.change(:year => now.year) > now ? 1 : 0)
     @hash = Gmaps4rails.build_markers(@user) do |user, marker|
       marker.lat user.latitude
       marker.lng user.longitude
@@ -35,9 +49,14 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    @coin1 = Coin.create(user_id:@user.id, comment1:"Welcome cocoin 1")
+    @user.avatar = :default_url
+    @coin1 = Coin.new
+    @coin1.user_id = @user.id
+    @coin1.comment1 = "Welcome cocoin 1"
     @coin1.save
-    @coin2 = Coin.create(user_id:@user.id, comment1:"Welcome cocoin 2")
+    @coin2 = Coin.new
+    @coin2.user_id = @user.id
+    @coin2.comment1 = "Welcome cocoin 1"
     @coin2.save
     respond_to do |format|
       if @user.save
@@ -80,9 +99,24 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
+    def is_admin
+      if current_user.admin
+        true
+      else
+        respond_to do |format|
+            format.html { redirect_to root_path, notice: "Votre n'avez pas les droits d'acces"  }
+            format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
+    end
+    end
+
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:id, :username, :admin, :nom, :prenom, :comment, :subscribe, :city, :latitude, :longitude, :adress, :zipcode, :gender, :driver, :cbrand_id, :cmodel_id, :carsize, :email, :phone, :xp, :fulladress)
+      params.require(:user).permit(:id, :username, :admin, :nom, :prenom,:dob, :comment, :subscribe, :city, :latitude, :longitude, :adress, :zipcode, :gender, :driver, :cbrand_id, :cmodel_id, :carsize, :email, :phone, :xp, :fulladress, :avatar)
     end
+
+
+
 
 end

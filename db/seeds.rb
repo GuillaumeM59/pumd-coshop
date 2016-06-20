@@ -33,22 +33,12 @@ File.open("#{Rails.root}/lib/seeds/car.csv") do |lignes|
     #  to remove the quotes from the csv text:
     # to create each record in the database
         carbrandid= Carbrand.where(name:brand.to_s).first.id
-        Carmodel.create!(brand_id: carbrandid, name: model.to_s, year: year)
+        Carmodel.create!(carbrand_id: carbrandid, name: model.to_s, year: year)
 
   end
   end
 
 
-
-  File.open("#{Rails.root}/lib/seeds/villes.csv") do |lignes|
-    lignes.read.each_line do |ville|
-      departement, name, zipcode = ville.chomp.split(",")
-      #  to remove the quotes from the csv text:
-      #code.gsub!(/\A"|"\Z/, '')
-      # to create each record in the database
-      City.create!(:name => name.to_s, :departement => departement, :zip =>zipcode)
-    end
-  end
 
 
 
@@ -59,14 +49,15 @@ villes = ["Armentière", "Quesnoy sur deule", "Roubaix", "Linselles", "Tourcoing
 categories = ["hypermarché", "supermarché", "proximité", "Drive", "bricolage", "ameublement", "jardinage"]
 User.delete_all
 
-10.times do |i|
-  if i == 0
-    adimage_src= File.join("public/img/default_pict/admin.jpeg")
+    adimage_src= File.join("#{Rails.root}/public/img/default_pict/admin.jpeg")
     adsrc_file= File.new(adimage_src)
     User.create!(
         username: 'guidev',
         email: 'dev.guillaumem59@gmail.com',
         password:"12345678",
+        adress:'9 rue de lorraine ',
+        zipcode: '59100',
+        dob:Date.today,
         password_confirmation:"12345678",
         prenom: 'Guillaume',
         nom: 'Manier',
@@ -76,41 +67,23 @@ User.delete_all
         admin:true,
         subscribe:true
         )
-  else
-        usimage_src= File.join("public/img/default_pict/user#{i}.jpg")
-        ussrc_file= File.new(usimage_src)
-  User.create!(
-      username: "toto#{i}",
-      email: "toto#{i}@gmail.com",
-      password:"12345678",
-      password_confirmation:"12345678",
-      prenom: "toto#{i}",
-      nom: "Nom#{i}",
-      comment: "Je suis toto#{i} et j'aime faire les courses",
-      admin:false,
-      avatar: ussrc_file,
-      city: villes[i],
-      subscribe:true
-      )
-      sleep 1
-    end
-end
+
 Brand.delete_all
-usimage_src= File.join("public/img/Logos-Enseignes/Alimentaire/Carrefour.png")
+usimage_src= File.join("#{Rails.root}/public/img/Logos-Enseignes/Alimentaire/Carrefour.png")
 ussrc_file= File.new(usimage_src)
 Brand.create!(
       name:"Carrefour",
       category:categories[0],
       brandpic:ussrc_file
 )
-usimage_src= File.join("public/img/Logos-Enseignes/Alimentaire/Auchan.png")
+usimage_src= File.join("#{Rails.root}/public/img/Logos-Enseignes/Alimentaire/Auchan.png")
 ussrc_file= File.new(usimage_src)
 Brand.create!(
       name:"Auchan",
       category:categories[0],
             brandpic:ussrc_file
 )
-usimage_src= File.join("public/img/Logos-Enseignes/Alimentaire/Leclercq.png")
+usimage_src= File.join("#{Rails.root}/public/img/Logos-Enseignes/Alimentaire/Leclercq.png")
 ussrc_file= File.new(usimage_src)
 Brand.create!(
       name:"Eleclerc",
@@ -163,32 +136,4 @@ File.open("#{Rails.root}/lib/seeds/ELeclercMEL.csv") do |shops|
     Shop.create!(:longitude => long, :latitude =>lat, :brand_id => lecler_id, :name => nom)
     sleep 1
   end
-end
-
-
-#bids
-
-bordel = datetime.current
-
-6.times do |j|
-  shopalea=rand(1..18)
-  b=rand(1..10)
-  a=rand(1..10)
-  d=rand(1..10)
-  e=rand(1..10)
-  f=rand(1..10)
-
-Bid.create!(
-  shop_id: shopalea ,
-  driver_id: b,
-  go_at: DateTime.now,
-  come_back: DateTime.now + 2.hour,
-
-
-
-  pass1_id: a,
-  pass2_id: e,
-  pass3_id: d,
-  pass4_id: f,
-)
 end

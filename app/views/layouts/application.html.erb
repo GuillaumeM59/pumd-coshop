@@ -4,18 +4,29 @@
     <title>Covoiturage shopping co-shop.fr</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= favicon_link_tag "favicon.png",  type: 'image/png' %>
     <%= csrf_meta_tags %>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-78958385-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
   </head>
   <body>
-    <div class="message">
+    <div class="message" id="flashsmessages">
       <%= flash_messages %></div>
 
       <script type="text/javascript">
         $(function () {
           filterCarsList();
         });
-
         function filterCarsList() {
           brands = $('#user_cmodel_id').html();
           $('#user_cbrand_id').change(function () {
@@ -25,7 +36,6 @@
             console.log(brands);
             console.log(optgroup1);
             console.log(options1);
-
             if (brandselected1 != "") {
               $('#user_cmodel_id').html(options1);
             }
@@ -103,6 +113,10 @@
                   <label for="nom">Nom</label>
                   <%= f.text_field :nom, autofocus: true, :class => 'form-control', :id => "nom"  %>
                 </div>
+                <div class="field">
+                  <label for="dob">Date de Naissance</label>
+                  <%= f.date_select :dob, autofocus: true, :class => 'form-control', :start_year => 1900, :end_year => Time.now.year   %>
+                </div>
                 <div class="field col-md-12">
                   <div class="row">
 
@@ -155,6 +169,7 @@
                   <%= f.label "Newsletter" %>
                   <%= f.check_box :subscribe,  input_html: { checked: false } %>
                 </div>
+                 <%= f.hidden_field :avatar, value: :default_url %>
                 <div class="field">
                   <%= f.label "Je suis conducteur" %>
                   <%= f.check_box :driver,  input_html: { checked: false } %>
@@ -219,7 +234,8 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a id="brand" class="navbar-brand" href="#"><%= image_tag("logocoshop.png", class:"logo_hot img-responsive", alt:"Logo coshop") %></a>
+    <%= link_to(image_tag("logocoshopv2.png", class:"logo_hot img-responsive", alt:"Logo coshop"), root_path, class:"navbar-brand" ) %>
+    <a id="beta" class="navbar-brand" href="/"><%= image_tag("beta.png", class:"logo_hot img-responsive", alt:"Logo beta") %></a>
   </div>
   <div id="navbar" class="collapse navbar-collapse">
     <ul class="nav navbar-nav navbar-right">
@@ -231,9 +247,10 @@
         <%= link_to "Contact", static_pages_contact_path %>
       </li>
       <% if user_signed_in? %>
-      <% nbrcoin = 0 %>
+      <% @coinsdispo = Coin.where("(user_id = #{current_user.id} AND bid_id = 0)") %>
+      <% nbrcoin = @coinsdispo.size %>
       <li>
-        <%= link_to image_tag(current_user.avatar, size:"25"), user_path(current_user) %>
+        <%= link_to image_tag(current_user.avatar, size:"30"), user_path(current_user) %>
       </li>
       <li>
         <a href=""> <%= nbrcoin %><span class="fa-stack coin">
@@ -284,11 +301,6 @@
 <i class="fa fa-twitter-square fa-4x"></i>
 </a>
 </li>
-<li>
-<a href="">
-<i class="fa fa-github-square fa-4x"></i>
-</a>
-</li>
 </ul>
 
 </div>
@@ -327,11 +339,11 @@
 </li>
 </ul>
 </div>
-<div class="col-md-3"></div>
+<div class="col-md-2"></div>
 
 <div class="col-md-2">
 <ul>
-<li><%= image_tag("logocoshop.png", alt:"Logo co-shop") %></li>
+<li><%= image_tag("logocoshopv2.png", alt:"Logo co-shop") %></li>
 </ul>
 </div>
 </div>
@@ -352,6 +364,17 @@ $('#user_driver').click(function () {
     ? $('.carblock').show(1000)
     : $('.carblock').hide(1000); //time for show
 });
+
+var bidpheights = $(".bidpart").map(function ()
+    {
+        return $(this).height();
+    }).get();
+    maxBidpHeight = Math.max.apply(null, bidpheights);
+  var x = maxBidpHeight;
+  var realheight = x*1.1;
+    $('.bidpart').css({"min-height":realheight+"px"});
+    $('.bidblock').css({"min-height":realheight+"px"});
+
 </script>
 </body>
 </html>

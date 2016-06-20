@@ -32,8 +32,8 @@
             <%= form_for @bid, url: {controller:"bids",action: "create"}, html: {class: "nifty_form"} do |f| %>
             <% if @bid.errors.any? %>
             <div id="error_explanation">
-              <h2><%= pluralize(@bid.errors.count, "error") %>
-                prohibited this bid from being saved:</h2>
+              <h2><%= pluralize(@bid.errors.count, "erreur qui a empêché ") %>
+              la suite:</h2>
 
               <ul>
                 <% @bid.errors.full_messages.each do |message| %>
@@ -104,14 +104,15 @@
     <div class="row">
       <div class="col-lg-12">
         <div class="intro-message">
-          <!-- <h1>Car2shop</h1> -->
-          <h1>Rejoignez vos magasins gratuitement !</h1>
+          <h1>Partagez bien plus qu'un trajet shopping...</h1>
           <% if current_user  %>
           <%= link_to "Proposer un trajet", "", :class => "btn btn-default btn-lg", "data-toggle" => "modal","data-target" => "#newbid" %>
         <% else %>
           <%= link_to "Inscrivez-vous!", "", :class => "btn btn-default btn-lg", "data-toggle" => "modal","data-target" => "#myModal" %>
-          <!-- <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">Inscrivez-vous !</button> -->
           <%end%>
+          <p class="text-center offert">
+            Inscription gratuite - 2 premiers jetons offerts
+          </p>
           <hr class="intro-divider">
 
           <h3 class="text-center">Recherche</h3>
@@ -130,30 +131,59 @@
           <% end %>
 
         </div>
-
       </div>
     </div>
-
   </div>
+
+      <%if current_user %>
+      <% else %>
+      <div class="container-fluid">
+        <div class="row">
+        <div class="col-md-12 actors">
+            <div class="row">
+              <div class="col-md-3 actorblock driverblock">
+                <h3 class="text-center">Rentabilisez vos trajets shopping</h3>
+                <p class="text-center"> Economisez en moyenne <br>
+                  <strong class="economies"> 110 €</strong> par an<br>
+                  en partageant la place libre dans votre voiture.
+
+                </p>
+              </div>
+              <div class="col-md-3 videoblock actorblock">
+                <h3 class="text-center">Qui sommes-nous?</h3>
+                <div class="row">
+                  <div class="col-md-10 col-md-offset-1">
+
+                    <%= image_tag("placeholdervideo.png", class:"img-responsive phvideo")%>
+                  </div>
+
+                </div>
+
+
+
+              </div>
+              <div class="col-md-3 passengerblock actorblock">
+                <h3 class="text-center">Allez enfin libre de faire vos courses en voiture</h3>
+                <p class="text-center"> N'y allez plus à pied ou en transport en commun, dès<br>
+                   <strong class="economies"> 1,60 €</strong> par trajet,<br>
+                  choisissez votre magasin et achetez ce que vous voulez.
+
+                </p>
+
+              </div>
+
+            </div>
+        </div>
+        </div>
+        </div>
+        <% end %>
+
+
   <!-- /.container -->
 </div>
 <!-- /.intro-header -->
 
 
-<%if current_user %>
-<% else %>
-<div class="container">
-  <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
-      <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="http://www.youtube.com/embed/pYf5deeiPf4" width="800" height="800"></iframe>
-      </div>
-    </div>
-    <div class="col-md-1"></div>
-  </div>
-</div>
-<% end %>
 
 <!--  SOON BIDS -->
 
@@ -161,22 +191,34 @@
 
 <div class="container-fluid grayblock">
   <div class="row">
+
     <h3 class="text-center">Dernières minutes :</h3>
     <div class="col-md-10 col-md-offset-1">
-      <div class="row">
+      <div class="row bids">
+        <ul class="list-unstyled ">
+
         <% a=1%>
-        <% @aroundlastbids.each do |bid| %>
-        <% if a<=6 %>
+        <% @aroundlastbids.reverse.each do |bid| %>
+   	<% if @aroundlastbids.size != 0 %>
+	     <% if a<=6 %>
+                <% if bid != nil %>
           <%= render :partial =>"bid",locals: {:bid => bid} %>
+                <%end %>
+	<%end%>
       <% a+=1 %>
       <%end%>
-      <%end%>
-
+<%end%>
+      </ul>
     </div>
   </div>
 
 </div>
 </div>
+
+
+
+
+
 <div class="container">
   <div class="row">
     <h3 class="text-center">
@@ -192,7 +234,7 @@
         <% if x<=8 %>
         <div class="col-md-3 shopblock">
 
-          <p class="text-center"><%= image_tag(Brand.where(id:shop.brand_id).first.brandpic, height: "50px",width:"150px" ) %></p>
+          <p class="text-center"><%= image_tag(Brand.find(shop.brand_id).brandpic, height: "50px",width:"150px" ) %></p>
           <p class="text-center"><%= shop.name %></p>
         </div>
         <% x+=1 %>
@@ -206,27 +248,28 @@
 
 <!--  LAST BIDS -->
 
-<div class="container-fluid grayblock">
-<div class="row text-center">
-  <h3>Dernières propositions :</h3>
-</div>
-<div class="row">
-  <div class="col-md-10 col-md-offset-1">
-    <div class="row">
+<div class="container-fluide grayblock">
+
+  <h3 class="text-center">Dernières propositions :</h3>
+
+<div class="row bids">
+  <ul class="col-md-offset-1 col-md-10  list-unstyled bidlist">
+
       <% a=1%>
       <% Bid.all.order(:created_at).reverse.each do |bid| %>
       <% if a<=6 %>
+        <% if bid != nil %>
         <%= render :partial =>"bid",locals: {:bid => bid} %>
+        <%end%>
 
       <% a+=1 %>
       <%end%>
+<%end%>
 
-      <%end%>
-
-    </div>
+</ul>
   </div>
 </div>
-</div>
+
 
 
 
@@ -235,57 +278,12 @@
 <div class="container">
 <div class="row">
   <h3 class="text-center">
-    Derniers avis laissé :
+  Bientot ici :  Derniers avis laissés :
   </h3>
-</div>
-<div class="row">
-  <div class="col-md-1"></div>
-  <div class="col-md-5">
-
-    <p><img src="img/n3xt.png" class="img-circle img-conducteur" alt="conducteur" width="50" height="50">
-      <i class="fa fa-car"></i>
-      Nom conducteur</p>
-    <p><img src="img/user1.png" class="img-circle img-conducteur" alt="conducteur" width="50" height="50">
-      Nom passager</p>
-    <!-- feedbacks/comment -->
-    <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-      <i class="fa fa-star"></i>
-      <i class="fa fa-star"></i>
-      <i class="fa fa-star"></i>
-      <i class="fa fa-star-o"></i>
-      <i class="fa fa-star-o"></i>
-    </p>
-    <p>
-      <a href="">Voir le trajet</a>
-    </p>
-
-  </div>
-
-  <div class="col-md-5">
-
-    <p><img src="img/user2.png" class="img-circle img-conducteur" alt="conducteur" width="50" height="50">
-      <i class="fa fa-car"></i>
-      Nom conducteur</p>
-    <p><img src="img/n3xt.png" class="img-circle img-conducteur" alt="conducteur" width="50" height="50">
-      Nom passager</p>
-    <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-      irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-      <i class="fa fa-star"></i>
-      <i class="fa fa-star"></i>
-      <i class="fa fa-star"></i>
-      <i class="fa fa-star-o"></i>
-      <i class="fa fa-star-o"></i>
-    </p>
-    <p>
-      <a href="">Voir le trajet</a>
-    </p>
-
-  </div>
-
-</div>
 
 
+
+        </div>
 </div>
 <script type="text/javascript">
 $('#bid_withreturn').click(function () {
@@ -296,18 +294,19 @@ $('#bid_withreturn').click(function () {
 
 
 
-var bidheights = $("div.bidblock").map(function ()
+var actorheights = $(".actorblock").map(function ()
     {
         return $(this).height();
     }).get();
-    maxBidHeight = Math.max.apply(null, bidheights);
-  var x = maxBidHeight;
-  var realheight = x*1.1;
+    maxactorHeight = Math.max.apply(null, actorheights);
+  var x = maxactorHeight;
+  var realheight = x*1.03;
 
-    $('div.bidblock').css({"min-height":realheight+"px"});
+    $('.actorblock').css({"min-height":realheight+"px"});
 
 
-var shopheights = $("div.shopblock").map(function ()
+
+var shopheights = $(".shopblock").map(function ()
     {
         return $(this).height();
     }).get();
@@ -315,7 +314,9 @@ var shopheights = $("div.shopblock").map(function ()
   var x = maxShopHeight;
   var realshopheight = x*1.1;
 
-    $('div.shopblock').css({"min-height":realshopheight+"px"});
+    $('.shopblock').css({"min-height":realshopheight+"px"});
+
+
 
 </script>
 <!-- /PAGE CONTENT -->
