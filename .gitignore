@@ -4,3 +4,5 @@ public/assets/*
 /tmp/*
 *.yml
 test/*
+/db/schema.rb
+/config/*
