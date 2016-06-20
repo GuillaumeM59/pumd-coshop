@@ -167,6 +167,9 @@ end
 
 
 #bids
+
+bordel = datetime.current
+
 6.times do |j|
   shopalea=rand(1..18)
   b=rand(1..10)
@@ -180,6 +183,7 @@ Bid.create!(
   driver_id: b,
   go_at: DateTime.now,
   come_back: DateTime.now + 2.hour,
+
 
 
   pass1_id: a,
