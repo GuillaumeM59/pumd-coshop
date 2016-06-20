@@ -464,3 +464,42 @@ textarea {
 .navbar-right button {
   margin-top: 3%
 }
+
+.row {
+  padding: 0;
+  margin:0
+}
+.bidpart {
+  font-size: 1.2em
+}
+.bidpart .fa {
+  float:none !important;
+}
+.date p, .hour p {
+  font-size: 1.4em;
+  margin-bottom: 0
+}
+.car p {
+  margin-bottom: 0;
+  font-size: 1em
+}
+
+.progress {
+  margin-bottom: 0
+}
+.bidpart h4 {
+  margin-top: 0;
+  margin-bottom: 0
+}
+
+
+
+
+.bidblock {
+  margin-top:1%;
+  margin-bottom:1%;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 2px solid rgb(8, 0, 23);
+  padding-top: 1%
+}
