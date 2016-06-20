@@ -4,3 +4,4 @@ public/assets/*
 /tmp/*
 *.yml
 test/*
+config/*
