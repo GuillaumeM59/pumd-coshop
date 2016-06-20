@@ -112,9 +112,33 @@ Véhicule:
         <% end %>
 
       </div>
-      <div class="profil mapperso col-md-6">
-        <div id="map" style='width: 100%; height: 400px'></div>
-      </div>
+        <% if current_user %>
+        <% if current_user.driver %>
+        <div class="col-md-6 waitingvalidations">
+          <% if @waitval.size == 0%>
+            <h3 class="text-center"> Pas de validation de trajets en attente</h3>
+          <% else %>
+            <h3 class="text-center"> <%= @waitval.size %> validation<% if @waitval.size > 1 %>s<%end %> de trajets en attente</h3>
+            <% @waitval.each do |valrequest| %>
+            <% passager = User.find(valrequest.pass_id) %>
+            <p> Trajet du <%= valrequest.bid_date %>, avec <%= passager.prenom %>, code de validation :
+ <%= form_for Validation.find(valrequest.id), :method => :PUT do |f| %>
+
+              <%= f.text_field :code_token %>
+<%= f.submit "Valider"%>
+<%end %>
+
+            </p>
+            <%end %>
+            <%end %>
+          </div>
+            <%else %>
+            <div class="profil mapperso col-md-6">
+              <div id="map" style='width: 100%; height: 400px'></div>
+            </div>
+          <%end %>
+        <%end %>
+
       <div class="col-md-12 nextbidsblock">
         <h2 class="text-center">Prochains trajets</h2>
         <% a=1%>
@@ -150,6 +174,19 @@ Véhicule:
 
 
 <script type="text/javascript">
+
+var bidheights = $("div.bidblock").map(function ()
+    {
+        return $(this).height();
+    }).get();
+    maxBidHeight = Math.max.apply(null, bidheights);
+  var x = maxBidHeight;
+  var realheight = x*1.1;
+
+    $('div.bidblock').css({"min-height":realheight+"px"});
+
+
+
 handler = Gmaps.build('Google');
 handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
 markers = handler.addMarkers(<%=raw @hash.to_json %>);
