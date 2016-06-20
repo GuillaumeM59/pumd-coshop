@@ -5,3 +5,4 @@ public/assets/*
 *.yml
 test/*
 /db/schema.rb
+/config/*
