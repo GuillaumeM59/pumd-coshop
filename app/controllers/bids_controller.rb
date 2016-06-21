@@ -60,8 +60,8 @@ class BidsController < ApplicationController
           @val.bid_date = @bid.go_at.to_date
         end
       @val.save
-      #  ContactMailer.reservation_email(current_user, @bid).deliver_now
-      #  ContactMailer.reservationP_email(current_user,@bid, code5).deliver_now
+      ContactMailer.reservation_email(current_user, @bid).deliver_now
+      ContactMailer.reservationP_email(current_user,@bid, code5).deliver_now
        @coinsdispo.first.update_attributes(:bid_id => @bid.id, :comment2 => "reservation pour le trajet #{@bid.id} le #{DateTime.now.to_s}")
       respond_to do |format|
         if @bid.save
@@ -104,8 +104,8 @@ class BidsController < ApplicationController
         coco.destroy
       end
       @val.destroy
-      # ContactMailer.annulresa_email(current_user,@bid).deliver_now
-      # ContactMailer.annulresaP_email(current_user,@bid).deliver_now
+      ContactMailer.annulresa_email(current_user,@bid).deliver_now
+      ContactMailer.annulresaP_email(current_user,@bid).deliver_now
       @coinused.first.update_attributes(:bid_id => 0, :comment2 => "annulation pour le trajet #{@bid.id} le #{DateTime.now.to_s}")
       respond_to do |format|
         if @bid.save
