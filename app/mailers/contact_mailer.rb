@@ -8,8 +8,9 @@ class ContactMailer < ApplicationMailer
     @url  = 'coshop.fr'
     mail(from: @message.email, to:'projetcoshop@gmail.com', subject: "Une question vous a été posé sur le site par #{@message.prenom} ")
   end
-  def reservationP_email(current_user,bid)
+  def reservationP_email(current_user, bid)
     @bid = bid
+    @code5 = Validation.where(bid_id: @bid.id).where(pass_id: current_user.id).first.code
     @current_user = current_user
     @url  = 'coshop.fr'
     mail(from:'reservation@co-shop.fr', to: current_user.email, subject: "co-shop.fr: co-shop Votre nouvelle réservation")

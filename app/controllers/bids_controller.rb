@@ -61,7 +61,7 @@ class BidsController < ApplicationController
         end
       @val.save
       ContactMailer.reservation_email(current_user, @bid).deliver_now
-      ContactMailer.reservationP_email(current_user,@bid, code5).deliver_now
+      ContactMailer.reservationP_email(current_user,@bid).deliver_now
        @coinsdispo.first.update_attributes(:bid_id => @bid.id, :comment2 => "reservation pour le trajet #{@bid.id} le #{DateTime.now.to_s}")
       respond_to do |format|
         if @bid.save
