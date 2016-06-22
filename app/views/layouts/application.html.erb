@@ -23,25 +23,7 @@
     <div class="message" id="flashsmessages">
       <%= flash_messages %></div>
 
-      <script type="text/javascript">
-        $(function () {
-          filterCarsList();
-        });
-        function filterCarsList() {
-          brands = $('#user_cmodel_id').html();
-          $('#user_cbrand_id').change(function () {
-            brandselected1 = $('#user_cbrand_id :selected').text();
-            optgroup1 = "optgroup[label='" + brandselected1 + "']";
-            options1 = $(brands).filter(optgroup1).html();
-            console.log(brands);
-            console.log(optgroup1);
-            console.log(options1);
-            if (brandselected1 != "") {
-              $('#user_cmodel_id').html(options1);
-            }
-          });
-        };
-      </script>
+
 
     <!-- modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -365,6 +347,7 @@ $('#user_driver').click(function () {
     : $('.carblock').hide(1000); //time for show
 });
 
+
 var bidpheights = $(".bidpart").map(function ()
     {
         return $(this).height();
@@ -374,6 +357,25 @@ var bidpheights = $(".bidpart").map(function ()
   var realheight = x*1.1;
     $('.bidpart').css({"min-height":realheight+"px"});
     $('.bidblock').css({"min-height":realheight+"px"});
+
+    $(function () {
+      filterCarsList();
+    });
+
+    function filterCarsList() {
+      brands = $('#user_cmodel_id').html();
+      $('#user_cbrand_id').change(function () {
+        brandselected1 = $('#user_cbrand_id :selected').text();
+        optgroup1 = "optgroup[label='" + brandselected1 + "']";
+        options1 = $(brands).filter(optgroup1).html();
+        console.log(brands);
+        console.log(optgroup1);
+        console.log(options1);
+        if (brandselected1 != "") {
+          $('#user_cmodel_id').html(options1);
+        }
+      });
+    };
 
 </script>
 </body>
