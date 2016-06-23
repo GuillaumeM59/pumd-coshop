@@ -115,7 +115,7 @@ Véhicule:
         <% if current_user %>
         <% if current_user.driver %>
         <div class="col-md-6 waitingvalidations">
-          <% if @waitval.size == 0%>
+          <% if @waitval.size == 0 || @waitval == nil%>
             <h3 class="text-center"> Pas de validation de trajets en attente</h3>
           <% else %>
             <h3 class="text-center"> <%= @waitval.size %> validation<% if @waitval.size > 1 %>s<%end %> de trajets en attente</h3>
