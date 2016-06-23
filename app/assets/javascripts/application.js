@@ -19,6 +19,7 @@
 //= require connexion
 //= require resultat
 //= require index
+//= require testnavbar
 //= require static_pages
 //= require underscore
 //= require gmaps/google

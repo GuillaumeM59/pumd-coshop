@@ -13,6 +13,8 @@
     Magasin: <%= Shop.find(@bid.shop_id).name %><br>
     Horaire: <%= @bid.go_at %> <br>
     Conducteur :<%= driver.prenom %> <br>
+
+    <h3>Votre code de vérification: <strong> <%= @code5 %> </strong></h3>
 <br>
     Merci pour votre confiance, vous pouvez contacter le conducteur: <br>
     @:<%= driver.email %> <br>
