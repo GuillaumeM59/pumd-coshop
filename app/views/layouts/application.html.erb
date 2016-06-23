@@ -352,11 +352,12 @@ var bidpheights = $(".bidpart").map(function ()
     {
         return $(this).height();
     }).get();
-    maxBidpHeight = Math.max.apply(null, bidpheights);
+    var maxBidpHeight = Math.max.apply(null, bidpheights);
   var x = maxBidpHeight;
   var realheight = x*1.1;
     $('.bidpart').css({"min-height":realheight+"px"});
     $('.bidblock').css({"min-height":realheight+"px"});
+
 
     $(function () {
       filterCarsList();
@@ -365,15 +366,15 @@ var bidpheights = $(".bidpart").map(function ()
     function filterCarsList() {
       brands = $('#user_cmodel_id').html();
       $('#user_cbrand_id').change(function () {
-        brandselected1 = $('#user_cbrand_id :selected').text();
-        optgroup1 = "optgroup[label='" + brandselected1 + "']";
-        options1 = $(brands).filter(optgroup1).html();
+        var brandselected1 = $('#user_cbrand_id :selected').text();
+        var optgroup1 = "optgroup[label='" + brandselected1 + "']";
+        var options1 = $(brands).filter(optgroup1).html();
         console.log(brands);
         console.log(optgroup1);
         console.log(options1);
         if (brandselected1 != "") {
           $('#user_cmodel_id').html(options1);
-        }
+        };
       });
     };
 
