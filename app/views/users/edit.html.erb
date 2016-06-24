@@ -66,7 +66,7 @@
 
     <div class="field">
       <%= f.label :password %>
-      <i>(leave blank if you don't want to change it)</i><br/>
+      <i>(Laisser vide si vous ne voulez pas le changer)</i><br/>
       <%= f.password_field :password, autocomplete: "off" %>
     </div>
 
@@ -77,7 +77,7 @@
 
     <div class="field">
       <%= f.label :current_password %>
-      <i>(we need your current password to confirm your changes)</i><br/>
+      <i>(Nous avons besoin de votre mot de passe actuel pour confirmer vos changements)</i><br/>
       <%= f.password_field :current_password, autocomplete: "off" %>
     </div>
     <div class="field">
@@ -153,7 +153,7 @@
     <%= f.submit "Enregistrer les changements" %>
 
     <% end %>
-    <%= link_to 'Supprimer mon compte', current_user, method: :delete, data: { confirm: 'Voullez-vous vraiment supprimer ' } %>
+    <%= link_to 'Supprimer mon compte', current_user, method: :delete, data: { confirm: 'Voulez-vous vraiment supprimer ' } %>
   </div>
 </div>
 
