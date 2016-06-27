@@ -25,5 +25,4 @@
 //= require gmaps/google
 //= require markerclusterer
 //= require autocomplete
-//= require dynamic_select
 //= require_tree .
