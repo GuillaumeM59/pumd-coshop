@@ -1,0 +1,138 @@
+// Place all the styles related to the Bids controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.bidpart {
+  font-size: 1.2em
+}
+.bidpart .fa {
+  float:none !important;
+}
+.date p, .hour p {
+  font-size: 1.4em;
+  margin-bottom: 0
+}
+.car p {
+  margin-bottom: 0;
+}
+
+.placerestantes{
+  font-size: 0.8em
+}
+
+.progress {
+  margin-bottom: 10px
+}
+.bidpart h4 {
+  margin-top: 0;
+  margin-bottom: 0
+}
+
+.bidblock {
+  margin-top:1%;
+  margin-bottom:1%;
+  margin-left:1.6%;
+  margin-right:1.6%;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 2px solid rgb(8, 0, 23);
+  padding-top: 1%;
+  width:30%;
+}
+
+.depart, .conducteur {
+  margin-top: 5%
+}
+.illutrajet p {
+  background-image: url(asset_path('targetline.png'));
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  padding-bottom: 5%;
+  font-size: 0.9em;
+  color: rgb(80, 80, 80)
+}
+.progress {
+  height: 10px;
+  padding-left: 0;
+  padding-right: 0;
+min-height: 10px;
+display: none;
+}
+.progress-bar {
+  min-height: 10px
+}
+
+@-webkit-keyframes showin{
+  from { opacity: 0;
+        height: 0%}
+  1% {display:block}
+  to { opacity: 1;
+        height: 100%}
+ }
+    @-moz-keyframes showin{   from { opacity: 0;
+            height: 0%}
+              1% {display:block}
+      to { opacity: 1;
+            height: 100%;
+          display:block} }
+     @-ms-keyframes showin{   from { opacity: 0;
+             height: 0%}
+               1% {display:block}
+       to { opacity: 1;
+             height: 100%} }
+      @-o-keyframes showin{   from { opacity: 0;
+              height: 0%}
+                1% {display:block}
+        to { opacity: 1;
+              height: 100%} }
+         @keyframes showin{   from { opacity: 0;
+                 height: 0%}
+                   1% {display:block}
+           to { opacity: 1;
+                 height: 100%} }
+
+
+
+@-webkit-keyframes hidein{
+  from { opacity: 1;
+        height: 100%}
+  99% {display:none}
+  to { opacity: 0;
+        height: 0;display:none}
+ }
+    @-moz-keyframes hidein{   from { opacity: 1;
+            height: 100%}
+      to { opacity: 0;
+            height: 0;display:none} }
+     @-ms-keyframes hidein{   from { opacity: 1;
+             height: 100%}
+       to { opacity: 0;
+             height: 0;
+           display:none} }
+      @-o-keyframes hidein{   from { opacity: 1;
+              height: 100%}
+
+        to { opacity: 0;
+              height: 0;
+            display:none} }
+         @keyframes hidein{   from { opacity: 1;
+                 height: 100%}
+           to { opacity: 0;
+                 height: 0} }
+
+.hovered{
+     -webkit-animation: showin 0.5s ease-in ;
+        -moz-animation: showin 0.5s ease-in ;
+         -ms-animation: showin 0.5s ease-in ;
+          -o-animation: showin 0.5s ease-in ;
+             animation: showin 0.5s ease-in ;
+             animation-fill-mode: forwards;
+}
+.leaved{
+     -webkit-animation: hidein 1s ease-out ;
+        -moz-animation: hidein 1s ease-out ;
+         -ms-animation: hidein 1s ease-out ;
+          -o-animation: hidein 1s ease-out ;
+             animation: hidein 1s ease-out ;
+             animation-fill-mode: forwards;
+}
