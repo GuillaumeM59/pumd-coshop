@@ -220,10 +220,12 @@
   <p class=" visible-xs visible-sm  col-xs-12 col-md-12 text-center plusicon hidden-md">
     <i class="fa fa-plus-circle fa-2x"></i>
   </p>
+</div>
+</div>
 
 
 
-<%if (bid.isreturn && (bid.come_back < DateTime.now)) || ((bid.withreturn==false) && (bid.go_at<DateTime.now)) %>
+<%if (bid.isreturn && (bid.come_back > DateTime.now)) || ((bid.withreturn==false) && (bid.go_at>DateTime.now)) %>
 <% if placedispo != 0 %>
 <!-- Modal -->
 <div class="modal fade" id="reservationmodal<%=bid.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -277,8 +279,6 @@ $('.validationreservation').click(function () {
 <%end %>
 
 <%end %>
-</div>
-</div>
 
 <script type="text/javascript">
 
@@ -308,7 +308,6 @@ $( ".bidblock" ).mouseenter(function() {
     $(this).find('.progress').removeClass( "leaved" ).addClass( "hovered" );
     $(this).find('.blockdispo').css({"display":"none"});
     $(this).find(".plusicon").removeClass( "hovered" ).addClass( "leaved" );
-    $(this).find('.plusicon').css({"display":"none"});
 });
 $( ".bidblock" ).mouseleave(function() {
   $(this).find(".distome").removeClass( "hovered" ).addClass( "leaved" );
