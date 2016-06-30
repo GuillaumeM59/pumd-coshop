@@ -48,11 +48,19 @@
     </div>
     <div class="col-md-4 depart">
 
+
       <p class="text-center"><%= image_tag((Brand.find(shop.brand_id).minipic), alt:"Logo", class:"enseignes", size: "50")%></p>
       <p class="text-center"><%= shop.name.capitalize %></p>
     </div>
     <div class="col-md-4 horaire">
-      <p class="text-center date"><%= bid.come_back.strftime("%d/%m/%y") %></p>
+
+  <time datetime="@{bid.come_back.to_date}" class="icon text-center">
+    <strong><%=l(bid.come_back,format:"%A")  %></strong>
+    <span><%=l(bid.come_back,format:"%d")  %></span>
+    <em><%=l(bid.come_back,format:"%B") %></em>
+  </time>
+
+
       <p class="text-center hour"><%= bid.come_back.strftime("%H:%M") %></p>
         <%if isactive %>
       <div class="blockdispo">
@@ -62,6 +70,7 @@
         <p class="text-center nbrplace">
           <%= placedispo %>
         </p>
+
       </div>
       <%end %>
     </div>
@@ -98,7 +107,11 @@
     </div>
 
     <div class="col-md-4 horaire">
-      <p class="text-center date"><%= bid.go_at.strftime("%d/%m/%y") %></p>
+      <time datetime="@{bid.go_at.to_date}" class="icon text-center">
+        <strong><%=l(bid.go_at,format:"%A")  %></strong>
+        <span><%=l(bid.go_at,format:"%d")  %></span>
+        <em><%=l(bid.go_at,format:"%B") %></em>
+      </time>
       <p class="text-center hour"><%= bid.go_at.strftime("%H:%M") %></p>
 
       <%if isactive %>
@@ -123,6 +136,7 @@
     </div>
 
     <% end %>
+
 
 <%if isactive %>
 
@@ -166,8 +180,8 @@
 
     <%end %>
 
-    <ul class="col-md-12 actionbtn list-unstyled list-inline text-center leaved">
 
+    <ul class="col-md-12 actionbtn list-unstyled list-inline text-center leaved">
     <%if bid.go_at < DateTime.now || bid.come_back < DateTime.now %>
     <li class="text-center">Le trajet à déjà eu lieu</li>
     <% elsif placedispo != 0 && current_user%>
@@ -276,7 +290,7 @@ var bidpheights = $(".bidblock").map(function ()
     }).get();
     var maxBidpHeight = Math.max.apply(null, bidpheights);
   var x = maxBidpHeight;
-  var realheight = x*1.13;
+  var realheight = x*1.14;
     $('.bidblock').css({"min-height":realheight+"px"});
 
 $( ".bidblock" ).mouseenter(function() {
