@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="actions">
-                            <%= f.submit %>
+                            <%= f.submit "Poster la(les) annonce(s)", :class => "btn btn-login form-control"%>
 
                         </div>
                     </div>
@@ -137,7 +137,7 @@
 
     <%if current_user %>
 <% else %>
-    <div class="container-fluid">
+    <div class=" hidden-xs hidden-sm container-fluid">
         <div class="row">
             <div class="col-md-12 actors">
                 <div class="row">
@@ -228,7 +228,7 @@
                 <% x=1 %>
                 <% @aroundshop.each do |shop| %>
                 <% if x<=8 %>
-                <div class="col-md-3 shopblock">
+                <div class="col-xs-12 col-sm-6 col-md-3 shopblock">
 
                     <p class="text-center"><%= image_tag(Brand.find(shop.brand_id).brandpic, height: "50px",width:"150px" ) %></p>
                     <p class="text-center"><%= shop.name %></p>
@@ -285,17 +285,6 @@
         this.checked
             ? $('.backbid').show(1000)
             : $('.backbid').hide(1000); //time for show
-    });
-
-    var actorheights = $(".actorblock").map(function () {
-        return $(this).height();
-    }).get();
-    maxactorHeight = Math.max.apply(null, actorheights);
-    var x = maxactorHeight;
-    var realheight = x * 1.03;
-
-    $('.actorblock').css({
-        "min-height": realheight + "px"
     });
 
     var shopheights = $(".shopblock").map(function () {
