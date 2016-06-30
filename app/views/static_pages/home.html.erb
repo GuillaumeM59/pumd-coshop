@@ -244,21 +244,27 @@
 
 <!--  LAST BIDS -->
 
-<div class="container-fluide grayblock">
+<div class="container">
 
     <h3 class="text-center">Dernières propositions :</h3>
 
     <div class="row bids">
-        <ul class="col-md-offset-1 col-md-10  list-unstyled bidlist">
 
-            <% a=1%>
-            <% Bid.all.order(:created_at).reverse.each do |bid| %>
-            <% if a<=6 %>
+
+            <% a=0%>
+            <% Bid.all.reverse.each do |bid| %>
+            <% if a<6 %>
             <% if bid != nil %>
+
             <%= render :partial =>"bid",locals: {:bid => bid} %>
+
             <%end%>
 
             <% a+=1 %>
+            <%if a%3==0 %>
+          </div>
+              <div class="row bids">
+            <%end%>
             <%end%>
             <%end%>
 

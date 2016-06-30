@@ -348,15 +348,7 @@ $('#user_driver').click(function () {
 });
 
 
-var bidpheights = $(".bidpart").map(function ()
-    {
-        return $(this).height();
-    }).get();
-    var maxBidpHeight = Math.max.apply(null, bidpheights);
-  var x = maxBidpHeight;
-  var realheight = x*1.1;
-    $('.bidpart').css({"min-height":realheight+"px"});
-    $('.bidblock').css({"min-height":realheight+"px"});
+
 
 
     $(function () {
