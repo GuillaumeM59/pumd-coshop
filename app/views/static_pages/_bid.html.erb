@@ -46,13 +46,13 @@
         autour de moi
       </p>
     </div>
-    <div class="col-md-4 depart">
+    <div class="col-xs-4 col-sm-4 col-md-4 depart">
 
 
       <p class="text-center"><%= image_tag((Brand.find(shop.brand_id).minipic), alt:"Logo", class:"enseignes", size: "50")%></p>
       <p class="text-center"><%= shop.name.capitalize %></p>
     </div>
-    <div class="col-md-4 horaire">
+    <div class="col-xs-4 col-md-4 horaire">
 
   <time datetime="@{bid.come_back.to_date}" class="icon text-center">
     <strong><%=l(bid.come_back,format:"%A")  %></strong>
@@ -74,13 +74,13 @@
       </div>
       <%end %>
     </div>
-    <div class="col-md-4 conducteur">
+    <div class="col-xs-4 col-md-4 conducteur">
       <p class="text-center"><%= link_to(image_tag(driver.avatar, size: "50"),user_path(driver.id)) %></p>
       <p class="text-center">
         <%= driver.username %>
         <%= driver.city %></p>
     </div>
-    <div class="col-md-10 col-md-offset-1 illutrajet leaved">
+    <div class="col-xs-12 col-md-10 col-md-offset-1 illutrajet leaved">
       <p class="text-center"><%= disttodriver= Geocoder::Calculations.distance_between([shop.latitude,shop.longitude], [driver.latitude,driver.longitude], :units => :km).round(1) %>
         km</p>
     </div>
@@ -99,14 +99,14 @@
       </p>
     </div>
 
-    <div class="col-md-4 conducteur">
+    <div class="col-xs-4 col-md-4 conducteur">
       <p class="text-center"><%= link_to(image_tag(driver.avatar, size: "50"),user_path(driver.id)) %></p>
       <p class="text-center">
         <%= driver.username %>
         <%= driver.city %></p>
     </div>
 
-    <div class="col-md-4 horaire">
+    <div class="col-xs-4 col-md-4 horaire">
       <time datetime="@{bid.go_at.to_date}" class="icon text-center">
         <strong><%=l(bid.go_at,format:"%A")  %></strong>
         <span><%=l(bid.go_at,format:"%d")  %></span>
@@ -125,12 +125,12 @@
       </div>
       <%end %>
     </div>
-    <div class="col-md-4 depart">
+    <div class="col-xs-4 col-md-4 depart">
       <p class="text-center"><%= image_tag((Brand.find(shop.brand_id).minipic), alt:"Logo", class:"enseignes", size: "50")%></p>
       <p class="text-center"><%= shop.name.capitalize %></p>
     </div>
 
-    <div class="col-md-10 col-md-offset-1 illutrajet leaved">
+    <div class="col-xs-12 col-md-10 col-md-offset-1 illutrajet leaved">
       <p class="text-center"><%= disttodriver= Geocoder::Calculations.distance_between([shop.latitude,shop.longitude], [driver.latitude,driver.longitude], :units => :km).round(1) %>
         km</p>
     </div>
@@ -140,15 +140,15 @@
 
 <%if isactive %>
 
-    <div class="col-md-12 placerestantes leaved">
+    <div class="col-md-12 placerestantes ">
       <%pourcentbar = 10 + (nbrplace - placedispo)*(90/nbrplace) %>
       <div class="row">
-        <div class="col-md-7">
+        <div class="col-xs-7 col-md-7">
           <p>Places restantes :
             <%= placedispo %></p>
         </div>
 
-        <div class="col-md-5 car leaved">
+        <div class="col-xs-7 col-md-5 car ">
           <% if current_user %>
           <%if driver.driver %>
           <p class="text-center "><span class="fa-stack fa-1x">
@@ -217,6 +217,10 @@
 
   </ul>
 
+  <p class=" visible-xs visible-sm  col-xs-12 col-md-12 text-center plusicon hidden-md">
+    <i class="fa fa-plus-circle fa-2x"></i>
+  </p>
+
 
 
 <%if (bid.isreturn && (bid.come_back < DateTime.now)) || ((bid.withreturn==false) && (bid.go_at<DateTime.now)) %>
@@ -283,15 +287,9 @@ $(".distome").css({"display":"none"});
   $('.illutrajet').css({"display":"none"});
   $('.placerestantes').css({"display":"none"});
   $('.actionbtn').css({"display":"none"});
+  $('.progress').css({"display":"none"});
+  $('.car').css({"display":"none"});
 
-var bidpheights = $(".bidblock").map(function ()
-    {
-        return $(this).height();
-    }).get();
-    var maxBidpHeight = Math.max.apply(null, bidpheights);
-  var x = maxBidpHeight;
-  var realheight = x*1.14;
-    $('.bidblock').css({"min-height":realheight+"px"});
 
 $( ".bidblock" ).mouseenter(function() {
   $(this).find(".distome").css({"display":"block"});
@@ -319,7 +317,24 @@ $( ".bidblock" ).mouseleave(function() {
     $(this).find('.progress').removeClass( "hovered" ).addClass( "leaved" );
     $(this).find(".car").removeClass( "hovered" ).addClass( "leaved" );
     $(this).find(".blockdispo").removeClass( "leaved" ).addClass( "hovered" );
+    $(".distome").css({"display":"none"});
+
+      $('.illutrajet').css({"display":"none"});
+      $('.placerestantes').css({"display":"none"});
+      $('.actionbtn').css({"display":"none"});
+      $('.progress').css({"display":"none"});
+      $('.car').css({"display":"none"});
+    $('.bidblock').css({"min-height":realheight+"px"});
 
 });
 
+var bidpheights = $(".bidblock").map(function ()
+{
+  return $(this).height();
+}).get();
+var maxBidpHeight = Math.max.apply(null, bidpheights);
+var x = maxBidpHeight;
+console.log(x)
+var realheight = x*1.06;
+$('.bidblock').css({"min-height":realheight+"px"});
 </script>
