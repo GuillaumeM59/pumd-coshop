@@ -5,4 +5,6 @@ class Brand < ActiveRecord::Base
   #uploader carrierwave
     mount_uploader :brandpic, BrandpicUploader
 
+      mount_uploader :minipic, MinibrandUploader
+
 end
