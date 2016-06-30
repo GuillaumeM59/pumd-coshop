@@ -1,4 +1,4 @@
-<li class="row bidblock">
+<li class="row">
 <% placedispo = 0 %>
 <% if bid.pass1_id == 0 %>
 <% placedispo +=1%>
@@ -30,6 +30,154 @@
 
 <%driver=User.find(bid.driver_id)%>
 <%shop=Shop.find(bid.shop_id)%>
+
+
+<div class="col-md-5 bidpartber">
+  <div class="col-md-4">
+    <p class="text-right">
+      <div class="row">
+      <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+      <p><%= driver.city %></p>
+    </div>
+    <div class="row">
+      <div class="vertical-line" style="height: 100px;" /></div>
+      (<%= disttodriver= Geocoder::Calculations.distance_between([shop.latitude,shop.longitude], [driver.latitude,driver.longitude], :units => :km).round(2) %>
+          km)
+    </div>
+    <div class="row">
+      <i class="fa fa-dot-circle-o" aria-hidden="true"></i>
+
+            <%= image_tag((Brand.where(id: shop.brand_id).first.brandpic), alt:"Logo", class:"enseignesauchan img-responsive enseignes", width:"100")%>
+            <p class="text-center"><%= shop.name.capitalize %></p>
+    </div>
+    </div>
+    </p>
+
+
+<div class="col-md-2">
+  <div class="text-center">
+  <%= bid.come_back.strftime("%H:%M") %>
+</div>
+<time datetime="2016-10-13" class="icon">
+  <em><%= l(bid.go_at,format:"%B") %></em>
+  <strong><%= l(bid.go_at,format:"%A") %></strong>
+  <span><%= l(bid.go_at,format:"%d") %></span>
+</time>
+
+</div>
+
+<div class="col-md-4">
+<div class="row">
+
+</div>
+
+<div class="row">
+  <h4>Places restantes : <%= placedispo %></h4>
+</div>
+<div class="row">
+  <div class="progress">
+    <%pourcentbar = 10 + (nbrplace - placedispo)*(90/nbrplace) %>
+    <%if pourcentbar <= 40 %>
+    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= pourcentbar %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= pourcentbar %>%">
+      <span class="sr-only"><%= pourcentbar %>% Complete</span>
+    </div>
+    <%elsif pourcentbar <= 89 %>
+    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="<%= pourcentbar %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= pourcentbar %>%">
+      <span class="sr-only"><%= pourcentbar %>% Complete</span>
+    </div>
+    <%else %>
+    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<%= pourcentbar %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= pourcentbar %>%">
+      <span class="sr-only"><%= pourcentbar %>% Complete</span>
+    </div>
+    <%end %>
+  </div>
+</div>
+<div class="row">
+
+
+  <div class="btn-group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+    </button>
+    <ul class="dropdown-menu">
+      <%if bid.pass1_id != 0 && bid.pass1_id != nil %>
+      <li><a href="#">  <%= image_tag(User.find(bid.pass1_id).avatar, alt:"passager1", size:"50") %> </a></li>
+      <% end %>
+      <%if bid.pass2_id != 0 && bid.pass2_id != nil %>
+      <li><a href="#">  <%= image_tag(User.find(bid.pass2_id).avatar, alt:"passager2", size:"50") %></a></li>
+      <% end %>
+      <%if bid.pass3_id != 0 && bid.pass3_id != nil %>
+      <li><a href="#"><%= image_tag(User.find(bid.pass3_id).avatar, alt:"passager3", size:"50") %></a></li>
+      <% end %>
+      <li role="separator" class="divider"></li>
+      <li><a href="#">Réservez !</a></li>
+    </ul>
+  </div>
+
+
+  <%if placedispo != bid.nbrplace %>
+
+            <div class="btn-group dropup float-right">
+              <button type="button" class="btn btn-default">Qui y va?</button>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu list-inline">
+                <%if bid.pass1_id != 0 && bid.pass1_id != nil %>
+                <li>
+                  <%= image_tag(User.find(bid.pass1_id).avatar, alt:"passager1", size:"50") %>
+                </li>
+                <% end %>
+                <%if bid.pass2_id != 0 && bid.pass2_id != nil %>
+                <li>
+                  <%= image_tag(User.find(bid.pass2_id).avatar, alt:"passager2", size:"50") %>
+                </li>
+                <% end %>
+                <%if bid.pass3_id != 0 && bid.pass3_id != nil %>
+                <li>
+                  <%= image_tag(User.find(bid.pass3_id).avatar, alt:"passager3", size:"50") %>
+                </li>
+                <% end %>
+                <%if bid.pass4_id != 0 && bid.pass4_id != nil %>
+                <li>
+                  <%= image_tag(User.find(bid.pass4_id).avatar, alt:"passager4", size:"50") %>
+                </li>
+                <% end %>
+              </ul>
+            </div>
+            <%end %>
+
+
+</div>
+</div>
+</div>
+<div class="driverpartber">
+<div class="col-md-2">
+  <div class="row">
+    <p class="text-center"><%= link_to(image_tag(driver.avatar, size: "50"),user_path(driver.id)) %></p>
+</div>
+
+<div class="row text-center">
+  <%= driver.username %></p>
+</div>
+
+<div class="row">
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star" aria-hidden="true"></i>
+<i class="fa fa-star-o" aria-hidden="true"></i>
+
+</div>
+
+
+
+</div>
+</div>
+
+
+
 
 
   <div class="col-md-5 col-sm-12 col-xs-12 bidpart destination">
