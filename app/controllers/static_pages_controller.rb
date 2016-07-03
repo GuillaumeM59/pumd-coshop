@@ -7,7 +7,7 @@ class StaticPagesController < ApplicationController
     @client = request.location
     if current_user
     if current_user.driver
-    @waitval = Validation.where("(driver_id = #{current_user.id} AND validated = false)").where("bid_date > ?", "#{Date.today}")
+    @waitval = Validation.where("(driver_id = #{current_user.id} AND validated = false)").where("bid_date < ?", "#{Date.today}")
     end
     end
     if current_user
