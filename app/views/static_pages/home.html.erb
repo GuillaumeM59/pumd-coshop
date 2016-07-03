@@ -140,12 +140,21 @@
 
                     <div class="container hidden-xs hidden-sm ">
                       <div class="row">
-                        <%= current_user.avatar%>
-                      <%if current_user.avatar== nil%>
+
+                      <%if current_user.avatar == "/assets/default-3a2bb18cb5ec0e07a7b23f09ae06747a422809f9ba2f3ea9d13d8271a8a232d7.png"%>
 
                       <div class=" col-md-offset-2 col-md-8 driverblock loggedannounce">
 
-                        <h4 class="text-center ">Vous n'avez pas encore mis d'avatar, vous pouvez le changer <%= link_to "ici", edit_user_path(current_user) %></h4>
+                        <h4 class="text-center ">Vous n'avez pas encore de photo de profil, vous pouvez l'ajouter <%= link_to "ici", edit_user_path(current_user) %></h4>
+                      </div>
+
+                      <%end  %>
+
+                      <%if @waitval.size != nil && @waitval.size !=0 %>
+
+                      <div class=" col-md-offset-2 col-md-8 driverblock loggedannounce">
+
+                        <h4 class="text-center ">Vous avez <%= @waitval.size %> validation<% if @waitval.size > 1%>s<%end%> en attente, vous pouvez le<% if @waitval.size > 1%>s<%end%> valider <%= link_to "ici", user_path(current_user) %></h4>
                       </div>
 
                       <%end  %>
