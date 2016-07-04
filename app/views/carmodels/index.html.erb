@@ -14,7 +14,7 @@
   <tbody>
     <% @carmodels.each do |carmodel| %>
       <tr>
-        <td><%= carmodel.brand_id %></td>
+        <td><%= carmodel.carbrand_id %></td>
         <td><%= carmodel.name %></td>
         <td><%= link_to 'Show', carmodel %></td>
         <td><%= link_to 'Edit', edit_carmodel_path(carmodel) %></td>
