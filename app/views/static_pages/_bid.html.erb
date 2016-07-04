@@ -143,12 +143,12 @@
     <div class="col-md-12 placerestantes ">
       <%pourcentbar = 10 + (nbrplace - placedispo)*(90/nbrplace) %>
       <div class="row">
-        <div class="col-xs-7 col-md-7 text-center">
+        <div class="col-xs-6 col-md-6 text-center">
           <p>Places restantes :
             <%= placedispo %></p>
         </div>
 
-        <div class="col-xs-5 col-md-5 car text-center ">
+        <div class="col-xs-6 col-md-6 car text-center ">
           <% if current_user %>
           <%if driver.driver %>
           <p class="text-center "><span class="fa-stack fa-1x">
@@ -182,9 +182,8 @@
 
 
     <ul class="col-md-12 actionbtn list-unstyled list-inline text-center leaved">
-    <%if bid.go_at < DateTime.now || bid.come_back < DateTime.now %>
-    <li class="text-center">Le trajet à déjà eu lieu</li>
-    <% elsif placedispo != 0 && current_user%>
+    <%if isactive %>
+    <% if placedispo != 0 && current_user%>
       <li>
 
         <%= link_to "En savoir +", "/bids/#{bid.id}", :class => "btn btn-default"  %>
@@ -200,7 +199,9 @@
     <%= link_to "Réserver", "", :class => "btn btn-default", "data-toggle" => "modal","data-target" => "#myModal" %>
 </li>
     <% end %>
-
+    <%else %>
+    <li class="text-center">Le trajet à déjà eu lieu</li>
+<%end %>
     <%if bid.isreturn %>
     <%if numplace != 0 && current_user && bid.come_back.to_date > Date.today%>
     <li>
@@ -220,10 +221,12 @@
   <p class=" visible-xs visible-sm  col-xs-12 col-md-12 text-center plusicon hidden-md">
     <i class="fa fa-plus-circle fa-2x"></i>
   </p>
+</div>
+</div>
 
 
 
-<%if (bid.isreturn && (bid.come_back < DateTime.now)) || ((bid.withreturn==false) && (bid.go_at<DateTime.now)) %>
+<%if (bid.isreturn && (bid.come_back > DateTime.now)) || ((bid.withreturn==false) && (bid.go_at>DateTime.now)) %>
 <% if placedispo != 0 %>
 <!-- Modal -->
 <div class="modal fade" id="reservationmodal<%=bid.id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -277,8 +280,6 @@ $('.validationreservation').click(function () {
 <%end %>
 
 <%end %>
-</div>
-</div>
 
 <script type="text/javascript">
 
@@ -308,11 +309,11 @@ $( ".bidblock" ).mouseenter(function() {
     $(this).find('.progress').removeClass( "leaved" ).addClass( "hovered" );
     $(this).find('.blockdispo').css({"display":"none"});
     $(this).find(".plusicon").removeClass( "hovered" ).addClass( "leaved" );
-    $(this).find('.plusicon').css({"display":"none"});
 });
 $( ".bidblock" ).mouseleave(function() {
   $(this).find(".distome").removeClass( "hovered" ).addClass( "leaved" );
 
+  $(this).find('.blockdispo').css({"display":"block"});
     $(this).find('.illutrajet').removeClass( "hovered" ).addClass( "leaved" );
     $(this).find('.placerestantes').removeClass( "hovered" ).addClass( "leaved" );
     $(this).find('.actionbtn').removeClass( "hovered" ).addClass( "leaved" );
