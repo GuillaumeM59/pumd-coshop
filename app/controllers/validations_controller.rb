@@ -54,7 +54,7 @@ respond_to do |format|
       end
       else
         respond_to do |format|
-        format.html { redirect_to :root, notice: 'Impossible de valider le trajet, merci de vérifier le code' }
+        format.html { redirect_to user_path(current_user.id), notice: 'Impossible de valider le trajet, merci de vérifier le code' }
         format.json { render json: @validation.errors, status: :unprocessable_entity }
     end
     end
