@@ -43,7 +43,7 @@ class StaticPagesController < ApplicationController
    @message = Message.new(message_params)
    ContactMailer.contact_email(@message).deliver_now
     respond_to do |format|
-       format.html { render :contact, notice: 'Message Envoyé' }
+       format.html { redirect_to root, notice: 'Message Envoyé' }
        format.json { render json: static_pages_contact_path, status: :created, location: static_pages_contact_path }
     end
   end
