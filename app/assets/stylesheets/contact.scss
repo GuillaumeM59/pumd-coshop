@@ -1,3 +1,9 @@
+.row {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0;
+  margin-right: 0
+}
 #banner_contact{
   margin-top:5%;
   width:100%;
@@ -10,8 +16,11 @@ margin-top: 5%;
  text-align: center;
 }
 
-#info3, #info2{
+#info1 img, #info3 img, #info2 img{
   margin-top: 10%;
+  margin-left: 40%;
+  max-height: 80px;
+  width: auto
 }
 
 
@@ -25,7 +34,7 @@ button{
 
 #info_contact{
   border-radius: 6px;
-  margin-top: 30%;
+  margin-top: 5%;
   font-size: 1.4em;
   color: white;
   /*background-color:rgb(0, 165, 142);*/
@@ -46,10 +55,15 @@ font-size:1.3em;
 }
 
 #formul{
-  margin-top: 120%;
+  margin-top: 10%;
   margin-bottom: 10%;
 }
 
+.contact-area{
+  width: 90%;
+  height: 150px;
+
+}
 
 button{
   margin-bottom:5%;
@@ -61,12 +75,6 @@ button{
 
   }
 
-#contact-area{
-  width: 90%;
-  min-height: 60%;
-
-}
-
 #banner_contact{
   display: none;
   }
@@ -75,11 +83,12 @@ button{
   text-align: center;
    margin-top: 15%;
 }
-
-#info_hachemi{
-text-align: center;
+#info1 img, #info3 img, #info2 img{
+  margin-top: 10%;
+  margin-left: 25%;
+  max-height: 80px;
+  width: auto
 }
-
 }
 
 
@@ -92,9 +101,7 @@ text-align: center;
   margin-top: 10%;
 }
 
-#formul{
-  display: none;
-}
+
 #banner_contact{
 display: none;
 }
