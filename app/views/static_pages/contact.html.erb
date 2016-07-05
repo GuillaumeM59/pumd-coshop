@@ -9,138 +9,128 @@
 <img src="img/banner_contact.png" alt=" " id="banner_contact"/>
 
 <div class="container">
-  <div id="info_perso" class="row">
-    <div class=" col-lg-6 col-md-6 col-sm-10  ">
+  <div class="row">
+    <div id="info_perso" class=" col-lg-6 col-md-6 col-sm-12  ">
+      <div id="info_perso" class="row">
 
-      <div id="info2" class=" col-lg-8 col-md-6 col-sm-4 col-xs-4">
-        <div class="row">
-          <%= image_tag("othman.png", class:"img-circle  img-responsive", alt:"mimi othman")%>
+        <div id="info2" class=" col-lg-8 col-md-6 col-sm-4 col-xs-4 text-center">
+          <div class="row">
+          <p>  <%= image_tag("othman.png", class:"img-circle  img-responsive", alt:"mimi othman")%></p>
 
-          <div class="info_perso2 col-lg-6">
 
-            <p>
-              Othman ben
-            </p>
-            <p>
-              projetcoshop@gmail.com
+              <p>
+                Othman ben
+</br>
+                projetcoshop<span class="hidden-xs hidden-sm">gmail.com</span>
 
-            </p>
-
-          </div>
-        </div>
-      </div>
-
-      <div id="info" class=" col-lg-8 col-md-6 col-sm-4 col-xs-4">
-
-        <div class="row">
-          <img id="img_hach" class="img-circle  img-responsive " src="/img/avataruser/moi.jpg" alt="Guillaume"/>
-
-          <div class="info_perso2 col-lg-6">
-            <p>
-              Guillaume Manier
-            </p>
-            <p>
-              dev.guillaumem59@gmail.com
-            </p>
+              </p>
 
           </div>
-        </div>
-      </div>
-
-      <div id="info3" class=" col-lg-8 col-md-6 col-sm-4 col-xs-4">
-        <div class="row">
-          <img id="img_hach" class="img-circle img-responsive" src="/img/avataruser/n3xt.png" alt="Bertrand"/>
-
-          <div class="info_perso2 col-lg-6">
-
-            <p>
-              Bertrand Dupont
-            </p>
-            <p>
-              dupontbertrand59@gmail.com
-            </p>
-
           </div>
+
+          <div id="info1" class=" col-lg-8 col-md-6 col-sm-4 col-xs-4 text-center">
+            <div class="row">
+              <p><img class="img-circle  img-responsive " src="/img/avataruser/moi.jpg" alt="Guillaume"/></p>
+
+                <p>
+                  Guillaume Manier
+              </br>
+                  dev.guillaumem59<span class="hidden-xs hidden-sm">gmail.com</span>
+                </p>
+
+
+            </div>
+          </div>
+
+          <div id="info3" class=" col-lg-8 col-md-6 col-sm-4 col-xs-4 text-center">
+            <div class="row">
+              <p><img id="img_hach" class="img-circle img-responsive" src="/img/avataruser/n3xt.png" alt="Bertrand"/></p>
+
+                <p>
+                  Bertrand Dupont
+              </br>
+                  dupontbertrand59<span class="hidden-xs hidden-sm">gmail.com<span>
+                </p>
+
+            </div>
+          </div>
+          <p class="text-center col-md-12">
+            @gmail.com
+          </p>
         </div>
       </div>
 
-      <div id="formul">
 
-        <div class="row">
-
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2530.668756841743!2d3.0184829516107583!3d50.63326997940037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDM3JzU5LjgiTiAzwrAwMScxNC40IkU!5e0!3m2!1sfr!2sfr!4v1465307822256"
-            width="600"
-            height="450"
-            frameborder="0"
-            style="border:0"
-            allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-6 col-md-5 col-sm-8 " id="my_map">
+    <div id="formul" class=" col-lg-6 col-md-6 col-sm-12 text-center ">
 
       <%= form_for @message, :url => {:action => "sendquestion" } do |f| %>
 
-      <div class="form-group col-lg-10 col-md-12 col-sm-12 ">
+      <div class="form-group">
         <div class="input-field">
           <i class="material-icons prefix"></i>
-          <%= f.label :Prénom %>
+          <%= f.label :Prénom %></br>
           <%= f.text_field :prenom, :class => "validate"%>
         </div>
       </div>
 
-      <div class="form-group col-lg-10 col-md-12 col-sm-12">
+      <div class="form-group">
         <div class="input-field">
           <i class="material-icons prefix"></i>
-          <%= f.label :Email %>
+          <%= f.label :Email %></br>
           <%= f.email_field :email, :class => "validate" %>
         </div>
       </div>
 
-      <div class="form-group col-lg-10 col-md-12 col-sm-12">
+      <div class="form-group">
         <div class="input-field">
           <i class="material-icons prefix"></i>
-          <%= f.label :Objet %>
+          <%= f.label :Objet %></br>
           <%= f.text_field :objet, :class => "validate" %>
         </div>
       </div>
 
       <!-- <div class="form-group col-lg-10 col-md-12 col-sm-12">
-                <div class="input-field">
-                    <i class="material-icons prefix"></i>
-                    <%= f.label :Message %>
-                    <%= f.text_area :contenu, :size => "50x12", :class => "materialize-textarea"%>
-                </div>
-            </div> -->
+                  <div class="input-field">
+                      <i class="material-icons prefix"></i>
+                      <%= f.label :Message %>
+                      <%= f.text_area :contenu, :size => "50x12", :class => "materialize-textarea"%>
+                  </div>
+              </div> -->
 
-      <div class="form-group col-lg-10 col-md-12 col-sm-12 ">
+      <div class="form-group">
 
         <%= f.label :Message %>
       </br>
-        <%= f.text_area :contenu, :class => "contact-area"%>
+      <%= f.text_area :contenu, :class => "contact-area"%>
 
-      </div>
-
-      <%= submit_tag "Envoyer", :class => "btn-lg col-lg-offset-4  col-xs-offset-3 col-xs-6  col-md-offset-2 col-md-2 " %>
-
-      <% end %>
-
-      <div id="info_contact" class="col-lg-8 col-lg-offset-2">
-        <p>
-          Co-Shop !
-        </p>
-
-        <p>
-          165 Avenue de Bretagne
-        </p>
-        <p>
-          59000 Lille
-        </p>
-        <p></p>
-        <p></p>
-      </div>
     </div>
+
+    <%= submit_tag "Envoyer", :class => "btn btn-lg" %>
+
+    <% end %>
+
   </div>
+
+<div class="col-lg-6 col-md-6 col-sm-8 hidden-xs hidden-sm " id="my_map">
+
+  <div class="row">
+
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2530.668756841743!2d3.0184829516107583!3d50.63326997940037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDM3JzU5LjgiTiAzwrAwMScxNC40IkU!5e0!3m2!1sfr!2sfr!4v1465307822256"
+      width="600"
+      height="450"
+      frameborder="0"
+      style="border:0"
+      allowfullscreen></iframe>
+  </div>
+</div>
+
+<div id="info_contact" class="col-lg-4 col-lg-offset-1">
+  <p class="text-center">
+    Co-Shop !</br>
+    165 Avenue de Bretagne</br>
+    59000 Lille
+  </p>
+</div>
+</div>
 </div>
