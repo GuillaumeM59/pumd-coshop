@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, only: [:index, :show, :new, :create, :destroy]
+  before_filter :authenticate_user!, only: [:index, :new, :create, :destroy]
   before_filter :is_admin, only: [:index]
 
 
@@ -20,12 +20,14 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
 
+    if current_user
     if current_user.id == @user.id
-      if current_user
       if current_user.driver
       @waitval = Validation.where("(driver_id = #{current_user.id} AND validated = false)").where("bid_date < ?", "#{Date.today}")
       end
       end
+    else
+          @client = request.location
     end
       dob = @user.dob
       now = Time.now.utc.to_date
@@ -50,14 +52,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.avatar = :default_url
-    @coin1 = Coin.new
-    @coin1.user_id = @user.id
-    @coin1.comment1 = "Welcome cocoin 1"
-    @coin1.save
-    @coin2 = Coin.new
-    @coin2.user_id = @user.id
-    @coin2.comment1 = "Welcome cocoin 1"
-    @coin2.save
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'Vous avez été inscrit, vous avez gagné 2 cocoins pour essayer le covoiturage shopping! ' }
@@ -72,8 +66,12 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+    params[:user].delete(:password)
+    params[:user].delete(:password_confirmation)
+    end
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.update_with_password(user_params)
         format.html { redirect_to @user, notice: 'Votre profil a été modifié.' }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -113,7 +111,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:id, :username, :admin, :nom, :prenom,:dob, :comment, :subscribe, :city, :latitude, :longitude, :adress, :zipcode, :gender, :driver, :cbrand_id, :cmodel_id, :carsize, :email, :phone, :xp, :fulladress, :avatar, :password, :password_confirmation)
+      params.require(:user).permit(:id, :username, :admin, :nom, :prenom,:dob, :comment, :subscribe, :city, :latitude, :longitude, :adress, :zipcode, :gender, :driver, :cbrand_id, :cmodel_id, :carsize, :email, :phone, :xp, :avatar, :password, :password_confirmation, :current_password)
     end
 
 

@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   validates_presence_of :cbrand_id,:if => :driver?
   validates_presence_of :cmodel_id,:if => :driver?
   validates_presence_of :carsize, :if => :driver?
+  validates_inclusion_of :gender, :in => [true, false]
     after_create :build_profile
 
     def build_profile
@@ -15,7 +16,7 @@ class User < ActiveRecord::Base
       @coin1.save
       @coin2 = Coin.new
       @coin2.user_id = self.id
-      @coin2.comment1 = "Welcome cocoin 1"
+      @coin2.comment1 = "Welcome cocoin 2"
       @coin2.save
     end
 

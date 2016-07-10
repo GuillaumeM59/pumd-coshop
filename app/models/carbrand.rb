@@ -1,5 +1,5 @@
 class Carbrand < ActiveRecord::Base
-  has_many :carmodels
+  has_many :carmodels, dependent: :destroy
 
 
 

@@ -8,18 +8,24 @@
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        },
+        i[r].l = 1 * new Date();
+        a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+      ga('create', 'UA-78958385-1', 'auto');
+      ga('send', 'pageview');
+    </script>
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-78958385-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
   </head>
   <body>
 
@@ -33,10 +39,10 @@
               <div class="panel-heading">
                 <div class="row">
                   <div class="col-xs-6 text-center">
-                    <a href="#" class="active" id="login-form-link">Se connecter</a>
+                    <a href="#" class="active" id="login-form-link" alt="onglet se connecter">Se connecter</a>
                   </div>
                   <div class="col-xs-6 text-center">
-                    <a href="#register-form" id="register-form-link">S'inscrire</a>
+                    <a href="#register-form" id="register-form-link" alt="onglet s'inscrire">S'inscrire</a>
                   </div>
                 </div>
                 <hr>
@@ -70,335 +76,324 @@
                   </div>
                   <hr>
                   <h3 class="text-center">Pas encore inscrit?</h3>
-                    <a href="#register-form" id="register-form-link-loggin" class="btn btn-login form-control">S'inscrire</a>
+                  <a href="#register-form" id="register-form-link-loggin" class="btn btn-login form-control" alt="inscription">S'inscrire</a>
                 </div>
               </div>
 
-        <div id="register-form">
+              <div id="register-form">
 
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-lg-12">
-                <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                <div class="field">
-                  <label for="username">Nom d'utilisateur</label>
-                  <%= f.text_field :username, autofocus: true, :class => 'form-control', :id => "username"  %>
-                </div>
-                <div class="field">
-                  <label for="prenom">Prénom</label>
-                  <%= f.text_field :prenom, autofocus: true, :class => 'form-control', :id => "prenom"  %>
-                </div>
-
-                <div class="field">
-                  <label for="nom">Nom</label>
-                  <%= f.text_field :nom, autofocus: true, :class => 'form-control', :id => "nom"  %>
-                </div>
-                <div class="field">
-                  <label for="dob">Date de Naissance</label>
-                  <%= f.date_select :dob, autofocus: true, :class => 'form-control', :start_year => 1900, :end_year => Time.now.year   %>
-                </div>
-                <div class="field col-md-12">
+                <div class="panel-body">
                   <div class="row">
+                    <div class="col-lg-12">
+                      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                      <div class="field">
+                        <label for="username">Nom d'utilisateur</label>
+                        <%= f.text_field :username, autofocus: true, :class => 'form-control', :id => "username"  %>
+                      </div>
+                      <div class="field">
+                        <label for="prenom">Prénom</label>
+                        <%= f.text_field :prenom, autofocus: true, :class => 'form-control', :id => "prenom"  %>
+                      </div>
 
-                  <div class="col-md-6 text-center">
-                    <p>Sexe:</p>
-                    <%= radio_button_tag(:gender, false) %>
-                    <%= label_tag(:gender, "Homme") %>
-                    <%= radio_button_tag(:gender, true) %>
-                    <%= label_tag(:gender, "Femme") %>
+                      <div class="field">
+                        <label for="nom">Nom</label>
+                        <%= f.text_field :nom, autofocus: true, :class => 'form-control', :id => "nom"  %>
+                      </div>
+                      <div class="field">
+                        <label for="dob">Date de Naissance</label>
+                        <%= f.date_select :dob, autofocus: true, :class => 'form-control', :start_year => 1900, :end_year => Time.now.year   %>
+                      </div>
+                      <div class="field col-md-12">
+                        <div class="row">
+
+                          <div class="col-md-6 text-center">
+                            <p>Sexe:</p>
+                            <%= radio_button_tag(:gender, false) %>
+                            <%= label_tag(:gender, "Homme") %>
+                            <%= radio_button_tag(:gender, true) %>
+                            <%= label_tag(:gender, "Femme") %>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="field">
+                        <label for="adress">Adresse</label>
+                        <%= f.text_field :adress, autofocus: true, :class => 'form-control', :id => "adress"  %>
+                      </div>
+                      <div class="field col-md-5">
+                        <label for="zipcode">Code postal</label>
+                        <%= f.text_field :zipcode, autofocus: true, :class => 'form-control', :id => "zipcode"  %>
+                      </div>
+                      <div class="field col-md-7">
+                        <label for="city">Ville</label>
+                        <%= f.text_field :city, autofocus: true, :class => 'form-control', :id => "city"  %>
+                      </div>
+
+                      <div class="field">
+                        <label for="email">E-mail</label>
+                        <%= f.email_field :email, autocomplete: "off", :class => 'form-control', :id => "email"  %>
+                      </div>
+                      <div class="field">
+                        <label for="email">Telephone</label>
+                        <%= f.text_field :phone, :class => 'form-control', :id => "phone"  %>
+                      </div>
+
+                      <div class="field">
+                        <label for="password">Mot de passe (8 caractères minimum)</label>
+                        <%= f.password_field :password, autocomplete: "off", :class => 'form-control', :id => "password"  %>
+                      </div>
+
+                      <div class="field">
+                        <label for="passwordconfirmation">Confirmation mot de passe</label>
+                        <%= f.password_field :password_confirmation, autocomplete: "off", :id => "passwordconfirmation", :class => "form-control" %>
+                      </div>
+                      <div class="field">
+                        <label for="comment" class="col-md-12 text-center">Petite description</label>
+                        <%= f.text_area(:comment, cols: 40, rows: 5) %>
+                      </div>
+                      <div class="field">
+                        <%= f.label "Newsletter" %>
+                        <%= f.check_box :subscribe,  input_html: { checked: false } %>
+                      </div>
+                      <%= f.hidden_field :avatar, value: :default_url %>
+                      <div class="field">
+                        <%= f.label "Je suis conducteur" %>
+                        <%= f.check_box :driver,  input_html: { checked: false } %>
+                      </div>
+
+                      <div class="carblock">
+                        <div class="field">
+                          <%= f.label "Marque de la voiture" %><br>
+                          <%= f.collection_select :cbrand_id, Carbrand.order(:name), :id, :name, include_blank: true, placeholder: "" %>
+                        </div>
+
+                        <div class="field">
+                          <%= f.label "Modèle" %><br>
+                          <%= f.grouped_collection_select :cmodel_id, Carbrand.order(:name), :carmodels, :name, :id, :name, include_blank: true, placeholder: "" %>
+                        </div>
+                        <div class="field col-md-12">
+                          <div class="row">
+
+                            <p class="text-center">Taille de la voiture</p>
+                            <div class="col-md-4 text-center">
+                              <%= f.label "M" %>
+                              <%= radio_button("user", "carsize", "M") %>
+                            </div>
+                            <div class="col-md-4 text-center">
+                              <%= f.label "L" %>
+                              <%= radio_button("user", "carsize", "L") %>
+                            </div>
+                            <div class="col-md-4 text-center">
+                              <%= f.label "XL" %>
+                              <%= radio_button("user", "carsize", "XL") %>
+                            </div>
+                          </div>
+
+                        </div>
+
+                      </div>
+
+                      <%= f.submit "Inscription", :class => "btn btn-login form-control", :alt => "Inscription"%>
+
+                    </div>
+                    <% end %>
+                  </div>
                 </div>
               </div>
-            </div>
-                <div class="field">
-                  <label for="adress">Adresse</label>
-                  <%= f.text_field :adress, autofocus: true, :class => 'form-control', :id => "adress"  %>
-                </div>
-                <div class="field col-md-5">
-                  <label for="zipcode">Code postal</label>
-                  <%= f.text_field :zipcode, autofocus: true, :class => 'form-control', :id => "zipcode"  %>
-                </div>
-                <div class="field col-md-7">
-                  <label for="city">Ville</label>
-                  <%= f.text_field :city, autofocus: true, :class => 'form-control', :id => "city"  %>
-                </div>
 
-
-                <div class="field">
-                  <label for="email">E-mail</label>
-                  <%= f.email_field :email, autocomplete: "off", :class => 'form-control', :id => "email"  %>
-                </div>
-                <div class="field">
-                  <label for="email">Telephone</label>
-                  <%= f.text_field :phone, :class => 'form-control', :id => "phone"  %>
-                </div>
-
-                <div class="field">
-                  <label for="password">Mot de passe (8 caractères minimum)</label>
-                  <%= f.password_field :password, autocomplete: "off", :class => 'form-control', :id => "password"  %>
-                </div>
-
-                <div class="field">
-                  <label for="passwordconfirmation">Confirmation mot de passe</label>
-                  <%= f.password_field :password_confirmation, autocomplete: "off", :id => "passwordconfirmation", :class => "form-control" %>
-                </div>
-                <div class="field">
-                  <label for="comment" class="col-md-12 text-center">Petite description</label>
-                  <%= f.text_area(:comment, cols: 40, rows: 5) %>
-                </div>
-                <div class="field">
-                  <%= f.label "Newsletter" %>
-                  <%= f.check_box :subscribe,  input_html: { checked: false } %>
-                </div>
-                 <%= f.hidden_field :avatar, value: :default_url %>
-                <div class="field">
-                  <%= f.label "Je suis conducteur" %>
-                  <%= f.check_box :driver,  input_html: { checked: false } %>
-                </div>
-
-                <div class="carblock">
-                  <div class="field">
-                    <%= f.label "Marque de la voiture" %><br>
-                    <%= f.collection_select :cbrand_id, Carbrand.order(:name), :id, :name, include_blank: true, placeholder: "" %>
-                  </div>
-
-                  <div class="field">
-                    <%= f.label "Modèle" %><br>
-                    <%= f.grouped_collection_select :cmodel_id, Carbrand.order(:name), :carmodels, :name, :id, :name, include_blank: true, placeholder: "" %>
-                  </div>
-                  <div class="field col-md-12">
-                    <div class="row">
-
-                    <p class="text-center">Taille de la voiture</p>
-                    <div class="col-md-4 text-center">
-                    <%= f.label "M" %>
-                    <%= radio_button("user", "carsize", "M") %>
-                  </div>
-                  <div class="col-md-4 text-center">
-                    <%= f.label "L" %>
-                    <%= radio_button("user", "carsize", "L") %>
-                  </div>
-                  <div class="col-md-4 text-center">
-                    <%= f.label "XL" %>
-                    <%= radio_button("user", "carsize", "XL") %>
-                  </div>
-                </div>
-
-                  </div>
-
-
-                </div>
-
-
-
-                <%= f.submit "Inscription", :class => "btn btn-login form-control" %>
-
-              </div>
-              <% end %>
             </div>
           </div>
         </div>
-
       </div>
     </div>
-  </div>
-</div>
-</div>
 
-<!-- Fixed navbar -->
-<nav id="header" class="navbar navbar-fixed-top">
-<div id="header-container" class="container navbar-container">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-      <i class="fa fa-bars btnmenu" aria-hidden="true"></i>
+    <!-- Fixed navbar -->
+    <nav id="header" class="navbar navbar-fixed-top">
+      <div id="header-container" class="container navbar-container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" alt="menu">
+            <i class="fa fa-bars btnmenu" aria-hidden="true"></i>
 
-    </button>
-    <%= link_to(image_tag("logocoshopv2.png", class:"logo_hot img-responsive", alt:"Logo coshop"), root_path, class:"navbar-brand" ) %>
-    <a id="beta" class="navbar-brand" href="/"><%= image_tag("beta.png", class:"logo_hot img-responsive", alt:"Logo beta") %></a>
-  </div>
-  <div id="navbar" class="collapse navbar-collapse">
-    <ul class="nav navbar-nav navbar-right list-inline text-center">
-      <li class="hidden-xs hidden-sm">
-        <%= link_to "Accueil", root_path %>
-      </li>
-      <li class="hidden-md hidden-lg">
-        <%= link_to (root_path), class:"navicohome" do%>
-        <i class="fa fa-home fa-3x"></i>
-        <%end %>
-      </li>
-      <li class="hidden-xs hidden-sm ">
-        <%= link_to "Contact", static_pages_contact_path %>
-      </li>
-      <li class="hidden-md hidden-lg ">
-        <%= link_to (static_pages_contact_path), class:"navicocontact" do%>
-        <i class="fa fa-envelope-o fa-3x"></i>
-        <% end %>
-      </li>
-      <% if user_signed_in? %>
-      <% @coinsdispo = Coin.where("(user_id = #{current_user.id} AND bid_id = 0)") %>
-      <% nbrcoin = @coinsdispo.size %>
-      <li>
-        <%= link_to image_tag(current_user.avatar, size:"30"), user_path(current_user), class:"navicouser" %>
-      </li>
-      <li>
-        <a href="" class="navicocoins"> <%= nbrcoin %><span class="fa-stack coin">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-car fa-stack-1x fa-inverse"></i>
-        </span></a>
-      </li>
-      <li>
-      <%= link_to destroy_user_session_path, :class => "navicoout hidden-md hidden-lg", :method => :delete do%>
-          <i class="fa fa-sign-out fa-3x"></i>
-      <%end %>
-      <%= link_to "Déconnexion", destroy_user_session_path, :class => "btn btn-lg logoutbtn hidden-xs hidden-sm", :method => :delete %>
+          </button>
+          <%= link_to(image_tag("logocoshopv2.png", class:"logo_hot img-responsive", alt:"Logo coshop"), root_path, class:"navbar-brand" ) %>
+          <a id="beta" class="navbar-brand" href="/" alt="version beta"><%= image_tag("beta.png", class:"logo_hot img-responsive", alt:"Logo beta") %></a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right list-inline text-center">
+            <li class="hidden-xs hidden-sm">
+              <%= link_to "Accueil", root_path , alt:"Accueil"%>
+            </li>
+            <li class="hidden-md hidden-lg">
+              <%= link_to (root_path), class:"navicohome", alt:"Accueil" do%>
+              <i class="fa fa-home fa-3x"></i>
+              <%end %>
+            </li>
+            <li class="hidden-xs hidden-sm ">
+              <%= link_to "Contact", static_pages_contact_path, alt:"contact"%>
+            </li>
+            <li class="hidden-md hidden-lg ">
+              <%= link_to (static_pages_contact_path), class:"navicocontact", alt:"contact" do%>
+              <i class="fa fa-envelope-o fa-3x"></i>
+              <% end %>
+            </li>
+            <% if user_signed_in? %>
+            <% @coinsdispo = Coin.where("(user_id = #{current_user.id} AND bid_id = 0)") %>
+            <% nbrcoin = @coinsdispo.size %>
+            <li>
+              <%= link_to image_tag(current_user.avatar, size:"30"), user_path(current_user), class:"navicouser", alt:"mon profil" %>
+            </li>
+            <li>
+              <a href="" class="navicocoins" alt="#{nbrcoin} coins">
+                <%= nbrcoin %>
+                <span class="fa-stack coin">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-car fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, :class => "navicoout hidden-md hidden-lg", alt:"déconnexion", :method => :delete do%>
+              <i class="fa fa-sign-out fa-3x"></i>
+              <%end %>
+              <%= link_to "Déconnexion", destroy_user_session_path, :class => "btn btn-lg logoutbtn hidden-xs hidden-sm", alt:"déconnexion", :method => :delete %>
 
-      </li>
-  <% else %>
-    <li class="hidden-xs hidden-sm">
-      <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal">
-        Connexion</button>
-      <!-- Modal -->
+            </li>
+          <% else %>
+            <li class="hidden-xs hidden-sm">
+              <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal" alt="connexion">
+                Connexion</button>
+              <!-- Modal -->
 
-    </li>
-    <li class="hidden-md hidden-lg ">
-      <%= link_to "Connexion", new_user_session_path, class: "btn btn-lg" %>
+            </li>
+            <li class="hidden-md hidden-lg ">
+              <%= link_to "Connexion", new_user_session_path, class: "btn btn-lg", alt:"connexion" %>
 
-      <!-- Modal -->
+              <!-- Modal -->
 
-    </li>
-    <% end %>
-  </ul>
+            </li>
+            <% end %>
+          </ul>
 
-</div>
-<!-- /.nav-collapse -->
-</div>
-<!-- /.container -->
-</nav>
-<!-- /.navbar -->
+        </div>
+        <!-- /.nav-collapse -->
+      </div>
+      <!-- /.container -->
+    </nav>
+    <!-- /.navbar -->
 
+    <div class="message">
+      <%= flash_messages %></div>
 
-<div class="message">
-<%= flash_messages %></div>
+    <%= yield %>
 
-<%= yield %>
+    <!-- Footer -->
+    <footer>
 
-<!-- Footer -->
-<footer>
+      <div class="container-fluid">
 
-<div class="container-fluid">
+        <div class="row">
+          <div class="col-md-2">
+            <ul>
+              <li>
+                <a href="", alt="notre page facebook ">
+                  <i class="fa fa-facebook-official fa-4x"></i>
+                </a>
+              </li>
+              <li>
+                <a href="", , alt="notre page twitter ">
+                  <i class="fa fa-twitter-square fa-4x"></i>
+                </a>
+              </li>
+            </ul>
 
-<div class="row">
-<div class="col-md-2">
-<ul>
-<li>
-<a href="">
-<i class="fa fa-facebook-official fa-4x"></i>
-</a>
-</li>
-<li>
-<a href="">
-<i class="fa fa-twitter-square fa-4x"></i>
-</a>
-</li>
-</ul>
+          </div>
+          <div class="col-md-3 linksfooter">
+            <ul>
+              <li>
+                <h3>Infos pratiques</h3>
+              </li>
+              <li>
+                <a href="">Comment ca marche ?</a>
+              </li>
+              <li>
+                <a href="">Les avis</a>
+              </li>
+              <li>
+                <a href="">Les niveaux</a>
+              </li>
+              <li>
+                <a href="">Les prix</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-3 linksfooter">
+            <ul>
+              <li>
+                <h3>A propos</h3>
+              </li>
+              <li>
+                <a href="">Qui sommes-nous ?</a>
+              </li>
+              <li>
+                <%= link_to "Nous contacter", static_pages_contact_path, alt:"nous contacter" %>
+              </li>
+              <li>
+                <a href="">Ils parlent de nous !</a>
+              </li>
+            </ul>
+          </div>
 
-</div>
-<div class="col-md-3 linksfooter">
-<ul>
-<li>
-<h3>Infos pratiques</h3>
-</li>
-<li>
-<a href="">Comment ca marche ?</a>
-</li>
-<li>
-<a href="">Les avis</a>
-</li>
-<li>
-<a href="">Les niveaux</a>
-</li>
-<li>
-<a href="">Les prix</a>
-</li>
-</ul>
-</div>
-<div class="col-md-2 linksfooter">
-<ul>
-<li>
-<h3>A propos</h3>
-</li>
-<li>
-<a href="">Qui sommes-nous ?</a>
-</li>
-<li>
-  <%= link_to "Contact", static_pages_contact_path %>
-</li>
-<li>
-<a href="">Ils parlent de nous !</a>
-</li>
-</ul>
-</div>
-<div class="col-md-2"></div>
+          <div class="col-md-3 col-md-offset-1">
+            <ul>
+              <li><%= image_tag("logocoshopv2.png", alt:"Logo co-shop", class: "img-responsive") %></li>
+            </ul>
+          </div>
+        </div>
 
-<div class="col-md-2">
-<ul>
-<li><%= image_tag("logocoshopv2.png", alt:"Logo co-shop") %></li>
-</ul>
-</div>
-</div>
+        <p class="navbar-text pull-left">© 2016 - co-shop&#169;
+        </p>
 
-<p class="navbar-text pull-left">© 2016 - CoShop by Emooveers
-</p>
+      </div>
 
-<a href="" class="navbar-btn btn-danger btn pull-right">
-<span class="glyphicon glyphicon-star"></span>
-Subscribe on YouTube
-</a>
-</div>
-
-</footer>
-<script type="text/javascript">
-$('#user_driver').click(function () {
-  this.checked
-    ? $('.carblock').show(1000)
-    : $('.carblock').hide(1000); //time for show
-});
-
-
-
-
-
-    $(function () {
-      filterCarsList();
-    });
-
-    function filterCarsList() {
-      brands = $('#user_cmodel_id').html();
-      $('#user_cbrand_id').change(function () {
-        var brandselected1 = $('#user_cbrand_id :selected').text();
-        var optgroup1 = "optgroup[label='" + brandselected1 + "']";
-        var options1 = $(brands).filter(optgroup1).html();
-        console.log(brands);
-        console.log(optgroup1);
-        console.log(options1);
-        if (brandselected1 != "") {
-          $('#user_cmodel_id').html(options1);
-        };
+    </footer>
+    <script type="text/javascript">
+      $('#user_driver').click(function () {
+        this.checked
+          ? $('.carblock').show(1000)
+          : $('.carblock').hide(1000); //time for show
       });
-    };
 
-    $( window ).resize(resizebid())
-function resizebid() {
-      var bidpheights = $(".bidblock").map(function ()
-      {
-        return $(this).height();
-      }).get();
-      var maxBidpHeight = Math.max.apply(null, bidpheights);
-      var x = maxBidpHeight;
-      console.log(x)
-      var realheight = x*1.06;
-      $('.bidblock').css({"min-height":realheight+"px"});
-    };
+      $(function () {
+        filterCarsList();
+      });
 
-</script>
-</body>
+      function filterCarsList() {
+        brands = $('#user_cmodel_id').html();
+        $('#user_cbrand_id').change(function () {
+          var brandselected1 = $('#user_cbrand_id :selected').text();
+          var optgroup1 = "optgroup[label='" + brandselected1 + "']";
+          var options1 = $(brands).filter(optgroup1).html();
+          console.log(brands);
+          console.log(optgroup1);
+          console.log(options1);
+          if (brandselected1 != "") {
+            $('#user_cmodel_id').html(options1);
+          };
+        });
+      };
+
+      $(window).resize(resizebid())
+      function resizebid() {
+        var bidpheights = $(".bidblock").map(function () {
+          return $(this).height();
+        }).get();
+        var maxBidpHeight = Math.max.apply(null, bidpheights);
+        var x = maxBidpHeight;
+        console.log(x)
+        var realheight = x * 1.06;
+        $('.bidblock').css({
+          "min-height": realheight + "px"
+        });
+      };
+    </script>
+  </body>
 </html>

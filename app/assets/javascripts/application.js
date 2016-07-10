@@ -24,5 +24,4 @@
 //= require underscore
 //= require gmaps/google
 //= require markerclusterer
-//= require autocomplete
 //= require_tree .

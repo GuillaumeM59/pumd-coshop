@@ -338,5 +338,15 @@
     $('.shopblock').css({
         "min-height": realshopheight + "px"
     });
+    var actorheights = $(".actorblock").map(function () {
+        return $(this).height();
+    }).get();
+    maxActorHeight = Math.max.apply(null, actorheights);
+    var act = maxActorHeight;
+    var realActorheight = act * 1.1;
+
+    $('.actorblock').css({
+        "min-height": realActorheight + "px"
+    });
 </script>
 <!-- /PAGE CONTENT -->
