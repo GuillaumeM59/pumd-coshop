@@ -4,7 +4,8 @@ class StaticPagesController < ApplicationController
 
   def home
     @bid = Bid.new
-    @client = request.location
+    @client = set_ip
+    @clientip = set_ip.ip
     if current_user
     if current_user.driver
     @waitval = Validation.where("(driver_id = #{current_user.id} AND validated = false)").where("bid_date < ?", "#{Date.today}")

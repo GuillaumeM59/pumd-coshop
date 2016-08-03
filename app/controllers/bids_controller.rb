@@ -157,10 +157,20 @@ class BidsController < ApplicationController
       @bid.pass4_id = 0
     end
 
-    if @bid.withreturn ==false
+    if @bid.withreturn ==false && @bid.isreturn==false
         respond_to do |format|
           if @bid.save
-            format.html { redirect_to root_path, notice: 'Annonce enregistrée.' }
+            format.html { redirect_to root_path, notice: 'Annonce Aller enregistrée.' }
+            format.json { render :root, status: :created, location: @bid }
+          else
+            format.html { render :new }
+            format.json { render json: @bid.errors, status: :unprocessable_entity }
+          end
+        end
+    elsif @bid.withreturn ==false && @bid.isreturn==true
+        respond_to do |format|
+          if @bid.save
+            format.html { redirect_to root_path, notice: 'Annonce Retour enregistrée.' }
             format.json { render :root, status: :created, location: @bid }
           else
             format.html { render :new }

@@ -1,28 +1,21 @@
-
 // --------------------------------- user profile on show -----
-
-
 /***
 User Profile Sidebar by @keenthemes
 A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
 Licensed under MIT
 ***/
-
 body {
   background: #F1F3FA;
 }
-
 /* Profile container */
 .profile {
   margin: 20px 0;
 }
-
 /* Profile sidebar */
 .profile-sidebar {
-  padding: 20px 0 10px 0;
+  padding: 20px 0 10px;
   background: #fff;
 }
-
 .profile-userpic img {
   float: none;
   margin: 0 auto;
@@ -32,19 +25,16 @@ body {
   -moz-border-radius: 50% !important;
   border-radius: 50% !important;
 }
-
 .profile-usertitle {
   text-align: center;
   margin-top: 20px;
 }
-
 .profile-usertitle-name {
   color: #5a7391;
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 7px;
 }
-
 .profile-usertitle-job {
   text-transform: uppercase;
   color: #5b9bd1;
@@ -52,12 +42,10 @@ body {
   font-weight: 600;
   margin-bottom: 15px;
 }
-
 .profile-userbuttons {
   text-align: center;
   margin-top: 10px;
 }
-
 .profile-userbuttons .btn {
   text-transform: uppercase;
   font-size: 11px;
@@ -65,66 +53,51 @@ body {
   padding: 6px 15px;
   margin-right: 5px;
 }
-
 .profile-userbuttons .btn:last-child {
-  margin-right: 0px;
+  margin-right: 0;
 }
-
 .profile-usermenu {
   margin-top: 30px;
 }
-
 .profile-usermenu ul li {
   border-bottom: 1px solid #f0f4f7;
 }
-
 .profile-usermenu ul li:last-child {
   border-bottom: none;
 }
-
 .profile-usermenu ul li a {
   color: #93a3b5;
   font-size: 14px;
   font-weight: 400;
 }
-
 .profile-usermenu ul li a i {
   margin-right: 8px;
   font-size: 14px;
 }
-
 .profile-usermenu ul li a:hover {
   background-color: #fafcfd;
   color: #5b9bd1;
 }
-
 .profile-usermenu ul li.active {
   border-bottom: none;
 }
-
 .profile-usermenu ul li.active a {
   color: #5b9bd1;
   background-color: #f6f9fb;
   border-left: 2px solid #5b9bd1;
   margin-left: -2px;
 }
-
 /* Profile Content */
 .profile-content {
   padding: 20px;
   background: #fff;
   min-height: 460px;
 }
-
-
 // --------------------------------------------------------
-
-
-
 .propocontainer {
   padding-top: 80px;
 }
-.toppage{
+.toppage {
   margin-top: 90px;
 }
 .intro-header {
@@ -132,7 +105,7 @@ body {
   /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
   text-align: center;
   color: #ffffff;
-  background: url("/img/coshop-1080.jpg") no-repeat center center;
+  background: asset-url('coshop-1080.jpg') no-repeat center center;
   background-size: cover;
 }
 .intro-message {
@@ -148,71 +121,56 @@ body {
 .offert {
   font-size: 1em;
   text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-  padding-top: 1%
   // font-size: 5em;
+  padding-top: 1%;
 }
-.actors {
-  margin-bottom: 2%;
-  padding-left: 14.5%;
+.searchgroup {
+  width: 100%;
+}
+.searchbar {
+  min-width: 50% !important;
+}
+.blocvaleurs {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.valeuricons {
+  max-width: 80px;
+  height: auto;
+}
+.titleicons {
+  height: 1.1em;
+  width: auto;
 }
 .actorblock {
-  margin: 0 2%;
-  border: 2px solid rgb(163, 163, 163);
-  border-radius: 5px;
-  color: black;
-  font-weight: 600
+  vertical-align: middle;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
-.loggedannounce{
+.loggedannounce {
   border: 2px solid rgb(163, 163, 163);
   border-radius: 5px;
   color: black;
   font-weight: 600;
-  margin-top: 4%
-}
-.driverblock {
-  background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), url(<%= asset_path 'driver2.jpg' %>);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-.passengerblock {
-  background: linear-gradient( rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6) ), url(<%= asset_path 'busstop.jpg' %>);
-  background-repeat: no-repeat;
-  background-size: cover;
+  margin-top: 4%;
 }
 .videoblock {
-  background-color: rgba(255, 255, 255, 0.6)
+  background-color: rgba(255, 255, 255, 0.6);
 }
-
 .actorblock p {
   padding-top: 5%;
-  font-size: 1.2em
+  font-size: 1.2em;
 }
 .passengerblock p {
   padding-top: 0;
-  font-size: 1.2em
+  font-size: 1.2em;
 }
-
-
 .economies {
   font-size: 2.5em;
   font-weight: 600;
   line-height: 1.5em;
   padding: 0 5%;
-
 }
 
-.btn-search {
-  // font-size: 1.2em;
-  font-weight: bold;
-  border: solid 1px #ffffff;
-  background-color: #1cf453;
-  color: #F0EDDF;
-}
-.btn-search:hover {
-  border: solid 1px #ffffff;
-  background-color: #19D649;
-  color: #F0EDDF;
-}
 .intro-divider {
   width: 400px;
   border-top: 1px solid #f8f8f8;
@@ -224,7 +182,6 @@ body {
 .reservation {
   font-size: 130%;
 }
-
 .enseignesdarty {
   height: 60px;
   width: 60px;
@@ -243,7 +200,7 @@ body {
 .navbar-container {
   padding: 20px 0;
 }
-  .navbar.navbar-fixed-top.fixed-theme {
+.navbar.navbar-fixed-top.fixed-theme {
   background-color: #FFF;
   border-color: #080808;
   box-shadow: 0 0 5px rgba(0,0,0,.8);
@@ -302,162 +259,158 @@ body.modal-open #wrap {
 .grayblock {
   background-color: rgb(210, 210, 210);
 }
-
 .btn-search {
-  padding: 8px 10px
+  padding: 8px 10px;
 }
-
+.textholderempty {
+  font-size: 1.3em;
+  color: rgb(186, 186, 186);
+  padding-top: 50px;
+  text-align: center;
+}
+.topformular {
+  padding-top: 30px;
+}
 // -----------------------------------------------------edit user
-.destination{
-  padding-top: 0.5%
+.destination {
+  padding-top: 0.5%;
 }
 .edit {
   padding-top: 50px;
-
 }
-
-
-
-
 // ------vertical ligne
-
-div.vertical-line{
-  width: 2px; /* Line width */
-  background-color: red; /* Line color */
-  height: 100%; /* Override in-line if you want specific height. */
-  float: left; /* Causes the line to float to left of content.
+div.vertical-line {
+  width: 2px;
+  /* Line width */
+  background-color: red;
+  /* Line color */
+  height: 100%;
+  /* Override in-line if you want specific height. */
+  float: left;
+  /* Causes the line to float to left of content.
     You can instead use position:absolute or display:inline-block
     if this fits better with your design */
 }
-
 .fa-dot-circle-o {
   color: red;
 }
-
-
 // new progress bar
-
 .progress {
-height: 20px;
-margin-bottom: 20px;
-overflow: hidden;
-background-color: #f5f5f5;
-border-radius: 4px;
--webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-}
-.progress {
-background-image: -webkit-gradient(linear,left 0,left 100%,from(#ebebeb),to(#f5f5f5));
-background-image: -webkit-linear-gradient(top,#ebebeb 0,#f5f5f5 100%);
-background-image: -moz-linear-gradient(top,#ebebeb 0,#f5f5f5 100%);
-background-image: linear-gradient(to bottom,#ebebeb 0,#f5f5f5 100%);
-background-repeat: repeat-x;
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffebebeb',endColorstr='#fff5f5f5',GradientType=0);
+  height: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 }
 .progress {
-height: 12px;
-background-color: #ebeef1;
-background-image: none;
-box-shadow: none;
+  background-image: -webkit-gradient(linear,left 0,left 100%,from(#ebebeb),to(#f5f5f5));
+  background-image: -webkit-linear-gradient(top,#ebebeb 0,#f5f5f5 100%);
+  background-image: -moz-linear-gradient(top,#ebebeb 0,#f5f5f5 100%);
+  background-image: linear-gradient(to bottom,#ebebeb 0,#f5f5f5 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=  '#ffebebeb',endColorstr='#fff5f5f5',GradientType=0);
+}
+.progress {
+  height: 12px;
+  background-color: #ebeef1;
+  background-image: none;
+  box-shadow: none;
 }
 .progress-bar {
-float: left;
-width: 0;
-height: 100%;
-font-size: 12px;
-line-height: 20px;
-color: #fff;
-text-align: center;
-background-color: #428bca;
--webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
-box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
--webkit-transition: width .6s ease;
-transition: width .6s ease;
+  float: left;
+  width: 0;
+  height: 100%;
+  font-size: 12px;
+  line-height: 20px;
+  color: #fff;
+  text-align: center;
+  background-color: #428bca;
+  -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
+  box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
+  -webkit-transition: width 0.6s ease;
+  transition: width 0.6s ease;
 }
 .progress-bar {
-background-image: -webkit-gradient(linear,left 0,left 100%,from(#428bca),to(#3071a9));
-background-image: -webkit-linear-gradient(top,#428bca 0,#3071a9 100%);
-background-image: -moz-linear-gradient(top,#428bca 0,#3071a9 100%);
-background-image: linear-gradient(to bottom,#428bca 0,#3071a9 100%);
-background-repeat: repeat-x;
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff428bca',endColorstr='#ff3071a9',GradientType=0);
+  background-image: -webkit-gradient(linear,left 0,left 100%,from(#428bca),to(#3071a9));
+  background-image: -webkit-linear-gradient(top,#428bca 0,#3071a9 100%);
+  background-image: -moz-linear-gradient(top,#428bca 0,#3071a9 100%);
+  background-image: linear-gradient(to bottom,#428bca 0,#3071a9 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=  '#ff428bca',endColorstr='#ff3071a9',GradientType=0);
 }
 .progress-bar {
-box-shadow: none;
-border-radius: 3px;
-background-color: #0090D9;
-background-image: none;
--webkit-transition: all 1000ms cubic-bezier(0.785, 0.135, 0.150, 0.860);
--moz-transition: all 1000ms cubic-bezier(0.785, 0.135, 0.150, 0.860);
--ms-transition: all 1000ms cubic-bezier(0.785, 0.135, 0.150, 0.860);
--o-transition: all 1000ms cubic-bezier(0.785, 0.135, 0.150, 0.860);
-transition: all 1000ms cubic-bezier(0.785, 0.135, 0.150, 0.860);
--webkit-transition-timing-function: cubic-bezier(0.785, 0.135, 0.150, 0.860);
--moz-transition-timing-function: cubic-bezier(0.785, 0.135, 0.150, 0.860);
--ms-transition-timing-function: cubic-bezier(0.785, 0.135, 0.150, 0.860);
--o-transition-timing-function: cubic-bezier(0.785, 0.135, 0.150, 0.860);
-transition-timing-function: cubic-bezier(0.785, 0.135, 0.150, 0.860);
+  box-shadow: none;
+  border-radius: 3px;
+  background-color: #0090D9;
+  background-image: none;
+  -webkit-transition: all 1000ms cubic-bezier(0.785, 0.135, 0.150, 0.860);
+  -moz-transition: all 1000ms cubic-bezier(0.785, 0.135, 0.150, 0.860);
+  -ms-transition: all 1000ms cubic-bezier(0.785, 0.135, 0.150, 0.860);
+  -o-transition: all 1000ms cubic-bezier(0.785, 0.135, 0.150, 0.860);
+  transition: all 1000ms cubic-bezier(0.785, 0.135, 0.150, 0.860);
+  -webkit-transition-timing-function: cubic-bezier(0.785, 0.135, 0.150, 0.860);
+  -moz-transition-timing-function: cubic-bezier(0.785, 0.135, 0.150, 0.860);
+  -ms-transition-timing-function: cubic-bezier(0.785, 0.135, 0.150, 0.860);
+  -o-transition-timing-function: cubic-bezier(0.785, 0.135, 0.150, 0.860);
+  transition-timing-function: cubic-bezier(0.785, 0.135, 0.150, 0.860);
 }
 .progress-bar-success {
-background-image: -webkit-gradient(linear,left 0,left 100%,from(#5cb85c),to(#449d44));
-background-image: -webkit-linear-gradient(top,#5cb85c 0,#449d44 100%);
-background-image: -moz-linear-gradient(top,#5cb85c 0,#449d44 100%);
-background-image: linear-gradient(to bottom,#5cb85c 0,#449d44 100%);
-background-repeat: repeat-x;
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5cb85c',endColorstr='#ff449d44',GradientType=0);
+  background-image: -webkit-gradient(linear,left 0,left 100%,from(#5cb85c),to(#449d44));
+  background-image: -webkit-linear-gradient(top,#5cb85c 0,#449d44 100%);
+  background-image: -moz-linear-gradient(top,#5cb85c 0,#449d44 100%);
+  background-image: linear-gradient(to bottom,#5cb85c 0,#449d44 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=  '#ff5cb85c',endColorstr='#ff449d44',GradientType=0);
 }
 .progress-bar-success {
-background-color: #0AA699;
-background-image: none;
+  background-color: #0AA699;
+  background-image: none;
 }
 .progress-bar-info {
-background-image: -webkit-gradient(linear,left 0,left 100%,from(#5bc0de),to(#31b0d5));
-background-image: -webkit-linear-gradient(top,#5bc0de 0,#31b0d5 100%);
-background-image: -moz-linear-gradient(top,#5bc0de 0,#31b0d5 100%);
-background-image: linear-gradient(to bottom,#5bc0de 0,#31b0d5 100%);
-background-repeat: repeat-x;
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de',endColorstr='#ff31b0d5',GradientType=0);
+  background-image: -webkit-gradient(linear,left 0,left 100%,from(#5bc0de),to(#31b0d5));
+  background-image: -webkit-linear-gradient(top,#5bc0de 0,#31b0d5 100%);
+  background-image: -moz-linear-gradient(top,#5bc0de 0,#31b0d5 100%);
+  background-image: linear-gradient(to bottom,#5bc0de 0,#31b0d5 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=  '#ff5bc0de',endColorstr='#ff31b0d5',GradientType=0);
 }
 .progress-bar-info {
-background-color: #0090D9;
-background-image: none;
+  background-color: #0090D9;
+  background-image: none;
 }
 .progress-bar-warning {
-background-image: -webkit-gradient(linear,left 0,left 100%,from(#f0ad4e),to(#ec971f));
-background-image: -webkit-linear-gradient(top,#f0ad4e 0,#ec971f 100%);
-background-image: -moz-linear-gradient(top,#f0ad4e 0,#ec971f 100%);
-background-image: linear-gradient(to bottom,#f0ad4e 0,#ec971f 100%);
-background-repeat: repeat-x;
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff0ad4e',endColorstr='#ffec971f',GradientType=0);
+  background-image: -webkit-gradient(linear,left 0,left 100%,from(#f0ad4e),to(#ec971f));
+  background-image: -webkit-linear-gradient(top,#f0ad4e 0,#ec971f 100%);
+  background-image: -moz-linear-gradient(top,#f0ad4e 0,#ec971f 100%);
+  background-image: linear-gradient(to bottom,#f0ad4e 0,#ec971f 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=  '#fff0ad4e',endColorstr='#ffec971f',GradientType=0);
 }
 .progress-bar-warning {
-background-color: #FDD01C;
-background-image: none;
+  background-color: #FDD01C;
+  background-image: none;
 }
 .progress-bar-danger {
-background-image: -webkit-gradient(linear,left 0,left 100%,from(#d9534f),to(#c9302c));
-background-image: -webkit-linear-gradient(top,#d9534f 0,#c9302c 100%);
-background-image: -moz-linear-gradient(top,#d9534f 0,#c9302c 100%);
-background-image: linear-gradient(to bottom,#d9534f 0,#c9302c 100%);
-background-repeat: repeat-x;
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffd9534f',endColorstr='#ffc9302c',GradientType=0);
+  background-image: -webkit-gradient(linear,left 0,left 100%,from(#d9534f),to(#c9302c));
+  background-image: -webkit-linear-gradient(top,#d9534f 0,#c9302c 100%);
+  background-image: -moz-linear-gradient(top,#d9534f 0,#c9302c 100%);
+  background-image: linear-gradient(to bottom,#d9534f 0,#c9302c 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=  '#ffd9534f',endColorstr='#ffc9302c',GradientType=0);
 }
 .progress-bar-danger {
-background-color: #F35958;
-background-image: none;
+  background-color: #F35958;
+  background-image: none;
 }
-
 .bidpartber {
-  border : solid 2.8px black;
-
+  border: solid 2.8px black;
 }
-
 // ----------- calendrier
-
-
-time.icon
-{
-  font-size: 0.8em; /* change icon size */
+time.icon {
+  font-size: 0.8em;
+  /* change icon size */
   display: block;
   position: relative;
   width: 7em;
@@ -472,9 +425,7 @@ time.icon
   -webkit-transform-origin: 50% 10%;
   transform-origin: 50% 10%;
 }
-
-time.icon *
-{
+time.icon * {
   display: block;
   width: 100%;
   font-size: 1em;
@@ -482,9 +433,7 @@ time.icon *
   font-style: normal;
   text-align: center;
 }
-
-time.icon strong
-{
+time.icon strong {
   position: absolute;
   top: 0;
   padding: 0.4em 0;
@@ -493,41 +442,93 @@ time.icon strong
   border-bottom: 1px dashed #f37302;
   box-shadow: 0 2px 0 #fd9f1b;
 }
-
-time.icon em
-{
+time.icon em {
   position: absolute;
   bottom: 0.3em;
   color: #fd9f1b;
 }
-
-time.icon span
-{
+time.icon span {
   width: 100%;
   font-size: 2.8em;
   letter-spacing: -0.05em;
   padding-top: 0.8em;
   color: #2f2f2f;
 }
-
-.bidblock:hover time.icon, .bidblock:focus time.icon
-{
+.bidblock:focus time.icon,
+.bidblock:hover time.icon {
   -webkit-animation: swing 0.6s ease-out;
   animation: swing 0.6s ease-out;
 }
-
 @-webkit-keyframes swing {
-  0%   { -webkit-transform: rotate(0deg)  skewY(0deg); }
-  20%  { -webkit-transform: rotate(12deg) skewY(4deg); }
-  60%  { -webkit-transform: rotate(-9deg) skewY(-3deg); }
-  80%  { -webkit-transform: rotate(6deg)  skewY(-2deg); }
-  100% { -webkit-transform: rotate(0deg)  skewY(0deg); }
+  0% {
+    -webkit-transform: rotate(0deg) skewY(0deg);
+  }
+  20% {
+    -webkit-transform: rotate(12deg) skewY(4deg);
+  }
+  60% {
+    -webkit-transform: rotate(-9deg) skewY(-3deg);
+  }
+  80% {
+    -webkit-transform: rotate(6deg) skewY(-2deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg) skewY(0deg);
+  }
 }
-
 @keyframes swing {
-  0%   { transform: rotate(0deg)  skewY(0deg); }
-  20%  { transform: rotate(12deg) skewY(4deg); }
-  60%  { transform: rotate(-9deg) skewY(-3deg); }
-  80%  { transform: rotate(6deg)  skewY(-2deg); }
-  100% { transform: rotate(0deg)  skewY(0deg); }
+  0% {
+    transform: rotate(0deg) skewY(0deg);
+  }
+  20% {
+    transform: rotate(12deg) skewY(4deg);
+  }
+  60% {
+    transform: rotate(-9deg) skewY(-3deg);
+  }
+  80% {
+    transform: rotate(6deg) skewY(-2deg);
+  }
+  100% {
+    transform: rotate(0deg) skewY(0deg);
+  }
+}
+#destA .fa,
+#destR .fa {
+  float: none !important;
+  text-align: center;
+}
+.post1 p,
+.post2 p {
+  text-align: left;
+}
+#bid_nbrplace{
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+.numetape {
+  color: rgb(65, 131, 189);
+  font-size: 4em;
+  padding: 0 20px;
+  margin: 5% 3%;
+  border-radius: 50px;
+  border: 5px solid rgb(65, 131, 189);
+}
+.trajettype {
+  font-size: 1.8em;
+  margin: 2% 3%;
+  padding: 0.5% 1%;
+  border: 1px solid rgb(0, 7, 98);
+  border-radius: 10px;
+  color: rgb(0, 7, 98);
+  background-image: none;
+  background-color:rgba(53, 108, 230, 0.4)
+}
+.trajactif {
+  border: 1px solid  #DE5B49;
+  background-color: #FA8846;
+  color: white;
+}
+.postbiditem{
+  padding-top: 2%
 }

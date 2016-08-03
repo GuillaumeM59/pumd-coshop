@@ -1,37 +1,37 @@
-<div class="col-md-4 bidblock">
+<% placedispo = 0 %>
+<% if bid.pass1_id == 0 %>
+<% placedispo +=1%>
+<% end%>
+<% if bid.pass2_id == 0 %>
+<% placedispo +=1%>
+<% end%>
+<% if bid.pass3_id == 0 %>
+<% placedispo +=1%>
+<% end%>
+<% if bid.pass4_id == 0 %>
+<% placedispo +=1%>
+<% end%>
+<% nbrplace= bid.nbrplace %>
+<% if current_user %>
+<% numplace = 0 %>
+<% if bid.pass1_id == current_user.id %>
+<% numplace = 1%>
+<% elsif bid.pass2_id == current_user.id %>
+<% numplace = 2%>
+<% elsif bid.pass3_id == current_user.id %>
+<% numplace = 3%>
+<% elsif bid.pass4_id == current_user.id %>
+<% numplace = 4%>
+<% end%>
+<% end%>
+
+<% if bid != nil %>
+
+<%driver=User.find(bid.driver_id)%>
+<%shop=Shop.find(bid.shop_id)%>
+<%isactive = (bid.isreturn && (bid.come_back > DateTime.now)) || ((bid.isreturn==false) && (bid.go_at>DateTime.now)) %>
+<div class="col-md-6 bidblock <%= 'overdated' if isactive == false %>">
   <div class="row">
-    <% placedispo = 0 %>
-    <% if bid.pass1_id == 0 %>
-    <% placedispo +=1%>
-    <% end%>
-    <% if bid.pass2_id == 0 %>
-    <% placedispo +=1%>
-    <% end%>
-    <% if bid.pass3_id == 0 %>
-    <% placedispo +=1%>
-    <% end%>
-    <% if bid.pass4_id == 0 %>
-    <% placedispo +=1%>
-    <% end%>
-    <% nbrplace= bid.nbrplace %>
-    <% if current_user %>
-    <% numplace = 0 %>
-    <% if bid.pass1_id == current_user.id %>
-    <% numplace = 1%>
-    <% elsif bid.pass2_id == current_user.id %>
-    <% numplace = 2%>
-    <% elsif bid.pass3_id == current_user.id %>
-    <% numplace = 3%>
-    <% elsif bid.pass4_id == current_user.id %>
-    <% numplace = 4%>
-    <% end%>
-    <% end%>
-
-    <% if bid != nil %>
-
-    <%driver=User.find(bid.driver_id)%>
-    <%shop=Shop.find(bid.shop_id)%>
-    <%isactive = (bid.isreturn && (bid.come_back > DateTime.now)) || ((bid.isreturn==false) && (bid.go_at>DateTime.now)) %>
 
     <%if bid.isreturn %>
     <div class="col-md-12 distome leaved">
@@ -49,7 +49,7 @@
     <div class="col-xs-4 col-sm-4 col-md-4 depart">
 
 
-      <p class="text-center"><%= image_tag((Brand.find(shop.brand_id).minipic), alt:"Logo", class:"enseignes", size: "50")%></p>
+      <p class="text-center"><%= link_to(image_tag((Brand.find(shop.brand_id).minipic), alt:"Logo", class:"enseignes", size: "50"),shop_path(shop))%></p>
       <p class="text-center"><%= shop.name.capitalize %></p>
     </div>
     <div class="col-xs-4 col-md-4 horaire">
@@ -60,26 +60,22 @@
     <em><%=l(bid.come_back,format:"%B") %></em>
   </time>
 
+  <p class="text-center hour"><%= bid.come_back.strftime("%H:%M") %></p>
 
-      <p class="text-center hour"><%= bid.come_back.strftime("%H:%M") %></p>
-        <%if isactive %>
-      <div class="blockdispo">
-
-        <p class="text-center ">place<% if placedispo > 1 %>s<%end  %>
-          restante<% if placedispo > 1 %>s<%end  %></p>
-        <p class="text-center nbrplace">
-          <%= placedispo %>
-        </p>
-
-      </div>
-      <%end %>
-    </div>
+</div>
     <div class="col-xs-4 col-md-4 conducteur">
       <p class="text-center"><%= link_to(image_tag(driver.avatar, size: "50"),user_path(driver.id)) %></p>
       <p class="text-center">
         <%= driver.username %>
         <%= driver.city %></p>
     </div>
+    <%if isactive %>
+    <div class="blockdispo col-xs-12">
+
+      <p class="text-center ">place<% if placedispo > 1 %>s<%end  %> restante<% if placedispo > 1 %>s<%end  %>: <%= placedispo %> </p>
+
+      </div>
+      <%end %>
     <div class="col-xs-12 col-md-10 col-md-offset-1 illutrajet leaved">
       <p class="text-center"><%= disttodriver= Geocoder::Calculations.distance_between([shop.latitude,shop.longitude], [driver.latitude,driver.longitude], :units => :km).round(1) %>
         km</p>
@@ -113,22 +109,18 @@
         <em><%=l(bid.go_at,format:"%B") %></em>
       </time>
       <p class="text-center hour"><%= bid.go_at.strftime("%H:%M") %></p>
-
-      <%if isactive %>
-      <div class="blockdispo">
-
-        <p class="text-center ">place<% if placedispo > 1 %>s<%end  %>
-          restante<% if placedispo > 1 %>s<%end  %></p>
-        <p class="text-center nbrplace">
-          <%= placedispo %>
-        </p>
-      </div>
-      <%end %>
     </div>
+
     <div class="col-xs-4 col-md-4 depart">
-      <p class="text-center"><%= image_tag((Brand.find(shop.brand_id).minipic), alt:"Logo", class:"enseignes", size: "50")%></p>
+      <p class="text-center"><%= link_to(image_tag((Brand.find(shop.brand_id).minipic), alt:"Logo", class:"enseignes", size: "50"),shop_path(shop))%></p>
       <p class="text-center"><%= shop.name.capitalize %></p>
     </div>
+    <%if isactive %>
+    <div class="blockdispo col-xs-12">
+
+      <p class="text-center ">place<% if placedispo > 1 %>s<%end  %> restante<% if placedispo > 1 %>s<%end  %>:  <%= placedispo %></p>
+    </div>
+    <%end %>
 
     <div class="col-xs-12 col-md-10 col-md-offset-1 illutrajet leaved">
       <p class="text-center"><%= disttodriver= Geocoder::Calculations.distance_between([shop.latitude,shop.longitude], [driver.latitude,driver.longitude], :units => :km).round(1) %>
@@ -200,7 +192,7 @@
 </li>
     <% end %>
     <%else %>
-    <li class="text-center">Le trajet à déjà eu lieu</li>
+    <li class="text-center">Le trajet a déjà eu lieu</li>
 <%end %>
     <%if bid.isreturn %>
     <%if numplace != 0 && current_user && bid.come_back.to_date > Date.today%>
@@ -332,13 +324,5 @@ $( ".bidblock" ).mouseleave(function() {
 
 });
 
-var bidpheights = $(".bidblock").map(function ()
-{
-  return $(this).height();
-}).get();
-var maxBidpHeight = Math.max.apply(null, bidpheights);
-var x = maxBidpHeight;
-console.log(x)
-var realheight = x*1.06;
-$('.bidblock').css({"min-height":realheight+"px"});
+
 </script>

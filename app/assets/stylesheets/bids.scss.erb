@@ -1,6 +1,10 @@
 // Place all the styles related to the Bids controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.overdated {
+  opacity: 0.2
+}
+
 .bidpart {
   font-size: 1.2em
 }
@@ -34,12 +38,15 @@
   margin-right:1.6%;
   background-color: #fff;
   border-radius: 10px;
-  border: 2px solid rgb(8, 0, 23);
+  border: 2px solid rgb(226, 226, 226);
   padding-top: 1%;
   padding-left: 0;
   padding-right: 0;
-  width:30%;
+  width:46.8%;
   position: relative;
+  background: linear-gradient( rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95) ), url(<%= asset_path 'bg.jpg' %>);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .bidblock time {
   width: 6em
