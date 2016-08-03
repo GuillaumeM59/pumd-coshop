@@ -32,7 +32,8 @@
           <h1>Partagez bien plus qu'un trajet shopping...</h1>
           <% if current_user  %>
           <%if current_user.driver %>
-          <%= link_to "Proposer un trajet", "", :class => "btn btn-default btn-lg", "data-toggle" => "modal","data-target" => "#newbid" %>
+          <%= link_to "Proposer un trajet", "", :class => "btn btn-default btn-lg hidden-xs hidden-sm", "data-toggle" => "modal","data-target" => "#newbid" %>
+          <%= link_to "Proposer un trajet", new_bid_path(current_user), :class => "btn btn-default btn-lg hidden-md hidden-lg"%>
         <% else %>
           <%= link_to "Proposer un trajet", user_path(current_user), :class => "btn btn-default btn-lg", data: { confirm: 'Vous devez être conducteur pour poster une annonce. Modifiez votre profil. Vous pourrez bientot deposer une demande en tand que
           passager.' } %>
@@ -81,7 +82,7 @@
               <% if @waitval != nil %>
               <%if @waitval.size !=0 %>
 
-              <div class=" col-md-offset-2 col-md-8 driverblock loggedannounce">
+              <div class=" col-md-offset-2 col-md-8 loggedannounce">
 
                 <h4 class="text-center ">Vous avez
                   <%= @waitval.size %>
@@ -94,7 +95,7 @@
               <%end  %>
               <%end  %>
 
-              <div class=" col-md-offset-2 col-md-8 driverblock loggedannounce">
+              <div class=" col-md-offset-2 col-md-8 loggedannounce">
 
                 <h4 class="text-center ">Bientôt: Partagez mieux en vous selectionnant avec vos centres d'interet communs</h4>
               </div>

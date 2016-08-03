@@ -1,3 +1,24 @@
+<script type="text/javascript">
+  $(function () {
+    filterShopsList();
+  });
+
+  function filterShopsList() {
+    shops = $('#bid_shop_id').html();
+    $('#bid_brand_id').change(function () {
+      brandselected = $('#bid_brand_id :selected').text();
+      optgroup = "optgroup[label='" + brandselected + "']";
+      options = $(shops).filter(optgroup).html();
+      console.log(shops);
+      console.log(optgroup);
+      console.log(options);
+
+      if (brandselected != "") {
+        $('#bid_shop_id').html(options);
+      }
+    });
+  };
+</script>
 <h2 class="text-center">
   Poster une annonce</h2>
   <%= form_for @bid, url: {controller:"bids",action: "create"}, html: {class: "nifty_form"} do |f| %>
@@ -30,14 +51,14 @@
 <div class="topformular"></div>
 <div id="destA">
 
-  <div class="field col-md-5 postbiditem">
+  <div class="field col-md-5 postbiditem" id="postbiduser">
     <%= image_tag(current_user.avatar, size:"60")%>
     <%= current_user.username%>
   </div>
-  <div class="col-md-2 postbiditem">
+  <div class="col-md-2 postbiditem" id="postbidarrow">
     <i class="fa fa-arrow-right fa-3x text-center" aria-hidden="true"></i>
   </div>
-  <div class="field col-md-5">
+  <div class="field col-md-5" id="postbidshop">
     <div class="field">
       <%= f.label "Enseigne" %><br>
       <%= f.collection_select :brand_id, Brand.order(:name), :id, :name, include_blank: true, placeholder: "" %>
@@ -50,29 +71,6 @@
   </div>
 </div>
 
-
-
-<div id="destR">
-
-  <div class="field col-md-5">
-    <div class="field">
-      <%= f.label "Enseigne" %><br>
-      <%= f.collection_select :brand_id, Brand.order(:name), :id, :name, include_blank: true, placeholder: "" %>
-    </div>
-    <div class="field">
-      <%= f.label "Magasin" %><br>
-      <%= f.grouped_collection_select :shop_id, Brand.order(:name), :shops, :name, :id, :name, include_blank: true, placeholder: "" %>
-    </div>
-  </div>
-  <div class="col-md-2 postbiditem">
-    <i class="fa fa-arrow-right fa-3x text-center" aria-hidden="true"></i>
-  </div>
-    <div class="field col-md-5 postbiditem">
-      <%= image_tag(current_user.avatar, size:"60")%>
-      <%= current_user.username%>
-    </div>
-
-</div>
 
 
 
@@ -115,11 +113,15 @@ $('#trajetA').click(function () {
   $('#trajetAR').removeClass( "trajactif" );
   $('#trajetR').removeClass( "trajactif" );
     $('#heureR').hide(1000); //time for show
-    $('#destR').hide(1000); //time for show
     $('#heureA').show(1000); //time for show
-    $('#destA').show(1000); //time for show
     $('#bid_withreturn')[0].checked = false;
     $('#bid_isreturn')[0].checked = false;
+    $('#postbiduser').hide(1000); //time for show
+    $('#postbidshop').hide(1000); //time for show
+    $('#postbidarrow').before($('#postbiduser')); //time for show
+    $('#postbidarrow').after($('#postbidshop')); //time for show
+    $('#postbiduser').show(1000); //time for show
+    $('#postbidshop').show(1000); //time for show
 });
 $('#trajetAR').click(function () {
   $(this).addClass( "trajactif" );
@@ -127,21 +129,30 @@ $('#trajetAR').click(function () {
   $('#trajetR').removeClass( "trajactif" );
     $('#heureR').show(1000); //time for show
     $('#heureA').show(1000); //time for show
-    $('#destA').show(1000); //time for show
-    $('#destR').hide(1000); //time for show
     $('#bid_withreturn')[0].checked = true;
     $('#bid_isreturn')[0].checked = true;
+    $('#postbiduser').hide(1000); //time for show
+    $('#postbidshop').hide(1000); //time for show
+    $('#postbidarrow').before($('#postbiduser')); //time for show
+    $('#postbidarrow').after($('#postbidshop')); //time for show
+    $('#postbiduser').show(1000); //time for show
+    $('#postbidshop').show(1000); //time for show
 });
 $('#trajetR').click(function () {
   $(this).addClass( "trajactif" );
   $('#trajetA').removeClass( "trajactif" );
   $('#trajetAR').removeClass( "trajactif" );
     $('#heureR').show(1000); //time for show
-    $('#destR').show(1000); //time for show
     $('#heureA').hide(1000); //time for show
-    $('#destA').hide(1000); //time for show
     $('#bid_withreturn')[0].checked = false;
     $('#bid_isreturn')[0].checked = true;
+    $('#postbiduser').hide(1000); //time for show
+    $('#postbidshop').hide(1000); //time for show
+    $('#postbidarrow').after($('#postbiduser')); //time for show
+    $('#postbidarrow').before($('#postbidshop')); //time for show
+    $('#postbiduser').show(1000); //time for show
+    $('#postbidshop').show(1000); //time for show
+
 });
 
 
