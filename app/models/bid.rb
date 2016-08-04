@@ -7,4 +7,6 @@ class Bid < ActiveRecord::Base
 
 validates_presence_of :shop_id, :driver_id, :go_at
 
+
+
 end

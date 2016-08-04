@@ -12,14 +12,14 @@ config.i18n.default_locale = :fr
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
 
- 
+
 #ACTION MAILER
 config.action_mailer.default_url_options = { :host => 'co-shop.fr' }
 # ActionMailer Config
 # Setup for production - deliveries, no errors raised
 config.action_mailer.delivery_method = :smtp
 config.action_mailer.perform_deliveries = true
-config.action_mailer.raise_delivery_errors = false 
+config.action_mailer.raise_delivery_errors = false
 config.action_mailer.default :charset => "utf-8"
 config.action_mailer.smtp_settings = {
   :address   => "smtp.co-shop.fr",
@@ -98,4 +98,7 @@ config.action_mailer.smtp_settings = {
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+
+
 end

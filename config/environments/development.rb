@@ -38,4 +38,6 @@ config.i18n.default_locale = :fr
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+
 end

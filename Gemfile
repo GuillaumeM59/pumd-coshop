@@ -25,7 +25,10 @@ gem 'bootstrap-sass'
 
 gem 'stripe'
 
- gem 'materialize-sass'
+#SMS API
+gem 'htmlentities', '~> 4.3', '>= 4.3.4'
+gem 'twilio-ruby'
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -42,6 +45,10 @@ gem 'geocoder'
 # Get map with posistions
 gem 'gmaps4rails'
 gem 'markerclustererplus-rails'
+
+
+#ENV variables safe
+gem 'figaro'
 
 
 # Use ActiveModel has_secure_password

@@ -6,3 +6,6 @@ public/assets/*
 test/*
 db/schema.rb
 config/*
+
+# Ignore application configuration
+/config/application.yml
