@@ -1,0 +1,85 @@
+<%= form_for(@trajetpumd) do |f| %>
+  <% if @trajetpumd.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@trajetpumd.errors.count, "error") %> prohibited this trajetpumd from being saved:</h2>
+
+      <ul>
+      <% @trajetpumd.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :driver_id %><br>
+    <%= f.number_field :driver_id %>
+  </div>
+  <div class="field">
+    <%= f.label :shop_id %><br>
+    <%= f.number_field :shop_id %>
+  </div>
+  <div class="field">
+    <%= f.label :td_date %><br>
+    <%= f.text_field :td_date %>
+  </div>
+  <div class="field">
+    <%= f.label :td_time %><br>
+    <%= f.text_field :td_time %>
+  </div>
+  <div class="field">
+    <%= f.label :regulier %><br>
+    <%= f.check_box :regulier %>
+  </div>
+  <div class="field">
+    <%= f.label :drive1_ref %><br>
+    <%= f.text_field :drive1_ref %>
+  </div>
+  <div class="field">
+    <%= f.label :drive2_ref %><br>
+    <%= f.text_field :drive2_ref %>
+  </div>
+  <div class="field">
+    <%= f.label :drive3_ref %><br>
+    <%= f.text_field :drive3_ref %>
+  </div>
+  <div class="field">
+    <%= f.label :drive4_ref %><br>
+    <%= f.text_field :drive4_ref %>
+  </div>
+  <div class="field">
+    <%= f.label :drive5_ref %><br>
+    <%= f.text_field :drive5_ref %>
+  </div>
+  <div class="field">
+    <%= f.label :drive6_ref %><br>
+    <%= f.text_field :drive6_ref %>
+  </div>
+  <div class="field">
+    <%= f.label :drive1_size %><br>
+    <%= f.number_field :drive1_size %>
+  </div>
+  <div class="field">
+    <%= f.label :drive2_size %><br>
+    <%= f.number_field :drive2_size %>
+  </div>
+  <div class="field">
+    <%= f.label :drive3_size %><br>
+    <%= f.number_field :drive3_size %>
+  </div>
+  <div class="field">
+    <%= f.label :drive4_size %><br>
+    <%= f.number_field :drive4_size %>
+  </div>
+  <div class="field">
+    <%= f.label :drive5_size %><br>
+    <%= f.number_field :drive5_size %>
+  </div>
+  <div class="field">
+    <%= f.label :drive6_size %><br>
+    <%= f.number_field :drive6_size %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

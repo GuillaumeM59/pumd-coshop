@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Trajetpumds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Driver</th>
+      <th>Shop</th>
+      <th>Td date</th>
+      <th>Td time</th>
+      <th>Regulier</th>
+      <th>Drive1 ref</th>
+      <th>Drive2 ref</th>
+      <th>Drive3 ref</th>
+      <th>Drive4 ref</th>
+      <th>Drive5 ref</th>
+      <th>Drive6 ref</th>
+      <th>Drive1 size</th>
+      <th>Drive2 size</th>
+      <th>Drive3 size</th>
+      <th>Drive4 size</th>
+      <th>Drive5 size</th>
+      <th>Drive6 size</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trajetpumds.each do |trajetpumd| %>
+      <tr>
+        <td><%= trajetpumd.driver_id %></td>
+        <td><%= trajetpumd.shop_id %></td>
+        <td><%= trajetpumd.td_date %></td>
+        <td><%= trajetpumd.td_time %></td>
+        <td><%= trajetpumd.regulier %></td>
+        <td><%= trajetpumd.drive1_ref %></td>
+        <td><%= trajetpumd.drive2_ref %></td>
+        <td><%= trajetpumd.drive3_ref %></td>
+        <td><%= trajetpumd.drive4_ref %></td>
+        <td><%= trajetpumd.drive5_ref %></td>
+        <td><%= trajetpumd.drive6_ref %></td>
+        <td><%= trajetpumd.drive1_size %></td>
+        <td><%= trajetpumd.drive2_size %></td>
+        <td><%= trajetpumd.drive3_size %></td>
+        <td><%= trajetpumd.drive4_size %></td>
+        <td><%= trajetpumd.drive5_size %></td>
+        <td><%= trajetpumd.drive6_size %></td>
+        <td><%= link_to 'Show', trajetpumd %></td>
+        <td><%= link_to 'Edit', edit_trajetpumd_path(trajetpumd) %></td>
+        <td><%= link_to 'Destroy', trajetpumd, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Trajetpumd', new_trajetpumd_path %>

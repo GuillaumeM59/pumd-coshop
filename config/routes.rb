@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :resapumds
+  resources :trajetpumds
   resources :validations
   resources :coins
   resources :carmodels

@@ -19,6 +19,22 @@ class ShopsController < ApplicationController
   # GET /shops/1
   # GET /shops/1.json
   def show
+
+    require 'open-uri'
+    file_path="http://www.auchan.fr/magasins/st-quentin/sl-103"
+    doc = Nokogiri::HTML(open(file_path))
+    @actus= doc.at_css(".bloc-actus")
+    @hours= doc.at_css(".store-schedule")
+@actus.css("img").each do |image|
+ if image["src"][0] == "/"
+   image["src"] = "http://www.auchan.fr" + image["src"]
+
+ end
+end
+
+    @actualites= @actus.to_html.html_safe
+    @horaires=@hours.to_html.html_safe
+
     @hash = Gmaps4rails.build_markers(@shop) do |shop, marker|
       marker.lat shop.latitude
       marker.lng shop.longitude
