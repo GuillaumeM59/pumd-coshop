@@ -1,5 +1,6 @@
 class MinibrandUploader < CarrierWave::Uploader::Base
 
+  include CarrierWave::MiniMagick
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -13,6 +14,9 @@ class MinibrandUploader < CarrierWave::Uploader::Base
   def store_dir
       "#{Rails.root}/public/img/minis"
   end
+  version :marker do
+   process resize_to_fill: [32,32]
+ end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url

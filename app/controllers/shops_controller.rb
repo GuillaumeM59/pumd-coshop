@@ -110,6 +110,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shop_params
-      params.require(:shop).permit(:brand_id, :name, :address, :zipcode, :city, :isdrive)
+      params.require(:shop).permit(:brand_id, :name, :address, :zipcode, :city, :isdrive, :longitude, :latitude, :listname)
     end
 end

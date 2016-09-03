@@ -19,6 +19,12 @@ class BrandsController < ApplicationController
   # GET /brands/1
   # GET /brands/1.json
   def show
+    @shopslist = Shop.where(brand_id:@brand)
+    @hash = Gmaps4rails.build_markers(@shopslist) do |shopitem, marker|
+      marker.lat shopitem.latitude
+      marker.lng shopitem.longitude
+
+    end
   end
 
   # GET /brands/new

@@ -1,4 +1,6 @@
 class Brand < ActiveRecord::Base
+
+
   has_many :shops
 
 
@@ -6,5 +8,6 @@ class Brand < ActiveRecord::Base
     mount_uploader :brandpic, BrandpicUploader
 
       mount_uploader :minipic, MinibrandUploader
+
 
 end

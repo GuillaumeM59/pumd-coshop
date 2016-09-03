@@ -45,6 +45,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+
   end
 
   # POST /users
@@ -54,7 +55,7 @@ class UsersController < ApplicationController
     @user.avatar = :default_url
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'Vous avez été inscrit, vous avez gagné 2 cocoins pour essayer le covoiturage shopping! ' }
+        format.html { redirect_to @user, notice: 'Vous avez été inscrit, vous avez gagné 3€ et 2 cocoins pour essayer le covoiturage shopping! ' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }

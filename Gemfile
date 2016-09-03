@@ -15,15 +15,18 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 gem 'devise'
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem "mini_magick"
 # Fancy form
 gem 'bootstrap_form'
 # Css & Js library
 gem 'bootstrap-sass'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 # Hook locally mail
 # Run deamon by call him in termilal like so : maicatcher
 # Then go  http://127.0.0.1:1080
 
-gem 'stripe'
+gem 'stripe-rails'
 
 #SMS API
 gem 'htmlentities', '~> 4.3', '>= 4.3.4'
@@ -47,9 +50,17 @@ gem 'gmaps4rails'
 gem 'markerclustererplus-rails'
 
 
-#ENV variables safe
+#ENV keys safe
 gem 'figaro'
+#Form generator
+gem 'formtastic', '~> 3.0'
+gem 'client_side_validations'
+#data tables
+gem 'jquery-datatables-rails', '~> 3.3.0'
+gem 'bootstrap-will_paginate'
 
+#time filters
+gem 'by_star', git: "git://github.com/radar/by_star"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -81,4 +92,5 @@ group :development do
   gem 'guard-livereload', '~> 2.5', require: false
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'table_print'
 end

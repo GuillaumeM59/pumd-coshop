@@ -1,5 +1,5 @@
 <script src="//maps.google.com/maps/api/js?v=3.exp&key=AIzaSyBngIsRw-Abk5UB04-Nl_Qg4vACEfo2jEo"></script>
-<script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"></script>
+<script src="https://maps.googleapis.com/maps-api-v3/api/js/26/0/marker.js"></script>
 
 <p id="notice"><%= notice %></p>
 
@@ -56,6 +56,9 @@
 
 
     <script type="text/javascript">
+    console.log(markers);
+    console.log(<%= @hash %>)
+    console.log(<%= @shoplist %>)
     handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
     markers = handler.addMarkers(<%=raw @hash.to_json %>);

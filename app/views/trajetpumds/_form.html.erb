@@ -20,65 +20,14 @@
     <%= f.number_field :shop_id %>
   </div>
   <div class="field">
-    <%= f.label :td_date %><br>
-    <%= f.text_field :td_date %>
-  </div>
-  <div class="field">
-    <%= f.label :td_time %><br>
-    <%= f.text_field :td_time %>
+    <%= f.label :do_at %><br>
+    <%= f.datetime_select :do_at %>
   </div>
   <div class="field">
     <%= f.label :regulier %><br>
     <%= f.check_box :regulier %>
   </div>
-  <div class="field">
-    <%= f.label :drive1_ref %><br>
-    <%= f.text_field :drive1_ref %>
-  </div>
-  <div class="field">
-    <%= f.label :drive2_ref %><br>
-    <%= f.text_field :drive2_ref %>
-  </div>
-  <div class="field">
-    <%= f.label :drive3_ref %><br>
-    <%= f.text_field :drive3_ref %>
-  </div>
-  <div class="field">
-    <%= f.label :drive4_ref %><br>
-    <%= f.text_field :drive4_ref %>
-  </div>
-  <div class="field">
-    <%= f.label :drive5_ref %><br>
-    <%= f.text_field :drive5_ref %>
-  </div>
-  <div class="field">
-    <%= f.label :drive6_ref %><br>
-    <%= f.text_field :drive6_ref %>
-  </div>
-  <div class="field">
-    <%= f.label :drive1_size %><br>
-    <%= f.number_field :drive1_size %>
-  </div>
-  <div class="field">
-    <%= f.label :drive2_size %><br>
-    <%= f.number_field :drive2_size %>
-  </div>
-  <div class="field">
-    <%= f.label :drive3_size %><br>
-    <%= f.number_field :drive3_size %>
-  </div>
-  <div class="field">
-    <%= f.label :drive4_size %><br>
-    <%= f.number_field :drive4_size %>
-  </div>
-  <div class="field">
-    <%= f.label :drive5_size %><br>
-    <%= f.number_field :drive5_size %>
-  </div>
-  <div class="field">
-    <%= f.label :drive6_size %><br>
-    <%= f.number_field :drive6_size %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

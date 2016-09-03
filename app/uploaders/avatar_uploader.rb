@@ -1,5 +1,5 @@
 class AvatarUploader < CarrierWave::Uploader::Base
-
+ include CarrierWave::MiniMagick
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -11,6 +11,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
   def default_url(*args)
    ActionController::Base.helpers.asset_path([version_name, "default.png"].compact.join('_'))
  end
+
+ version :marker do
+  process resize_to_fill: [32,32]
+end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:

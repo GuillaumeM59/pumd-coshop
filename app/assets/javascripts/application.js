@@ -16,6 +16,12 @@
 //= require jquery-ui
 //= require modernizr.custom
 //= require bootstrap-sprockets
+//= require moment
+//= require moment/fr
+//= require bootstrap-datetimepicker
+//= require dataTables/jquery.dataTables
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+//= require rails.validations
 //= require connexion
 //= require resultat
 //= require index

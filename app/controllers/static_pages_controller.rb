@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+  before_filter :authenticate_user!, only: [:tdb]
 
 
 
@@ -36,6 +37,9 @@ class StaticPagesController < ApplicationController
   def about
   end
 
+  def cgv
+  end
+
   def contact
     @message = Message.new
   end
@@ -49,6 +53,74 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def tdb
+      @user=current_user
+      dob = @user.dob
+      now = Time.now.utc.to_date
+      @age =now.year - @user.dob.year - (@user.dob.change(:year => now.year) > now ? 1 : 0)
+      @trajetsresas=[]
+      @resas=Resapumd.where('drive1_userid=? OR drive2_userid=? OR drive3_userid=? OR drive4_userid=? OR drive5_userid=? OR drive6_userid=?', "#{@user.id}", "#{@user.id}", "#{@user.id}", "#{@user.id}", "#{@user.id}", "#{@user.id}").reverse
+      if @resas.count !=0
+        @resas.each do |i|
+            if i.drive1_userid==@user.id
+              n=1
+            elsif i.drive2_userid==@user.id
+              n=2
+            elsif i.drive3_userid==@user.id
+              n=3
+            elsif i.drive4_userid==@user.id
+              n=4
+            elsif i.drive5_userid==@user.id
+              n=5
+            else
+              n=6
+            end
+            @trajetsresas << [Trajetpumd.find(i.trajet_id),i,n]
+        end
+      end
+      @trans=Transaction.where(user_id:@user.id).order(:created_at).reverse
+      @trajetsidisdriver=[]
+      @mespickingresas=[]
+      Trajetpumd.where(driver_id:@user.id).reverse.each do |t|
+        @trajetsidisdriver << t
+      end
+      x=0
+      @trajetsidisdriver.count.times do |i|
+        if x < 20
+          datareserve = []
+          f=Resapumd.find(@trajetsidisdriver[i].id)
+          if f.drive1_userid != nil
+            datareserve << [f.drive1_userid, f.drive1_ref, f.drive1_size, f.driver1_subst]
+            x +=1
+          end
+          if f.drive2_userid != nil
+            datareserve << [f.drive2_userid, f.drive2_ref, f.drive2_size, f.driver2_subst]
+            x +=1
+          end
+          if f.drive3_userid != nil
+            datareserve << [f.drive3_userid, f.drive3_ref, f.drive3_size, f.driver3_subst]
+            x +=1
+          end
+          if f.drive4_userid != nil
+            datareserve << [f.drive4_userid, f.drive4_ref, f.drive4_size, f.driver4_subst]
+            x +=1
+          end
+          if f.drive5_userid != nil
+            datareserve << [f.drive5_userid, f.drive5_ref, f.drive5_size, f.driver5_subst]
+            x +=1
+          end
+          if f.drive6_userid != nil
+            datareserve << [f.drive6_userid, f.drive6_ref, f.drive6_size, f.driver6_subst]
+            x +=1
+          end
+            @mespickingresas << [@trajetsidisdriver[i], datareserve]
+        end
+      end
+
+
+
+
+  end
 
 
 

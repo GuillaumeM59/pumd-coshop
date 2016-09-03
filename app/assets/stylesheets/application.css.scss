@@ -10,20 +10,21 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
-*= require 'index'
+ *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
  *= require_self
  *
  */
- @import'bootstrap-sprockets';
+@import'bootstrap-sprockets';
 @import 'bootstrap';
- @import 'rails_bootstrap_forms';
+@import 'bootstrap-datetimepicker';
+@import 'rails_bootstrap_forms';
 @import 'index';
 @import 'brands';
 @import 'shops';
 @import 'contact';
 @import 'users';
 @import "static_pages";
-@import "bids";
+@import "trajetpumds";
 @import 'layout';
 
 /*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
@@ -448,6 +449,23 @@ textarea {
   font: inherit; /* 2 */
 }
 
+.red{
+  color: red
+}
+.org{
+  color: orange
+}
+.green{
+  border: green
+}
+.bred{
+  border: 3px solid red
+}
+.borg{
+  border: 3px solid orange
+}
+
+
 .message {
   position: fixed;
   top: 70px;
@@ -487,6 +505,74 @@ textarea {
 .logoutbtn {
   margin-top: 3px
 }
+#new_user label {
+  width: 300px;
+  display: inline-block;
+  color: rgb(55, 55, 55);
+  font-size: 100%;
+  font-weight: bold;
+}
+#new_user li {
+margin: 15px 0
+}
+#new_user abbr[title] {
+color:rgb(144, 0, 7)
+}
+#new_user em {
+  width: 300px;
+  display: inline-block;
+  color: rgb(55, 55, 55);
+  font-size: 75%;
+  font-weight: bold;
+}
+#user_gender_input ol {
+  display: inline-block;
+  float: none;
+  padding-left: 50px
+}
+#user_avatar_input input {
+  display: inline-block;
+}
+#user_phone2 {
+  margin-left: 5px
+}
+#user_cmodel_id{
+  max-width: 100%
+}
+#createtrajetform .form-group {
+  width:250px;
+  display: inline-block;
+}
+#createtrajetform .fa {
+  float: none;
+}
+#dtob {
+  overflow: visible;
+}
+#new_user .boolean label{
+  padding: 0
+}
+.field_with_errors {
+  display: inline-block;
+}
+
+ form .field_with_errors input {
+  -moz-box-shadow: 5px 5px 2px 0px #cb0000;
+  -webkit-box-shadow: 5px 5px 2px 0px #cb0000;
+  -o-box-shadow: 5px 5px 2px 0px #cb0000;
+  box-shadow: 5px 5px 2px 0px #cb0000;
+  filter:progid:DXImageTransform.Microsoft.Shadow(color=#cb0000, Direction=134, Strength=2);
+  margin-right: 30px
+}
+form .message {
+  position: relative;
+  left: 0;
+  top:0
+
+}
+.yellow { border: 1px solid black; margin-top: 8px; background: yellow; padding: 5px; }
+
+
 
 @media all and (max-width:991px) {
   .nav > li {
@@ -545,5 +631,12 @@ display: inline-block;
   .nav{
     background-color: rgba(255, 255, 255, 0.85);
 
+  }
+  .logo_hot {
+    margin-left: 30px
+  }
+  .intro-message{
+    margin-top: 120px;
+    padding-top: 0
   }
 }

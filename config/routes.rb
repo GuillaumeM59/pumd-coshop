@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :users
+  post 'trajetpumds/search', :to => 'trajetpumds#search'
+  get 'trajetpumds/search', :to => 'trajetpumds#search'
+
+  resources :users
+  resources :transactions
   resources :resapumds
   resources :trajetpumds
   resources :validations
@@ -15,6 +21,9 @@ Rails.application.routes.draw do
   resources :charges
 
   get 'static_pages/home'
+  post 'static_pages/home'
+  get 'static_pages/cgv', :to => 'static_pages#cgv', :as => "cgv"
+  get 'static_pages/tdb', :to => 'static_pages#tdb', :as => "tdb"
   post 'static_pages/sendquestion'
 
   get 'static_pages/help'
@@ -23,20 +32,12 @@ Rails.application.routes.draw do
 
   get 'static_pages/contact'
 
-  get 'static_pages/publicprofile'
 
-  post 'bids/search'
-  post 'bids/createreturn'
+  post 'trajetpumds/confirm'
+  post 'trajetpumds/annulerresa'
+  post 'trajetpumds/reserver', :to => 'trajetpumds#reserver', :as => "reserver_trajet"
 
-  get 'static_pages/proposition'
-
-match "/bids/reserver/:id" => "bids#reserver" , via: [:get], :as => :reserver
-match "/bids/annulerresa/:id" => "bids#annulerresa" , via: [:get], :as => :annulerresa
-
-  root 'static_pages#home'
+  root 'static_pages#home', :to =>'static_pages#home'
 
 
-   devise_for :users
-
-  resources :users
 end
