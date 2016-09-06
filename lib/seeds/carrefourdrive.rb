@@ -13,7 +13,7 @@ File.open("#{Rails.root}/lib/seeds/carrefour_drive_Fr.csv") do |shops|
     sleep 1
     zipcode=Geocoder.search("#{latitude},#{longitude}").first.postal_code
     puts zipcode
-    currentshop=Shop.all.last
+    currentshop=Shop.all.first
     listname= currentshop.listname
     n=0
     if listname != nil

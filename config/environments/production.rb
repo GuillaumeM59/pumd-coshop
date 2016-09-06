@@ -2,8 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
-  config.cache_classes = true
-I18n.config.available_locales = :fr
+I18n.config.enforce_available_locales = true
 config.i18n.default_locale = :fr
 
   # Eager load code on boot. This eager loads most of Rails and
@@ -14,7 +13,7 @@ config.i18n.default_locale = :fr
 
 
 #ACTION MAILER
-config.action_mailer.default_url_options = { :host => 'co-shop.fr' }
+config.action_mailer.default_url_options = { :host => 'pickupmydrive.fr' }
 # ActionMailer Config
 # Setup for production - deliveries, no errors raised
 config.action_mailer.delivery_method = :smtp
@@ -22,10 +21,10 @@ config.action_mailer.perform_deliveries = true
 config.action_mailer.raise_delivery_errors = false
 config.action_mailer.default :charset => "utf-8"
 config.action_mailer.smtp_settings = {
-  :address   => "smtp.co-shop.fr",
+  :address   => "smtp.pickupmydrive.fr",
   :port      => 587,
-  :user_name => "contact@co-shop.fr",
-  :password => "ilrestedujambon"
+  :user_name => "contact@pickupmydrive.fr",
+  :password => "Ilrestedujambon"
 }
 
 

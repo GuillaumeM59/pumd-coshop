@@ -2,11 +2,15 @@ Rails.application.routes.draw do
   devise_for :users
   post 'trajetpumds/search', :to => 'trajetpumds#search'
   get 'trajetpumds/search', :to => 'trajetpumds#search'
+  post 'trajetpumds/confirm'
+  get 'trajetpumds/annulerresa'
+  get 'trajetpumds/reserver', :to => 'trajetpumds#reserver', :as => "reserver_trajet"
+  get 'transactions/cancelling', :to => 'transactions#cancelling', :as => "annul_trans"
 
   resources :users
-  resources :transactions
+resources :transactions, only: [:new, :create, :cancelling]
   resources :resapumds
-  resources :trajetpumds
+  resources :trajetpumds, only: [:new, :create, :show]
   resources :validations
   resources :coins
   resources :carmodels
@@ -33,9 +37,6 @@ Rails.application.routes.draw do
   get 'static_pages/contact'
 
 
-  post 'trajetpumds/confirm'
-  post 'trajetpumds/annulerresa'
-  post 'trajetpumds/reserver', :to => 'trajetpumds#reserver', :as => "reserver_trajet"
 
   root 'static_pages#home', :to =>'static_pages#home'
 
